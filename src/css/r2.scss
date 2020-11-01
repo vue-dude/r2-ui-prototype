@@ -1,0 +1,311 @@
+.r2 {
+    .no-events {
+        pointer-events: none;
+        cursor: none;
+    }
+    .sub-bar {
+        position: absolute;
+        width: 100vw;
+        height: 30px;
+        top: calc(100vh - 30px);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        background-color: rgba(0, 0, 0, 0.3);
+        .path {
+            margin-top: 5px;
+            margin-left: 10px;
+            color: white;
+            width: 50vw;
+        }
+        .logo {
+            position: absolute;
+            width: 140px;
+            height: 45px;
+            right: -10px;
+            bottom: 0px;
+            background-color: #f9f9f1;
+            border-radius: 10px 0 0 0;
+            .image {
+                position: absolute;
+                $url: './assets/mpdl-logo.png';
+
+                // url(./r2-ui/recent.png)
+
+                background-image: url($url);
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 120px;
+                height: 60px;
+                margin: 5px;
+            }
+        }
+        .legal {
+            position: absolute;
+            bottom: -15px;
+            right: 145px;
+            height: 40px;
+            color: white;
+            a {
+                color: white;
+            }
+        }
+    }
+
+    .boxes {
+        position: absolute;
+        top: 100px;
+        &.cage {
+            position: absolute;
+            top: 50px;
+            left: 5px;
+            width: 1200px;
+            height: 540px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: unset;
+            background-color: unset;
+        }
+        .box {
+            position: absolute;
+            top: 50px;
+            left: 5px;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            // background-size: cover;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            &.no-events {
+                pointer-events: none;
+            }
+            &.bg-dark {
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+            .inner {
+                width: 100%;
+                height: 100%;
+            }
+            .box-close {
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                top: -10px;
+                right: -10px;
+                background-color: #475265;
+                border: 1px solid white;
+                border-radius: 50%;
+                cursor: pointer;
+                .inner {
+                    transform: scale(0.7) !important;
+                }
+            }
+
+            .view {
+                position: absolute;
+                opacity: 0;
+                &.no-events {
+                    pointer-events: none;
+                }
+                .elements {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    .element {
+                        position: absolute;
+                        div {
+                            width: max-content;
+                        }
+                    }
+                }
+                .zones {
+                    position: absolute;
+                }
+
+                .text {
+                    font-size: 15px;
+                    font-family: 'Arial', sans-serif;
+                    color: white;
+                }
+                .headline {
+                    font-size: 17px;
+                    font-family: 'Roboto', sans-serif;
+                    color: white;
+                    top: 10px;
+                    left: 20px;
+                }
+                .head-seperator {
+                    top: 45px;
+                    left: 20px;
+                    div {
+                        height: 1px;
+                        border: 1px solid rgba(255, 255, 255, 0.591);
+                        width: 200px;
+                    }
+                }
+
+                .button {
+                    width: max-content;
+                    height: 28px;
+                    border-radius: 5px;
+                    background-color: #d8d8d8;
+                    font-size: 16px;
+                    font-family: 'Roboto', sans-serif;
+                    color: #303030;
+                    padding: 2px 15px 2px 15px;
+                    cursor: pointer;
+                    &.bt-ok {
+                        background-color: #9ef5c8;
+                    }
+                }
+            }
+
+            &.recent {
+                top: 40px;
+                left: 20px;
+                width: 525px;
+                height: 450px;
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: 525px;
+                    height: 450px;
+                }
+            }
+            &.globe {
+                top: 40px;
+                left: 670px;
+                width: 300px;
+                height: 300px;
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: 300px;
+                    height: 300px;
+                }
+            }
+            &.login {
+                top: 94px;
+                left: 643px;
+                width: 360px;
+                height: 190px;
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: 360px;
+                    height: 190px;
+                }
+                .inner {
+                    transform: scale(0.9);
+                    transform-origin: center;
+                }
+            }
+            &.register {
+                top: 40px;
+                left: 20px;
+                width: 845px;
+                height: 450px;
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: 845px;
+                    height: 450px;
+                }
+                .inner {
+                    transform: scale(0.9);
+                    transform-origin: center;
+                }
+                .view {
+                    .head-seperator {
+                        div {
+                            width: 800px;
+                        }
+                    }
+                }
+                .step-1 {
+                    .elements {
+                        .bt-continue {
+                            right: 20px;
+                            bottom: 20px;
+                        }
+                        .register-step-1-mail {
+                            left: 230px;
+                            top: 150px;
+                        }
+                        .info {
+                            left: 20px;
+                            top: 70px;
+                        }
+                    }
+                }
+                .step-2 {
+                    .elements {
+                        .bt-send {
+                            right: 20px;
+                            bottom: 20px;
+                        }
+                        .register-step-2 {
+                            left: 14px;
+                            top: 73px;
+                        }
+                    }
+                }
+                .step-3 {
+                    .elements {
+                        .bt-close {
+                            right: 20px;
+                            bottom: 20px;
+                        }
+                        .info {
+                            left: 20px;
+                            top: 70px;
+                        }
+                    }
+                }
+            }
+            &.flow-show {
+                top: 230px;
+                left: 560px;
+                width: 535px;
+                height: 260px;
+                .inner {
+                    transform: scale(0.9);
+                    transform-origin: center;
+                }
+            }
+        }
+    }
+
+    .bg-img {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        &.scale-default {
+            transform: scale(0.55);
+            transform-origin: top left;
+        }
+        &.circle {
+            background-image: url(./r2-ui/circle.png);
+        }
+        &.globe {
+            background-image: url(./r2-ui/globe.png.webp);
+        }
+        &.recent {
+            background-image: url(./r2-ui/recent.png.webp);
+        }
+        &.login-arrow {
+            background-image: url(./r2-ui/login-arrow.png);
+        }
+        &.login {
+            background-image: url(./r2-ui/login.png.webp);
+        }
+        &.close-x {
+            background-image: url(./r2-ui/close-x.png);
+        }
+        &.register-step-1-mail:before {
+            content: url(./r2-ui/register-step-1-mail.png);
+        }
+        &.register-step-2:before {
+            content: url(./r2-ui/register-step-2.png);
+        }
+    }
+}

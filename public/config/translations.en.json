@@ -1,0 +1,33 @@
+{
+    "en": {
+        "head": {
+            "title": "RDM – The Information Platform for Max Planck Researchers",
+            "terms": "Terms of Services",
+            "imprint": "Imprint",
+            "privacy": "Privacy",
+            "sp": ":",
+            "logoLink": "http://www.mpdl.mpg.de"
+        },
+        "ui": {
+            "authInfo": "You will receive a confirmation email after sending this request.<br/><br/><strong>Please add the confirmation link in the same browser <br/>as you used for the request.<br/><br/>Other browsers won't be validated!",
+            "publishInfo": "If you confirm, all content changes will be published.<br/><br/>Shure?",
+            "inputEmailLabel": "EMail",
+            "inputEmailPlaceholder": "Enter your EMail here.",
+            "btCancel": "Cancel",
+            "btSave": "Save",
+            "btSend": "Send",
+            "btPublish": "Publish",
+            "cmsControlTabAuthentication": "Authentication",
+            "cmsControlTabPublish": "Publish"
+        },
+        "message": {
+            "hello": "hello i18 !! :-)",
+            "language": "English",
+            "quantity": "Quantity",
+            "list": "hello, {0}!",
+            "named": "hello, {name}!",
+            "linked": "@:message.named How are you?",
+            "plural": "no bananas | {n} banana | {n} bananas"
+        }
+    }
+}
