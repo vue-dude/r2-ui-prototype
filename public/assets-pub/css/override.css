@@ -9,6 +9,10 @@
     width: unset;
 }
 
+.r2 .navbar.navbar-fixed-top{
+    z-index: 10;
+}
+
 .r2 .navbar .navbar-header .navbar-brand {
     font-size: 17px;
     font-weight: 300;

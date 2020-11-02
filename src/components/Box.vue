@@ -11,7 +11,7 @@
                 <div
                     v-for="(elm, key) in view.elements"
                     class="element"
-                    :class="key"
+                    :class="[key, { clickable: elm.click }]"
                     :key="key"
                     @click="elm.click ? onClickElement(key, elm.args) : null"
                 >

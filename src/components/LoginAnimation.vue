@@ -36,6 +36,7 @@ export default {
     },
     created() {
         globals.eventBus.$on('reset-login-animation', this.reset)
+        globals.eventBus.$on('trigger-login-animation', this.onClick)
     },
     methods: {
         onClick() {

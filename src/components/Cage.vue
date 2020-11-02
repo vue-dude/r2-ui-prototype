@@ -1,6 +1,8 @@
 <template>
     <div class="boxes cage" :class="{ hidden: !show }">
+        <box class="" :config="boxes['login-bt-top']"></box>
         <box class="bg-dark" :config="boxes.recent"></box>
+        <box class="bg-dark" :config="boxes['my-datasets']"></box>
         <box :config="boxes.globe"></box>
         <box class="bg-dark" :config="boxes['register']"></box>
         <box class="bg-dark" :config="boxes.login"></box>
@@ -64,7 +66,10 @@ export default {
                                 headline: { html: 'Create new Account' },
                                 'head-seperator': {},
                                 'register-step-1-mail': { classes: 'scale-default' },
-                                info: { html: 'Please enter your email first:', classes: 'text' },
+                                info: {
+                                    html: 'Please enter your email first:',
+                                    classes: 'text'
+                                },
                                 'bt-continue': {
                                     html: 'Continue',
                                     classes: 'button bt-ok',
@@ -107,8 +112,25 @@ export default {
                 'login-animation': {
                     events: false
                 },
-                'flow-show': {
-                    // id: 'flow-show'
+                'flow-show': {},
+                'my-datasets': {
+                    views: {
+                        'my-datasets': {
+                            elements: {
+                                headline: { html: 'My Datasets' },
+                                'head-seperator': {}
+                            }
+                        }
+                    }
+                },
+                'login-bt-top': {
+                    views: {
+                        'login-bt-top': {
+                            elements: {
+                                'login-start': { html: 'Login', click: true, classes: 'text' }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -138,6 +160,7 @@ export default {
     },
     methods: {
         onClick(evt) {
+            evt.box = evt.box || { id: null }
             console.log('CG:onClick evt = ', evt)
             let options = {}
             switch (true) {
@@ -156,6 +179,8 @@ export default {
                     return this.setViewMode('register', options)
                 case evt.key === 'login':
                     return this.setLoggedIn()
+                case evt.key === 'login-start' && evt.box.id === 'login-bt-top':
+                    return globals.eventBus.$emit('trigger-login-animation')
                 case evt.key === 'login-start':
                     return this.setViewMode('login')
                 default:
@@ -165,12 +190,11 @@ export default {
         setLoggedIn() {
             $('.nav.quick-actions').removeClass('hidden')
             this.$store.dispatch('setLoggedInState', true)
-            this.setViewMode('home')
+            this.setViewMode('mywork')
         },
         setViewMode(mode, options = {}) {
             const speed = 0.5
             console.log('CG:setViewMode this.viewMode, mode = ', this.viewMode, mode)
-
             this.viewMode = mode || 'home'
 
             let path = 'Home'
@@ -181,12 +205,15 @@ export default {
                 case 'register':
                     path = 'Home / Create an Account'
                     break
+                case 'mywork':
+                    path = 'Home / My Work'
+                    break
             }
             this.$store.dispatch('setSubPath', path)
 
             //
             const tg = '.cage.boxes'
-            const goOuts = 'recent,login,register,globe,login-animation,flow-show'.split(',')
+            const goOuts = 'login-bt-top,recent,login,register,globe,login-animation,flow-show,my-datasets'.split(',')
             // const goOuts = 'recent,register,globe'.split(',')
             _.each(goOuts, key => {
                 gsap.to($(`${tg} .${key}`), speed, {
@@ -206,8 +233,16 @@ export default {
                         goIns['login-animation'] = { delay: 0.4, speed: 0.8 }
                         goIns['flow-show'] = { delay: 0.9, speed: 6 }
                     }
+                    goIns['login-bt-top'] = { delay: 0, speed: 0.1 }
+
                     globals.eventBus.$emit('reset-login-animation')
                     break
+                case 'mywork':
+                    // goIns = { 'my-datasets': { delay: 0.1, speed: 0.8 } }
+                    goIns = { 'my-datasets': { delay: 0.25, speed: 0.6 } }
+                    globals.eventBus.$emit('reset-login-animation')
+                    break
+
                 case 'register':
                     console.log('setViewMode:register options = ', options)
                     goIns = { register: { delay: 0.25, speed: 0.6, view: 'step-1' } }
