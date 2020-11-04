@@ -1,3 +1,5 @@
+@import 'css/r2-assets.scss';
+
 .r2 {
     .no-events {
         pointer-events: none;
@@ -107,23 +109,50 @@
                 &.no-events {
                     pointer-events: none;
                 }
+                .scale {
+                    // transform-origin: center center;
+                    &.t-l {
+                        transform-origin: top left;
+                    }
+                    &.t-r {
+                        transform-origin: top right;
+                    }
+                    &.x72 {
+                        transform: scale(0.72);
+                    }
+                    &.x50 {
+                        transform: scale(0.5);
+                    }
+                }
+
                 .elements {
                     position: absolute;
                     top: 0;
                     left: 0;
                     .element {
                         position: absolute;
-                        div {
-                            width: max-content;
-                        }
+                        // div {
+                        //     width: max-content;
+                        // }
                         &.clickable {
                             cursor: pointer;
                         }
                     }
                 }
-                .zones {
+                // .zones {
+                //     position: absolute;
+                // }
+
+                .click-zone {
                     position: absolute;
+                    background-color: rgba(255, 0, 0, 0.3);
+                    cursor: pointer;
                 }
+                // .click-zones {
+                //     z-index: 10;
+                // }
+
+
 
                 .text {
                     font-size: 15px;
@@ -173,25 +202,6 @@
                 .view .zones {
                     width: 525px;
                     height: 450px;
-                }
-            }
-            &.my-datasets {
-                top: 40px;
-                left: 20px;
-                width: 525px;
-                height: 450px;
-                .view,
-                .view .elements,
-                .view .zones {
-                    width: 525px;
-                    height: 450px;
-                }
-                .view {
-                    .head-seperator {
-                        div {
-                            width: 485px;
-                        }
-                    }
                 }
             }
             &.globe {
@@ -309,40 +319,49 @@
                     transform-origin: center;
                 }
             }
+            &.my-datasets {
+                top: 40px;
+                left: 20px;
+                width: 525px;
+                height: 450px;
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: 525px;
+                    height: 450px;
+                }
+                .view {
+                    .headline {
+                        left: 50px;
+                    }
+                    .head-seperator {
+                        left: 45px;
+                        div {
+                            width: 465px;
+                        }
+                    }
+                    .mywork-box-sym {
+                        top: 16px;
+                        left: 10px;
+                        width: 60px;
+                        height: 88px;
+                    }
+                    .bt-create-dataset {
+                        top: -2px;
+                        right: -5px;
+                        width: 139px;
+                        height: 79px;
+                    }
+                    .mywork-all-list{
+                        top: 73px;
+                        left: 12px;
+                        width: 1018px;
+                        height: 592px;
+                    }
+                }
+            }
         }
     }
 
-    .bg-img {
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        &.scale-default {
-            transform: scale(0.55);
-            transform-origin: top left;
-        }
-        &.circle {
-            background-image: url(./r2-ui/circle.png);
-        }
-        &.globe {
-            background-image: url(./r2-ui/globe.png.webp);
-        }
-        &.recent {
-            background-image: url(./r2-ui/recent.png.webp);
-        }
-        &.login-arrow {
-            background-image: url(./r2-ui/login-arrow.png);
-        }
-        &.login {
-            background-image: url(./r2-ui/login.png.webp);
-        }
-        &.close-x {
-            background-image: url(./r2-ui/close-x.png);
-        }
-        &.register-step-1-mail:before {
-            content: url(./r2-ui/register-step-1-mail.png);
-        }
-        &.register-step-2:before {
-            content: url(./r2-ui/register-step-2.png);
-        }
-    }
+   
 }

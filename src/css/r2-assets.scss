@@ -1,0 +1,46 @@
+.r2 {
+    .bg-img {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        &.scale-default {
+            transform: scale(0.55);
+            transform-origin: top left;
+        }
+        &.circle {
+            background-image: url(./r2-ui/circle.png);
+        }
+        &.globe {
+            background-image: url(./r2-ui/globe.png.webp);
+        }
+        &.login-arrow {
+            background-image: url(./r2-ui/login-arrow.png);
+        }
+        &.login {
+            background-image: url(./r2-ui/login.png.webp);
+        }
+        &.close-x {
+            background-image: url(./r2-ui/close-x.png);
+        }
+        &.register-step-1-mail:before {
+            content: url(./r2-ui/register-step-1-mail.png);
+        }
+        &.register-step-2:before {
+            content: url(./r2-ui/register-step-2.png);
+        }
+        //
+        &.recent {
+            background-image: url(./r2-ui/recent.png);
+        }
+        //
+        &.mywork-all-list {
+            background-image: url(./r2-ui/mywork-all-list.png);
+        }
+        &.mywork-box-sym {
+            background-image: url(./r2-ui/mywork-box-sym.png);
+        }
+        &.bt-create-dataset {
+            background-image: url(./r2-ui/bt-create-dataset.png);
+        }
+    }
+}

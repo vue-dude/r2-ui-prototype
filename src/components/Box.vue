@@ -58,14 +58,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped>
-.click-zone {
-    position: absolute;
-    background-color: rgba(255, 0, 0, 0.3);
-    cursor: pointer;
-}
-.click-zones {
-    z-index: 10;
-}
-</style>
