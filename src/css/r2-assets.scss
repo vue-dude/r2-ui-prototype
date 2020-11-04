@@ -48,10 +48,25 @@
         &.box-back-bt {
             background-image: url(./r2-ui/bt-box-back.png);
         }
-
-        
-
-
-
+        //
+        &.inspector-nav {
+            background-image: url(./r2-ui/inspector-nav.png);
+        }
+        //
+        &.isp-info {
+            background-image: url(./r2-ui/isp-info.png);
+        }
+        &.isp-uploads {
+            background-image: url(./r2-ui/isp-uploads.png);
+        }
+        &.isp-statistics {
+            background-image: url(./r2-ui/isp-statistics.png);
+        }
+        &.isp-files {
+            background-image: url(./r2-ui/isp-files.png);
+        }
+        &.isp-upload-start {
+            background-image: url(./r2-ui/isp-upload-start.png);
+        }
     }
 }

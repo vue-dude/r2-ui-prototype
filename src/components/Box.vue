@@ -25,7 +25,7 @@
                     :key="key"
                     class="click-zone"
                     :style="zone.pos"
-                    @click="onClickZone(key, zone.args)"
+                    @click="onClickZone(zone.key || key, zone.args)"
                 ></div>
             </div>
         </div>

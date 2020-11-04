@@ -4,11 +4,31 @@ function R2UiBoxDefinitions() {
             views: {
                 recent: {
                     zones: {
-                        'show-dataset': {
+                        'show-ds-1': {
                             key: 'show-dataset',
                             pos: {
-                                top: '170px',
-                                right: '3px',
+                                top: '50px',
+                                right: '8px',
+                                width: '30px',
+                                height: '30px'
+                            }
+                        },
+
+                        'show-ds-2': {
+                            key: 'show-dataset',
+                            pos: {
+                                top: '180px',
+                                right: '8px',
+                                width: '30px',
+                                height: '30px'
+                            }
+                        },
+
+                        'show-ds-3': {
+                            key: 'show-dataset',
+                            pos: {
+                                top: '315px',
+                                right: '8px',
                                 width: '30px',
                                 height: '30px'
                             }
@@ -175,7 +195,6 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
-
         dataset: {
             close: true,
             views: {
@@ -185,6 +204,107 @@ function R2UiBoxDefinitions() {
                         'head-seperator': {}
                     }
                 }
+            }
+        },
+        'inspector-nav': {
+            views: {
+                'inspector-nav': {
+                    zones: {
+                        info: {
+                            pos: {
+                                left: '8px',
+                                top: '15px',
+                                width: '30px',
+                                height: '30px'
+                            }
+                        },
+                        'upload-new': {
+                            pos: {
+                                left: '8px',
+                                top: '55px',
+                                width: '30px',
+                                height: '30px'
+                            }
+                        },
+                        uploads: {
+                            pos: {
+                                left: '8px',
+                                top: '96px',
+                                width: '30px',
+                                height: '30px'
+                            }
+                        },
+                        statistics: {
+                            pos: {
+                                left: '8px',
+                                top: '135px',
+                                width: '30px',
+                                height: '30px'
+                            }
+                        },
+                        files: {
+                            pos: {
+                                left: '8px',
+                                top: '175px',
+                                width: '30px',
+                                height: '30px'
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        inspector: {
+            views: {
+                info: {
+                    elements: {
+                        'isp-info': {
+                            classes: 'scale x50 t-l'
+                        }
+                    }
+                },
+                'upload-new': {
+                    elements: {
+                        'isp-upload-start': {
+                            classes: 'scale x50 t-l'
+                        }
+                    }
+                },
+                uploads: {
+                    elements: {
+                        'isp-uploads': {
+                            classes: 'scale x50 t-l'
+                        }
+                    }
+                },
+                statistics: {
+                    elements: {
+                        'isp-statistics': {
+                            classes: 'scale x50 t-l'
+                        }
+                    }
+                },
+                files: {
+                    elements: {
+                        'isp-files': {
+                            classes: 'scale x50 t-l'
+                        }
+                    }
+                }
+
+                // files: {
+                //     elements: {
+                //         headline: { html: 'My Work - Dataset - History' },
+                //         'head-seperator': {},
+                //         'box-back-bt': { key: 'view-back', classes: 'scale x45 t-r', click: true }, // TODO move to abstract box definitions
+                //         'mywork-box-sym': {
+                //             classes: 'scale x50 t-l'
+                //         },
+                //         'mywork-ds-history': {
+                //             classes: 'scale x50 t-l'
+                //         }
+                //     }
+                // }
             }
         }
     }

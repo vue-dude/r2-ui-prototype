@@ -5,10 +5,15 @@
         <box class="bg-dark" :config="boxes['dataset']"></box>
         <box class="bg-dark" :config="boxes.recent"></box>
         <box class="bg-dark" :config="boxes['my-datasets']"></box>
+        <!--  -->
+        <box class="bg-dark" :config="boxes.inspector"></box>
+        <box class="" :config="boxes['inspector-nav']"></box>
+        <!--  -->
         <box :config="boxes.globe"></box>
         <box class="bg-dark" :config="boxes['register']"></box>
         <box class="bg-dark" :config="boxes.login"></box>
         <login-animation :config="boxes['login-animation']"></login-animation>
+
         <flow-show :config="boxes['flow-show']"></flow-show>
     </div>
 </template>
@@ -52,8 +57,8 @@ export default {
         this.setViewMode('init')
         setTimeout(() => {
             this.show = true
-            // this.setViewMode('mywork')
-            this.setViewMode('home')
+            this.setViewMode('mywork')
+            // this.setViewMode('home')
             // this.setViewMode('register')
         }, 400)
     },
@@ -116,6 +121,16 @@ export default {
                             }
                             return this.setViewMode('view-dataset', options)
                     }
+                case evt.box.id === 'inspector-nav':
+                    options.inspector = {
+                        view: evt.key
+                    }
+                    return this.setViewMode('mywork', options)
+                // switch (evt.key) {
+                //     case 'info':
+                //     case 'uploads':
+                //         this.setViewMode('mywork', options)
+                // }
 
                 default:
                     this.setViewMode('home')
@@ -181,7 +196,17 @@ export default {
 
                 case 'mywork':
                     // goIns = { 'my-datasets': { delay: 0.1, speed: 0.8 } }
-                    goIns = { 'my-datasets': { delay: 0.25, speed: 0.6 } }
+                    goIns = {
+                        'my-datasets': { delay: 0.1, speed: 0.8 },
+                        inspector: { delay: 0.1, speed: 0.8, view: 'info' },
+                        // inspector: { delay: 0.1, speed: 0.8, view: 'uploads' },
+                        'inspector-nav': { delay: 0.1, speed: 0.8 }
+                    }
+                    // TODO extract this to funtion
+                    if (options.inspector && options.inspector.view) {
+                        goIns.inspector.view = options.inspector.view
+                    }
+
                     globals.eventBus.$emit('reset-login-animation')
                     break
 
@@ -198,6 +223,7 @@ export default {
                 case 'register':
                     console.log('setViewMode:register options = ', options)
                     goIns = { register: { delay: 0.25, speed: 0.6, view: 'step-1' } }
+                    // TODO extract this to funtion
                     if (options.register && options.register.view) {
                         goIns.register.view = options.register.view
                     }

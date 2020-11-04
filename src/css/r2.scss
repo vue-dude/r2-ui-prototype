@@ -203,37 +203,43 @@
             &.recent {
                 top: 40px;
                 left: 20px;
-                width: 525px;
-                height: 450px;
+                --width: 525px;
+                --height: 450px;
+                width: var(--width);
+                height: var(--height);
                 .view,
                 .view .elements,
                 .view .zones {
-                    width: 525px;
-                    height: 450px;
+                    width: var(--width);
+                    height: var(--height);
                 }
             }
             &.globe {
                 top: 40px;
                 left: 670px;
-                width: 300px;
-                height: 300px;
+                --width: 300px;
+                --height: 300px;
+                width: var(--width);
+                height: var(--height);
                 .view,
                 .view .elements,
                 .view .zones {
-                    width: 300px;
-                    height: 300px;
+                    width: var(--width);
+                    height: var(--height);
                 }
             }
             &.login {
                 top: 94px;
                 left: 643px;
-                width: 360px;
-                height: 190px;
+                --width: 360px;
+                --height: 190px;
+                width: var(--width);
+                height: var(--height);
                 .view,
                 .view .elements,
                 .view .zones {
-                    width: 360px;
-                    height: 190px;
+                    width: var(--width);
+                    height: var(--height);
                 }
                 .inner {
                     transform: scale(0.9);
@@ -257,13 +263,15 @@
             &.register {
                 top: 40px;
                 left: 20px;
-                width: 845px;
-                height: 450px;
+                --width: 845px;
+                --height: 450px;
+                width: var(--width);
+                height: var(--height);
                 .view,
                 .view .elements,
                 .view .zones {
-                    width: 845px;
-                    height: 450px;
+                    width: var(--width);
+                    height: var(--height);
                 }
                 .inner {
                     transform: scale(0.9);
@@ -330,13 +338,15 @@
             &.my-datasets {
                 top: 40px;
                 left: 20px;
-                width: 525px;
-                height: 450px;
+                --width: 525px;
+                --height: 450px;
+                width: var(--width);
+                height: var(--height);
                 .view,
                 .view .elements,
                 .view .zones {
-                    width: 525px;
-                    height: 450px;
+                    width: var(--width);
+                    height: var(--height);
                 }
                 .my-datasets {
                     .headline {
@@ -402,13 +412,15 @@
             &.create-dataset {
                 top: 40px;
                 left: 20px;
-                width: 845px;
-                height: 450px;
+                --width: 845px;
+                --height: 450px;
+                width: var(--width);
+                height: var(--height);
                 .view,
                 .view .elements,
                 .view .zones {
-                    width: 845px;
-                    height: 450px;
+                    width: var(--width);
+                    height: var(--height);
                 }
                 .inner {
                     transform: scale(0.9);
@@ -425,13 +437,15 @@
             &.dataset {
                 top: 40px;
                 left: 20px;
-                width: 1024px;
-                height: 450px;
+                --width: 1024px;
+                --height: 450px;
+                width: var(--width);
+                height: var(--height);
                 .view,
                 .view .elements,
                 .view .zones {
-                    width: 1024px;
-                    height: 450px;
+                    width: var(--width);
+                    height: var(--height);
                 }
                 .inner {
                     transform: scale(0.9);
@@ -442,6 +456,76 @@
                         div {
                             width: 800px;
                         }
+                    }
+                }
+            }
+
+            &.inspector-nav {
+                top: 110px;
+                left: 560px;
+                --width: 44px;
+                --height: 220px;
+                width: var(--width);
+                height: var(--height);
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: var(--width);
+                    height: var(--height);
+                }
+            }
+
+            &.inspector {
+                top: 40px;
+                left: 590px;
+                --width: 530px;
+                --height: 450px;
+                width: var(--width);
+                height: var(--height);
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: var(--width);
+                    height: var(--height);
+                }
+                .info {
+                    .isp-info {
+                        top: 10px;
+                        left: 10px;
+                        width: 1020px;
+                        height: 755px;
+                    }
+                }
+                .uploads {
+                    .isp-uploads {
+                        top: 5px;
+                        left: 10px;
+                        width: 1022px;
+                        height: 860px;
+                    }
+                }
+                .statistics {
+                    .isp-statistics {
+                        top: 5px;
+                        left: 10px;
+                        width: 1013px;
+                        height: 851px;
+                    }
+                }
+                .files {
+                    .isp-files {
+                        top: 5px;
+                        left: 10px;
+                        width: 100px;
+                        height: 851px;
+                    }
+                }
+                .upload-new {
+                    .isp-upload-start {
+                        top: 5px;
+                        left: 10px;
+                        width: 100px;
+                        height: 851px;
                     }
                 }
             }
