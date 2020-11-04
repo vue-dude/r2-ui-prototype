@@ -13,7 +13,7 @@
                     class="element"
                     :class="[key, { clickable: elm.click }]"
                     :key="key"
-                    @click="elm.click ? onClickElement(key, elm.args) : null"
+                    @click="elm.click ? onClickElement(elm.key || key, elm.args) : null"
                 >
                     <div v-if="elm.html" v-html="elm.html" :class="[key, elm.classes]"></div>
                     <div v-else class="bg-img" :class="[key, elm.classes]"></div>

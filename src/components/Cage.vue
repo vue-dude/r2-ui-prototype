@@ -1,6 +1,7 @@
 <template>
     <div class="boxes cage" :class="{ hidden: !show }">
         <box class="" :config="boxes['login-bt-top']"></box>
+        <box class="bg-dark" :config="boxes['create-dataset']"></box>
         <box class="bg-dark" :config="boxes.recent"></box>
         <box class="bg-dark" :config="boxes['my-datasets']"></box>
         <box :config="boxes.globe"></box>
@@ -62,6 +63,9 @@ export default {
             let options = {}
             switch (true) {
                 case evt.key === 'close':
+                    if (evt.box.id === 'create-dataset') {
+                        return this.setViewMode('mywork', options)
+                    }
                     if (evt.box.id === 'login') {
                         options.globe = { delay: 0 }
                     }
@@ -80,6 +84,19 @@ export default {
                     return globals.eventBus.$emit('trigger-login-animation')
                 case evt.key === 'login-start':
                     return this.setViewMode('login')
+                case evt.box.id === 'my-datasets':
+                    switch (evt.key) {
+                        case 'view-back':
+                            return this.setViewMode('mywork')
+                        case 'show-history':
+                            options['my-datasets'] = {
+                                view: 'dataset-history'
+                            }
+                            return this.setViewMode('mywork', options)
+                        case 'create-dataset':
+                            return this.setViewMode('create-dataset')
+                    }
+
                 default:
                     this.setViewMode('home')
             }
@@ -105,12 +122,15 @@ export default {
                 case 'mywork':
                     path = 'Home / My Work'
                     break
+                case 'create-dataset':
+                    path = 'Home / My Work / Create New Dataset'
+                    break
             }
             this.$store.dispatch('setSubPath', path)
 
             //
             const tg = '.cage.boxes'
-            const goOuts = 'login-bt-top,recent,login,register,globe,login-animation,flow-show,my-datasets'.split(',')
+            const goOuts = Object.keys(this.boxes)
             // const goOuts = 'recent,register,globe'.split(',')
             _.each(goOuts, key => {
                 gsap.to($(`${tg} .${key}`), speed, {
@@ -137,6 +157,11 @@ export default {
                 case 'mywork':
                     // goIns = { 'my-datasets': { delay: 0.1, speed: 0.8 } }
                     goIns = { 'my-datasets': { delay: 0.25, speed: 0.6 } }
+                    globals.eventBus.$emit('reset-login-animation')
+                    break
+
+                case 'create-dataset':
+                    goIns = { 'create-dataset': { delay: 0.25, speed: 0.6 } }
                     globals.eventBus.$emit('reset-login-animation')
                     break
 

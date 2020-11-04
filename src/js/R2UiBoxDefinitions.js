@@ -84,6 +84,26 @@ function R2UiBoxDefinitions() {
             events: false
         },
         'flow-show': {},
+        'login-bt-top': {
+            views: {
+                'login-bt-top': {
+                    elements: {
+                        'login-start': { html: 'Login', click: true, classes: 'text' }
+                    }
+                }
+            }
+        },
+        'create-dataset': {
+            close: true,
+            views: {
+                'create-dataset': {
+                    elements: {
+                        headline: { html: 'Create Dataset' },
+                        'head-seperator': {}
+                    }
+                }
+            }
+        },
         'my-datasets': {
             views: {
                 'my-datasets': {
@@ -95,6 +115,7 @@ function R2UiBoxDefinitions() {
                             classes: 'scale x50 t-l'
                         },
                         'bt-create-dataset': {
+                            key: 'create-dataset',
                             click: true,
                             classes: 'scale x50 t-r'
                         },
@@ -103,8 +124,8 @@ function R2UiBoxDefinitions() {
                         }
                     },
                     zones: {
-                        'show-history': {
-                            key: 'show-history',
+                        'show-dataset': {
+                            key: 'show-dataset',
                             pos: {
                                 top: '170px',
                                 right: '3px',
@@ -112,8 +133,8 @@ function R2UiBoxDefinitions() {
                                 height: '30px'
                             }
                         },
-                        'show-dataset': {
-                            key: 'show-dataset',
+                        'show-history': {
+                            key: 'show-history',
                             pos: {
                                 top: '205px',
                                 right: '3px',
@@ -123,14 +144,17 @@ function R2UiBoxDefinitions() {
                         }
                     }
                 },
-                'my-dataset-history': {}
-            }
-        },
-        'login-bt-top': {
-            views: {
-                'login-bt-top': {
+                'dataset-history': {
                     elements: {
-                        'login-start': { html: 'Login', click: true, classes: 'text' }
+                        headline: { html: 'My Work - Dataset - History' },
+                        'head-seperator': {},
+                        'box-back-bt': { key: 'view-back', classes: 'scale x50 t-r', click: true }, // TODO move to abstract box definitions
+                        'mywork-box-sym': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'mywork-ds-history': {
+                            classes: 'scale x50 t-l'
+                        }
                     }
                 }
             }

@@ -103,6 +103,10 @@
                 }
             }
 
+            // .back-bt {
+
+            // }
+
             .view {
                 position: absolute;
                 opacity: 0;
@@ -151,8 +155,6 @@
                 // .click-zones {
                 //     z-index: 10;
                 // }
-
-
 
                 .text {
                     font-size: 15px;
@@ -330,7 +332,7 @@
                     width: 525px;
                     height: 450px;
                 }
-                .view {
+                .my-datasets {
                     .headline {
                         left: 50px;
                     }
@@ -352,16 +354,73 @@
                         width: 139px;
                         height: 79px;
                     }
-                    .mywork-all-list{
+                    .mywork-all-list {
                         top: 73px;
                         left: 12px;
                         width: 1018px;
                         height: 592px;
                     }
                 }
+
+                .dataset-history {
+                    .box-back-bt {
+                        top: 6px;
+                        right: 6px;
+                        width: 62px;
+                        height: 63px;
+                    }
+                    .headline {
+                        left: 50px;
+                    }
+                    .head-seperator {
+                        left: 45px;
+                        div {
+                            width: 465px;
+                        }
+                    }
+                    .mywork-box-sym {
+                        top: 16px;
+                        left: 10px;
+                        width: 60px;
+                        height: 88px;
+                    }
+                    .mywork-ds-history {
+                        top: 67px;
+                        left: 12px;
+                        width: 1054px;
+                        height: 755px;
+                    }
+                }
+            }
+
+            &.create-dataset {
+                top: 40px;
+                left: 20px;
+                width: 845px;
+                height: 450px;
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: 845px;
+                    height: 450px;
+                }
+                .inner {
+                    transform: scale(0.9);
+                    transform-origin: center;
+                }
+                .view {
+                    .head-seperator {
+                        div {
+                            width: 800px;
+                        }
+                    }
+                }
+                .step-1 {
+                    .elements {
+                        //
+                    }
+                }
             }
         }
     }
-
-   
 }
