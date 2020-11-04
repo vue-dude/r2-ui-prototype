@@ -127,6 +127,12 @@
                     &.x50 {
                         transform: scale(0.5);
                     }
+                    &.x45 {
+                        transform: scale(0.45);
+                    }
+                    &.x40 {
+                        transform: scale(0.4);
+                    }
                 }
 
                 .elements {
@@ -364,8 +370,8 @@
 
                 .dataset-history {
                     .box-back-bt {
-                        top: 6px;
-                        right: 6px;
+                        top: 8px;
+                        right: 8px;
                         width: 62px;
                         height: 63px;
                     }
@@ -375,7 +381,7 @@
                     .head-seperator {
                         left: 45px;
                         div {
-                            width: 465px;
+                            width: 470px;
                         }
                     }
                     .mywork-box-sym {
@@ -415,9 +421,27 @@
                         }
                     }
                 }
-                .step-1 {
-                    .elements {
-                        //
+            }
+            &.dataset {
+                top: 40px;
+                left: 20px;
+                width: 1024px;
+                height: 450px;
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: 1024px;
+                    height: 450px;
+                }
+                .inner {
+                    transform: scale(0.9);
+                    transform-origin: center;
+                }
+                .view {
+                    .head-seperator {
+                        div {
+                            width: 800px;
+                        }
                     }
                 }
             }

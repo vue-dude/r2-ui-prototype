@@ -2,6 +2,7 @@
     <div class="boxes cage" :class="{ hidden: !show }">
         <box class="" :config="boxes['login-bt-top']"></box>
         <box class="bg-dark" :config="boxes['create-dataset']"></box>
+        <box class="bg-dark" :config="boxes['dataset']"></box>
         <box class="bg-dark" :config="boxes.recent"></box>
         <box class="bg-dark" :config="boxes['my-datasets']"></box>
         <box :config="boxes.globe"></box>
@@ -63,6 +64,15 @@ export default {
             let options = {}
             switch (true) {
                 case evt.key === 'close':
+                    //
+                    // upfront, needs deper implementation
+                    if (evt.box.id === 'dataset') {
+                        if (this.$store.state.loggedIn) {
+                            return this.setViewMode('mywork', options)
+                        }
+                        return this.setViewMode('home', options)
+                    }
+                    //
                     if (evt.box.id === 'create-dataset') {
                         return this.setViewMode('mywork', options)
                     }
@@ -70,6 +80,11 @@ export default {
                         options.globe = { delay: 0 }
                     }
                     return this.setViewMode('home', options)
+                case evt.key === 'show-dataset' && evt.box.id === 'recent':
+                    options._NAV = {
+                        // backOnCloseTo: 'home' // needs implementation
+                    }
+                    return this.setViewMode('view-dataset', options)
                 case evt.key === 'register':
                     return this.setViewMode('register', options)
                 case evt.key === 'bt-continue' && evt.box.id === 'register':
@@ -95,6 +110,11 @@ export default {
                             return this.setViewMode('mywork', options)
                         case 'create-dataset':
                             return this.setViewMode('create-dataset')
+                        case 'show-dataset':
+                            options._NAV = {
+                                // backOnCloseTo: 'mywork' // needs implementation
+                            }
+                            return this.setViewMode('view-dataset', options)
                     }
 
                 default:
@@ -125,6 +145,9 @@ export default {
                 case 'create-dataset':
                     path = 'Home / My Work / Create New Dataset'
                     break
+                case 'view-dataset':
+                    path = 'Home / View Dataset / Reproduction Data for: TRex, a fast multi-animal tracking system ...'
+                    break
             }
             this.$store.dispatch('setSubPath', path)
 
@@ -143,6 +166,7 @@ export default {
             switch (mode) {
                 case 'init':
                     break
+
                 case 'home':
                     goIns = { recent: { delay: 0.1, speed: 0.8 } }
                     if (!this.$store.state.loggedIn) {
@@ -154,6 +178,7 @@ export default {
 
                     globals.eventBus.$emit('reset-login-animation')
                     break
+
                 case 'mywork':
                     // goIns = { 'my-datasets': { delay: 0.1, speed: 0.8 } }
                     goIns = { 'my-datasets': { delay: 0.25, speed: 0.6 } }
@@ -165,6 +190,11 @@ export default {
                     globals.eventBus.$emit('reset-login-animation')
                     break
 
+                case 'view-dataset':
+                    goIns = { dataset: { delay: 0.25, speed: 0.6 } }
+                    globals.eventBus.$emit('reset-login-animation')
+                    break
+
                 case 'register':
                     console.log('setViewMode:register options = ', options)
                     goIns = { register: { delay: 0.25, speed: 0.6, view: 'step-1' } }
@@ -173,6 +203,7 @@ export default {
                     }
                     globals.eventBus.$emit('reset-login-animation')
                     break
+
                 case 'login':
                     goIns = {
                         recent: {},

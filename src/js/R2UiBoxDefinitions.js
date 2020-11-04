@@ -1,6 +1,22 @@
 function R2UiBoxDefinitions() {
     this.boxes = {
-        recent: {},
+        recent: {
+            views: {
+                recent: {
+                    zones: {
+                        'show-dataset': {
+                            key: 'show-dataset',
+                            pos: {
+                                top: '170px',
+                                right: '3px',
+                                width: '30px',
+                                height: '30px'
+                            }
+                        }
+                    }
+                }
+            }
+        },
         globe: {},
         login: {
             close: true,
@@ -148,13 +164,25 @@ function R2UiBoxDefinitions() {
                     elements: {
                         headline: { html: 'My Work - Dataset - History' },
                         'head-seperator': {},
-                        'box-back-bt': { key: 'view-back', classes: 'scale x50 t-r', click: true }, // TODO move to abstract box definitions
+                        'box-back-bt': { key: 'view-back', classes: 'scale x45 t-r', click: true }, // TODO move to abstract box definitions
                         'mywork-box-sym': {
                             classes: 'scale x50 t-l'
                         },
                         'mywork-ds-history': {
                             classes: 'scale x50 t-l'
                         }
+                    }
+                }
+            }
+        },
+
+        dataset: {
+            close: true,
+            views: {
+                dataset: {
+                    elements: {
+                        headline: { html: 'View Dataset' },
+                        'head-seperator': {}
                     }
                 }
             }
