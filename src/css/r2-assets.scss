@@ -4,29 +4,29 @@
         background-repeat: no-repeat;
         background-position: center center;
         &.scale-default {
-            transform: scale(0.55);
+            transform: scale(0.5); // 0.55
             transform-origin: top left;
         }
         &.circle {
-            background-image: url(./r2-ui/circle.png);
+            background-image: url(./r2-ui/circle.webp);
         }
         &.globe {
             background-image: url(./r2-ui/globe.webp);
         }
         &.login-arrow {
-            background-image: url(./r2-ui/login-arrow.png);
+            background-image: url(./r2-ui/login-arrow.webp);
         }
         &.login {
             background-image: url(./r2-ui/login.webp);
         }
         &.close-x {
-            background-image: url(./r2-ui/close-x.png);
+            background-image: url(./r2-ui/close-x.webp);
         }
         &.register-step-1-mail:before {
-            content: url(./r2-ui/register-step-1-mail.webp);
+            content: url(./r2-ui/register-step-1-mail.png);
         }
         &.register-step-2:before {
-            content: url(./r2-ui/register-step-2.webp);
+            content: url(./r2-ui/register-step-2.png);
         }
         //
         &.recent {
@@ -43,10 +43,10 @@
             background-image: url(./r2-ui/mywork-box-sym.webp);
         }
         &.bt-create-dataset {
-            background-image: url(./r2-ui/bt-create-dataset.png);
+            background-image: url(./r2-ui/bt-create-dataset.webp);
         }
         &.box-back-bt {
-            background-image: url(./r2-ui/bt-box-back.png);
+            background-image: url(./r2-ui/bt-box-back.webp);
         }
         //
         &.inspector-nav {

@@ -177,6 +177,7 @@ export default {
                     path = 'Home / My Work / Create New Dataset'
                     break
                 case 'view-dataset':
+                    // privateView = this.$store.state.loggedIn
                     path = 'Home / View Dataset / Reproduction Data for: TRex, a fast multi-animal tracking system ...'
                     break
             }

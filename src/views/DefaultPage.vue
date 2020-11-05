@@ -11,7 +11,7 @@
                 </a>
             </div>
             <ul class="nav navbar-nav quick-actions hidden">
-                <li class="dropdown divided">
+                <li class="dropdown divided hidden">
                     <a class="dropdown-toggle button" data-toggle="dropdown" href="">
                         <i class="fa fa-tasks"></i>
                         <span class="label label-transparent-black">2</span>
@@ -96,7 +96,7 @@
                     </ul>
                 </li>
 
-                <li class="dropdown divided">
+                <li class="dropdown divided hidden">
                     <a class="dropdown-toggle button" data-toggle="dropdown" href="">
                         <i class="fa fa-bell"></i>
                         <span class="label label-transparent-black">3</span>
@@ -138,7 +138,9 @@
 
                 <li class="dropdown divided user" id="current-user">
                     <div class="profile-photo">
-                        <img src="assets-pub/images/profile-photo.png" width="20px" alt />
+                        <!-- <img src="assets-pub/images/profile-photo.png" width="20px" alt /> -->
+                        <img src="assets-pub/images/nullnada.xxx" width="20px" height="20px" alt />
+                        
                     </div>
                     <a class="dropdown-toggle options" data-toggle="dropdown" href="">
                         Milla Jo
@@ -153,12 +155,12 @@
                             </a>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a href="">
                                 <i class="fa fa-calendar"></i>
                                 Calendar
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="divider"></li>
 
