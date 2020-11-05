@@ -103,10 +103,6 @@
                 }
             }
 
-            // .back-bt {
-
-            // }
-
             .view {
                 position: absolute;
                 opacity: 0;
@@ -149,18 +145,12 @@
                         }
                     }
                 }
-                // .zones {
-                //     position: absolute;
-                // }
 
                 .click-zone {
                     position: absolute;
-                    background-color: rgba(255, 0, 0, 0.3);
+                    // background-color: rgba(255, 0, 0, 0.3); // COLOR TEST ON OFF
                     cursor: pointer;
                 }
-                // .click-zones {
-                //     z-index: 10;
-                // }
 
                 .text {
                     font-size: 15px;
@@ -248,8 +238,8 @@
             }
             &.login-bt-top {
                 top: -40px;
-                right: 136px;
-                left: unset;
+                // right: 136px;
+                left: 575px;
                 width: unset;
                 height: unset;
                 .view,
@@ -515,17 +505,90 @@
                 .files {
                     .isp-files {
                         top: 5px;
-                        left: 10px;
-                        width: 100px;
-                        height: 851px;
+                        left: 15px;
+                        width: 1005px;
+                        height: 835px;
                     }
                 }
                 .upload-new {
                     .isp-upload-start {
-                        top: 5px;
+                        top: 10px;
                         left: 10px;
-                        width: 100px;
-                        height: 851px;
+                        width: 1050px;
+                        height: 850px;
+                    }
+                }
+            }
+
+            &.main-nav {
+                top: -50px;
+                left: 420px;
+                --width: 10px;
+                --height: 50px;
+                width: var(--width);
+                height: var(--height);
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: var(--width);
+                    height: var(--height);
+                }
+                .public {
+                    opacity: 1;
+                    .elements {
+                        .bg-1 {
+                            top: 4px;
+                            left: 10px;
+                            width: 70px;
+                            height: 34px;
+                        }
+                        .sym-diamond-sel {
+                            top: 9px;
+                            left: 18px;
+                            width: 51px;
+                            height: 23px;
+                        }
+                        .bg-2 {
+                            top: 4px;
+                            left: 80px;
+                            width: 70px;
+                            height: 34px;
+                        }
+                        .sym-circ {
+                            top: 8px;
+                            left: 83px;
+                            width: 64px;
+                            height: 26px;
+                        }
+                    }
+                }
+                .private {
+                    // opacity: 1;
+                    .elements {
+                        .bg-1 {
+                            top: 4px;
+                            left: 10px;
+                            width: 70px;
+                            height: 34px;
+                        }
+                        .sym-diamond {
+                            top: 9px;
+                            left: 18px;
+                            width: 51px;
+                            height: 23px;
+                        }
+                        .bg-2 {
+                            top: 4px;
+                            left: 80px;
+                            width: 70px;
+                            height: 34px;
+                        }
+                        .sym-circ-sel {
+                            top: 8px;
+                            left: 83px;
+                            width: 64px;
+                            height: 26px;
+                        }
                     }
                 }
             }

@@ -68,5 +68,24 @@
         &.isp-upload-start {
             background-image: url(./r2-ui/isp-upload-start.png);
         }
+        // main nav
+        &.circ-bg {
+            background-image: url(./r2-ui/main/circ-bg.png);
+        } 
+        &.circ-bg-sel {
+            background-image: url(./r2-ui/main/circ-bg-sel.png);
+        }  
+        &.sym-circ {
+            background-image: url(./r2-ui/main/sym-circ.png);
+        } 
+        &.sym-circ-sel {
+            background-image: url(./r2-ui/main/sym-circ-sel.png);
+        }  
+        &.sym-diamond {
+            background-image: url(./r2-ui/main/sym-diamond.png);
+        } 
+        &.sym-diamond-sel {
+            background-image: url(./r2-ui/main/sym-diamond-sel.png);
+        }      
     }
 }

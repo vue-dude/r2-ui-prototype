@@ -1,20 +1,23 @@
 <template>
     <div class="boxes cage" :class="{ hidden: !show }">
-        <box class="" :config="boxes['login-bt-top']"></box>
+        <box class="bg-darkXX" :config="boxes['main-nav']"></box>
+
+        <box :config="boxes['login-bt-top']"></box>
         <box class="bg-dark" :config="boxes['create-dataset']"></box>
         <box class="bg-dark" :config="boxes['dataset']"></box>
         <box class="bg-dark" :config="boxes.recent"></box>
         <box class="bg-dark" :config="boxes['my-datasets']"></box>
         <!--  -->
         <box class="bg-dark" :config="boxes.inspector"></box>
-        <box class="" :config="boxes['inspector-nav']"></box>
+        <box :config="boxes['inspector-nav']"></box>
         <!--  -->
         <box :config="boxes.globe"></box>
         <box class="bg-dark" :config="boxes['register']"></box>
         <box class="bg-dark" :config="boxes.login"></box>
         <login-animation :config="boxes['login-animation']"></login-animation>
-
+        <!--  -->
         <flow-show :config="boxes['flow-show']"></flow-show>
+        <!--  -->
     </div>
 </template>
 
@@ -42,10 +45,10 @@ export default {
         window.globals.eventBus.$on('click', this.onClick)
         _.each(this.boxes, (box, key) => {
             box.id = box.id ? box.id : key
-            box.visible = false
+            box.visible = box.visible || false
             box.views = box.views ? box.views : { [box.id]: {} }
             _.each(box.views, (view, key) => {
-                view.visible = false
+                view.visible = view.visible || false
                 view.id = view.id ? view.id : key
                 view.elements = view.elements ? view.elements : {}
                 view.zones = view.zones ? view.zones : {}
@@ -57,8 +60,8 @@ export default {
         this.setViewMode('init')
         setTimeout(() => {
             this.show = true
-            this.setViewMode('mywork')
-            // this.setViewMode('home')
+            // this.setViewMode('mywork')
+            this.setViewMode('home')
             // this.setViewMode('register')
         }, 400)
     },
@@ -66,6 +69,8 @@ export default {
         onClick(evt) {
             evt.box = evt.box || { id: null }
             console.log('CG:onClick evt = ', evt)
+            console.log('CG:onClick this.$store.state.loggedIn = ', this.$store.state.loggedIn)
+
             let options = {}
             switch (true) {
                 case evt.key === 'close':
@@ -100,8 +105,17 @@ export default {
                     return this.setViewMode('register', options)
                 case evt.key === 'login':
                     return this.setLoggedIn()
+
                 case evt.key === 'login-start' && evt.box.id === 'login-bt-top':
+                case evt.key === 'private' && !this.$store.state.loggedIn:
                     return globals.eventBus.$emit('trigger-login-animation')
+
+                case evt.key === 'private' && this.$store.state.loggedIn:
+                    return this.setViewMode('mywork')
+
+                case evt.key === 'public':
+                    return this.setViewMode('home')
+
                 case evt.key === 'login-start':
                     return this.setViewMode('login')
                 case evt.box.id === 'my-datasets':
@@ -126,11 +140,6 @@ export default {
                         view: evt.key
                     }
                     return this.setViewMode('mywork', options)
-                // switch (evt.key) {
-                //     case 'info':
-                //     case 'uploads':
-                //         this.setViewMode('mywork', options)
-                // }
 
                 default:
                     this.setViewMode('home')
@@ -147,12 +156,19 @@ export default {
             this.viewMode = mode || 'home'
 
             let path = 'Home'
+            let privateView = true
             switch (this.viewMode) {
+                case 'home':
+                    path = 'Home'
+                    privateView = false
+                    break
                 case 'login':
                     path = 'Home / Login'
+                    privateView = false
                     break
                 case 'register':
                     path = 'Home / Create an Account'
+                    privateView = false
                     break
                 case 'mywork':
                     path = 'Home / My Work'
@@ -166,16 +182,18 @@ export default {
             }
             this.$store.dispatch('setSubPath', path)
 
-            //
             const tg = '.cage.boxes'
-            const goOuts = Object.keys(this.boxes)
+            const goOuts = [...Object.keys(this.boxes)]
+            goOuts[goOuts.indexOf('main-nav')] = null
             // const goOuts = 'recent,register,globe'.split(',')
             _.each(goOuts, key => {
-                gsap.to($(`${tg} .${key}`), speed, {
-                    opacity: 0,
-                    ease: Expo.easeOut
-                })
-                this.boxes[key].visible = false
+                if (key) {
+                    gsap.to($(`${tg} .${key}`), speed, {
+                        opacity: 0,
+                        ease: Expo.easeOut
+                    })
+                    this.boxes[key].visible = false
+                }
             })
             let goIns = {}
             switch (mode) {
@@ -189,7 +207,7 @@ export default {
                         goIns['login-animation'] = { delay: 0.4, speed: 0.8 }
                         goIns['flow-show'] = { delay: 0.9, speed: 6 }
                     }
-                    goIns['login-bt-top'] = { delay: 0, speed: 0.1 }
+                    // goIns['login-bt-top'] = { delay: 0, speed: 0.1 }
 
                     globals.eventBus.$emit('reset-login-animation')
                     break
@@ -211,12 +229,12 @@ export default {
                     break
 
                 case 'create-dataset':
-                    goIns = { 'create-dataset': { delay: 0.25, speed: 0.6 } }
+                    goIns = { 'create-dataset': { delay: 0.1, speed: 0.6 } }
                     globals.eventBus.$emit('reset-login-animation')
                     break
 
                 case 'view-dataset':
-                    goIns = { dataset: { delay: 0.25, speed: 0.6 } }
+                    goIns = { dataset: { delay: 0.1, speed: 0.6 } }
                     globals.eventBus.$emit('reset-login-animation')
                     break
 
@@ -238,6 +256,16 @@ export default {
                         globe: { opacity: 0.35, speed: 0.8 }
                     }
                     break
+            }
+
+            goIns['main-nav'] = {
+                view: privateView ? 'private' : 'public',
+                delay: 0,
+                speed: 0.2
+            }
+
+            if (!this.$store.state.loggedIn) {
+                goIns['login-bt-top'] = { delay: 0, speed: 0.1 }
             }
 
             console.log('CG:setViewMode goIns = ', goIns)
