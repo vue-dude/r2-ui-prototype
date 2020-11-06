@@ -209,6 +209,28 @@ function R2UiBoxDefinitions() {
         'inspector-nav': {
             views: {
                 'inspector-nav': {
+                    // this 0.999 is part of the opacity:1 / transparency problem workaround
+                    opacity: 0.9,
+                    elements: {
+                        all: {
+                            classes: 'color-bg'
+                        },
+                        info: {
+                            classes: 'color-bg'
+                        },
+                        'upload-new': {
+                            classes: 'color-bg'
+                        },
+                        uploads: {
+                            classes: 'color-bg'
+                        },
+                        statistics: {
+                            classes: 'color-bg'
+                        },
+                        files: {
+                            classes: 'color-bg'
+                        }
+                    },
                     zones: {
                         info: {
                             pos: {

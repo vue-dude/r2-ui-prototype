@@ -6,7 +6,6 @@
             class="view"
             :class="[view.id, { 'no-events': !view.visible }]"
         >
-            <div class="inner bg-img" :class="[view.id]"></div>
             <div class="elements">
                 <div
                     v-for="(elm, key) in view.elements"
@@ -18,6 +17,9 @@
                     <div v-if="elm.html" v-html="elm.html" :class="[key, elm.classes]"></div>
                     <div v-else class="bg-img" :class="[key, elm.classes]"></div>
                 </div>
+            </div>
+            <div class="inner">
+                <div class="inner bg-img" :class="[view.id]"></div>
             </div>
             <div class="click-zones">
                 <div
@@ -42,8 +44,8 @@ export default {
         config: {}
     },
     mounted() {
-        console.log('BOX: this.config = ', this.config)
-        const index = 2
+        // console.log('BOX: this.config = ', this.config)
+        // const index = 2
         // console.log('BOX: this.config = ', _.get(`this.config.elements[${index}]`, html))
     },
     methods: {

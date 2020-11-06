@@ -58,6 +58,7 @@ export default {
     },
     mounted() {
         this.setViewMode('init')
+        this.setInspectorNavState('info')
         setTimeout(() => {
             this.show = true
             // this.setViewMode('mywork')
@@ -66,12 +67,18 @@ export default {
         }, 400)
     },
     methods: {
+        setInspectorNavState(key) {
+            const tg = '.box.inspector-nav .element'
+            $(tg).css('visibility', 'hidden')
+            $(`${tg}.all`).removeAttr('style')
+            $(`${tg}.${key}`).removeAttr('style')
+        },
         onClick(evt) {
             evt.box = evt.box || { id: null }
             console.log('CG:onClick evt = ', evt)
             console.log('CG:onClick this.$store.state.loggedIn = ', this.$store.state.loggedIn)
 
-            let options = {}
+            let options = { _00: { targets: null } }
             switch (true) {
                 case evt.key === 'close':
                     //
@@ -121,8 +128,14 @@ export default {
                 case evt.box.id === 'my-datasets':
                     switch (evt.key) {
                         case 'view-back':
-                            return this.setViewMode('mywork')
+                            options._00 = {
+                                targets: { 'my-datasets': { delay: 0, speed: 0.3 } }
+                            }
+                            return this.setViewMode('mywork', options)
                         case 'show-history':
+                            options._00 = {
+                                targets: { 'my-datasets': { delay: 0, speed: 0.3 } }
+                            }
                             options['my-datasets'] = {
                                 view: 'dataset-history'
                             }
@@ -136,11 +149,14 @@ export default {
                             return this.setViewMode('view-dataset', options)
                     }
                 case evt.box.id === 'inspector-nav':
+                    options._00 = {
+                        targets: { inspector: { delay: 0, speed: 0.3 } }
+                    }
                     options.inspector = {
                         view: evt.key
                     }
+                    this.setInspectorNavState(evt.key)
                     return this.setViewMode('mywork', options)
-
                 default:
                     this.setViewMode('home')
             }
@@ -183,13 +199,18 @@ export default {
             }
             this.$store.dispatch('setSubPath', path)
 
-            const tg = '.cage.boxes'
-            const goOuts = [...Object.keys(this.boxes)]
+            const tgBoxes = '.cage.boxes'
+            let goOuts = [...Object.keys(this.boxes)]
             goOuts[goOuts.indexOf('main-nav')] = null
+            if (options._00 && _.isPlainObject(options._00.targets)) {
+                goOuts = [...Object.keys(options._00.targets)]
+            }
+
             // const goOuts = 'recent,register,globe'.split(',')
+
             _.each(goOuts, key => {
                 if (key) {
-                    gsap.to($(`${tg} .${key}`), speed, {
+                    gsap.to($(`${tgBoxes} .${key}`), speed, {
                         opacity: 0,
                         ease: Expo.easeOut
                     })
@@ -219,7 +240,9 @@ export default {
                         'my-datasets': { delay: 0.1, speed: 0.8 },
                         inspector: { delay: 0.1, speed: 0.8, view: 'info' },
                         // inspector: { delay: 0.1, speed: 0.8, view: 'uploads' },
-                        'inspector-nav': { delay: 0.1, speed: 0.8 }
+                        //
+                        // inspector-nav opacity: 0.99 is part of the opacity:1 / transparency problem workaround
+                        'inspector-nav': { delay: 0.1, speed: 0.3, opacity: 0.99 }
                     }
                     // TODO extract this to funtion
                     if (options.inspector && options.inspector.view) {
@@ -259,35 +282,35 @@ export default {
                     break
             }
 
-            goIns['main-nav'] = {
-                view: privateView ? 'private' : 'public',
-                delay: 0,
-                speed: 0.2
+            if (options._00 && options._00.targets) {
+                goIns = options._00.targets
+            } else {
+                goIns['main-nav'] = {
+                    view: privateView ? 'private' : 'public',
+                    delay: 0,
+                    speed: 0.2
+                }
+                if (!this.$store.state.loggedIn) {
+                    goIns['login-bt-top'] = { delay: 0, speed: 0.1 }
+                }
             }
-
-            if (!this.$store.state.loggedIn) {
-                goIns['login-bt-top'] = { delay: 0, speed: 0.1 }
-            }
-
-            console.log('CG:setViewMode goIns = ', goIns)
 
             _.each(goIns, (args, boxId) => {
                 // handle the box
-                gsap.killTweensOf($(`${tg} .${boxId}`))
+                gsap.killTweensOf($(`${tgBoxes} .${boxId}`))
                 let prms = { ...args }
                 if (options[boxId]) {
                     prms = { ...args, ...options[boxId] }
                 }
                 prms.view = prms.view || boxId
-                // console.log('CG:setViewMode:E1 prms = ', prms)
-                // console.log('CG:setViewMode:E1 this.boxes[boxId] = ', this.boxes[boxId])
-
-                // console.log('CG:setViewMode:E1 boxId = ', boxId)
 
                 this.boxes[boxId].visible = true
                 const sp = _.isNumber(prms.speed) ? prms.speed : speed
-                gsap.to($(`${tg} .${boxId}`), sp, {
-                    opacity: _.isNumber(prms.opacity) ? prms.opacity : 1,
+
+                let opc = _.isNumber(prms.opacity) ? prms.opacity : 1
+                const $targetBox = $(`${tgBoxes} .${boxId}`)
+                gsap.to($targetBox, sp, {
+                    opacity: opc,
                     delay: _.isNumber(prms.delay) ? prms.delay : 0,
                     ease: Expo.easeOut
                 })
@@ -298,26 +321,20 @@ export default {
 
                 _.each(this.boxes[boxId].views, vu => {
                     if (view !== vu) {
-                        gsap.killTweensOf($(`${tg} .${boxId} .${vu.id}`))
-                        gsap.set($(`${tg} .${boxId} .${vu.id}`), {
+                        gsap.killTweensOf($(`${tgBoxes} .${boxId} .${vu.id}`))
+                        gsap.set($(`${tgBoxes} .${boxId} .${vu.id}`), {
                             clearProps: 'all'
                         })
                         vu.visible = false
                     }
                 })
 
-                console.log('CG:setViewMode:E1 boxId = ', boxId)
-                console.log('CG:setViewMode:E1 prms.view = ', prms.view)
-                console.log('CG:setViewMode:E1 this.boxes[boxId] = ', this.boxes[boxId])
-
-                // const view = this.boxes[boxId].views[prms.view]
-                console.log('CG:setViewMode:E1 view = ', view)
-                // console.log('CG:setViewMode:E1 SEL = ', `${tg} .${boxId} .${view.id}`)
-
                 if (!view.visible) {
                     view.visible = true
-                    gsap.to($(`${tg} .${boxId} .${view.id}`), 0.3, {
-                        opacity: 1,
+                    const $targetView = $(`${tgBoxes} .${boxId} .${view.id}`)
+                    let vOpc = _.isNumber(view.opacity) ? view.opacity : 1
+                    gsap.to($targetView, 0.3, {
+                        opacity: vOpc,
                         delay: 0.1,
                         ease: Expo.easeOut
                     })
