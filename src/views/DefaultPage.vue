@@ -151,7 +151,7 @@
                         <li>
                             <a href="">
                                 <i class="fa fa-user"></i>
-                                Profile
+                                Settings
                             </a>
                         </li>
 

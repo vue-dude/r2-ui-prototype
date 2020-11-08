@@ -1,6 +1,11 @@
 @import 'css/r2-assets.scss';
 
 .r2 {
+
+    .click-zone {
+        // background-color: rgba(255, 0, 0, 0.2); // COLOR TEST ON OFF
+    }
+
     .no-events {
         pointer-events: none;
         cursor: none;
@@ -29,9 +34,6 @@
             .image {
                 position: absolute;
                 $url: './assets/mpdl-logo.png';
-
-                // url(./r2-ui/recent.png)
-
                 background-image: url($url);
                 background-repeat: no-repeat;
                 background-size: contain;
@@ -85,6 +87,7 @@
                 background-color: rgba(0, 0, 0, 0.3);
             }
             .inner {
+                position: absolute;
                 width: 100%;
                 height: 100%;
             }
@@ -148,7 +151,6 @@
 
                 .click-zone {
                     position: absolute;
-                    // background-color: rgba(255, 0, 0, 0.3); // COLOR TEST ON OFF
                     cursor: pointer;
                 }
 
@@ -203,6 +205,29 @@
                     width: var(--width);
                     height: var(--height);
                 }
+                .inner {
+                    left: 0;
+                    top: 0;
+                    &.bg-img.recent {
+                        width: 513px;
+                    }
+                }
+                .click-zones {
+                    .click-zone {
+                        right: 20px;
+                        width: 30px;
+                        height: 30px;
+                        &.show-ds-1 {
+                            top: 56px;
+                        }
+                        &.show-ds-2 {
+                            top: 180px;
+                        }
+                        &.show-ds-3 {
+                            top: 315px;
+                        }
+                    }
+                }
             }
             &.globe {
                 top: 40px;
@@ -234,6 +259,20 @@
                 .inner {
                     transform: scale(0.9);
                     transform-origin: center;
+                }
+                .click-zones {
+                    .click-zone {
+                        top: 133px;
+                        height: 30px;
+                        &.register {
+                            left: 160px;
+                            width: 130px;
+                        }
+                        &.login {
+                            left: 30px;
+                            width: 90px;
+                        }
+                    }
                 }
             }
             &.login-bt-top {
@@ -369,6 +408,20 @@
                         width: 1018px;
                         height: 592px;
                     }
+                    .click-zones {
+                        .click-zone {
+                            right: 3px;
+                            width: 30px;
+                            height: 30px;
+
+                            &.show-dataset {
+                                top: 170px;
+                            }
+                            &.show-history {
+                                top: 205px;
+                            }
+                        }
+                    }
                 }
 
                 .dataset-history {
@@ -466,7 +519,6 @@
                     width: var(--width);
                     height: var(--height);
                 }
-
                 .element {
                     left: 5px;
                     .color-bg {
@@ -496,44 +548,28 @@
                     &.files {
                         top: 170px;
                     }
-
-
-
-                    // 'upload-new': {
-                    //     pos: {
-                    //         left: '8px',
-                    //         top: '55px',
-                    //         width: '30px',
-                    //         height: '30px'
-                    //     }
-                    // },
-                    // uploads: {
-                    //     pos: {
-                    //         left: '8px',
-                    //         top: '96px',
-                    //         width: '30px',
-                    //         height: '30px'
-                    //     }
-                    // },
-                    // statistics: {
-                    //     pos: {
-                    //         left: '8px',
-                    //         top: '135px',
-                    //         width: '30px',
-                    //         height: '30px'
-                    //     }
-                    // },
-                    // files: {
-                    //     pos: {
-                    //         left: '8px',
-                    //         top: '175px',
-                    //         width: '30px',
-                    //         height: '30px'
-                    //     }
-                    // }
-
-
-
+                }
+                .click-zones {
+                    .click-zone {
+                        left: 8px;
+                        width: 30px;
+                        height: 30px;
+                        &.info {
+                            top: 15px;
+                        }
+                        &.upload-new {
+                            top: 55px;
+                        }
+                        &.uploads {
+                            top: 96px;
+                        }
+                        &.statistics {
+                            top: 135px;
+                        }
+                        &.files {
+                            top: 175px;
+                        }
+                    }
                 }
             }
 

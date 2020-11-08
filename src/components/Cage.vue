@@ -1,22 +1,22 @@
 <template>
-    <div class="boxes cage" :class="{ hidden: !show }">
-        <box class="bg-darkXX" :config="boxes['main-nav']"></box>
-
-        <box :config="boxes['login-bt-top']"></box>
-        <box class="bg-dark" :config="boxes['create-dataset']"></box>
-        <box class="bg-dark" :config="boxes['dataset']"></box>
-        <box class="bg-dark" :config="boxes.recent"></box>
-        <box class="bg-dark" :config="boxes['my-datasets']"></box>
+    <div class="cage boxes" :class="{ hidden: !show }">
+        <box class="animate" :config="boxes['main-nav']"></box>
+        <box class="animate" :config="boxes['login-bt-top']"></box>
         <!--  -->
-        <box class="bg-dark" :config="boxes.inspector"></box>
-        <box :config="boxes['inspector-nav']"></box>
+        <box class="animate bg-dark" :config="boxes['create-dataset']"></box>
+        <box class="animate bg-dark" :config="boxes['dataset']"></box>
+        <box class="animate bg-dark" :config="boxes.recent"></box>
+        <box class="animate bg-dark" :config="boxes['my-datasets']"></box>
         <!--  -->
-        <box :config="boxes.globe"></box>
-        <box class="bg-dark" :config="boxes['register']"></box>
-        <box class="bg-dark" :config="boxes.login"></box>
-        <login-animation :config="boxes['login-animation']"></login-animation>
+        <box class="animate bg-dark" :config="boxes.inspector"></box>
+        <box class="animate" :config="boxes['inspector-nav']"></box>
         <!--  -->
-        <flow-show :config="boxes['flow-show']"></flow-show>
+        <box class="animate" :config="boxes.globe"></box>
+        <box class="animate bg-dark" :config="boxes['register']"></box>
+        <box class="animate bg-dark" :config="boxes.login"></box>
+        <login-animation class="animate" :config="boxes['login-animation']"></login-animation>
+        <!--  -->
+        <flow-show class="animate" :config="boxes['flow-show']"></flow-show>
         <!--  -->
     </div>
 </template>
@@ -199,7 +199,7 @@ export default {
             }
             this.$store.dispatch('setSubPath', path)
 
-            const tgBoxes = '.cage.boxes'
+            const animationTargets = '.cage.boxes .animate'
             let goOuts = [...Object.keys(this.boxes)]
             goOuts[goOuts.indexOf('main-nav')] = null
             if (options._00 && _.isPlainObject(options._00.targets)) {
@@ -210,7 +210,7 @@ export default {
 
             _.each(goOuts, key => {
                 if (key) {
-                    gsap.to($(`${tgBoxes} .${key}`), speed, {
+                    gsap.to($(`${animationTargets}.${key}`), speed, {
                         opacity: 0,
                         ease: Expo.easeOut
                     })
@@ -297,7 +297,7 @@ export default {
 
             _.each(goIns, (args, boxId) => {
                 // handle the box
-                gsap.killTweensOf($(`${tgBoxes} .${boxId}`))
+                gsap.killTweensOf($(`${animationTargets}.${boxId}`))
                 let prms = { ...args }
                 if (options[boxId]) {
                     prms = { ...args, ...options[boxId] }
@@ -308,7 +308,7 @@ export default {
                 const sp = _.isNumber(prms.speed) ? prms.speed : speed
 
                 let opc = _.isNumber(prms.opacity) ? prms.opacity : 1
-                const $targetBox = $(`${tgBoxes} .${boxId}`)
+                const $targetBox = $(`${animationTargets}.${boxId}`)
                 gsap.to($targetBox, sp, {
                     opacity: opc,
                     delay: _.isNumber(prms.delay) ? prms.delay : 0,
@@ -321,8 +321,8 @@ export default {
 
                 _.each(this.boxes[boxId].views, vu => {
                     if (view !== vu) {
-                        gsap.killTweensOf($(`${tgBoxes} .${boxId} .${vu.id}`))
-                        gsap.set($(`${tgBoxes} .${boxId} .${vu.id}`), {
+                        gsap.killTweensOf($(`${animationTargets}.${boxId} .${vu.id}`))
+                        gsap.set($(`${animationTargets}.${boxId} .${vu.id}`), {
                             clearProps: 'all'
                         })
                         vu.visible = false
@@ -331,7 +331,7 @@ export default {
 
                 if (!view.visible) {
                     view.visible = true
-                    const $targetView = $(`${tgBoxes} .${boxId} .${view.id}`)
+                    const $targetView = $(`${animationTargets}.${boxId} .${view.id}`)
                     let vOpc = _.isNumber(view.opacity) ? view.opacity : 1
                     gsap.to($targetView, 0.3, {
                         opacity: vOpc,

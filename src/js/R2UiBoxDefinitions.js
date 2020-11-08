@@ -5,33 +5,13 @@ function R2UiBoxDefinitions() {
                 recent: {
                     zones: {
                         'show-ds-1': {
-                            key: 'show-dataset',
-                            pos: {
-                                top: '50px',
-                                right: '8px',
-                                width: '30px',
-                                height: '30px'
-                            }
+                            key: 'show-dataset'
                         },
-
                         'show-ds-2': {
-                            key: 'show-dataset',
-                            pos: {
-                                top: '180px',
-                                right: '8px',
-                                width: '30px',
-                                height: '30px'
-                            }
+                            key: 'show-dataset'
                         },
-
                         'show-ds-3': {
-                            key: 'show-dataset',
-                            pos: {
-                                top: '315px',
-                                right: '8px',
-                                width: '30px',
-                                height: '30px'
-                            }
+                            key: 'show-dataset'
                         }
                     }
                 }
@@ -43,24 +23,8 @@ function R2UiBoxDefinitions() {
             views: {
                 login: {
                     zones: {
-                        register: {
-                            key: 'register',
-                            pos: {
-                                left: '160px',
-                                top: '138px',
-                                width: '130px',
-                                height: '30px'
-                            }
-                        },
-                        login: {
-                            key: 'login',
-                            pos: {
-                                left: '20px',
-                                top: '138px',
-                                width: '90px',
-                                height: '30px'
-                            }
-                        }
+                        register: {},
+                        login: {}
                     }
                 }
             }
@@ -160,24 +124,8 @@ function R2UiBoxDefinitions() {
                         }
                     },
                     zones: {
-                        'show-dataset': {
-                            key: 'show-dataset',
-                            pos: {
-                                top: '170px',
-                                right: '3px',
-                                width: '30px',
-                                height: '30px'
-                            }
-                        },
-                        'show-history': {
-                            key: 'show-history',
-                            pos: {
-                                top: '205px',
-                                right: '3px',
-                                width: '30px',
-                                height: '30px'
-                            }
-                        }
+                        'show-dataset': {},
+                        'show-history': {}
                     }
                 },
                 'dataset-history': {
@@ -209,7 +157,8 @@ function R2UiBoxDefinitions() {
         'inspector-nav': {
             views: {
                 'inspector-nav': {
-                    // this 0.999 is part of the opacity:1 / transparency problem workaround
+                    setBgImageOverElements: true,
+                    // this 0.9 is part of the opacity:1 / transparency problem workaround
                     opacity: 0.9,
                     elements: {
                         all: {
@@ -232,46 +181,11 @@ function R2UiBoxDefinitions() {
                         }
                     },
                     zones: {
-                        info: {
-                            pos: {
-                                left: '8px',
-                                top: '15px',
-                                width: '30px',
-                                height: '30px'
-                            }
-                        },
-                        'upload-new': {
-                            pos: {
-                                left: '8px',
-                                top: '55px',
-                                width: '30px',
-                                height: '30px'
-                            }
-                        },
-                        uploads: {
-                            pos: {
-                                left: '8px',
-                                top: '96px',
-                                width: '30px',
-                                height: '30px'
-                            }
-                        },
-                        statistics: {
-                            pos: {
-                                left: '8px',
-                                top: '135px',
-                                width: '30px',
-                                height: '30px'
-                            }
-                        },
-                        files: {
-                            pos: {
-                                left: '8px',
-                                top: '175px',
-                                width: '30px',
-                                height: '30px'
-                            }
-                        }
+                        info: {},
+                        'upload-new': {},
+                        uploads: {},
+                        statistics: {},
+                        files: {}
                     }
                 }
             }

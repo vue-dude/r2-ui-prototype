@@ -6,6 +6,9 @@
             class="view"
             :class="[view.id, { 'no-events': !view.visible }]"
         >
+            <div class="inner" v-if="!view.setBgImageOverElements">
+                <div class="inner bg-img" :class="[view.id]"></div>
+            </div>
             <div class="elements">
                 <div
                     v-for="(elm, key) in view.elements"
@@ -18,7 +21,7 @@
                     <div v-else class="bg-img" :class="[key, elm.classes]"></div>
                 </div>
             </div>
-            <div class="inner">
+            <div class="inner" v-if="view.setBgImageOverElements">
                 <div class="inner bg-img" :class="[view.id]"></div>
             </div>
             <div class="click-zones">
@@ -26,7 +29,7 @@
                     v-for="(zone, key) in view.zones"
                     :key="key"
                     class="click-zone"
-                    :style="zone.pos"
+                    :class="[key]"
                     @click="onClickZone(zone.key || key, zone.args)"
                 ></div>
             </div>
@@ -44,7 +47,7 @@ export default {
         config: {}
     },
     mounted() {
-        // console.log('BOX: this.config = ', this.config)
+        console.log('BOX: this.config = ', this.config)
         // const index = 2
         // console.log('BOX: this.config = ', _.get(`this.config.elements[${index}]`, html))
     },
