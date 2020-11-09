@@ -186,6 +186,10 @@ function R2UiBoxDefinitions() {
                         },
                         'mywork-ds-history': {
                             classes: 'scale x50 t-l'
+                        },
+                        'bt-view-dataset': {
+                            key: 'show-dataset',
+                            click: true
                         }
                     }
                 }

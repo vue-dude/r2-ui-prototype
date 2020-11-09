@@ -47,7 +47,7 @@ export default {
         },
         reset() {
             if (this.loginOpen) {
-                const speed = 0.4
+                const speed = 0.8
                 const tg = '.login-animation'
                 gsap.to($('.login-animation .pie'), speed, {
                     left: '+=130',

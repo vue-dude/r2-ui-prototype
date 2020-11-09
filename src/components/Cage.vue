@@ -45,6 +45,7 @@ export default {
     data() {
         return {
             viewMode: 'home',
+            viewModePrev: null,
             show: false,
             boxes: new BoxDefinitions().boxes
         }
@@ -205,6 +206,7 @@ export default {
         setViewMode(mode, options = {}) {
             const speed = 0.5
             console.log('CG:setViewMode this.viewMode, mode = ', this.viewMode, mode)
+            this.viewModePrev = this.viewMode
             this.viewMode = mode || 'home'
 
             let path = 'Home'
@@ -283,20 +285,20 @@ export default {
                     globals.eventBus.$emit('reset-login-animation')
                     break
                 case 'mywork':
-                    // goIns = { 'my-datasets': { delay: 0.1, speed: 0.8 } }
+                    const delay = this.viewModePrev === 'login' ? 0.3 : 0.1
+                    console.log('obj:fc this.viewMode = ', this.viewMode)
+                    console.log('obj:fc mode = ', mode)
+                    console.log('obj:fc delay = ', delay)
                     goIns = {
-                        'my-datasets': { delay: 0.1, speed: 0.8 },
-                        inspector: { delay: 0.1, speed: 0.8, view: 'info' },
-                        // inspector: { delay: 0.1, speed: 0.8, view: 'uploads' },
-                        //
+                        'my-datasets': { delay, speed: 1.2 },
+                        inspector: { delay, speed: 1.2, view: 'info' },
                         // inspector-nav opacity: 0.99 is part of the opacity:1 / transparency problem workaround
-                        'inspector-nav': { delay: 0.1, speed: 0.3, opacity: 0.99 }
+                        'inspector-nav': { delay, speed: 0.3, opacity: 0.99 }
                     }
-                    // TODO extract this to funtion
+                    // TODO extract this to function
                     if (options.inspector && options.inspector.view) {
                         goIns.inspector.view = options.inspector.view
                     }
-
                     globals.eventBus.$emit('reset-login-animation')
                     break
 
