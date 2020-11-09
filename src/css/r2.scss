@@ -1,7 +1,6 @@
 @import 'css/r2-assets.scss';
 
 .r2 {
-
     .click-zone {
         // background-color: rgba(255, 0, 0, 0.2); // COLOR TEST ON OFF
     }
@@ -195,6 +194,9 @@
             &.recent {
                 top: 40px;
                 left: 20px;
+                &.logged-in {
+                    left: 595px;
+                }
                 --width: 525px;
                 --height: 450px;
                 width: var(--width);
@@ -229,6 +231,95 @@
                     }
                 }
             }
+            &.facets {
+                top: 40px;
+                left: 20px; // 595px
+                --width: 525px;
+                --height: 450px;
+                width: var(--width);
+                height: var(--height);
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: var(--width);
+                    height: var(--height);
+                }
+                .inner {
+                    left: 0;
+                    top: 0;
+                    &.bg-img.facets {
+                        width: 513px;
+                    }
+                }
+            }
+
+            &.facets-nav {
+                top: 120px;
+                left: 535px;
+                --width: 44px;
+                --height: 220px;
+                width: var(--width);
+                height: var(--height);
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: var(--width);
+                    height: var(--height);
+                }
+                .element {
+                    left: 5px;
+                    .color-bg {
+                        width: 35px;
+                        height: 40px;
+                        background-color: #a9fdc7;
+                    }
+                    &.all {
+                        top: 5px;
+                        .color-bg {
+                            height: 210px;
+                            background-color: #b1d1ff;
+                        }
+                    }
+                    &.f0 {
+                        top: 10px;
+                    }
+                    &.f1 {
+                        top: 50px;
+                    }
+                    &.f2 {
+                        top: 90px;
+                    }
+                    &.f3 {
+                        top: 130px;
+                    }
+                    &.f4 {
+                        top: 170px;
+                    }
+                }
+                .click-zones {
+                    .click-zone {
+                        left: 8px;
+                        width: 30px;
+                        height: 30px;
+                        &.f0 {
+                            top: 15px;
+                        }
+                        &.f1 {
+                            top: 55px;
+                        }
+                        &.f2 {
+                            top: 96px;
+                        }
+                        &.f3 {
+                            top: 135px;
+                        }
+                        &.f4 {
+                            top: 175px;
+                        }
+                    }
+                }
+            }
+
             &.globe {
                 top: 40px;
                 left: 670px;

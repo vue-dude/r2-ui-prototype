@@ -5,7 +5,11 @@
         <!--  -->
         <box class="animate bg-dark" :config="boxes['create-dataset']"></box>
         <box class="animate bg-dark" :config="boxes['dataset']"></box>
-        <box class="animate bg-dark" :config="boxes.recent"></box>
+        <box class="animate bg-dark" :class="[{ 'logged-in': $store.state.loggedIn }]" :config="boxes.recent"></box>
+        <!--  -->
+        <box class="animate bg-dark" :config="boxes.facets"></box>
+        <box class="animate" :config="boxes['facets-nav']"></box>
+        <!--  -->
         <box class="animate bg-dark" :config="boxes['my-datasets']"></box>
         <!--  -->
         <box class="animate bg-dark" :config="boxes.inspector"></box>
@@ -58,7 +62,8 @@ export default {
     },
     mounted() {
         this.setViewMode('init')
-        this.setInspectorNavState('info')
+        this.setBoxConnectedNavState('inspector-nav', 'info')
+        this.setBoxConnectedNavState('facets-nav', 'f0')
         setTimeout(() => {
             this.show = true
             // this.setViewMode('mywork')
@@ -67,8 +72,10 @@ export default {
         }, 400)
     },
     methods: {
-        setInspectorNavState(key) {
-            const tg = '.box.inspector-nav .element'
+        setBoxConnectedNavState(target, key) {
+            console.log('CAGE:setBoxConnectedNavState target, key = ', target, key)
+            const tg = `.box.${target} .element`
+            console.log('CAGE:setBoxConnectedNavState tg = ', tg)
             $(tg).css('visibility', 'hidden')
             $(`${tg}.all`).removeAttr('style')
             $(`${tg}.${key}`).removeAttr('style')
@@ -155,8 +162,24 @@ export default {
                     options.inspector = {
                         view: evt.key
                     }
-                    this.setInspectorNavState(evt.key)
+                    this.setBoxConnectedNavState(evt.box.id, evt.key)
                     return this.setViewMode('mywork', options)
+
+                    this.setBoxConnectedNavState(evt.box.id, evt.key)
+                case evt.box.id === 'facets-nav':
+                    options._00 = {
+                        targets: {
+                            //facets: { delay: 0, speed: 0.3 }
+                        }
+                    }
+                    // options.facets = {
+                    //     view: evt.key
+                    // }
+                    this.setBoxConnectedNavState(evt.box.id, evt.key)
+                    return this.setViewMode('mywork', options)
+
+                    this.setBoxConnectedNavState(evt.box.id, evt.key)
+
                 default:
                     this.setViewMode('home')
             }
@@ -223,17 +246,21 @@ export default {
                     break
 
                 case 'home':
-                    goIns = { recent: { delay: 0.1, speed: 0.8 } }
+                    // goIns = { recent: { delay: 0.1, speed: 0.8 } }
+                    goIns = {
+                        recent: { delay: 0.1, speed: 0.8 },
+                        facets: { delay: 0.1, speed: 0.8 },
+                        'facets-nav': { delay: 0.1, speed: 0.8 }
+                    }
                     if (!this.$store.state.loggedIn) {
+                        delete goIns.facets
+                        delete goIns['facets-nav']
                         goIns.globe = { delay: 0.3, speed: 0.8 }
                         goIns['login-animation'] = { delay: 0.4, speed: 0.8 }
                         goIns['flow-show'] = { delay: 0.9, speed: 6 }
                     }
-                    // goIns['login-bt-top'] = { delay: 0, speed: 0.1 }
-
                     globals.eventBus.$emit('reset-login-animation')
                     break
-
                 case 'mywork':
                     // goIns = { 'my-datasets': { delay: 0.1, speed: 0.8 } }
                     goIns = {

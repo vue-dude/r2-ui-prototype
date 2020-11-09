@@ -17,6 +17,31 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
+        facets: {},
+        'facets-nav': {
+            views: {
+                'facets-nav': {
+                    setBgImageOverElements: true,
+                    // this 0.9 is part of the opacity:1 / transparency problem workaround
+                    opacity: 0.9,
+                    elements: {
+                        all: { classes: 'color-bg' },
+                        f0: { classes: 'color-bg' },
+                        f1: { classes: 'color-bg' },
+                        f2: { classes: 'color-bg' },
+                        f3: { classes: 'color-bg' },
+                        f4: { classes: 'color-bg' }
+                    },
+                    zones: {
+                        f0: {},
+                        f1: {},
+                        f2: {},
+                        f3: {},
+                        f4: {}
+                    }
+                }
+            }
+        },
         globe: {},
         login: {
             close: true,
@@ -227,20 +252,6 @@ function R2UiBoxDefinitions() {
                         }
                     }
                 }
-
-                // files: {
-                //     elements: {
-                //         headline: { html: 'My Work - Dataset - History' },
-                //         'head-seperator': {},
-                //         'box-back-bt': { key: 'view-back', classes: 'scale x45 t-r', click: true }, // TODO move to abstract box definitions
-                //         'mywork-box-sym': {
-                //             classes: 'scale x50 t-l'
-                //         },
-                //         'mywork-ds-history': {
-                //             classes: 'scale x50 t-l'
-                //         }
-                //     }
-                // }
             }
         },
         'main-nav': {
