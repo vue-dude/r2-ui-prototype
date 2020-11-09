@@ -194,8 +194,11 @@
             &.recent {
                 top: 40px;
                 left: 20px;
-                &.logged-in {
+                transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                &.facets-shifted {
                     left: 595px;
+                    // ease is like ease-out-expo, refer to https://easings.net/ :-)
+                    transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
                 }
                 --width: 525px;
                 --height: 450px;
@@ -209,11 +212,40 @@
                 }
                 .inner {
                     left: 0;
-                    top: 0;
+                    top: -2px;
                     &.bg-img.recent {
                         width: 513px;
                     }
+                    &.bg-img.recent-facets {
+                        width: 513px;
+                    }
                 }
+                .element {
+                    &.headline {
+                        left: 50px;
+                    }
+                    .bg-img {
+                        transform: scale(0.55);
+                    }
+                }
+
+                .recent {
+                    .element {
+                        &.recent-facets-bt {
+                            right: -5px;
+                            top: -10px;
+                        }
+                    }
+                }
+                .recent-facets {
+                    .element {
+                        &.recent-facets-bt-selected {
+                            right: -5px;
+                            top: -10px;
+                        }
+                    }
+                }
+
                 .click-zones {
                     .click-zone {
                         right: 20px;

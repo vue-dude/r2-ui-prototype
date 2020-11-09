@@ -7,6 +7,14 @@
             transform: scale(0.5); // 0.55
             transform-origin: top left;
         }
+        // for asset within elements, use the css definition like:
+        // &.recent-facets-bt:before {
+        //     content: url(./r2-ui/recent-facets-bt.png);
+        // }
+        // for asset as inner / bg, use the css definition like:
+        // &.recent-facets-bt {
+        //     background-image: url(./r2-ui/recent-facets-bt.png);
+        // }
         &.circle {
             background-image: url(./r2-ui/circle.webp);
         }
@@ -29,11 +37,18 @@
             content: url(./r2-ui/register-step-2.png);
         }
         //
-        &.recent {
+        &.recent,
+        &.recent-facets {
             background-image: url(./r2-ui/recent.png);
         }
         &.facets {
             background-image: url(./r2-ui/facets.png);
+        }
+        &.recent-facets-bt:before {
+            content: url(./r2-ui/recent-facets-bt.png);
+        }
+        &.recent-facets-bt-selected:before {
+            content: url(./r2-ui/recent-facets-bt-selected.png);
         }
         &.facets-nav {
             background-image: url(./r2-ui/facets-nav.png);
@@ -77,21 +92,21 @@
         // main nav
         &.circ-bg {
             background-image: url(./r2-ui/main/circ-bg.webp);
-        } 
+        }
         &.circ-bg-sel {
             background-image: url(./r2-ui/main/circ-bg-sel.webp);
-        }  
+        }
         &.sym-circ {
             background-image: url(./r2-ui/main/sym-circ.webp);
-        } 
+        }
         &.sym-circ-sel {
             background-image: url(./r2-ui/main/sym-circ-sel.webp);
-        }  
+        }
         &.sym-diamond {
             background-image: url(./r2-ui/main/sym-diamond.webp);
-        } 
+        }
         &.sym-diamond-sel {
             background-image: url(./r2-ui/main/sym-diamond-sel.webp);
-        }      
+        }
     }
 }

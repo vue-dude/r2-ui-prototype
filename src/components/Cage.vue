@@ -5,7 +5,11 @@
         <!--  -->
         <box class="animate bg-dark" :config="boxes['create-dataset']"></box>
         <box class="animate bg-dark" :config="boxes['dataset']"></box>
-        <box class="animate bg-dark" :class="[{ 'logged-in': $store.state.loggedIn }]" :config="boxes.recent"></box>
+        <box
+            class="animate bg-dark"
+            :class="[{ 'facets-shifted': $store.state.loggedIn || viewMode === 'facets' }]"
+            :config="boxes.recent"
+        ></box>
         <!--  -->
         <box class="animate bg-dark" :config="boxes.facets"></box>
         <box class="animate" :config="boxes['facets-nav']"></box>
@@ -87,6 +91,12 @@ export default {
 
             let options = { _00: { targets: null } }
             switch (true) {
+                //|| evt.box.id === 'facets'
+
+                case evt.key === 'close' && evt.box.id === 'facets':
+                case evt.key === 'hide-facets' && evt.box.id === 'recent':
+                    return this.setViewMode('home', options)
+
                 case evt.key === 'close':
                     //
                     // upfront, needs deper implementation
@@ -104,11 +114,24 @@ export default {
                         options.globe = { delay: 0 }
                     }
                     return this.setViewMode('home', options)
-                case evt.key === 'show-dataset' && evt.box.id === 'recent':
-                    options._NAV = {
-                        // backOnCloseTo: 'home' // needs implementation
+
+                case evt.box.id === 'recent':
+                    switch (evt.key) {
+                        case 'show-dataset':
+                            options._NAV = {
+                                // backOnCloseTo: 'home' // needs implementation
+                            }
+                            return this.setViewMode('view-dataset', options)
+                        case 'show-facets':
+                            options['recent'] = {
+                                view: 'recent-facets'
+                            }
+                            return this.setViewMode('facets', options)
+                        case 'hide-facets':
+                            return null
                     }
-                    return this.setViewMode('view-dataset', options)
+                    return null
+
                 case evt.key === 'register':
                     return this.setViewMode('register', options)
                 case evt.key === 'bt-continue' && evt.box.id === 'register':
@@ -167,19 +190,8 @@ export default {
 
                     this.setBoxConnectedNavState(evt.box.id, evt.key)
                 case evt.box.id === 'facets-nav':
-                    options._00 = {
-                        targets: {
-                            //facets: { delay: 0, speed: 0.3 }
-                        }
-                    }
-                    // options.facets = {
-                    //     view: evt.key
-                    // }
                     this.setBoxConnectedNavState(evt.box.id, evt.key)
-                    return this.setViewMode('mywork', options)
-
-                    this.setBoxConnectedNavState(evt.box.id, evt.key)
-
+                    return null
                 default:
                     this.setViewMode('home')
             }
@@ -188,6 +200,7 @@ export default {
             $('.nav.quick-actions').removeClass('hidden')
             this.$store.dispatch('setLoggedInState', true)
             this.setViewMode('mywork')
+            this.boxes.facets.close = false
         },
         setViewMode(mode, options = {}) {
             const speed = 0.5
@@ -198,6 +211,7 @@ export default {
             let privateView = true
             switch (this.viewMode) {
                 case 'home':
+                case 'facets':
                     path = 'Home'
                     privateView = false
                     break
@@ -244,7 +258,14 @@ export default {
             switch (mode) {
                 case 'init':
                     break
-
+                case 'facets':
+                    goIns = {
+                        recent: { delay: 0, speed: 0.6 },
+                        facets: { delay: 0.08, speed: 1.2 },
+                        'facets-nav': { delay: 0.1, speed: 0.8 }
+                    }
+                    globals.eventBus.$emit('reset-login-animation')
+                    break
                 case 'home':
                     // goIns = { recent: { delay: 0.1, speed: 0.8 } }
                     goIns = {

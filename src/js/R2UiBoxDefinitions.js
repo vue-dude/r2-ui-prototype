@@ -3,6 +3,27 @@ function R2UiBoxDefinitions() {
         recent: {
             views: {
                 recent: {
+                    elements: {
+                        headline: { html: 'Most recent Datasets' },
+                        'recent-facets-bt': { click: true, key: 'show-facets' }
+                    },
+                    zones: {
+                        'show-ds-1': {
+                            key: 'show-dataset'
+                        },
+                        'show-ds-2': {
+                            key: 'show-dataset'
+                        },
+                        'show-ds-3': {
+                            key: 'show-dataset'
+                        }
+                    }
+                },
+                'recent-facets': {
+                    elements: {
+                        headline: { html: 'Facet filtered Datasets' },
+                        'recent-facets-bt-selected': { click: true, key: 'hide-facets' }
+                    },
                     zones: {
                         'show-ds-1': {
                             key: 'show-dataset'
@@ -17,7 +38,9 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
-        facets: {},
+        facets: {
+            close: true
+        },
         'facets-nav': {
             views: {
                 'facets-nav': {
@@ -134,7 +157,7 @@ function R2UiBoxDefinitions() {
                 'my-datasets': {
                     // id: 'mywork-all-list',
                     elements: {
-                        headline: { html: 'My Work - all Datasets' },
+                        headline: { html: 'My Datasets' },
                         'head-seperator': {},
                         'mywork-box-sym': {
                             classes: 'scale x50 t-l'
@@ -155,7 +178,7 @@ function R2UiBoxDefinitions() {
                 },
                 'dataset-history': {
                     elements: {
-                        headline: { html: 'My Work - Dataset - History' },
+                        headline: { html: 'Dataset - History' },
                         'head-seperator': {},
                         'box-back-bt': { key: 'view-back', classes: 'scale x45 t-r', click: true }, // TODO move to abstract box definitions
                         'mywork-box-sym': {
