@@ -341,7 +341,7 @@ function R2UiBoxDefinitions() {
                         'box-sym-dataset': {
                             classes: 'scale x50 t-l'
                         },
-                        headline: { html: 'My Dataset: DOI 10.1002/0470841559.ch1 / Version 4 / Edit' },
+                        headline: { html: 'My Dataset: Created new Version 4 / Edit' },
                         // save changes
                         'head-seperator': {},
                         'box-menu-divider': {},
@@ -353,9 +353,9 @@ function R2UiBoxDefinitions() {
                         'bt-box-upload': {
                             classes: 'scale x50 t-r'
                         },
-                        'upload-info': { html: 'Add files here:', classes: 'text' },
+                        'upload-info': { html: 'Upload files here:', classes: 'text' },
                         'dataset-edit-symbols-layer': {
-                            key:'start-edit-text',
+                            key: 'start-edit-text',
                             click: true
                         }
                     }
@@ -365,7 +365,7 @@ function R2UiBoxDefinitions() {
                         'box-sym-dataset': {
                             classes: 'scale x50 t-l'
                         },
-                        headline: { html: 'My Dataset: DOI 10.1002/0470841559.ch1 / Version 4 / Edit Textfield' },
+                        headline: { html: 'My Dataset: Created new Version 4 / Edit Textfield' },
                         // save changes
                         'head-seperator': {},
                         'box-menu-divider': {},
@@ -377,10 +377,38 @@ function R2UiBoxDefinitions() {
                         'bt-box-upload': {
                             classes: 'scale x50 t-r'
                         },
-                        'upload-info': { html: 'Add files here:', classes: 'text' },
+                        'upload-info': { html: 'Upload files here:', classes: 'text' },
                         'dataset-edit-layer': {
                             // click: true
                             // classes: 'scale x50 t-l'
+                        },
+                        'bt-cms-keep-discard': {
+                            key: 'keep-changes',
+                            click: true
+                        }
+                    }
+                },
+                'my-dataset-private': {
+                    elements: {
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        headline: { html: 'My Dataset: Version 4 / Not Published' },
+                        'head-seperator': {},
+                        'box-menu-divider': {},
+                        // 'box-sharebar': {
+                        //     classes: 'scale x50 t-r'
+                        // },
+                        'bt-box-edit': {
+                            key: 'start-dataset-edit',
+                            click: true,
+                            classes: 'scale x50 t-r'
+                        },
+                        'bt-publish': {
+                            html: 'Publish Dataset',
+                            classes: 'button bt-ok',
+                            click: true
+                            // args: { view: 'step-2' }
                         }
                     }
                 }

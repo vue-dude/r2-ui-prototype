@@ -121,29 +121,27 @@ export default {
                     options._00 = {
                         targets: { dataset: { delay: 0, speed: 0 } }
                     }
-                    if (evt.key === 'start-dataset-edit') {
-                        options.dataset = {
-                            view: 'my-dataset-edit',
-                            delay: 0,
-                            speed: 0
-                        }
-                        return this.setViewMode('view-dataset', options)
-                    }
-                    if (evt.key === 'start-edit-text') {
-                        options.dataset = {
-                            view: 'my-dataset-edit-text',
-                            delay: 0,
-                            speed: 0
-                        }
-                        return this.setViewMode('view-dataset', options)
-                    }
-                    if (evt.key === 'stop-dataset-edit') {
-                        options.dataset = {
-                            view: 'my-dataset-published',
-                            delay: 0,
-                            speed: 0
-                        }
-                        return this.setViewMode('view-dataset', options)
+                    switch (evt.key) {
+                        case 'start-dataset-edit':
+                            options.dataset = {
+                                view: 'my-dataset-edit'
+                            }
+                            return this.setViewMode('view-dataset', options)
+                        case 'start-edit-text':
+                            options.dataset = {
+                                view: 'my-dataset-edit-text'
+                            }
+                            return this.setViewMode('view-dataset', options)
+                        case 'stop-dataset-edit':
+                            options.dataset = {
+                                view: 'my-dataset-published'
+                            }
+                            return this.setViewMode('view-dataset', options)
+                        case 'keep-changes':
+                            options.dataset = {
+                                view: 'my-dataset-private'
+                            }
+                            return this.setViewMode('view-dataset', options)
                     }
 
                 case evt.box.id === 'recent':
@@ -269,7 +267,8 @@ export default {
                     break
                 case 'view-dataset':
                     // privateView = this.$store.state.loggedIn
-                    path = 'View Dataset / Reproduction Data for: TRex, a fast multi-animal tracking system ...'
+                    // path = 'View Dataset / Reproduction Data for: TRex, a fast multi-animal tracking system ...'
+                    path = 'View Dataset / DOI / 10.1002/0470841559.ch1'
                     break
             }
             this.$store.dispatch('setSubPath', path)
@@ -412,7 +411,11 @@ export default {
                 if (!view.visible) {
                     view.visible = true
                     const $targetView = $(`${animationTargets}.${boxId} .${view.id}`)
-                    const vOpacity = _.isNumber(view.opacity) ? view.opacity : _.isNumber(prms.opacity) ? prms.opacity : 1
+                    const vOpacity = _.isNumber(view.opacity)
+                        ? view.opacity
+                        : _.isNumber(prms.opacity)
+                        ? prms.opacity
+                        : 1
                     const vDelay = _.isNumber(view.delay) ? view.delay : _.isNumber(prms.delay) ? prms.delay : 0.1
                     const vSpeed = _.isNumber(view.speed) ? view.speed : _.isNumber(prms.speed) ? prms.speed : 0.3
                     gsap.to($targetView, vDelay, {

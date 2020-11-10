@@ -619,38 +619,6 @@
                 }
             }
 
-            // &.dataset-actions {
-            //     top: 10px;
-            //     left: 20px;
-            //     --width: 1100px;
-            //     --height: 50px;
-            //     width: var(--width);
-            //     height: var(--height);
-            //     .view,
-            //     .view .elements,
-            //     .view .zones {
-            //         width: var(--width);
-            //         height: var(--height);
-            //     }
-            //     .inner {
-            //         transform: scale(0.9);
-            //         transform-origin: center;
-            //     }
-            //     .view {
-            //         &.dataset-actions {
-            //             .actions-bg {
-            //                 width: 300px;
-            //                 height: 33px;
-            //                 left: 782px;
-            //                 top: 5px;
-            //                 background-color: #4e5c73;
-            //                 border: 1px solid #a9bbd0;
-            //                 border-radius: 5px;
-            //             }
-            //         }
-            //     }
-            // }
-
             &.dataset {
                 top: 10px;
                 left: 20px;
@@ -672,7 +640,7 @@
                     .head-seperator {
                         left: 50px;
                         div {
-                            width: 1030px; // 1030px 876px
+                            width: 1030px;
                         }
                     }
                     .inner {
@@ -681,14 +649,6 @@
                         width: calc(100% - 20px);
                         transform: none;
                     }
-
-                    // .bt-box-actions {
-                    //     top: 3px;
-                    //     right: 18px;
-                    //     width: 73px;
-                    //     height: 72px;
-                    // }
-
                     .bt-box-edit,
                     .bt-box-edit-selected {
                         top: 3px;
@@ -724,6 +684,18 @@
                         top: 10px;
                         right: 147px;
                     }
+                    .bt-publish {
+                        right: 75px;
+                        top: 8px;
+                        transform: scale(0.95);
+                    }
+                    .bt-cms-keep-discard {
+                        top: 132px;
+                        left: 751px;
+                        width: 60px;
+                        height: 30px;
+                    }
+
                     &.my-dataset-published,
                     &.my-dataset-edit,
                     &.my-dataset-edit-field {
