@@ -195,17 +195,6 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
-        dataset: {
-            close: true,
-            views: {
-                dataset: {
-                    elements: {
-                        headline: { html: 'View Dataset' },
-                        'head-seperator': {}
-                    }
-                }
-            }
-        },
         'inspector-nav': {
             views: {
                 'inspector-nav': {
@@ -302,7 +291,28 @@ function R2UiBoxDefinitions() {
                     }
                 }
             }
-        }
+        },
+        dataset: {
+            close: true,
+            views: {
+                'dataset-public': {
+                    elements: {
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'box-sharebar': {
+                            classes: 'scale x50 t-r'
+                        },
+
+                        
+
+
+                        headline: { html: 'View Dataset: DOI: 10.1002/0470841559.ch1 / public' },
+                        'head-seperator': {}
+                    }
+                }
+            }
+        },
     }
 }
 

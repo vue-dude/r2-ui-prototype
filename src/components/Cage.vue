@@ -122,6 +122,9 @@ export default {
                             options._NAV = {
                                 // backOnCloseTo: 'home' // needs implementation
                             }
+                            options.dataset = {
+                                view: 'dataset-public'
+                            }
                             return this.setViewMode('view-dataset', options)
                         case 'show-facets':
                             options['recent'] = {
@@ -214,26 +217,26 @@ export default {
             switch (this.viewMode) {
                 case 'home':
                 case 'facets':
-                    path = 'Home'
+                    path = 'Browse Datasets'
                     privateView = false
                     break
                 case 'login':
-                    path = 'Home / Login'
+                    path = 'Login'
                     privateView = false
                     break
                 case 'register':
-                    path = 'Home / Create an Account'
+                    path = 'Create an Account'
                     privateView = false
                     break
                 case 'mywork':
-                    path = 'Home / My Work'
+                    path = 'My Work'
                     break
                 case 'create-dataset':
-                    path = 'Home / My Work / Create New Dataset'
+                    path = 'My Work / Create New Dataset'
                     break
                 case 'view-dataset':
                     // privateView = this.$store.state.loggedIn
-                    path = 'Home / View Dataset / Reproduction Data for: TRex, a fast multi-animal tracking system ...'
+                    path = 'View Dataset / Reproduction Data for: TRex, a fast multi-animal tracking system ...'
                     break
             }
             this.$store.dispatch('setSubPath', path)

@@ -55,7 +55,7 @@
         }
         //
         &.mywork-all-list {
-            background-image: url(./r2-ui/mywork-all-list.webp);
+            background-image: url(./r2-ui/mywork-all-list.png);
         }
         &.mywork-ds-history {
             background-image: url(./r2-ui/mywork-ds-history.png);
@@ -111,5 +111,17 @@
         &.sym-diamond-sel {
             background-image: url(./r2-ui/main/sym-diamond-sel.webp);
         }
+        // dataset views
+
+        &.dataset-public {
+            background-image: url(./r2-ui/dataset-public.png);
+        }
+        &.box-sym-dataset {
+            background-image: url(./r2-ui/box-sym-dataset.png);
+        }
+        &.box-sharebar {
+            background-image: url(./r2-ui/box-sharebar.png);
+        }
+        
     }
 }
