@@ -113,8 +113,21 @@
         }
         // dataset views
 
-        &.dataset-public {
+        &.my-dataset-published,
+        &.my-dataset-edit,
+        &.my-dataset-edit-text,
+        // &.my-dataset-private,
+        // &.my-dataset-private-ac,
+        // &.my-dataset-published,
+        // &.my-dataset-published-ac 
+        &.public-dataset {
             background-image: url(./r2-ui/dataset-public.png);
+        }
+        &.dataset-edit-layer {
+            background-image: url(./r2-ui/dataset-edit-layer.png);
+        }
+        &.dataset-edit-symbols-layer {
+            background-image: url(./r2-ui/dataset-edit-symbols-layer.png);
         }
         &.box-sym-dataset {
             background-image: url(./r2-ui/box-sym-dataset.png);
@@ -122,6 +135,20 @@
         &.box-sharebar {
             background-image: url(./r2-ui/box-sharebar.png);
         }
-        
+        &.dataset-edit-layer {
+            background-image: url(./r2-ui/dataset-edit-layer.png);
+        }
+        &.bt-box-upload {
+            background-image: url(./r2-ui/bt-box-upload.png);
+        }
+        &.bt-box-edit {
+            background-image: url(./r2-ui/bt-box-edit.png);
+        }
+        &.bt-box-edit-selected {
+            background-image: url(./r2-ui/bt-box-edit-selected.png);
+        }
+        &.bt-box-actions {
+            background-image: url(./r2-ui/bt-box-actions.png);
+        }
     }
 }

@@ -92,8 +92,6 @@ export default {
 
             let options = { _00: { targets: null } }
             switch (true) {
-                //|| evt.box.id === 'facets'
-
                 case evt.key === 'close' && evt.box.id === 'facets':
                 case evt.key === 'hide-facets' && evt.box.id === 'recent':
                     return this.setViewMode('home', options)
@@ -109,12 +107,44 @@ export default {
                     }
                     //
                     if (evt.box.id === 'create-dataset') {
+                        // options.dataset = {
+                        //     view: 'dataset-public'
+                        // }
                         return this.setViewMode('mywork', options)
                     }
                     if (evt.box.id === 'login') {
                         options.globe = { delay: 0 }
                     }
                     return this.setViewMode('home', options)
+
+                case evt.box.id === 'dataset':
+                    options._00 = {
+                        targets: { dataset: { delay: 0, speed: 0 } }
+                    }
+                    if (evt.key === 'start-dataset-edit') {
+                        options.dataset = {
+                            view: 'my-dataset-edit',
+                            delay: 0,
+                            speed: 0
+                        }
+                        return this.setViewMode('view-dataset', options)
+                    }
+                    if (evt.key === 'start-edit-text') {
+                        options.dataset = {
+                            view: 'my-dataset-edit-text',
+                            delay: 0,
+                            speed: 0
+                        }
+                        return this.setViewMode('view-dataset', options)
+                    }
+                    if (evt.key === 'stop-dataset-edit') {
+                        options.dataset = {
+                            view: 'my-dataset-published',
+                            delay: 0,
+                            speed: 0
+                        }
+                        return this.setViewMode('view-dataset', options)
+                    }
 
                 case evt.box.id === 'recent':
                     switch (evt.key) {
@@ -123,7 +153,7 @@ export default {
                                 // backOnCloseTo: 'home' // needs implementation
                             }
                             options.dataset = {
-                                view: 'dataset-public'
+                                view: 'public-dataset'
                             }
                             return this.setViewMode('view-dataset', options)
                         case 'show-facets':
@@ -179,6 +209,9 @@ export default {
                         case 'show-dataset':
                             options._NAV = {
                                 // backOnCloseTo: 'mywork' // needs implementation
+                            }
+                            options.dataset = {
+                                view: 'my-dataset-published'
                             }
                             return this.setViewMode('view-dataset', options)
                     }
@@ -247,9 +280,6 @@ export default {
             if (options._00 && _.isPlainObject(options._00.targets)) {
                 goOuts = [...Object.keys(options._00.targets)]
             }
-
-            // const goOuts = 'recent,register,globe'.split(',')
-
             _.each(goOuts, key => {
                 if (key) {
                     gsap.to($(`${animationTargets}.${key}`), speed, {
@@ -369,9 +399,7 @@ export default {
                 })
 
                 // handle the different views inside the box
-
                 const view = this.boxes[boxId].views[prms.view]
-
                 _.each(this.boxes[boxId].views, vu => {
                     if (view !== vu) {
                         gsap.killTweensOf($(`${animationTargets}.${boxId} .${vu.id}`))
@@ -381,14 +409,15 @@ export default {
                         vu.visible = false
                     }
                 })
-
                 if (!view.visible) {
                     view.visible = true
                     const $targetView = $(`${animationTargets}.${boxId} .${view.id}`)
-                    let vOpc = _.isNumber(view.opacity) ? view.opacity : 1
-                    gsap.to($targetView, 0.3, {
-                        opacity: vOpc,
-                        delay: 0.1,
+                    const vOpacity = _.isNumber(view.opacity) ? view.opacity : _.isNumber(prms.opacity) ? prms.opacity : 1
+                    const vDelay = _.isNumber(view.delay) ? view.delay : _.isNumber(prms.delay) ? prms.delay : 0.1
+                    const vSpeed = _.isNumber(view.speed) ? view.speed : _.isNumber(prms.speed) ? prms.speed : 0.3
+                    gsap.to($targetView, vDelay, {
+                        opacity: vOpacity,
+                        delay: vDelay,
                         ease: Expo.easeOut
                     })
                 }

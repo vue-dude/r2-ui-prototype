@@ -292,27 +292,100 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
+        // 'dataset-actions': {
+        //     views: {
+        //         'dataset-actions': {
+        //             elements: {
+        //                 'actions-bg': {}
+        //             }
+        //         }
+        //     }
+        // },
         dataset: {
             close: true,
             views: {
-                'dataset-public': {
+                'public-dataset': {
                     elements: {
                         'box-sym-dataset': {
                             classes: 'scale x50 t-l'
                         },
+                        headline: { html: 'Dataset: DOI 10.1002/0470841559.ch1' },
+                        'head-seperator': {},
+                        'box-sharebar': {
+                            // only on the newest version!
+                            classes: 'scale x50 t-r'
+                        }
+                    }
+                },
+                'my-dataset-published': {
+                    elements: {
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        headline: { html: 'My Dataset: DOI 10.1002/0470841559.ch1 / Version 3 / Published' },
+                        'head-seperator': {},
+                        'box-menu-divider': {},
                         'box-sharebar': {
                             classes: 'scale x50 t-r'
                         },
-
-                        
-
-
-                        headline: { html: 'View Dataset: DOI: 10.1002/0470841559.ch1 / public' },
-                        'head-seperator': {}
+                        'bt-box-edit': {
+                            // only on the latest version!
+                            key: 'start-dataset-edit',
+                            click: true,
+                            classes: 'scale x50 t-r'
+                        }
+                    }
+                },
+                'my-dataset-edit': {
+                    elements: {
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        headline: { html: 'My Dataset: DOI 10.1002/0470841559.ch1 / Version 4 / Edit' },
+                        // save changes
+                        'head-seperator': {},
+                        'box-menu-divider': {},
+                        'bt-box-edit-selected': {
+                            key: 'stop-dataset-edit',
+                            click: true,
+                            classes: 'scale x50 t-r'
+                        },
+                        'bt-box-upload': {
+                            classes: 'scale x50 t-r'
+                        },
+                        'upload-info': { html: 'Add files here:', classes: 'text' },
+                        'dataset-edit-symbols-layer': {
+                            key:'start-edit-text',
+                            click: true
+                        }
+                    }
+                },
+                'my-dataset-edit-text': {
+                    elements: {
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        headline: { html: 'My Dataset: DOI 10.1002/0470841559.ch1 / Version 4 / Edit Textfield' },
+                        // save changes
+                        'head-seperator': {},
+                        'box-menu-divider': {},
+                        'bt-box-edit-selected': {
+                            key: 'stop-dataset-edit',
+                            click: true,
+                            classes: 'scale x50 t-r'
+                        },
+                        'bt-box-upload': {
+                            classes: 'scale x50 t-r'
+                        },
+                        'upload-info': { html: 'Add files here:', classes: 'text' },
+                        'dataset-edit-layer': {
+                            // click: true
+                            // classes: 'scale x50 t-l'
+                        }
                     }
                 }
             }
-        },
+        }
     }
 }
 
