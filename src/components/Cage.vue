@@ -47,7 +47,9 @@ export default {
             viewMode: 'home',
             viewModePrev: null,
             show: false,
-            boxes: new BoxDefinitions().boxes
+            boxes: new BoxDefinitions().boxes,
+            // fast hardcoded stuff
+            myDatasetsHistoryView: false
         }
     },
     created() {
@@ -100,10 +102,39 @@ export default {
                     //
                     // upfront, needs deper implementation
                     if (evt.box.id === 'dataset') {
-                        if (this.$store.state.loggedIn) {
+                        if (evt.viewKey === 'my-dataset-edit' || evt.viewKey === 'my-dataset-private') {
+                            options['my-datasets'] = {
+                                view: 'dataset-history-with-private'
+                            }
                             return this.setViewMode('mywork', options)
                         }
+
+                        if (evt.viewKey === 'my-dataset-from-history') {
+                            options['my-datasets'] = {
+                                view: 'dataset-history-create-private'
+                            }
+                            return this.setViewMode('mywork', options)
+                        }
+
+                        if (evt.viewKey === 'my-dataset-published') {
+                            // list / history view here ? 
+                            return this.setViewMode('mywork', options)
+                        }
+
+                        // ++++++++++++++++++++++++
+                        // ++++++++++++++++++++++++
+                        // ++++++++++++++++++++++++
+
+                        if (evt.viewKey === 'public-dataset') {
+                            return this.setViewMode('home', options)
+                        }
+                        // catch the rest
                         return this.setViewMode('home', options)
+
+                        // if (this.$store.state.loggedIn) {
+                        //     return this.setViewMode('mywork', options)
+                        // }
+                        // return this.setViewMode('home', options)
                     }
                     //
                     if (evt.box.id === 'create-dataset') {
@@ -134,19 +165,19 @@ export default {
                             return this.setViewMode('view-dataset', options)
                         case 'stop-dataset-edit':
                             options.dataset = {
-                                view: 'my-dataset-published'
+                                view: 'my-dataset-private' // my-dataset-published
                             }
                             return this.setViewMode('view-dataset', options)
                         case 'keep-changes':
                             options.dataset = {
-                                view: 'my-dataset-private'
+                                view: 'my-dataset-edit' // my-dataset-private
                             }
                             return this.setViewMode('view-dataset', options)
                     }
 
                 case evt.box.id === 'recent':
                     switch (evt.key) {
-                        case 'show-dataset':
+                        case 'show-public-dataset':
                             options._NAV = {
                                 // backOnCloseTo: 'home' // needs implementation
                             }
@@ -199,17 +230,30 @@ export default {
                                 targets: { 'my-datasets': { delay: 0, speed: 0.3 } }
                             }
                             options['my-datasets'] = {
-                                view: 'dataset-history'
+                                view: 'dataset-history-create-private'
                             }
+                            this.myDatasetsHistoryView = true
                             return this.setViewMode('mywork', options)
                         case 'create-dataset':
                             return this.setViewMode('create-dataset')
-                        case 'show-dataset':
+                        case 'show-my-dataset':
                             options._NAV = {
                                 // backOnCloseTo: 'mywork' // needs implementation
                             }
                             options.dataset = {
-                                view: 'my-dataset-published'
+                                view: 'my-dataset-published' // public-dataset my-dataset-published
+                            }
+                            return this.setViewMode('view-dataset', options)
+
+                        case 'show-my-dataset-from-history':
+                            options.dataset = {
+                                view: 'my-dataset-from-history'
+                            }
+                            return this.setViewMode('view-dataset', options)
+
+                        case 'show-private-dataset-from-history': // editable
+                            options.dataset = {
+                                view: 'my-dataset-private' // public-dataset my-dataset-published / my-dataset-edit
                             }
                             return this.setViewMode('view-dataset', options)
                     }

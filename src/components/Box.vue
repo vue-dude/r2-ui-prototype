@@ -15,7 +15,7 @@
                     class="element"
                     :class="[key, { clickable: elm.click }]"
                     :key="key"
-                    @click="elm.click ? onClickElement(elm.key || key, elm.args) : null"
+                    @click="elm.click ? onClickThing(elm.key || key, elm.args) : null"
                 >
                     <div v-if="elm.html" v-html="elm.html" :class="[key, elm.classes]"></div>
                     <div v-else class="bg-img" :class="[key, elm.classes]"></div>
@@ -30,11 +30,11 @@
                     :key="key"
                     class="click-zone"
                     :class="[key]"
-                    @click="onClickZone(zone.key || key, zone.args)"
+                    @click="onClickThing(zone.key || key, zone.args)"
                 ></div>
             </div>
         </div>
-        <div v-if="config.close" class="box-close" @click="onClickZone('close')">
+        <div v-if="config.close" class="box-close" @click="onClickThing('close')">
             <div class="inner bg-img close-x"></div>
         </div>
     </div>
@@ -47,18 +47,20 @@ export default {
         config: {}
     },
     mounted() {
-        console.log('BOX: this.config = ', this.config)
+        // console.log('BOX: this.config = ', this.config)
         // const index = 2
         // console.log('BOX: this.config = ', _.get(`this.config.elements[${index}]`, html))
     },
     methods: {
-        onClickZone(key, args = {}) {
-            console.log('BOX:onClickZone key, box.id = ', key, this.config.id)
-            globals.eventBus.$emit('click', { key, box: this.config, args })
-        },
-        onClickElement(key, args = {}) {
-            console.log('BOX:onClickElement key, box.id = ', key, this.config.id)
-            globals.eventBus.$emit('click', { key, box: this.config, args })
+        onClickThing(key, args = {}) {
+            let viewKey = null
+            _.each(this.config.views, (view, key) => {
+                if (view.visible) {
+                    viewKey = key
+                }
+            })
+            console.log('BOX:onClickThing key, box.id, args = ', key, this.config.id, args)
+            globals.eventBus.$emit('click', { key, box: this.config, args, viewKey })
         }
     }
 }

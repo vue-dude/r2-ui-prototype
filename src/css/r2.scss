@@ -555,7 +555,11 @@
                     }
                 }
 
-                .dataset-history {
+                .dataset-history-create-private, .dataset-history-with-private {
+                    .inner .bg-img {
+                        left: 10px;
+                        top: 30px;
+                    }
                     .box-back-bt {
                         top: 8px;
                         right: 8px;
@@ -577,18 +581,27 @@
                         width: 60px;
                         height: 88px;
                     }
-                    .mywork-ds-history {
-                        top: 67px;
-                        left: 12px;
-                        width: 1054px;
-                        height: 755px;
-                    }
-
                     .bt-view-dataset {
-                        top: 248px;
+                        top: 232px;
                         right: 70px;
                         width: 32px;
                         height: 32px;
+                    }
+
+                    .click-zones {
+                        .create-new-version {
+                            top: 134px;
+                            left: 28px;
+                            width: 394px;
+                            height: 84px;
+                        }
+                    }
+                }
+
+
+                .dataset-history-with-private{
+                    .bt-view-dataset {
+                        top: 160px;
                     }
                 }
             }
@@ -695,8 +708,15 @@
                         width: 60px;
                         height: 30px;
                     }
+                    .doi-cover{
+                        top: 235px;
+                        left: 220px;
+                        width: 149px;
+                        height: 19px;
+                        background-color: white;          
+                    }
 
-                    &.my-dataset-published,
+                    // &.my-dataset-published,
                     &.my-dataset-edit,
                     &.my-dataset-edit-field {
                         .box-sharebar {

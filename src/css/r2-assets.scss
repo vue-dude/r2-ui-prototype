@@ -60,6 +60,15 @@
         &.mywork-ds-history {
             background-image: url(./r2-ui/mywork-ds-history.webp);
         }
+        &.mywork-ds-history-create-private,
+        &.dataset-history-create-private {
+            background-image: url(./r2-ui/mywork-ds-history-create-private.webp);
+        }
+        &.mywork-ds-history-with-private,
+        &.dataset-history-with-private {
+            background-image: url(./r2-ui/mywork-ds-history-with-private.webp);
+        }
+
         &.mywork-box-sym {
             background-image: url(./r2-ui/mywork-box-sym.webp);
         }
@@ -113,6 +122,8 @@
         }
         // dataset views
 
+        &.my-dataset,
+        &.my-dataset-from-history,
         &.my-dataset-published,
         &.my-dataset-edit,
         &.my-dataset-edit-text,

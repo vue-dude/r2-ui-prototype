@@ -9,13 +9,13 @@ function R2UiBoxDefinitions() {
                     },
                     zones: {
                         'show-ds-1': {
-                            key: 'show-dataset'
+                            key: 'show-public-dataset'
                         },
                         'show-ds-2': {
-                            key: 'show-dataset'
+                            key: 'show-public-dataset'
                         },
                         'show-ds-3': {
-                            key: 'show-dataset'
+                            key: 'show-public-dataset'
                         }
                     }
                 },
@@ -26,13 +26,13 @@ function R2UiBoxDefinitions() {
                     },
                     zones: {
                         'show-ds-1': {
-                            key: 'show-dataset'
+                            key: 'show-public-dataset'
                         },
                         'show-ds-2': {
-                            key: 'show-dataset'
+                            key: 'show-public-dataset'
                         },
                         'show-ds-3': {
-                            key: 'show-dataset'
+                            key: 'show-public-dataset'
                         }
                     }
                 }
@@ -172,11 +172,13 @@ function R2UiBoxDefinitions() {
                         }
                     },
                     zones: {
-                        'show-dataset': {},
+                        'show-dataset': {
+                            key: 'show-my-dataset'
+                        },
                         'show-history': {}
                     }
                 },
-                'dataset-history': {
+                'dataset-history-create-private': {
                     elements: {
                         headline: { html: 'Dataset - History' },
                         'head-seperator': {},
@@ -188,7 +190,29 @@ function R2UiBoxDefinitions() {
                             classes: 'scale x50 t-l'
                         },
                         'bt-view-dataset': {
-                            key: 'show-dataset',
+                            key: 'show-my-dataset-from-history',
+                            click: true
+                        }
+                    },
+                    zones: {
+                        'create-new-version': {
+                            key: 'show-private-dataset-from-history'
+                        }
+                    }
+                },
+                'dataset-history-with-private': {
+                    elements: {
+                        headline: { html: 'Dataset - History' },
+                        'head-seperator': {},
+                        'box-back-bt': { key: 'view-back', classes: 'scale x45 t-r', click: true }, // TODO move to abstract box definitions
+                        'mywork-box-sym': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'mywork-ds-history': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'bt-view-dataset': {
+                            key: 'show-private-dataset-from-history',
                             click: true
                         }
                     }
@@ -312,7 +336,30 @@ function R2UiBoxDefinitions() {
                         headline: { html: 'Dataset: DOI 10.1002/0470841559.ch1' },
                         'head-seperator': {},
                         'box-sharebar': {
-                            // only on the newest version!
+                            classes: 'scale x50 t-r'
+                        }
+                    }
+                },
+                'my-dataset': {
+                    elements: {
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        headline: { html: 'My Dataset: DOI 10.1002/0470841559.ch1' },
+                        'head-seperator': {},
+                        'box-sharebar': {
+                            classes: 'scale x50 t-r'
+                        }
+                    }
+                },
+                'my-dataset-from-history': {
+                    elements: {
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        headline: { html: 'My Dataset: DOI 10.1002/0470841559.ch1 / Version 3 / Published' },
+                        'head-seperator': {},
+                        'box-sharebar': {
                             classes: 'scale x50 t-r'
                         }
                     }
@@ -322,18 +369,22 @@ function R2UiBoxDefinitions() {
                         'box-sym-dataset': {
                             classes: 'scale x50 t-l'
                         },
-                        headline: { html: 'My Dataset: DOI 10.1002/0470841559.ch1 / Version 3 / Published' },
+                        headline: { html: 'My Dataset: DOI 10.1002/0470841559.ch1' },
                         'head-seperator': {},
-                        'box-menu-divider': {},
                         'box-sharebar': {
-                            classes: 'scale x50 t-r'
-                        },
-                        'bt-box-edit': {
-                            // only on the latest version!
-                            key: 'start-dataset-edit',
-                            click: true,
+                            // only on the newest version!
                             classes: 'scale x50 t-r'
                         }
+                        // 'box-menu-divider': {},
+                        // 'box-sharebar': {
+                        //     classes: 'scale x50 t-r'
+                        // },
+                        // 'bt-box-edit': {
+                        //     // only on the latest version!
+                        //     key: 'start-dataset-edit',
+                        //     click: true,
+                        //     classes: 'scale x50 t-r'
+                        // }
                     }
                 },
                 'my-dataset-edit': {
@@ -341,9 +392,10 @@ function R2UiBoxDefinitions() {
                         'box-sym-dataset': {
                             classes: 'scale x50 t-l'
                         },
-                        headline: { html: 'My Dataset: Created new Version 4 / Edit' },
+                        headline: { html: 'My Dataset: Version 4 / Not Published / Edit' },
                         // save changes
                         'head-seperator': {},
+                        'doi-cover': {},
                         'box-menu-divider': {},
                         'bt-box-edit-selected': {
                             key: 'stop-dataset-edit',
@@ -365,9 +417,10 @@ function R2UiBoxDefinitions() {
                         'box-sym-dataset': {
                             classes: 'scale x50 t-l'
                         },
-                        headline: { html: 'My Dataset: Created new Version 4 / Edit Textfield' },
+                        headline: { html: 'My Dataset: Version 4 / Not Published / Edit Textfield' },
                         // save changes
                         'head-seperator': {},
+                        'doi-cover': {},
                         'box-menu-divider': {},
                         'bt-box-edit-selected': {
                             key: 'stop-dataset-edit',
@@ -386,6 +439,7 @@ function R2UiBoxDefinitions() {
                             key: 'keep-changes',
                             click: true
                         }
+                        
                     }
                 },
                 'my-dataset-private': {
@@ -395,7 +449,8 @@ function R2UiBoxDefinitions() {
                         },
                         headline: { html: 'My Dataset: Version 4 / Not Published' },
                         'head-seperator': {},
-                        'box-menu-divider': {},
+                        'doi-cover': {},
+                        // 'box-menu-divider': {},
                         // 'box-sharebar': {
                         //     classes: 'scale x50 t-r'
                         // },
@@ -403,13 +458,13 @@ function R2UiBoxDefinitions() {
                             key: 'start-dataset-edit',
                             click: true,
                             classes: 'scale x50 t-r'
-                        },
-                        'bt-publish': {
-                            html: 'Publish Dataset',
-                            classes: 'button bt-ok',
-                            click: true
-                            // args: { view: 'step-2' }
-                        }
+                        } //,
+                        // 'bt-publish': {
+                        //     html: 'Publish Version',
+                        //     classes: 'button bt-ok',
+                        //     click: true
+                        //     // args: { view: 'step-2' }
+                        // }
                     }
                 }
             }
