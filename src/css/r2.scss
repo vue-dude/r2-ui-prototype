@@ -555,7 +555,8 @@
                     }
                 }
 
-                .dataset-history-create-private, .dataset-history-with-private {
+                .dataset-history-create-private,
+                .dataset-history-with-private {
                     .inner .bg-img {
                         left: 10px;
                         top: 30px;
@@ -595,13 +596,29 @@
                             width: 394px;
                             height: 84px;
                         }
+                        .withdraw-dataset {
+                            top: 79px;
+                            left: 467px;
+                            width: 36px;
+                            height: 36px;
+                        }
                     }
                 }
 
-
-                .dataset-history-with-private{
+                .dataset-history-with-private {
                     .bt-view-dataset {
                         top: 160px;
+                    }
+                    .click-zones {
+                        .withdraw-dataset {
+                            top: 94px;
+                        }
+                        .publish-version {
+                            top: 159px;
+                            left: 237px;
+                            width: 124px;
+                            height: 34px;
+                        }
                     }
                 }
             }
@@ -708,12 +725,12 @@
                         width: 60px;
                         height: 30px;
                     }
-                    .doi-cover{
+                    .doi-cover {
                         top: 235px;
                         left: 220px;
                         width: 149px;
                         height: 19px;
-                        background-color: white;          
+                        background-color: white;
                     }
 
                     // &.my-dataset-published,
@@ -829,6 +846,17 @@
                 .view .zones {
                     width: var(--width);
                     height: var(--height);
+                }
+                
+                .withdraw {
+                    background-color: #4d5a71;
+                    border-radius: 10px;
+                    .isp-withdraw {
+                        top: 0px;
+                        left: 10px;
+                        width: 1020px;
+                        height: 755px;
+                    }
                 }
                 .info {
                     .isp-info {

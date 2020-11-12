@@ -117,7 +117,7 @@ export default {
                         }
 
                         if (evt.viewKey === 'my-dataset-published') {
-                            // list / history view here ? 
+                            // list / history view here ?
                             return this.setViewMode('mywork', options)
                         }
 
@@ -220,6 +220,16 @@ export default {
                     return this.setViewMode('login')
                 case evt.box.id === 'my-datasets':
                     switch (evt.key) {
+                        case 'publish-version':
+                            return null
+
+                        case 'withdraw-dataset':
+                            options._00 = {
+                                targets: { inspector: { delay: 0, speed: 0.3, view: 'withdraw' } }
+                            }
+                            this.setBoxConnectedNavState('inspector-nav', null)
+                            return this.setViewMode('mywork', options)
+
                         case 'view-back':
                             options._00 = {
                                 targets: { 'my-datasets': { delay: 0, speed: 0.3 } }
@@ -266,7 +276,6 @@ export default {
                     }
                     this.setBoxConnectedNavState(evt.box.id, evt.key)
                     return this.setViewMode('mywork', options)
-
                     this.setBoxConnectedNavState(evt.box.id, evt.key)
                 case evt.box.id === 'facets-nav':
                     this.setBoxConnectedNavState(evt.box.id, evt.key)

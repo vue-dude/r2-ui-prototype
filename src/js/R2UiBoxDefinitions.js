@@ -197,7 +197,8 @@ function R2UiBoxDefinitions() {
                     zones: {
                         'create-new-version': {
                             key: 'show-private-dataset-from-history'
-                        }
+                        },
+                        'withdraw-dataset': {}
                     }
                 },
                 'dataset-history-with-private': {
@@ -215,6 +216,10 @@ function R2UiBoxDefinitions() {
                             key: 'show-private-dataset-from-history',
                             click: true
                         }
+                    },
+                    zones: {
+                        'withdraw-dataset': {},
+                        'publish-version': {}
                     }
                 }
             }
@@ -260,6 +265,13 @@ function R2UiBoxDefinitions() {
                 info: {
                     elements: {
                         'isp-info': {
+                            classes: 'scale x50 t-l'
+                        }
+                    }
+                },
+                withdraw: {
+                    elements: {
+                        'isp-withdraw': {
                             classes: 'scale x50 t-l'
                         }
                     }
@@ -439,7 +451,6 @@ function R2UiBoxDefinitions() {
                             key: 'keep-changes',
                             click: true
                         }
-                        
                     }
                 },
                 'my-dataset-private': {
