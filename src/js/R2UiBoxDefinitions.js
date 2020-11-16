@@ -5,21 +5,81 @@ function R2UiBoxDefinitions() {
                 recent: {
                     elements: {
                         headline: { html: 'Most recent Datasets' },
-                        'recent-facets-bt': { click: true, key: 'show-facets' }
+                        'head-seperator': {},
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'box-header-search': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'box-header-list-options': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'recent-facets-bt': {
+                            key: 'show-facets',
+                            click: true
+                        }
                     },
-                    zones: {
-                        'show-ds-1': {
-                            key: 'show-public-dataset'
-                        },
-                        'show-ds-2': {
-                            key: 'show-public-dataset'
-                        },
-                        'show-ds-3': {
-                            key: 'show-public-dataset'
+                    scroll: {
+                        zones: {
+                            'show-ds-1': {
+                                key: 'show-public-dataset'
+                            },
+                            'show-ds-2': {
+                                key: 'show-public-dataset'
+                            },
+                            'show-ds-3': {
+                                key: 'show-public-dataset'
+                            },
+                            'show-ds-4': {
+                                key: 'show-public-dataset'
+                            },
+                            'show-ds-5': {
+                                key: 'show-public-dataset'
+                            }
                         }
                     }
                 },
                 'recent-facets': {
+                    elements: {
+                        headline: { html: 'Facet filtered Datasets' },
+                        'head-seperator': {},
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'box-header-search': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'box-header-list-options': {
+                            classes: 'scale x50 t-l'
+                        },
+                        'recent-facets-bt-selected': {
+                            key: 'hide-facets',
+                            click: true
+                        }
+                    },
+                    scroll: {
+                        zones: {
+                            'show-ds-1': {
+                                key: 'show-public-dataset'
+                            },
+                            'show-ds-2': {
+                                key: 'show-public-dataset'
+                            },
+                            'show-ds-3': {
+                                key: 'show-public-dataset'
+                            },
+                            'show-ds-4': {
+                                key: 'show-public-dataset'
+                            },
+                            'show-ds-5': {
+                                key: 'show-public-dataset'
+                            }
+                        }
+                    }
+                },
+
+                'recent-facetsXX': {
                     elements: {
                         headline: { html: 'Facet filtered Datasets' },
                         'recent-facets-bt-selected': { click: true, key: 'hide-facets' }
@@ -32,6 +92,12 @@ function R2UiBoxDefinitions() {
                             key: 'show-public-dataset'
                         },
                         'show-ds-3': {
+                            key: 'show-public-dataset'
+                        },
+                        'show-ds-4': {
+                            key: 'show-public-dataset'
+                        },
+                        'show-ds-5': {
                             key: 'show-public-dataset'
                         }
                     }

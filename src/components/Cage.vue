@@ -63,6 +63,10 @@ export default {
                 view.id = view.id ? view.id : key
                 view.elements = view.elements ? view.elements : {}
                 view.zones = view.zones ? view.zones : {}
+                view.scroll = view.scroll ? view.scroll : {}
+                view.scroll.id = view.scroll.id ? view.scroll.id : view.id
+                view.scroll.elements = view.scroll.elements ? view.scroll.elements : {}
+                view.scroll.zones = view.scroll.zones ? view.scroll.zones : {}
             })
         })
         console.log('obj:fc this.boxes = ', this.boxes)

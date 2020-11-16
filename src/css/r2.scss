@@ -119,6 +119,23 @@
                 &.no-events {
                     pointer-events: none;
                 }
+                .fixed {
+                    // position: absolute;
+                }
+                .scrollable {
+                    position: relative;
+                    height: 0px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    top: 60px;
+                    left: 10px;
+                    .content {
+                        // width: 200px;
+                        // height: 1000px;
+                        // background-color: gray;
+                        // border: 1px solid black;
+                    }
+                }
                 .scale {
                     // transform-origin: center center;
                     &.t-l {
@@ -147,9 +164,6 @@
                     left: 0;
                     .element {
                         position: absolute;
-                        // div {
-                        //     width: max-content;
-                        // }
                         &.clickable {
                             cursor: pointer;
                         }
@@ -218,59 +232,103 @@
                     width: var(--width);
                     height: var(--height);
                 }
-                .inner {
-                    left: 0;
-                    top: -2px;
-                    &.bg-img.recent {
-                        width: 513px;
-                    }
-                    &.bg-img.recent-facets {
-                        width: 513px;
-                    }
-                }
-                .element {
-                    &.headline {
-                        left: 50px;
-                    }
-                    .bg-img {
-                        transform: scale(0.55);
-                    }
+
+                .scrollable {
+                    width: 180px;
+                    height: 135px;
                 }
 
-                .recent {
-                    .element {
-                        &.recent-facets-bt {
-                            right: -5px;
-                            top: -10px;
-                        }
-                    }
-                }
+                .recent,
                 .recent-facets {
-                    .element {
-                        &.recent-facets-bt-selected {
-                            right: -5px;
-                            top: -10px;
+                    .fixed {
+                        .headline {
+                            left: 53px;
+                        }
+                        .head-seperator {
+                            left: 45px;
+                            div {
+                                width: 465px;
+                            }
+                        }
+                        .box-sym-dataset {
+                            top: 4px;
+                            left: 6px;
+                            width: 74px;
+                            height: 88px;
+                            opacity: 0.8;
+                        }
+
+
+                        .box-header-search {
+                            top: 11px;
+                            left: 242px;
+                            width: 344px;
+                            height: 45px;
+                        }
+
+                        .box-header-list-options {
+                            top: 9px;
+                            left: 421px;
+                            width: 115px;
+                            height: 51px;
+                        }
+
+                        .recent-facets-bt {
+                            right: 4px;
+                            top: 3px;
+                            width: 35px;
+                            height: 35px;
+                        }
+
+                        .recent-facets-bt-selected {
+                            right: 4px;
+                            top: 3px;
+                            width: 35px;
+                            height: 35px;
                         }
                     }
-                }
 
-                .click-zones {
-                    .click-zone {
-                        right: 20px;
-                        width: 30px;
-                        height: 30px;
-                        &.show-ds-1 {
-                            top: 56px;
+                    .scrollable {
+                        width: 510px;
+                        height: 370px;
+                        .inner {
+                            left: 0;
+                            top: 0;
+                            &.bg-img.recent-scroll,
+                            &.bg-img.recent-facets-scroll {
+                                width: 505px;
+                                height: 780px;
+                            }
                         }
-                        &.show-ds-2 {
-                            top: 180px;
-                        }
-                        &.show-ds-3 {
-                            top: 315px;
+                        .click-zones {
+                            .click-zone {
+                                left: 4px;
+                                width: 500px;
+                                height: 60px;
+                                &.show-ds-1 {
+                                    top: -2px;
+                                }
+                                &.show-ds-2 {
+                                    top: 152px;
+                                    height: 80px;
+                                }
+                                &.show-ds-3 {
+                                    top: 320px;
+                                    height: 45px;
+                                }
+                                &.show-ds-4 {
+                                    top: 460px;
+                                }
+                                &.show-ds-5 {
+                                    top: 616px;
+                                    height: 80px;
+                                }
+                            }
                         }
                     }
                 }
             }
+
             &.facets {
                 top: 40px;
                 left: 20px; // 595px
@@ -374,6 +432,7 @@
                     height: var(--height);
                 }
             }
+
             &.login {
                 top: 94px;
                 left: 643px;
@@ -406,6 +465,7 @@
                     }
                 }
             }
+
             &.login-bt-top {
                 top: -40px;
                 // right: 136px;
@@ -488,6 +548,7 @@
                     }
                 }
             }
+
             &.flow-show {
                 top: 230px;
                 left: 560px;
@@ -498,6 +559,7 @@
                     transform-origin: center;
                 }
             }
+
             &.my-datasets {
                 top: 40px;
                 left: 20px;
@@ -853,7 +915,7 @@
                     width: var(--width);
                     height: var(--height);
                 }
-                
+
                 .withdraw {
                     background-color: #4d5a71;
                     border-radius: 10px;

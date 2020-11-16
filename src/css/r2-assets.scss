@@ -30,26 +30,39 @@
         &.close-x {
             background-image: url(./r2-ui/close-x.webp);
         }
+        // TODO remove the :before thing completely
         &.register-step-1-mail:before {
             content: url(./r2-ui/register-step-1-mail.webp);
         }
         &.register-step-2:before {
             content: url(./r2-ui/register-step-2.webp);
         }
-        //
-        &.recent,
-        &.recent-facets {
-            background-image: url(./r2-ui/recent.webp);
+
+        &.recent-scroll,
+        &.recent-facets-scroll {
+            background-image: url(./r2-ui/recent-scroll.png);
         }
+
+        &.box-header-search {
+            background-image: url(./r2-ui/box-header-search.png);
+        }
+
+        &.box-header-list-options {
+            background-image: url(./r2-ui/box-header-list-options.png);
+        }
+
         &.facets {
             background-image: url(./r2-ui/facets.webp);
         }
-        &.recent-facets-bt:before {
-            content: url(./r2-ui/recent-facets-bt.webp);
+
+        &.recent-facets-bt {
+            background-image: url(./r2-ui/recent-facets-bt.webp);
         }
-        &.recent-facets-bt-selected:before {
-            content: url(./r2-ui/recent-facets-bt-selected.webp);
+
+        &.recent-facets-bt-selected {
+            background-image: url(./r2-ui/recent-facets-bt-selected.webp);
         }
+
         &.facets-nav {
             background-image: url(./r2-ui/facets-nav.webp);
         }
