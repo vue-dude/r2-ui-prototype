@@ -537,7 +537,7 @@
                         top: 73px;
                         left: 12px;
                         width: 1018px;
-                        height: 592px;
+                        height: 635px;
                     }
                     .click-zones {
                         .click-zone {
@@ -545,11 +545,17 @@
                             width: 30px;
                             height: 30px;
 
-                            &.show-dataset {
-                                top: 170px;
+                            &.show-dataset-1 {
+                                top: 74px;
+                            }
+                            &.show-dataset-2 {
+                                top: 187px;
+                            }
+                            &.show-dataset-3 {
+                                top: 300px;
                             }
                             &.show-history {
-                                top: 205px;
+                                top: 222px;
                             }
                         }
                     }

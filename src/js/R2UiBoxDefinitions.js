@@ -172,7 +172,13 @@ function R2UiBoxDefinitions() {
                         }
                     },
                     zones: {
-                        'show-dataset': {
+                        'show-dataset-1': {
+                            key: 'show-my-dataset'
+                        },
+                        'show-dataset-2': {
+                            key: 'show-my-dataset'
+                        },
+                        'show-dataset-3': {
                             key: 'show-my-dataset'
                         },
                         'show-history': {}
