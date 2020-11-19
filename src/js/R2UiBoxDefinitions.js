@@ -409,6 +409,90 @@ function R2UiBoxDefinitions() {
         //         }
         //     }
         // },
+
+        'dataset-wf': {
+            close: true,
+            views: {
+                'public-dataset-wf': {
+                    elements: {
+                        'box-sym-dataset': {
+                            classes: 'scale x50 t-l'
+                        },
+                        headline: { html: 'Dataset: DOI 10.1002/0470841559.ch1' },
+                        'head-seperator': {},
+                        'box-sharebar': {
+                            classes: 'scale x50 t-r'
+                        }
+                    },
+                    scroll: {
+                        elements: {
+                            'dataset-public-wf-views': {},
+                            'dataset-public-wf-versions': {},
+                            // 'dataset-public-wf-versions-closed': {},
+                            // 'dataset-public-wf-audits': {},
+                            'dataset-public-wf-citations': {}
+                        }
+
+                        // zones: {
+                        // 'show-ds-1': {
+                        //     key: 'show-public-dataset'
+                        // },
+                        // 'show-ds-2': {
+                        //     key: 'show-public-dataset'
+                        // },
+                        // 'show-ds-3': {
+                        //     key: 'show-public-dataset'
+                        // },
+                        // 'show-ds-4': {
+                        //     key: 'show-public-dataset'
+                        // },
+                        // 'show-ds-5': {
+                        //     key: 'show-public-dataset'
+                        // }
+                        // }
+                    }
+                }
+            }
+        },
+
+        datasetYY: {
+            close: true,
+            views: {
+                'public-dataset': {
+                    elements: {
+                        elements: {
+                            'box-sym-dataset': {
+                                classes: 'scale x50 t-l'
+                            },
+                            headline: { html: 'Dataset: DOI 10.1002/0470841559.ch1' },
+                            'head-seperator': {},
+                            'box-sharebar': {
+                                classes: 'scale x50 t-r'
+                            }
+                        }
+                    },
+                    scroll: {
+                        zones: {
+                            // 'show-ds-1': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-2': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-3': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-4': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-5': {
+                            //     key: 'show-public-dataset'
+                            // }
+                        }
+                    }
+                }
+            }
+        },
         dataset: {
             close: true,
             views: {

@@ -40,15 +40,15 @@
 
         &.recent-scroll,
         &.recent-facets-scroll {
-            background-image: url(./r2-ui/recent-scroll.png);
+            background-image: url(./r2-ui/recent-scroll.webp);
         }
 
         &.box-header-search {
-            background-image: url(./r2-ui/box-header-search.png);
+            background-image: url(./r2-ui/box-header-search.webp);
         }
 
         &.box-header-list-options {
-            background-image: url(./r2-ui/box-header-list-options.png);
+            background-image: url(./r2-ui/box-header-list-options.webp);
         }
 
         &.facets {
@@ -68,7 +68,7 @@
         }
         //
         &.mywork-all-list {
-            background-image: url(./r2-ui/mywork-all-list.png);
+            background-image: url(./r2-ui/mywork-all-list.webp);
         }
         &.mywork-ds-history {
             background-image: url(./r2-ui/mywork-ds-history.webp);
@@ -136,8 +136,28 @@
         &.sym-diamond-sel {
             background-image: url(./r2-ui/main/sym-diamond-sel.webp);
         }
-        // dataset views
+        // wireframe dataset views & stuff
 
+        &.public-dataset-wf-scroll {
+            background-image: url(./r2-ui/dataset-public-wf.webp);
+        }
+        &.dataset-public-wf-views {
+            background-image: url(./r2-ui/dataset-public-wf-views.webp);
+        }
+        &.dataset-public-wf-versions {
+            background-image: url(./r2-ui/dataset-public-wf-versions.webp);
+        }
+        &.dataset-public-wf-versions-closed {
+            background-image: url(./r2-ui/dataset-public-wf-versions-closed.webp);
+        }
+        &.dataset-public-wf-audits {
+            background-image: url(./r2-ui/dataset-public-wf-audits.webp);
+        }
+        &.dataset-public-wf-citations {
+            background-image: url(./r2-ui/dataset-public-wf-citations.webp);
+        }
+
+        // dataset views
         &.my-dataset,
         &.my-dataset-from-history,
         &.my-dataset-published,

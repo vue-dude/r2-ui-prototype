@@ -5,6 +5,7 @@
         <!--  -->
         <box class="animate bg-dark" :config="boxes['create-dataset']"></box>
         <box class="animate bg-dark" :config="boxes['dataset']"></box>
+        <box class="animate bg-dark" :config="boxes['dataset-wf']"></box>
         <box
             class="animate bg-dark"
             :class="[{ 'facets-shifted': $store.state.loggedIn || viewMode === 'facets' }]"
@@ -185,10 +186,10 @@ export default {
                             options._NAV = {
                                 // backOnCloseTo: 'home' // needs implementation
                             }
-                            options.dataset = {
-                                view: 'public-dataset'
+                            options['dataset-wf'] = {
+                                view: 'public-dataset-wf'
                             }
-                            return this.setViewMode('view-dataset', options)
+                            return this.setViewMode('view-dataset-wf', options)
                         case 'show-facets':
                             options['recent'] = {
                                 view: 'recent-facets'
@@ -327,6 +328,9 @@ export default {
                     // path = 'View Dataset / Reproduction Data for: TRex, a fast multi-animal tracking system ...'
                     path = 'View Dataset / DOI / 10.1002/0470841559.ch1'
                     break
+                case 'view-dataset-wf':
+                    path = 'View Dataset / DOI / 10.1002/0470841559.ch1'
+                    break
             }
             this.$store.dispatch('setSubPath', path)
 
@@ -401,6 +405,10 @@ export default {
                     globals.eventBus.$emit('reset-login-animation')
                     break
 
+                case 'view-dataset-wf':
+                    goIns = { 'dataset-wf': { delay: 0.1, speed: 0.6 } }
+                    globals.eventBus.$emit('reset-login-animation')
+                    break
                 case 'register':
                     console.log('setViewMode:register options = ', options)
                     goIns = { register: { delay: 0.25, speed: 0.6, view: 'step-1' } }
@@ -456,6 +464,9 @@ export default {
 
                 // handle the different views inside the box
                 const view = this.boxes[boxId].views[prms.view]
+
+                console.log('obj:fc view = ', view)
+                console.log('obj:fc this.boxes[boxId] = ', this.boxes[boxId])
                 _.each(this.boxes[boxId].views, vu => {
                     if (view !== vu) {
                         gsap.killTweensOf($(`${animationTargets}.${boxId} .${vu.id}`))
