@@ -9,152 +9,171 @@
         }
         // for asset within elements, use the css definition like:
         // &.recent-facets-bt:before {
-        //     content: url(./r2-ui/recent-facets-bt.webp);
+        //     content: url(./r2-ui/v1/recent-facets-bt.webp);
         // }
         // for asset as inner / bg, use the css definition like:
         // &.recent-facets-bt {
-        //     background-image: url(./r2-ui/recent-facets-bt.webp);
+        //     background-image: url(./r2-ui/v1/recent-facets-bt.webp);
         // }
+        //
+        // v.2
+        &.v2-landing-page-scroll {
+            background-image: url(./r2-ui/v2/landing-page.png);
+        }
+        &.v2-dataset-view-public-scroll {
+            background-image: url(./r2-ui/v2/dataset-view-public.png);
+        }
+        &.v2-head-crtl-sharing-bar {
+            background-image: url(./r2-ui/v2/head-crtl-sharing-bar.png);
+        }
+        &.v2-head-crtl-bt-open-in-tab {
+            background-image: url(./r2-ui/v2/head-crtl-bt-open-in-tab.png);
+        }
+        &.v2-head-crtl-bt-close {
+            background-image: url(./r2-ui/v2/head-crtl-bt-close.png);
+        }
+        //
+        // v.1
         &.circle {
-            background-image: url(./r2-ui/circle.webp);
+            background-image: url(./r2-ui/v1/circle.webp);
         }
         &.globe {
-            background-image: url(./r2-ui/globe.webp);
+            background-image: url(./r2-ui/v1/globe.webp);
         }
         &.login-arrow {
-            background-image: url(./r2-ui/login-arrow.webp);
+            background-image: url(./r2-ui/v1/login-arrow.webp);
         }
         &.login {
-            background-image: url(./r2-ui/login.webp);
+            background-image: url(./r2-ui/v1/login.webp);
         }
         &.close-x {
-            background-image: url(./r2-ui/close-x.webp);
+            background-image: url(./r2-ui/v1/close-x.webp);
         }
         // TODO remove the :before thing completely
         &.register-step-1-mail:before {
-            content: url(./r2-ui/register-step-1-mail.webp);
+            content: url(./r2-ui/v1/register-step-1-mail.webp);
         }
         &.register-step-2:before {
-            content: url(./r2-ui/register-step-2.webp);
+            content: url(./r2-ui/v1/register-step-2.webp);
         }
 
         &.recent-scroll,
         &.recent-facets-scroll {
-            background-image: url(./r2-ui/recent-scroll.webp);
+            background-image: url(./r2-ui/v1/recent-scroll.webp);
         }
 
         &.box-header-search {
-            background-image: url(./r2-ui/box-header-search.webp);
+            background-image: url(./r2-ui/v1/box-header-search.webp);
         }
 
         &.box-header-list-options {
-            background-image: url(./r2-ui/box-header-list-options.webp);
+            background-image: url(./r2-ui/v1/box-header-list-options.webp);
         }
 
         &.facets {
-            background-image: url(./r2-ui/facets.webp);
+            background-image: url(./r2-ui/v1/facets.webp);
         }
 
         &.recent-facets-bt {
-            background-image: url(./r2-ui/recent-facets-bt.webp);
+            background-image: url(./r2-ui/v1/recent-facets-bt.webp);
         }
 
         &.recent-facets-bt-selected {
-            background-image: url(./r2-ui/recent-facets-bt-selected.webp);
+            background-image: url(./r2-ui/v1/recent-facets-bt-selected.webp);
         }
 
         &.facets-nav {
-            background-image: url(./r2-ui/facets-nav.webp);
+            background-image: url(./r2-ui/v1/facets-nav.webp);
         }
         //
         &.mywork-all-list {
-            background-image: url(./r2-ui/mywork-all-list.webp);
+            background-image: url(./r2-ui/v1/mywork-all-list.webp);
         }
         &.mywork-ds-history {
-            background-image: url(./r2-ui/mywork-ds-history.webp);
+            background-image: url(./r2-ui/v1/mywork-ds-history.webp);
         }
         &.mywork-ds-history-create-private,
         &.dataset-history-create-private {
-            background-image: url(./r2-ui/mywork-ds-history-create-private.webp);
+            background-image: url(./r2-ui/v1/mywork-ds-history-create-private.webp);
         }
         &.mywork-ds-history-with-private,
         &.dataset-history-with-private {
-            background-image: url(./r2-ui/mywork-ds-history-with-private.webp);
+            background-image: url(./r2-ui/v1/mywork-ds-history-with-private.webp);
         }
 
         &.mywork-box-sym {
-            background-image: url(./r2-ui/mywork-box-sym.webp);
+            background-image: url(./r2-ui/v1/mywork-box-sym.webp);
         }
         &.bt-create-dataset {
-            background-image: url(./r2-ui/bt-create-dataset.webp);
+            background-image: url(./r2-ui/v1/bt-create-dataset.webp);
         }
         &.bt-view-dataset {
-            background-image: url(./r2-ui/bt-view-dataset.webp);
+            background-image: url(./r2-ui/v1/bt-view-dataset.webp);
         }
         &.box-back-bt {
-            background-image: url(./r2-ui/bt-box-back.webp);
+            background-image: url(./r2-ui/v1/bt-box-back.webp);
         }
         //
         &.inspector-nav {
-            background-image: url(./r2-ui/inspector-nav.webp);
+            background-image: url(./r2-ui/v1/inspector-nav.webp);
         }
         //
         &.isp-info {
-            background-image: url(./r2-ui/isp-info.webp);
+            background-image: url(./r2-ui/v1/isp-info.webp);
         }
         &.isp-uploads {
-            background-image: url(./r2-ui/isp-uploads.webp);
+            background-image: url(./r2-ui/v1/isp-uploads.webp);
         }
         &.isp-statistics {
-            background-image: url(./r2-ui/isp-statistics.webp);
+            background-image: url(./r2-ui/v1/isp-statistics.webp);
         }
         &.isp-files {
-            background-image: url(./r2-ui/isp-files.webp);
+            background-image: url(./r2-ui/v1/isp-files.webp);
         }
         &.isp-upload-start {
-            background-image: url(./r2-ui/isp-upload-start.webp);
+            background-image: url(./r2-ui/v1/isp-upload-start.webp);
         }
         &.isp-withdraw {
-            background-image: url(./r2-ui/isp-withdraw.webp);
+            background-image: url(./r2-ui/v1/isp-withdraw.webp);
         }
         // main nav
         &.circ-bg {
-            background-image: url(./r2-ui/main/circ-bg.webp);
+            background-image: url(./r2-ui/v1/main/circ-bg.webp);
         }
         &.circ-bg-sel {
-            background-image: url(./r2-ui/main/circ-bg-sel.webp);
+            background-image: url(./r2-ui/v1/main/circ-bg-sel.webp);
         }
         &.sym-circ {
-            background-image: url(./r2-ui/main/sym-circ.webp);
+            background-image: url(./r2-ui/v1/main/sym-circ.webp);
         }
         &.sym-circ-sel {
-            background-image: url(./r2-ui/main/sym-circ-sel.webp);
+            background-image: url(./r2-ui/v1/main/sym-circ-sel.webp);
         }
         &.sym-diamond {
-            background-image: url(./r2-ui/main/sym-diamond.webp);
+            background-image: url(./r2-ui/v1/main/sym-diamond.webp);
         }
         &.sym-diamond-sel {
-            background-image: url(./r2-ui/main/sym-diamond-sel.webp);
+            background-image: url(./r2-ui/v1/main/sym-diamond-sel.webp);
         }
         // wireframe dataset views & stuff
 
         &.public-dataset-wf-scroll {
-            background-image: url(./r2-ui/dataset-public-wf.webp);
+            background-image: url(./r2-ui/v1/dataset-public-wf.webp);
         }
         &.dataset-public-wf-views {
-            background-image: url(./r2-ui/dataset-public-wf-views.webp);
+            background-image: url(./r2-ui/v1/dataset-public-wf-views.png);
         }
         &.dataset-public-wf-versions {
-            background-image: url(./r2-ui/dataset-public-wf-versions.webp);
+            background-image: url(./r2-ui/v1/dataset-public-wf-versions.webp);
         }
         &.dataset-public-wf-versions-closed {
-            background-image: url(./r2-ui/dataset-public-wf-versions-closed.webp);
+            background-image: url(./r2-ui/v1/dataset-public-wf-versions-closed.webp);
         }
         &.dataset-public-wf-audits {
-            background-image: url(./r2-ui/dataset-public-wf-audits.webp);
+            background-image: url(./r2-ui/v1/dataset-public-wf-audits.webp);
         }
         &.dataset-public-wf-citations {
-            background-image: url(./r2-ui/dataset-public-wf-citations.webp);
+            background-image: url(./r2-ui/v1/dataset-public-wf-citations.webp);
         }
 
         // dataset views
@@ -169,37 +188,37 @@
         // &.my-dataset-published,
         // &.my-dataset-published-ac 
         &.public-dataset {
-            background-image: url(./r2-ui/dataset-public.webp);
+            background-image: url(./r2-ui/v1/dataset-public.webp);
         }
         &.dataset-edit-layer {
-            background-image: url(./r2-ui/dataset-edit-layer.webp);
+            background-image: url(./r2-ui/v1/dataset-edit-layer.webp);
         }
         &.dataset-edit-symbols-layer {
-            background-image: url(./r2-ui/dataset-edit-symbols-layer.webp);
+            background-image: url(./r2-ui/v1/dataset-edit-symbols-layer.webp);
         }
         &.box-sym-dataset {
-            background-image: url(./r2-ui/box-sym-dataset.webp);
+            background-image: url(./r2-ui/v1/box-sym-dataset.webp);
         }
         &.box-sharebar {
-            background-image: url(./r2-ui/box-sharebar.webp);
+            background-image: url(./r2-ui/v1/box-sharebar.webp);
         }
         &.dataset-edit-layer {
-            background-image: url(./r2-ui/dataset-edit-layer.webp);
+            background-image: url(./r2-ui/v1/dataset-edit-layer.webp);
         }
         &.bt-box-upload {
-            background-image: url(./r2-ui/bt-box-upload.webp);
+            background-image: url(./r2-ui/v1/bt-box-upload.webp);
         }
         &.bt-box-edit {
-            background-image: url(./r2-ui/bt-box-edit.webp);
+            background-image: url(./r2-ui/v1/bt-box-edit.webp);
         }
         &.bt-box-edit-selected {
-            background-image: url(./r2-ui/bt-box-edit-selected.webp);
+            background-image: url(./r2-ui/v1/bt-box-edit-selected.webp);
         }
         &.bt-box-actions {
-            background-image: url(./r2-ui/bt-box-actions.webp);
+            background-image: url(./r2-ui/v1/bt-box-actions.webp);
         }
         &.bt-cms-keep-discard {
-            background-image: url(./r2-ui/bt-cms-keep-discard.webp);
+            background-image: url(./r2-ui/v1/bt-cms-keep-discard.webp);
         }
     }
 }

@@ -35,7 +35,7 @@
                     ></div>
                 </div>
             </div>
-            <vue-custom-scrollbar class="scrollable" :settings="scrConfig" scrollYMarginOffset="20px">
+            <vue-custom-scrollbar class="scrollable" :settings="scrConfig">
                 <!-- <div class="scrollable"> -->
                 <div class="content">
                     <div class="inner" v-if="!view.setScrollBgImageOverElements">
