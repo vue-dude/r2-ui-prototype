@@ -18,20 +18,44 @@
         //
         // v.2
         &.v2-landing-page-scroll {
-            background-image: url(./r2-ui/v2/landing-page.png);
+            background-image: url(./r2-ui/v2/landing-page.webp);
         }
+        //
+        &.v2-search-page-XX {
+            background-image: url(./r2-ui/v2/search-page.webp);
+        }
+        &.v2-search-page-scroll {
+            background-image: url(./r2-ui/v2/search-page-dataset-list.png);
+        }
+        &.v2-search-page-search-bar-top {
+            background-image: url(./r2-ui/v2/search-page-search-bar-top.png);
+        }
+        &.v2-search-page-pager-left {
+            background-image: url(./r2-ui/v2/search-page-pager-left.png);
+        }
+        &.v2-search-page-pager-right {
+            background-image: url(./r2-ui/v2/search-page-pager-right.png);
+        }
+        &.v2-search-page-facets-up {
+            background-image: url(./r2-ui/v2/search-page-facets-up.png);
+        }
+        &.v2-search-page-facets-dn {
+            background-image: url(./r2-ui/v2/search-page-facets-dn.png);
+        }
+        //
         &.v2-dataset-view-public-scroll {
-            background-image: url(./r2-ui/v2/dataset-view-public.png);
+            background-image: url(./r2-ui/v2/dataset-view-public.webp);
         }
         &.v2-head-crtl-sharing-bar {
-            background-image: url(./r2-ui/v2/head-crtl-sharing-bar.png);
+            background-image: url(./r2-ui/v2/head-crtl-sharing-bar.webp);
         }
         &.v2-head-crtl-bt-open-in-tab {
-            background-image: url(./r2-ui/v2/head-crtl-bt-open-in-tab.png);
+            background-image: url(./r2-ui/v2/head-crtl-bt-open-in-tab.webp);
         }
         &.v2-head-crtl-bt-close {
-            background-image: url(./r2-ui/v2/head-crtl-bt-close.png);
+            background-image: url(./r2-ui/v2/head-crtl-bt-close.webp);
         }
+
         //
         // v.1
         &.circle {
@@ -161,7 +185,7 @@
             background-image: url(./r2-ui/v1/dataset-public-wf.webp);
         }
         &.dataset-public-wf-views {
-            background-image: url(./r2-ui/v1/dataset-public-wf-views.png);
+            background-image: url(./r2-ui/v1/dataset-public-wf-views.webp);
         }
         &.dataset-public-wf-versions {
             background-image: url(./r2-ui/v1/dataset-public-wf-versions.webp);

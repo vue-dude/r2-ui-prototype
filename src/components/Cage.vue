@@ -5,6 +5,7 @@
         <box class="animate" :config="boxes['v2-head-controls']"></box>
         <!--  -->
         <box class="animate" :config="boxes['v2-landing-page']"></box>
+        <box class="animate" :config="boxes['v2-search-page']"></box>
         <box class="animate" :config="boxes['v2-dataset-view-public']"></box>
     </div>
 </template>
@@ -36,13 +37,16 @@ export default {
             box.views = box.views ? box.views : { [box.id]: {} }
             _.each(box.views, (view, key) => {
                 view.visible = view.visible || false
-                view.id = view.id ? view.id : key
-                view.elements = view.elements ? view.elements : {}
-                view.zones = view.zones ? view.zones : {}
-                view.scroll = view.scroll ? view.scroll : {}
-                view.scroll.id = view.scroll.id ? view.scroll.id : view.id
-                view.scroll.elements = view.scroll.elements ? view.scroll.elements : {}
-                view.scroll.zones = view.scroll.zones ? view.scroll.zones : {}
+                view.id = view.id || key
+                view.elements = view.elements || {}
+                view.zones = view.zones || {}
+                view.scroll = view.scroll || {}
+                view.scroll.id = view.scroll.id || view.id
+                view.scroll.elements = view.scroll.elements || {}
+                view.scroll.zones = view.scroll.zones || {}
+                view.overlay = view.overlay || {}
+                view.overlay.elements = view.overlay.elements || {}
+                view.overlay.zones = view.overlay.zones || {}
             })
         })
         console.log('obj:fc this.boxes = ', this.boxes)
@@ -74,13 +78,24 @@ export default {
             let options = { _00: { targets: null } }
 
             switch (evt.key) {
+                case 'public':
+                    return this.setViewMode('home', options)
                 case 'show-public-dataset':
                     return this.setViewMode('public-dataset', options)
+                case 'show-search-page':
+                    return this.setViewMode('search', options)
+
                 case 'v2-head-crtl-bt-close':
+                    if (this.viewModePrev === 'search') {
+                        return this.setViewMode('search', options)
+                    }
                     return this.setViewMode('home', options)
                 case 'v2-head-crtl-bt-open-in-tab':
                     const redirectWindow = window.open('localhost:8080/view-dataset/ccg466rgx43222', '_blank')
                     // redirectWindow.location
+                    if (this.viewModePrev === 'search') {
+                        return this.setViewMode('search', options)
+                    }
                     return this.setViewMode('home', options)
             }
 
@@ -280,6 +295,9 @@ export default {
                 case 'home':
                     path = 'Welcome!'
                     break
+                case 'search':
+                    path = '' // Search datasets
+                    break
                 case 'public-dataset':
                     path = 'View Dataset / DOI / 10.1002/0470841559.ch1'
                     break
@@ -335,6 +353,12 @@ export default {
                 case 'home':
                     goIns = {
                         'v2-landing-page': { delay: 0.1, speed: 0.8 }
+                    }
+                    break
+                case 'search':
+                    goIns = {
+                        'v2-search-page': { delay: 0.1, speed: 0.8 },
+                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' }
                     }
                     break
                 case 'public-dataset':

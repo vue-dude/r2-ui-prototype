@@ -64,10 +64,38 @@
                             :class="[key]"
                             @click="onClickThing(zone.key || key, zone.args)"
                         ></div>
-                    </div> 
+                    </div>
                     <div class="scroll-bg"></div>
                 </div>
             </vue-custom-scrollbar>
+            <div class="overlay">
+                <div class="elements">
+                    <div
+                        v-for="(elm, key) in view.overlay.elements"
+                        class="element"
+                        :class="[key, { clickable: elm.click }]"
+                        :key="key"
+                        @click="elm.click ? onClickThing(elm.key || key, elm.args) : null"
+                    >
+                        <div v-if="elm.html" v-html="elm.html" :class="[key, elm.classes]"></div>
+                        <div v-else class="bg-img" :class="[key, elm.classes]"></div>
+                    </div>
+                </div>
+                <div class="click-zones">
+                    <div
+                        v-for="(zone, key) in view.overlay.zones"
+                        :key="key"
+                        class="click-zone"
+                        :class="[key]"
+                        @click="onClickThing(zone.key || key, zone.args)"
+                    ></div>
+                </div>
+            </div>
+            <!-- <div class="overlay">
+                <div class="v2-search-page-pager-left">
+                    <div class="bg-img v2-search-page-pager-left"></div>
+                </div>
+            </div> -->
         </div>
         <div v-if="config.close" class="box-close" @click="onClickThing('close')">
             <div class="inner bg-img close-x"></div>

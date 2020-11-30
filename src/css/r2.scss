@@ -138,6 +138,24 @@
                         // border: 1px solid black;
                     }
                 }
+
+                .overlay {
+                    position: absolute;
+                    pointer-events: none;
+                    top: 0px;
+                    left: 0px;
+                    .elements {
+                        .element {
+                            position: absolute;
+                            pointer-events: none;
+                            .bg-img {
+                                top: unset;
+                                left: unset;
+                            }
+                        }
+                    }
+                }
+
                 .scale {
                     // transform-origin: center center;
                     &.t-l {
@@ -159,6 +177,10 @@
                         transform: scale(0.4);
                     }
                 }
+
+                // .elements,
+                // .scrollable .elements,
+                // .overlay .elements {
 
                 .elements {
                     position: absolute;

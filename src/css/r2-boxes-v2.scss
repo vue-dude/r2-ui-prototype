@@ -4,16 +4,6 @@
             &.v2-landing-page {
                 top: 0px;
                 left: 7px;
-                --width: 1100px;
-                --height: 500px;
-                width: var(--width);
-                height: var(--height);
-                .view,
-                .view .elements,
-                .view .zones {
-                    width: var(--width);
-                    height: var(--height);
-                }
                 .view {
                     .scrollable {
                         top: 0px;
@@ -40,6 +30,11 @@
                             left: 13px;
                             width: 754px;
                             height: 38px;
+                            &.bt-search {
+                                top: 220px;
+                                left: 549px;
+                                width: 228px;
+                            }
                             &.show-ds-1 {
                                 top: 280px;
                             }
@@ -72,19 +67,189 @@
                 }
             }
 
+            &.v2-search-page {
+                top: 0px;
+                left: 7px;
+                .inner {
+                    left: 0;
+                    top: 0;
+                    &.bg-img.v2-search-page {
+                        width: calc(2267px / 2);
+                        height: calc(1297px / 2);
+                    }
+                }
+
+                .view {
+                    .overlay {
+                        .v2-search-page-pager-left {
+                            width: calc(628px / 2);
+                            height: calc(75px / 2);
+                            top: calc(100vh - 90px);
+                            left: 2px;
+                        }
+                        // .v2-search-page-pager-right {
+                        //     width: calc(445px / 2);
+                        //     height: calc(75px / 2);
+                        //     top: calc(100vh - 93px);
+                        //     left: 552px;
+                        // }
+                    }
+
+                    .fixed {
+                        .v2-search-page-search-bar-top {
+                            width: calc(1542px / 2);
+                            height: calc(93px / 2);
+                            left: 1px;
+                            top: 1px;
+                        }
+
+                        .sp {
+                            width: 766px;
+                            height: 1px;
+                            left: 4px;
+                            top: 57px;
+                            border-top: 1px solid #ffffff8c;
+                        }
+
+                        .v2-search-page-facets-up {
+                            // 689 × 419
+                            width: calc(689px / 2);
+                            height: calc(419px / 2);
+                            top: 0px;
+                            left: 789px;
+                        }
+                        .v2-search-page-facets-dn {
+                            // 689 × 857
+                            width: calc(689px / 2);
+                            height: calc(857px / 2);
+                            top: 220px;
+                            left: 789px;
+                        }
+                    }
+                    .scrollable {
+                        top: 62px;
+                        left: 0px;
+                        height: calc(100vh - 88px - 62px);
+                        width: 785px;
+                        .inner {
+                            left: 0px;
+                            top: 0px;
+                            &.bg-img.v2-search-page-scroll {
+                                width: calc(1547px / 2);
+                                height: calc(2317px / 2);
+                            }
+                        }
+                        .elements {
+                            // .v2-search-page-pager-left {
+                            //     // 628 × 75
+                            //     width: calc(628px / 2);
+                            //     height: calc(75px / 2);
+                            //     top: calc(100vh - 101px);
+                            //     left: 2px;
+                            // }
+                            // .v2-search-page-pager-right {
+                            //     // 445 × 75
+                            //     width: calc(445px / 2);
+                            //     height: calc(75px / 2);
+                            //     top: calc(100vh - 101px);
+                            //     left: 552px;
+                            // }
+                        }
+
+                        .click-zones {
+                            .click-zone {
+                                left: 13px;
+                                width: 754px;
+                                height: 38px;
+                                // &.bt-search {
+                                //     top: 220px;
+                                //     left: 725px;
+                                //     width: 50px;
+                                // }
+                                &.show-ds-1 {
+                                    top: 5px; // 280
+                                }
+                                &.show-ds-2 {
+                                    top: 166px;
+                                    height: 55px;
+                                }
+                                &.show-ds-3 {
+                                    top: 340px;
+                                    height: 35px;
+                                }
+                                &.show-ds-4 {
+                                    top: 493px;
+                                    height: 50px;
+                                }
+                                &.show-ds-5 {
+                                    top: 663px;
+                                    height: 45px;
+                                }
+                                &.show-ds-6 {
+                                    top: 824px;
+                                    height: 53px;
+                                }
+                                &.show-ds-7 {
+                                    top: 1000px;
+                                    height: 37px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .view {
+                    .click-zones {
+                        .click-zone {
+                            left: 13px;
+                            width: 754px;
+                            height: 38px;
+                            // &.show-ds-1 {
+                            //     top: 280px;
+                            //     width: 100px;
+                            // }
+                            // &.show-ds-2 {
+                            //     top: 444px;
+                            //     height: 50px;
+                            // }
+                            // &.show-ds-3 {
+                            //     top: 620px;
+                            //     height: 35px;
+                            // }
+                            // &.show-ds-4 {
+                            //     top: 767px;
+                            //     height: 53px;
+                            // }
+                            // &.show-ds-5 {
+                            //     top: 938px;
+                            //     height: 38px;
+                            // }
+                            // &.show-ds-6 {
+                            //     top: 1097px;
+                            //     height: 53px;
+                            // }
+                            // &.show-ds-7 {
+                            //     top: 1274px;
+                            //     height: 37px;
+                            // }
+                        }
+                    }
+                }
+            }
+
             &.v2-dataset-view-public {
                 top: 0px;
                 left: 7px;
-                --width: 1100px;
-                --height: 500px;
-                width: var(--width);
-                height: var(--height);
-                .view,
-                .view .elements,
-                .view .zones {
-                    width: var(--width);
-                    height: var(--height);
-                }
+                // --width: 1100px;
+                // --height: 500px;
+                // width: var(--width);
+                // height: var(--height);
+                // .view,
+                // .view .elements,
+                // .view .zones {
+                //     width: var(--width);
+                //     height: var(--height);
+                // }
                 .view {
                     .scrollable {
                         top: 0px;
