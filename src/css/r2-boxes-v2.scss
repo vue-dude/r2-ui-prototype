@@ -9,7 +9,7 @@
                         top: 0px;
                         left: 0px;
                         width: 1150px;
-                        height: calc(100vh - 88px); // 420px;
+                        height: calc(100vh - 88px);
                         .inner {
                             left: 0px;
                             top: 0px;
@@ -81,20 +81,20 @@
 
                 .view {
                     .overlay {
+                        .v2-search-page-pager-go-bt {
+                            pointer-events: all;
+                            width: calc(81px / 2);
+                            height: calc(77px / 2);
+                            top: calc(100vh - 90px);
+                            left: 2px;
+                        }
                         .v2-search-page-pager-left {
                             width: calc(628px / 2);
                             height: calc(75px / 2);
                             top: calc(100vh - 90px);
-                            left: 2px;
+                            left: 40px;
                         }
-                        // .v2-search-page-pager-right {
-                        //     width: calc(445px / 2);
-                        //     height: calc(75px / 2);
-                        //     top: calc(100vh - 93px);
-                        //     left: 552px;
-                        // }
                     }
-
                     .fixed {
                         .v2-search-page-search-bar-top {
                             width: calc(1542px / 2);
@@ -129,7 +129,7 @@
                     .scrollable {
                         top: 62px;
                         left: 0px;
-                        height: calc(100vh - 88px - 62px);
+                        height: calc(100vh - 88px - 56px);
                         width: 785px;
                         .inner {
                             left: 0px;
@@ -139,99 +139,39 @@
                                 height: calc(2317px / 2);
                             }
                         }
-                        .elements {
-                            // .v2-search-page-pager-left {
-                            //     // 628 × 75
-                            //     width: calc(628px / 2);
-                            //     height: calc(75px / 2);
-                            //     top: calc(100vh - 101px);
-                            //     left: 2px;
-                            // }
-                            // .v2-search-page-pager-right {
-                            //     // 445 × 75
-                            //     width: calc(445px / 2);
-                            //     height: calc(75px / 2);
-                            //     top: calc(100vh - 101px);
-                            //     left: 552px;
-                            // }
-                        }
-
                         .click-zones {
                             .click-zone {
                                 left: 13px;
                                 width: 754px;
                                 height: 38px;
-                                // &.bt-search {
-                                //     top: 220px;
-                                //     left: 725px;
-                                //     width: 50px;
-                                // }
                                 &.show-ds-1 {
-                                    top: 5px; // 280
+                                    top: 15px;
                                 }
                                 &.show-ds-2 {
-                                    top: 166px;
+                                    top: 185px;
                                     height: 55px;
                                 }
                                 &.show-ds-3 {
-                                    top: 340px;
+                                    top: 365px;
                                     height: 35px;
                                 }
                                 &.show-ds-4 {
-                                    top: 493px;
+                                    top: 515px;
                                     height: 50px;
                                 }
                                 &.show-ds-5 {
-                                    top: 663px;
+                                    top: 685px;
                                     height: 45px;
                                 }
                                 &.show-ds-6 {
-                                    top: 824px;
+                                    top: 842px;
                                     height: 53px;
                                 }
                                 &.show-ds-7 {
-                                    top: 1000px;
+                                    top: 1015px;
                                     height: 37px;
                                 }
                             }
-                        }
-                    }
-                }
-
-                .view {
-                    .click-zones {
-                        .click-zone {
-                            left: 13px;
-                            width: 754px;
-                            height: 38px;
-                            // &.show-ds-1 {
-                            //     top: 280px;
-                            //     width: 100px;
-                            // }
-                            // &.show-ds-2 {
-                            //     top: 444px;
-                            //     height: 50px;
-                            // }
-                            // &.show-ds-3 {
-                            //     top: 620px;
-                            //     height: 35px;
-                            // }
-                            // &.show-ds-4 {
-                            //     top: 767px;
-                            //     height: 53px;
-                            // }
-                            // &.show-ds-5 {
-                            //     top: 938px;
-                            //     height: 38px;
-                            // }
-                            // &.show-ds-6 {
-                            //     top: 1097px;
-                            //     height: 53px;
-                            // }
-                            // &.show-ds-7 {
-                            //     top: 1274px;
-                            //     height: 37px;
-                            // }
                         }
                     }
                 }
@@ -270,31 +210,6 @@
                         left: 10px;
                         width: calc(100% - 20px);
                         transform: none;
-                    }
-                    .click-zones {
-                        .click-zone {
-                            // left: 13px;
-                            // width: 754px;
-                            // height: 38px;
-                            // &.show-ds-1 {
-                            //     top: 280px;
-                            // }
-                            // &.show-ds-2 {
-                            //     top: 444px;
-                            //     height: 50px;
-                            // }
-                            // &.show-ds-3 {
-                            //     top: 620px;
-                            //     height: 35px;
-                            // }
-                            // &.show-ds-4 {
-                            //     top: 460px;
-                            // }
-                            // &.show-ds-5 {
-                            //     top: 616px;
-                            //     height: 80px;
-                            // }
-                        }
                     }
                 }
             }

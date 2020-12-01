@@ -25,22 +25,25 @@
             background-image: url(./r2-ui/v2/search-page.webp);
         }
         &.v2-search-page-scroll {
-            background-image: url(./r2-ui/v2/search-page-dataset-list.png);
+            background-image: url(./r2-ui/v2/search-page-dataset-list.webp);
         }
         &.v2-search-page-search-bar-top {
-            background-image: url(./r2-ui/v2/search-page-search-bar-top.png);
+            background-image: url(./r2-ui/v2/search-page-search-bar-top.webp);
+        }
+        &.v2-search-page-pager-go-bt {
+            background-image: url(./r2-ui/v2/search-page-pager-go-bt.webp);
         }
         &.v2-search-page-pager-left {
-            background-image: url(./r2-ui/v2/search-page-pager-left.png);
+            background-image: url(./r2-ui/v2/search-page-pager-left.webp);
         }
-        &.v2-search-page-pager-right {
-            background-image: url(./r2-ui/v2/search-page-pager-right.png);
-        }
+        // &.v2-search-page-pager-right {
+        //     background-image: url(./r2-ui/v2/search-page-pager-right.webp);
+        // }
         &.v2-search-page-facets-up {
-            background-image: url(./r2-ui/v2/search-page-facets-up.png);
+            background-image: url(./r2-ui/v2/search-page-facets-up.webp);
         }
         &.v2-search-page-facets-dn {
-            background-image: url(./r2-ui/v2/search-page-facets-dn.png);
+            background-image: url(./r2-ui/v2/search-page-facets-dn.webp);
         }
         //
         &.v2-dataset-view-public-scroll {

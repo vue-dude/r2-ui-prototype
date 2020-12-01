@@ -71,6 +71,7 @@ function R2UiBoxDefinitions() {
                     },
                     overlay: {
                         elements: {
+                            'v2-search-page-pager-go-bt': { click: true },
                             'v2-search-page-pager-left': {}
                             // 'v2-search-page-pager-right': {}
                         }
