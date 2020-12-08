@@ -4,9 +4,8 @@
 
 .r2 {
     .click-zone {
-        // background-color: rgba(255, 0, 0, 0.2); // COLOR TEST ON OFF
+        background-color: rgba(255, 0, 0, 0.2); // COLOR TEST ON OFF
     }
-
     .no-events {
         pointer-events: none;
         cursor: none;
@@ -126,7 +125,7 @@
                 }
                 .scrollable {
                     position: relative;
-                    height: 0px;
+                    // height: 0px;
                     overflow-y: auto;
                     overflow-x: hidden;
                     top: 60px;

@@ -6,7 +6,9 @@
         <!--  -->
         <box class="animate" :config="boxes['v2-landing-page']"></box>
         <box class="animate" :config="boxes['v2-search-page']"></box>
+        <box class="animate" :config="boxes['v2-mywork-page']"></box>
         <box class="animate" :config="boxes['v2-dataset-view-public']"></box>
+        <box class="animate" :config="boxes['v2-file-list']"></box>
     </div>
 </template>
 
@@ -80,17 +82,42 @@ export default {
             switch (evt.key) {
                 case 'public':
                     return this.setViewMode('home', options)
+                case 'private':
+                    return this.setViewMode('mywork', options)
                 case 'show-public-dataset':
                     return this.setViewMode('public-dataset', options)
                 case 'show-search-page':
                     return this.setViewMode('search', options)
+                case 'show-filelist-public':
+                    return this.setViewMode('file-list-public', options)
+                case 'open-file-collection':
+                    options._00 = {
+                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-open' } }
+                    }
+                    return this.setViewMode('file-list-public', options)
+                case 'close-file-collection':
+                    options._00 = {
+                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-closed' } }
+                    }
+                    return this.setViewMode('file-list-public', options)
 
                 case 'v2-head-crtl-bt-close':
                     if (this.viewModePrev === 'search') {
                         return this.setViewMode('search', options)
                     }
+                    if (this.viewMode === 'file-list-public') {
+                        return this.setViewMode('public-dataset', options)
+                    }
                     return this.setViewMode('home', options)
                 case 'v2-head-crtl-bt-open-in-tab':
+                    // const evt = new MouseEvent('contextmenu', {
+                    //     bubbles: true,
+                    //     cancelable: true,
+                    //     view: window,
+                    //     buttons: 2
+                    // })
+                    // window.dispatchEvent(evt)
+
                     const redirectWindow = window.open('localhost:8080/view-dataset/ccg466rgx43222', '_blank')
                     // redirectWindow.location
                     if (this.viewModePrev === 'search') {
@@ -285,9 +312,10 @@ export default {
         },
         setViewMode(mode, options = {}) {
             const speed = 0.3
-            console.log('CG:setViewMode this.viewMode, mode = ', this.viewMode, mode)
             this.viewModePrev = this.viewMode
             this.viewMode = mode || 'home'
+            console.log('CG:setViewMode viewMode prev = ', this.viewModePrev)
+            console.log('CG:setViewMode viewMode new = ', this.viewMode)
 
             let path = 'Home'
             let privateView = true
@@ -296,10 +324,16 @@ export default {
                     path = 'Welcome!'
                     break
                 case 'search':
-                    path = '' // Search datasets
+                    path = 'List & Search Datasets' // Search datasets
                     break
                 case 'public-dataset':
                     path = 'View Dataset / DOI / 10.1002/0470841559.ch1'
+                    break
+                case 'mywork':
+                    path = 'My Work / List & Search Datasets'
+                    break
+                case 'file-list-public':
+                    path = 'List & Search Files of Dataset / DOI / 10.1002/0470841559.ch1'
                     break
 
                 // case 'home':
@@ -355,6 +389,12 @@ export default {
                         'v2-landing-page': { delay: 0.1, speed: 0.8 }
                     }
                     break
+                case 'mywork':
+                    goIns = {
+                        'v2-mywork-page': { delay: 0.1, speed: 0.8 },
+                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' }
+                    }
+                    break
                 case 'search':
                     goIns = {
                         'v2-search-page': { delay: 0.1, speed: 0.8 },
@@ -368,7 +408,13 @@ export default {
                     }
                     // globals.eventBus.$emit('reset-login-animation')
                     break
-
+                case 'file-list-public':
+                case 'file-list-private':
+                    goIns = {
+                        'v2-file-list': { delay: 0.1, speed: 0.4, view: 'file-list-collection-closed' },
+                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' }
+                    }
+                    break
                 // v1
                 case 'init':
                     break
