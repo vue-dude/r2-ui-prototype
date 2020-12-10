@@ -7,7 +7,13 @@
         <box class="animate" :config="boxes['v2-landing-page']"></box>
         <box class="animate" :config="boxes['v2-search-page']"></box>
         <box class="animate" :config="boxes['v2-mywork-page']"></box>
+        <!--  -->
         <box class="animate" :config="boxes['v2-dataset-view-public']"></box>
+        <box class="animate" :config="boxes['v2-dataset-view-private-content']"></box>
+        <box class="animate" :config="boxes['v2-dataset-view-private-infos']"></box>
+        <box class="animate" :config="boxes['v2-dataset-actions']"></box>
+
+        <!--  -->
         <box class="animate" :config="boxes['v2-file-list']"></box>
     </div>
 </template>
@@ -86,6 +92,8 @@ export default {
                     return this.setViewMode('mywork', options)
                 case 'show-public-dataset':
                     return this.setViewMode('public-dataset', options)
+                case 'show-private-dataset':
+                    return this.setViewMode('private-dataset', options)
                 case 'show-search-page':
                     return this.setViewMode('search', options)
                 case 'show-filelist-public':
@@ -102,13 +110,24 @@ export default {
                     return this.setViewMode('file-list-public', options)
 
                 case 'v2-head-crtl-bt-close':
-                    if (this.viewModePrev === 'search') {
-                        return this.setViewMode('search', options)
-                    }
-                    if (this.viewMode === 'file-list-public') {
-                        return this.setViewMode('public-dataset', options)
+                    switch (true) {
+                        case this.viewModePrev === 'search':
+                            return this.setViewMode('search', options)
+                        case this.viewMode === 'file-list-public':
+                            return this.setViewMode('public-dataset', options)
+                        case this.viewMode === 'dataset-actions':
+                            return this.setViewMode('private-dataset', options)
                     }
                     return this.setViewMode('home', options)
+
+                case 'v2-head-crtl-bt-actions':
+                    return this.setViewMode('dataset-actions', options)
+
+                case 'v2-head-crtl-bt-actions-active':
+                case 'v2-dataset-actions':
+                case 'v2-dataset-actions-close':
+                    return this.setViewMode('private-dataset', options)
+
                 case 'v2-head-crtl-bt-open-in-tab':
                     // const evt = new MouseEvent('contextmenu', {
                     //     bubbles: true,
@@ -329,6 +348,10 @@ export default {
                 case 'public-dataset':
                     path = 'View Dataset / DOI / 10.1002/0470841559.ch1'
                     break
+                case 'private-dataset':
+                case 'dataset-actions':
+                    path = 'View my Dataset / xxxx'
+                    break
                 case 'mywork':
                     path = 'My Work / List & Search Datasets'
                     break
@@ -406,8 +429,23 @@ export default {
                         'v2-dataset-view-public': { delay: 0.1, speed: 0.4 },
                         'v2-head-controls': { delay: 0.1, speed: 0.4 }
                     }
-                    // globals.eventBus.$emit('reset-login-animation')
                     break
+                case 'private-dataset':
+                    goIns = {
+                        'v2-dataset-view-private-content': { delay: 0.1, speed: 0.4 },
+                        'v2-dataset-view-private-infos': { delay: 0.1, speed: 0.4 },
+                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-edit' }
+                    }
+                    break
+                case 'dataset-actions':
+                    goIns = {
+                        'v2-dataset-actions': { delay: 0, speed: 0.4 },
+                        'v2-dataset-view-private-content': { delay: 0, speed: 0.4 },
+                        'v2-dataset-view-private-infos': { delay: 0, speed: 0.4 },
+                        'v2-head-controls': { delay: 0, speed: 0.4, view: 'v2-head-controls-edit-actions-active' }
+                    }
+                    break
+
                 case 'file-list-public':
                 case 'file-list-private':
                     goIns = {

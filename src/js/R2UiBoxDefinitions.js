@@ -45,10 +45,10 @@ function R2UiBoxDefinitions() {
                                 key: 'show-search-page'
                             },
                             'show-ds-1': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-2': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-3': {
                                 key: 'show-public-dataset'
@@ -83,10 +83,10 @@ function R2UiBoxDefinitions() {
                     scroll: {
                         zones: {
                             'show-ds-1': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-2': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-3': {
                                 key: 'show-public-dataset'
@@ -129,10 +129,10 @@ function R2UiBoxDefinitions() {
                     scroll: {
                         zones: {
                             'show-ds-1': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-2': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-3': {
                                 key: 'show-public-dataset'
@@ -172,6 +172,37 @@ function R2UiBoxDefinitions() {
                         }
                     }
                 }
+            }
+        },
+        'v2-dataset-actions': {
+            views: {
+                'v2-dataset-actions': {
+                    click: true,
+                    elements: {
+                        'v2-dataset-actions-publish': {}
+                    },
+                    zones: {
+                        'v2-dataset-actions-close': {}
+                    }
+                }
+            }
+        },
+        'v2-dataset-view-private-content': {
+            views: {
+                'v2-dataset-view-private-content': {
+                    scroll: {
+                        zones: {
+                            'show-filelist': {
+                                key: 'show-filelist-public'
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        'v2-dataset-view-private-infos': {
+            views: {
+                'v2-dataset-view-private-infos': {}
             }
         },
         'main-nav': {
@@ -214,6 +245,25 @@ function R2UiBoxDefinitions() {
                         'v2-head-crtl-sharing-bar ': { click: true }
                     }
                 },
+                'v2-head-controls-edit': {
+                    elements: {
+                        'v2-head-crtl-bt-close': { click: true },
+                        'v2-head-crtl-sep-1': {},
+                        'v2-head-crtl-bt-actions': { click: true },
+                        'v2-head-crtl-bt-edit': {},
+                        'v2-head-crtl-sep-2': {},
+                        'v2-head-crtl-sym-upload': {},
+                        'v2-upload-info': { html: 'Upload files here:', classes: 'text' }
+                    }
+                },
+                'v2-head-controls-edit-actions-active': {
+                    elements: {
+                        'v2-head-crtl-bt-close': { click: true },
+                        'v2-head-crtl-sep-1': {},
+                        'v2-head-crtl-bt-actions-active': { click: true }
+                    }
+                },
+
                 'v2-head-controls-close-only': {
                     elements: {
                         'v2-head-crtl-bt-close': { click: true }

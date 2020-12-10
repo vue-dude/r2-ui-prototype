@@ -8,7 +8,11 @@
         >
             <div class="fixed">
                 <div class="inner" v-if="!view.setBgImageOverElements">
-                    <div class="inner bg-img" :class="[view.id]"></div>
+                    <div
+                        class="inner bg-img"
+                        :class="[view.id]"
+                        @click="view.click ? onClickThing(view.id) : null"
+                    ></div>
                 </div>
                 <div class="elements">
                     <div
@@ -54,7 +58,11 @@
                         </div>
                     </div>
                     <div class="inner" v-if="view.setScrollBgImageOverElements">
-                        <div class="inner bg-img" :class="[`${view.id}-scroll`]"></div>
+                        <div
+                            class="inner bg-img"
+                            :class="[`${view.id}-scroll`]"
+                            @click="view.click ? onClickThing(`${view.id}-scroll`) : null"
+                        ></div>
                     </div>
                     <div class="click-zones">
                         <div

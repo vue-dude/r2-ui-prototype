@@ -351,6 +351,90 @@
                 }
             }
 
+            &.v2-dataset-view-private-content {
+                top: 0px;
+                left: 7px;
+                --width: calc(1695px / 2);
+                .view {
+                    .scrollable {
+                        top: 0px;
+                        left: 0px;
+                        width: calc(var(--width) + 10px);
+                        height: calc(100vh - 88px);
+                        .inner {
+                            left: 0px;
+                            top: 0px;
+                            &.bg-img.v2-dataset-view-private-content-scroll {
+                                width: var(--width);
+                                height: calc(1836px / 2);
+                            }
+                        }
+                        .click-zones {
+                            .click-zone {
+                                &.show-filelist {
+                                    left: 339px;
+                                    width: 166px;
+                                    height: 28px;
+                                    top: 640px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.v2-dataset-view-private-infos {
+                top: 0px;
+                left: calc(calc(1695px / 2) + 7px + 10px);
+                --width: calc(549px / 2);
+                .view {
+                    .scrollable {
+                        top: 0px;
+                        left: 0px;
+                        width: calc(var(--width) + 10px);
+                        height: calc(100vh - 88px);
+                        .inner {
+                            left: 0px;
+                            top: 0px;
+                            &.bg-img.v2-dataset-view-private-infos-scroll {
+                                width: var(--width);
+                                height: calc(2070px / 2);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.v2-dataset-actions {
+                top: 0px;
+                left: 0px;
+                .inner {
+                    left: -10px;
+                    top: -3px;
+                    width: 110vw;
+                    height: 110vh;
+                    background-color: #00000057;
+                }
+                .view {
+                    .v2-dataset-actions-publish {
+                        top: 0px;
+                        left: 865px;
+                        width: calc(548px / 2);
+                        height: calc(1084px / 2);
+                    }
+                    .click-zones {
+                        .click-zone {
+                            &.v2-dataset-actions-close {
+                                top: 490px;
+                                left: 1048px;
+                                width: 81px;
+                                height: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+
             &.v2-file-list {
                 top: 0px;
                 left: 7px;
@@ -435,6 +519,51 @@
                         width: 167px;
                         height: 48px;
                         left: -200px;
+                    }
+                }
+
+                .view {
+                    &.v2-head-controls-edit,
+                    &.v2-head-controls-edit-actions-active {
+                        .v2-head-crtl-bt-actions,
+                        .v2-head-crtl-bt-actions-active {
+                            top: -1px;
+                            width: 34px;
+                            height: 34px;
+                            left: -56px;
+                        }
+                        .v2-head-crtl-bt-edit {
+                            top: -1px;
+                            width: 34px;
+                            height: 34px;
+                            left: -96px;
+                        }
+
+                        .v2-head-crtl-sym-upload {
+                            top: 0px;
+                            width: 58px;
+                            height: 33px;
+                            left: -179px;
+                        }
+
+                        .v2-head-crtl-sep-1,
+                        .v2-head-crtl-sep-2 {
+                            top: 0px;
+                            width: 4px;
+                            height: 30px;
+                            left: -12px;
+                            background-color: #98afd3f0;
+                        }
+                        .v2-head-crtl-sep-2 {
+                            left: -110px;
+                        }
+
+                        .v2-upload-info {
+                            top: 8px;
+                            right: 85px;
+                            width: 200px;
+                            font-size: 13px;
+                        }
                     }
                 }
             }
