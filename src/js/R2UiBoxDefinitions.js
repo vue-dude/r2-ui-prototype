@@ -116,7 +116,6 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
-
         'v2-search-page': {
             views: {
                 'v2-search-page': {
@@ -167,8 +166,15 @@ function R2UiBoxDefinitions() {
             views: {
                 'v2-dataset-view-public': {
                     scroll: {
+                        elements: {
+                            'v2-dataset-view-public-content': {},
+                            'v2-dataset-view-public-infos': {}
+                        },
                         zones: {
-                            'show-filelist': {
+                            'show-filelist-1': {
+                                key: 'show-filelist-public'
+                            },
+                            'show-filelist-2': {
                                 key: 'show-filelist-public'
                             }
                         }

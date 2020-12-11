@@ -306,47 +306,39 @@
 
             &.v2-dataset-view-public {
                 top: 0px;
-                left: 7px;
-                // --width: 1100px;
-                // --height: 500px;
-                // width: var(--width);
-                // height: var(--height);
-                // .view,
-                // .view .elements,
-                // .view .zones {
-                //     width: var(--width);
-                //     height: var(--height);
-                // }
                 .view {
                     .scrollable {
                         top: 0px;
                         left: 0px;
-                        width: 1150px;
-                        height: calc(100vh - 88px); // 420px;
-                        .inner {
-                            left: 0px;
-                            top: 0px;
-                            &.bg-img.v2-dataset-view-public-scroll {
-                                width: calc(2264px / 2);
-                                height: calc(1933px / 2);
+                        height: calc(100vh - 82px);
+                        width: 1400px;
+                        .elements {
+                            .v2-dataset-view-public-content {
+                                width: calc(1695px / 2);
+                                height: calc(2257px / 2);
+                            }
+                            .v2-dataset-view-public-infos {
+                                left: 855px;
+                                width: calc(549px / 2);
+                                height: calc(1192px / 2);
                             }
                         }
                         .click-zones {
                             .click-zone {
-                                &.show-filelist {
-                                    left: 346px;
-                                    width: 159px;
+                                &.show-filelist-1 {
+                                    left: 648px;
+                                    width: 170px;
+                                    height: 115px;
+                                    top: 720px;
+                                }
+                                &.show-filelist-2 {
+                                    left: 66px;
+                                    width: 187px;
                                     height: 28px;
-                                    top: 684px;
+                                    top: 849px;
                                 }
                             }
                         }
-                    }
-                    .inner {
-                        top: 10px;
-                        left: 10px;
-                        width: calc(100% - 20px);
-                        transform: none;
                     }
                 }
             }
