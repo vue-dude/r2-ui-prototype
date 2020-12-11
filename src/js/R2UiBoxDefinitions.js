@@ -7,6 +7,7 @@ function R2UiBoxDefinitions() {
                         'v2-file-view-headline': {},
                         'v2-file-view-pager': {},
                         sp: {},
+                        'v2-file-view-download': {},
                         'v2-file-view-facets-top': {}
                     },
                     scroll: {
@@ -23,6 +24,7 @@ function R2UiBoxDefinitions() {
                         'v2-file-view-headline': {},
                         'v2-file-view-pager': {},
                         sp: {},
+                        'v2-file-view-download': {},
                         'v2-file-view-facets-top': {}
                     },
                     scroll: {
@@ -192,7 +194,10 @@ function R2UiBoxDefinitions() {
                 'v2-dataset-view-private-content': {
                     scroll: {
                         zones: {
-                            'show-filelist': {
+                            'show-filelist-1': {
+                                key: 'show-filelist-public'
+                            },
+                            'show-filelist-2': {
                                 key: 'show-filelist-public'
                             }
                         }

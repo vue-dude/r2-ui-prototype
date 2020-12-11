@@ -84,7 +84,6 @@ export default {
             console.log('CG:onClick evt = ', evt)
             console.log('CG:onClick this.$store.state.loggedIn = ', this.$store.state.loggedIn)
             let options = { _00: { targets: null } }
-
             switch (evt.key) {
                 case 'public':
                     return this.setViewMode('home', options)

@@ -366,16 +366,22 @@
                             top: 0px;
                             &.bg-img.v2-dataset-view-private-content-scroll {
                                 width: var(--width);
-                                height: calc(1836px / 2);
+                                height: calc(2257px / 2);
                             }
                         }
                         .click-zones {
                             .click-zone {
-                                &.show-filelist {
-                                    left: 339px;
-                                    width: 166px;
+                                &.show-filelist-1 {
+                                    left: 648px;
+                                    width: 170px;
+                                    height: 115px;
+                                    top: 720px;
+                                }
+                                &.show-filelist-2 {
+                                    left: 66px;
+                                    width: 187px;
                                     height: 28px;
-                                    top: 640px;
+                                    top: 849px;
                                 }
                             }
                         }
@@ -438,60 +444,60 @@
             &.v2-file-list {
                 top: 0px;
                 left: 7px;
-
                 .view {
                     &.file-list-collection-closed,
                     &.file-list-collection-open {
                         .fixed {
+                            .v2-file-view-download {
+                                width: calc(548px / 2);
+                                height: calc(222px / 2);
+                                top: 0px;
+                                left: 855px;
+                            }
                             .v2-file-view-facets-top {
                                 width: calc(548px / 2);
                                 height: calc(480px / 2);
-                                top: 0px;
+                                top: 118px;
                                 left: 855px;
                             }
                             .v2-file-view-headline {
                                 width: calc(1694px / 2);
-                                height: calc(180px / 2);
+                                height: calc(222px / 2);
                             }
                             .v2-file-view-pager {
                                 width: calc(1694px / 2);
-                                height: calc(189px / 2);
-                                top: 94px;
+                                height: calc(126px / 2);
+                                top: 118px;
                             }
                             .sp {
                                 width: 847px;
                                 height: 1px;
-                                top: 195px;
+                                top: 188px;
                                 border-top: 1px solid #ffffff8c;
                             }
                         }
                         .scrollable {
                             height: calc(100vh - 284px);
                             width: calc(1688px / 2 + 10px);
-                            top: 203px;
+                            top: 196px;
                             left: 0px;
                             .elements {
                                 .v2-file-view-list-collection-closed {
                                     width: calc(1688px / 2);
-                                    height: calc(656px / 2);
+                                    height: calc(1195px / 2);
                                 }
                                 .v2-file-view-list-collection-open {
                                     width: calc(1688px / 2);
-                                    height: calc(1829px / 2);
+                                    height: calc(2368px / 2);
                                 }
                             }
                             .click-zones {
                                 .click-zone {
-                                    &.open-file-collection {
-                                        width: 50px;
-                                        height: 50px;
-                                        left: 750px;
-                                        top: 140px;
-                                    }
+                                    &.open-file-collection,
                                     &.close-file-collection {
-                                        width: 50px;
+                                        width: 750px;
                                         height: 50px;
-                                        left: 750px;
+                                        left: 50px;
                                         top: 140px;
                                     }
                                 }
