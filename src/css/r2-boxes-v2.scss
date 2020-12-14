@@ -67,6 +67,41 @@
                 }
             }
 
+            &.v2-search-page-facets-dn-inner {
+                top: 0px;
+                left: 7px;
+                .v2-search-page-facets-dn-inner-box {
+                    width: 322px;
+                    height: calc(100vh - 464px);
+                    top: 361px;
+                    left: 800px;
+                    border-radius: 8px;
+                    background-color: #7b8594;
+                }
+                .view {
+                    .scrollable {
+                        top: 370px;
+                        left: 810px;
+                        height: calc(100vh - 483px);
+                        width: 310px;
+                        .elements {
+                            .v2-search-page-facets-dn-inner-list-1,
+                            .v2-search-page-facets-dn-inner-list-2 {
+                                left: 8px;
+                                top: 4px;
+                                width: calc(560px / 2);
+                                height: calc(640px / 2);
+                            }
+                            .v2-search-page-facets-dn-inner-list-2 {
+                                top: 324px;
+                            }
+
+
+                        }
+                    }
+                }
+            }
+
             &.v2-search-page {
                 top: 0px;
                 left: 7px;
@@ -126,18 +161,31 @@
                         }
 
                         .v2-search-page-facets-up {
-                            // 689 × 419
                             width: calc(689px / 2);
-                            height: calc(419px / 2);
+                            height: calc(479px / 2);
                             top: 58px;
                             left: 789px;
                         }
-                        .v2-search-page-facets-dn {
-                            // 689 × 857
+                        // .v2-search-page-facets-dn {
+                        //     width: calc(689px / 2);
+                        //     height: calc(857px / 2);
+                        //     top: 309px;
+                        //     left: 789px;
+                        // }
+                        .v2-search-page-facets-dn-head {
+                            width: calc(616px / 2);
+                            height: calc(50px / 2);
+                            top: 323px;
+                            left: 809px;
+                        }
+                        .v2-search-page-facets-dn-box {
                             width: calc(689px / 2);
-                            height: calc(857px / 2);
-                            top: 278px;
+                            height: calc(100vh - 400px);
+                            top: 309px;
                             left: 789px;
+                            // border: 1px solid white;
+                            border-radius: 8px;
+                            background-color: #e5e8f5;
                         }
                     }
                     .scrollable {

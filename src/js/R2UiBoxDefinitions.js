@@ -116,16 +116,31 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
+        'v2-search-page-facets-dn-inner': {
+            views: {
+                'v2-search-page-facets-dn-inner': {
+                    elements: {
+                        'v2-search-page-facets-dn-inner-box': {}
+                    },
+                    scroll: {
+                        elements: {
+                            'v2-search-page-facets-dn-inner-list-1': {},
+                            'v2-search-page-facets-dn-inner-list-2': {}
+                        }
+                    }
+                }
+            }
+        },
         'v2-search-page': {
             views: {
                 'v2-search-page': {
                     elements: {
-                        // 'v2-search-page-search-bar-top': {},
                         'v2-search-bar-top-with-pager': {},
                         sp: {},
                         'v2-search-page-facets-term': {},
                         'v2-search-page-facets-up': {},
-                        'v2-search-page-facets-dn': {}
+                        'v2-search-page-facets-dn-box': {},
+                        'v2-search-page-facets-dn-head': {}
                     },
                     scroll: {
                         zones: {

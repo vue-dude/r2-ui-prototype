@@ -6,6 +6,7 @@
         <!--  -->
         <box class="animate" :config="boxes['v2-landing-page']"></box>
         <box class="animate" :config="boxes['v2-search-page']"></box>
+        <box class="animate" :config="boxes['v2-search-page-facets-dn-inner']"></box>
         <box class="animate" :config="boxes['v2-mywork-page']"></box>
         <!--  -->
         <box class="animate" :config="boxes['v2-dataset-view-public']"></box>
@@ -420,6 +421,7 @@ export default {
                 case 'search':
                     goIns = {
                         'v2-search-page': { delay: 0.1, speed: 0.8 },
+                        'v2-search-page-facets-dn-inner': { delay: 0.1, speed: 0.8 },
                         'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' }
                     }
                     break

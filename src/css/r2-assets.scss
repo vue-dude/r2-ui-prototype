@@ -86,8 +86,12 @@
         &.v2-search-page-facets-up {
             background-image: url(./r2-ui/v2/webp/search-page-facets-up.webp);
         }
-        &.v2-search-page-facets-dn {
-            background-image: url(./r2-ui/v2/webp/search-page-facets-dn.webp);
+        &.v2-search-page-facets-dn-head {
+            background-image: url(./r2-ui/v2/webp/search-page-facets-dn-head.webp);
+        }
+        &.v2-search-page-facets-dn-inner-list-1,
+        &.v2-search-page-facets-dn-inner-list-2 {
+            background-image: url(./r2-ui/v2/webp/search-page-facets-dn-list.webp);
         }
         //
         &.v2-dataset-view-public-content {
