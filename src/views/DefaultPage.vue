@@ -1,18 +1,24 @@
 <template>
+    <background></background>
+    <div class="centered-view">
+        <cage></cage>
+    </div>
     <nav-bar></nav-bar>
     <sub-bar></sub-bar>
-    <cage></cage>
 </template>
 
 <script>
+import Background from '@/components/Background.vue'
 import NavBar from '@/components/NavBar.vue'
 import Cage from '@/components/Cage.vue'
 import SubBar from '@/components/SubBar.vue'
 
-
 export default {
     components: {
-        NavBar,  Cage, SubBar
+        Background,
+        NavBar,
+        Cage,
+        SubBar
     },
     props: {
         user: { type: String },
