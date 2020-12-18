@@ -492,14 +492,16 @@
             }
 
             &.v2-dataset-actions {
-                top: 0px;
                 left: 0px;
                 .inner {
                     left: -10px;
                     top: -3px;
-                    width: 110vw;
-                    height: 110vh;
-                    background-color: #00000057;
+                    .bg-img {
+                        // visibility: hidden;
+                        background-color: #0000007d;
+                        width: calc(1150px + 30px);
+                        height: calc(100vh - 80px);
+                    }
                 }
                 .view {
                     .v2-dataset-actions-publish {
@@ -585,7 +587,7 @@
                 }
             }
             &.v2-head-controls {
-                top: -44px;
+                top: 8px;
                 left: 1109px;
                 .fixed {
                     .v2-head-crtl-bt-close {

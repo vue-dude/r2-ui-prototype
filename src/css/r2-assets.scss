@@ -145,9 +145,6 @@
         &.circle {
             background-image: url(./r2-ui/v1/circle.webp);
         }
-        &.globe {
-            background-image: url(./r2-ui/v1/globe.webp);
-        }
         &.login-arrow {
             background-image: url(./r2-ui/v1/login-arrow.webp);
         }
@@ -157,92 +154,8 @@
         &.close-x {
             background-image: url(./r2-ui/v1/close-x.webp);
         }
-        // TODO remove the :before thing completely
-        &.register-step-1-mail:before {
-            content: url(./r2-ui/v1/register-step-1-mail.webp);
-        }
-        &.register-step-2:before {
-            content: url(./r2-ui/v1/register-step-2.webp);
-        }
-
-        &.recent-scroll,
-        &.recent-facets-scroll {
-            background-image: url(./r2-ui/v1/recent-scroll.webp);
-        }
-
-        &.box-header-search {
-            background-image: url(./r2-ui/v1/box-header-search.webp);
-        }
-
-        &.box-header-list-options {
-            background-image: url(./r2-ui/v1/box-header-list-options.webp);
-        }
-
-        &.facets {
-            background-image: url(./r2-ui/v1/facets.webp);
-        }
-
-        &.recent-facets-bt {
-            background-image: url(./r2-ui/v1/recent-facets-bt.webp);
-        }
-
-        &.recent-facets-bt-selected {
-            background-image: url(./r2-ui/v1/recent-facets-bt-selected.webp);
-        }
-
-        &.facets-nav {
-            background-image: url(./r2-ui/v1/facets-nav.webp);
-        }
-        //
-        &.mywork-all-list {
-            background-image: url(./r2-ui/v1/mywork-all-list.webp);
-        }
-        &.mywork-ds-history {
-            background-image: url(./r2-ui/v1/mywork-ds-history.webp);
-        }
-        &.mywork-ds-history-create-private,
-        &.dataset-history-create-private {
-            background-image: url(./r2-ui/v1/mywork-ds-history-create-private.webp);
-        }
-        &.mywork-ds-history-with-private,
-        &.dataset-history-with-private {
-            background-image: url(./r2-ui/v1/mywork-ds-history-with-private.webp);
-        }
-
-        &.mywork-box-sym {
-            background-image: url(./r2-ui/v1/mywork-box-sym.webp);
-        }
-        &.bt-create-dataset {
-            background-image: url(./r2-ui/v1/bt-create-dataset.webp);
-        }
-        &.bt-view-dataset {
-            background-image: url(./r2-ui/v1/bt-view-dataset.webp);
-        }
         &.box-back-bt {
             background-image: url(./r2-ui/v1/bt-box-back.webp);
-        }
-        //
-        &.inspector-nav {
-            background-image: url(./r2-ui/v1/inspector-nav.webp);
-        }
-        //
-        &.isp-info {
-            background-image: url(./r2-ui/v1/isp-info.webp);
-        }
-        &.isp-uploads {
-            background-image: url(./r2-ui/v1/isp-uploads.webp);
-        }
-        &.isp-statistics {
-            background-image: url(./r2-ui/v1/isp-statistics.webp);
-        }
-        &.isp-files {
-            background-image: url(./r2-ui/v1/isp-files.webp);
-        }
-        &.isp-upload-start {
-            background-image: url(./r2-ui/v1/isp-upload-start.webp);
-        }
-        &.isp-withdraw {
-            background-image: url(./r2-ui/v1/isp-withdraw.webp);
         }
         // main nav
         &.circ-bg {
@@ -263,41 +176,7 @@
         &.sym-diamond-sel {
             background-image: url(./r2-ui/v1/main/sym-diamond-sel.webp);
         }
-        // wireframe dataset views & stuff
-
-        &.public-dataset-wf-scroll {
-            background-image: url(./r2-ui/v1/dataset-public-wf.webp);
-        }
-        &.dataset-public-wf-views {
-            background-image: url(./r2-ui/v1/dataset-public-wf-views.webp);
-        }
-        &.dataset-public-wf-versions {
-            background-image: url(./r2-ui/v1/dataset-public-wf-versions.webp);
-        }
-        &.dataset-public-wf-versions-closed {
-            background-image: url(./r2-ui/v1/dataset-public-wf-versions-closed.webp);
-        }
-        &.dataset-public-wf-audits {
-            background-image: url(./r2-ui/v1/dataset-public-wf-audits.webp);
-        }
-        &.dataset-public-wf-citations {
-            background-image: url(./r2-ui/v1/dataset-public-wf-citations.webp);
-        }
-
-        // dataset views
-        &.my-dataset,
-        &.my-dataset-from-history,
-        &.my-dataset-published,
-        &.my-dataset-edit,
-        &.my-dataset-edit-text,
-        &.my-dataset-private,
-        // &.my-dataset-private,
-        // &.my-dataset-private-ac,
-        // &.my-dataset-published,
-        // &.my-dataset-published-ac 
-        &.public-dataset {
-            background-image: url(./r2-ui/v1/dataset-public.webp);
-        }
+        //
         &.dataset-edit-layer {
             background-image: url(./r2-ui/v1/dataset-edit-layer.webp);
         }
@@ -309,9 +188,6 @@
         }
         &.box-sharebar {
             background-image: url(./r2-ui/v1/box-sharebar.webp);
-        }
-        &.dataset-edit-layer {
-            background-image: url(./r2-ui/v1/dataset-edit-layer.webp);
         }
         &.bt-box-upload {
             background-image: url(./r2-ui/v1/bt-box-upload.webp);
