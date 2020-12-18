@@ -40,7 +40,6 @@
                 </div>
             </div>
             <vue-custom-scrollbar class="scrollable" :settings="scrConfig">
-                <!-- <div class="scrollable"> -->
                 <div class="content">
                     <div class="inner" v-if="!view.setScrollBgImageOverElements">
                         <div class="inner bg-img" :class="[`${view.id}-scroll`]"></div>
@@ -99,11 +98,6 @@
                     ></div>
                 </div>
             </div>
-            <!-- <div class="overlay">
-                <div class="v2-search-page-pager-left">
-                    <div class="bg-img v2-search-page-pager-left"></div>
-                </div>
-            </div> -->
         </div>
         <div v-if="config.close" class="box-close" @click="onClickThing('close')">
             <div class="inner bg-img close-x"></div>

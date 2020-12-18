@@ -1,6 +1,7 @@
 <template>
     <background></background>
     <div class="centered-view">
+        <div class="centered-bg"></div>
         <cage></cage>
     </div>
     <nav-bar></nav-bar>

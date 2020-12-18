@@ -1,5 +1,28 @@
 function R2UiBoxDefinitions() {
     this.boxes = {
+        'v2-main-nav': {
+            visible: true,
+            views: {
+                public: {
+                    visible: true,
+                    elements: {
+                        'bg-1': { key: 'public', click: true, classes: 'circ-bg-sel' },
+                        'sym-diamond-sel': { key: 'public', click: true },
+                        'bg-2': { key: 'private', click: true, classes: 'circ-bg' },
+                        'sym-circ': { key: 'private', click: true }
+                    }
+                },
+                private: {
+                    elements: {
+                        'bg-1': { key: 'public', click: true, classes: 'circ-bg' },
+                        'sym-diamond': { key: 'public', click: true },
+                        'bg-2': { key: 'private', click: true, classes: 'circ-bg-sel' },
+                        'sym-circ-sel': { key: 'private', click: true }
+                    }
+                }
+            }
+        },
+
         'v2-file-list': {
             views: {
                 'file-list-collection-closed': {

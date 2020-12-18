@@ -1,15 +1,86 @@
 .r2 {
     .boxes {
         .box {
+            &.v2-main-nav {
+                top: 3px;
+                left: 420px;
+                --width: 10px;
+                --height: 50px;
+                width: var(--width);
+                height: var(--height);
+                .view,
+                .view .elements,
+                .view .zones {
+                    width: var(--width);
+                    height: var(--height);
+                }
+                .public {
+                    opacity: 1;
+                    .elements {
+                        .bg-1 {
+                            top: 4px;
+                            left: 10px;
+                            width: 70px;
+                            height: 34px;
+                        }
+                        .sym-diamond-sel {
+                            top: 9px;
+                            left: 18px;
+                            width: 51px;
+                            height: 23px;
+                        }
+                        .bg-2 {
+                            top: 4px;
+                            left: 80px;
+                            width: 70px;
+                            height: 34px;
+                        }
+                        .sym-circ {
+                            top: 8px;
+                            left: 83px;
+                            width: 64px;
+                            height: 26px;
+                        }
+                    }
+                }
+                .private {
+                    // opacity: 1;
+                    .elements {
+                        .bg-1 {
+                            top: 4px;
+                            left: 10px;
+                            width: 70px;
+                            height: 34px;
+                        }
+                        .sym-diamond {
+                            top: 9px;
+                            left: 18px;
+                            width: 51px;
+                            height: 23px;
+                        }
+                        .bg-2 {
+                            top: 4px;
+                            left: 80px;
+                            width: 70px;
+                            height: 34px;
+                        }
+                        .sym-circ-sel {
+                            top: 8px;
+                            left: 83px;
+                            width: 64px;
+                            height: 26px;
+                        }
+                    }
+                }
+            }
+
             &.v2-landing-page {
-                top: 0px;
-                left: 7px;
                 .view {
                     .scrollable {
                         top: 0px;
                         left: 0px;
-                        width: 1150px;
-                        height: calc(100vh - 88px);
+                        width: calc(#{$centered-width} + 10px);
+                        height: calc(100vh - 92px);
                         .inner {
                             left: 0px;
                             top: 0px;
@@ -68,8 +139,6 @@
             }
 
             &.v2-search-page-facets-dn-inner {
-                top: 0px;
-                left: 7px;
                 .v2-search-page-facets-dn-inner-box {
                     width: 322px;
                     height: calc(100vh - 464px);
@@ -95,16 +164,12 @@
                             .v2-search-page-facets-dn-inner-list-2 {
                                 top: 324px;
                             }
-
-
                         }
                     }
                 }
             }
 
             &.v2-search-page {
-                top: 0px;
-                left: 7px;
                 .inner {
                     left: 0;
                     top: 0;
@@ -136,14 +201,12 @@
                             left: 1px;
                             top: 1px;
                         }
-
                         .v2-search-bar-top-with-pager {
                             width: calc(1542px / 2);
                             height: calc(93px / 2);
                             left: 1px;
                             top: 0px;
                         }
-
                         .sp {
                             width: 766px;
                             height: 1px;
@@ -151,7 +214,6 @@
                             top: 57px;
                             border-top: 1px solid #ffffff8c;
                         }
-
                         .v2-search-page-facets-term {
                             // 687 × 93
                             width: calc(689px / 2);
@@ -159,19 +221,12 @@
                             top: 0px;
                             left: 789px;
                         }
-
                         .v2-search-page-facets-up {
                             width: calc(689px / 2);
                             height: calc(479px / 2);
                             top: 58px;
                             left: 789px;
                         }
-                        // .v2-search-page-facets-dn {
-                        //     width: calc(689px / 2);
-                        //     height: calc(857px / 2);
-                        //     top: 309px;
-                        //     left: 789px;
-                        // }
                         .v2-search-page-facets-dn-head {
                             width: calc(616px / 2);
                             height: calc(50px / 2);
@@ -180,10 +235,9 @@
                         }
                         .v2-search-page-facets-dn-box {
                             width: calc(689px / 2);
-                            height: calc(100vh - 400px);
+                            height: calc(100vh - 405px);
                             top: 309px;
                             left: 789px;
-                            // border: 1px solid white;
                             border-radius: 8px;
                             background-color: #e5e8f5;
                         }
@@ -191,7 +245,7 @@
                     .scrollable {
                         top: 62px;
                         left: 0px;
-                        height: calc(100vh - 88px - 56px);
+                        height: calc(100vh - 88px - 65px);
                         width: 785px;
                         .inner {
                             left: 0px;
@@ -240,16 +294,6 @@
             }
 
             &.v2-mywork-page {
-                top: 0px;
-                left: 7px;
-                .inner {
-                    // left: 0;
-                    // top: 0;
-                    // &.bg-img.v2-mywork-page {
-                    //     width: calc(2267px / 2);
-                    //     height: calc(1297px / 2);
-                    // }
-                }
                 .view {
                     .overlay {
                         .v2-search-page-pager-go-bt {
@@ -304,7 +348,7 @@
                     .scrollable {
                         top: 62px;
                         left: 0px;
-                        height: calc(100vh - 88px - 56px);
+                        height: calc(100vh - 88px - 64px);
                         width: 785px;
                         .inner {
                             left: 0px;
@@ -353,12 +397,11 @@
             }
 
             &.v2-dataset-view-public {
-                top: 0px;
                 .view {
                     .scrollable {
                         top: 0px;
                         left: 0px;
-                        height: calc(100vh - 82px);
+                        height: calc(100vh - 90px);
                         width: 1400px;
                         .elements {
                             .v2-dataset-view-public-content {
@@ -366,7 +409,7 @@
                                 height: calc(2257px / 2);
                             }
                             .v2-dataset-view-public-infos {
-                                left: 855px;
+                                left: 860px;
                                 width: calc(549px / 2);
                                 height: calc(1192px / 2);
                             }
@@ -392,15 +435,13 @@
             }
 
             &.v2-dataset-view-private-content {
-                top: 0px;
-                left: 7px;
                 --width: calc(1695px / 2);
                 .view {
                     .scrollable {
                         top: 0px;
                         left: 0px;
                         width: calc(var(--width) + 10px);
-                        height: calc(100vh - 88px);
+                        height: calc(100vh - 90px);
                         .inner {
                             left: 0px;
                             top: 0px;
@@ -430,7 +471,6 @@
             }
 
             &.v2-dataset-view-private-infos {
-                top: 0px;
                 left: calc(calc(1695px / 2) + 7px + 10px);
                 --width: calc(549px / 2);
                 .view {
@@ -438,7 +478,7 @@
                         top: 0px;
                         left: 0px;
                         width: calc(var(--width) + 10px);
-                        height: calc(100vh - 88px);
+                        height: calc(100vh - 90px);
                         .inner {
                             left: 0px;
                             top: 0px;
@@ -482,8 +522,6 @@
             }
 
             &.v2-file-list {
-                top: 0px;
-                left: 7px;
                 .view {
                     &.file-list-collection-closed,
                     &.file-list-collection-open {
@@ -492,13 +530,13 @@
                                 width: calc(548px / 2);
                                 height: calc(222px / 2);
                                 top: 0px;
-                                left: 855px;
+                                left: 860px;
                             }
                             .v2-file-view-facets-top {
                                 width: calc(548px / 2);
                                 height: calc(480px / 2);
                                 top: 118px;
-                                left: 855px;
+                                left: 860px;
                             }
                             .v2-file-view-headline {
                                 width: calc(1694px / 2);
@@ -517,7 +555,7 @@
                             }
                         }
                         .scrollable {
-                            height: calc(100vh - 284px);
+                            height: calc(100vh - 288px);
                             width: calc(1688px / 2 + 10px);
                             top: 196px;
                             left: 0px;

@@ -1,6 +1,6 @@
 <template>
     <div class="cage boxes" :class="{ hidden: !show }">
-        <box class="animate" :config="boxes['main-nav']"></box>
+        <box class="animate" :config="boxes['v2-main-nav']"></box>
         <box class="animate" :config="boxes['login-bt-top']"></box>
         <box class="animate" :config="boxes['v2-head-controls']"></box>
         <!--  -->
@@ -391,7 +391,7 @@ export default {
 
             const animationTargets = '.cage.boxes .animate'
             let goOuts = [...Object.keys(this.boxes)]
-            goOuts[goOuts.indexOf('main-nav')] = null
+            goOuts[goOuts.indexOf('v2-main-nav')] = null
             if (options._00 && _.isPlainObject(options._00.targets)) {
                 goOuts = [...Object.keys(options._00.targets)]
             }
@@ -536,7 +536,7 @@ export default {
             if (options._00 && options._00.targets) {
                 goIns = options._00.targets
             } else {
-                // goIns['main-nav'] = {
+                // goIns['v2-main-nav'] = {
                 //     view: privateView ? 'private' : 'public',
                 //     delay: 0,
                 //     speed: 0.2
