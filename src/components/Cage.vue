@@ -345,7 +345,7 @@ export default {
             console.log('CG:setViewMode viewMode new = ', this.viewMode)
 
             let path = 'Home'
-            let privateView = true
+            let privateView = false
             switch (this.viewMode) {
                 case 'home':
                     path = 'Welcome!'
@@ -358,9 +358,11 @@ export default {
                     break
                 case 'private-dataset':
                 case 'dataset-actions':
+                    privateView = true
                     path = 'View my Dataset / xxxx'
                     break
                 case 'mywork':
+                    privateView = true
                     path = 'My Work / List & Search Datasets'
                     break
                 case 'file-list-public':
@@ -545,11 +547,11 @@ export default {
             if (options._00 && options._00.targets) {
                 goIns = options._00.targets
             } else {
-                // goIns['v2-main-nav'] = {
-                //     view: privateView ? 'private' : 'public',
-                //     delay: 0,
-                //     speed: 0.2
-                // }
+                goIns['v2-main-nav'] = {
+                    view: privateView ? 'private' : 'public',
+                    delay: 0,
+                    speed: 0.2
+                }
                 if (!this.$store.state.loggedIn) {
                     goIns['login-bt-top'] = { delay: 0, speed: 0.1 }
                 }

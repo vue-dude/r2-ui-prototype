@@ -4,12 +4,11 @@ function R2UiBoxDefinitions() {
             visible: true,
             views: {
                 public: {
-                    visible: true,
                     elements: {
                         'bg-1': { key: 'public', click: true, classes: 'circ-bg-sel' },
                         'sym-diamond-sel': { key: 'public', click: true },
                         'bg-2': { key: 'private', click: true, classes: 'circ-bg' },
-                        'sym-circ': { key: 'private', click: true }
+                        'sym-work': { key: 'private', click: true }
                     }
                 },
                 private: {
@@ -17,7 +16,7 @@ function R2UiBoxDefinitions() {
                         'bg-1': { key: 'public', click: true, classes: 'circ-bg' },
                         'sym-diamond': { key: 'public', click: true },
                         'bg-2': { key: 'private', click: true, classes: 'circ-bg-sel' },
-                        'sym-circ-sel': { key: 'private', click: true }
+                        'sym-work-sel': { key: 'private', click: true }
                     }
                 }
             }
@@ -264,7 +263,7 @@ function R2UiBoxDefinitions() {
                         'bg-1': { key: 'public', click: true, classes: 'circ-bg-sel' },
                         'sym-diamond-sel': { key: 'public', click: true },
                         'bg-2': { key: 'private', click: true, classes: 'circ-bg' },
-                        'sym-circ': { key: 'private', click: true }
+                        'sym-work': { key: 'private', click: true }
                     }
                 },
                 private: {
@@ -272,7 +271,7 @@ function R2UiBoxDefinitions() {
                         'bg-1': { key: 'public', click: true, classes: 'circ-bg' },
                         'sym-diamond': { key: 'public', click: true },
                         'bg-2': { key: 'private', click: true, classes: 'circ-bg-sel' },
-                        'sym-circ-sel': { key: 'private', click: true }
+                        'sym-work-sel': { key: 'private', click: true }
                     }
                 }
             }

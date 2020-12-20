@@ -14,62 +14,32 @@
                     width: var(--width);
                     height: var(--height);
                 }
-                .public {
-                    opacity: 1;
-                    .elements {
-                        .bg-1 {
-                            top: 4px;
-                            left: 10px;
-                            width: 70px;
-                            height: 34px;
-                        }
-                        .sym-diamond-sel {
-                            top: 9px;
-                            left: 18px;
-                            width: 51px;
-                            height: 23px;
-                        }
-                        .bg-2 {
-                            top: 4px;
-                            left: 80px;
-                            width: 70px;
-                            height: 34px;
-                        }
-                        .sym-circ {
-                            top: 8px;
-                            left: 83px;
-                            width: 64px;
-                            height: 26px;
-                        }
+                .elements {
+                    .bg-1 {
+                        top: 4px;
+                        left: 10px;
+                        width: 70px;
+                        height: 34px;
                     }
-                }
-                .private {
-                    // opacity: 1;
-                    .elements {
-                        .bg-1 {
-                            top: 4px;
-                            left: 10px;
-                            width: 70px;
-                            height: 34px;
-                        }
-                        .sym-diamond {
-                            top: 9px;
-                            left: 18px;
-                            width: 51px;
-                            height: 23px;
-                        }
-                        .bg-2 {
-                            top: 4px;
-                            left: 80px;
-                            width: 70px;
-                            height: 34px;
-                        }
-                        .sym-circ-sel {
-                            top: 8px;
-                            left: 83px;
-                            width: 64px;
-                            height: 26px;
-                        }
+                    .sym-diamond,
+                    .sym-diamond-sel {
+                        top: 6px;
+                        left: 33px;
+                        width: 23px;
+                        height: 30px;
+                    }
+                    .bg-2 {
+                        top: 4px;
+                        left: 80px;
+                        width: 70px;
+                        height: 34px;
+                    }
+                    .sym-work,
+                    .sym-work-sel {
+                        top: 5px;
+                        left: 104px;
+                        width: 22px;
+                        height: 30px;
                     }
                 }
             }
@@ -512,7 +482,6 @@
                     }
                 }
             }
-
             &.v2-file-list {
                 .view {
                     &.file-list-collection-closed,
