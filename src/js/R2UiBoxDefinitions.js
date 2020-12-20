@@ -221,6 +221,7 @@ function R2UiBoxDefinitions() {
             }
         },
         'v2-dataset-actions': {
+            modal: true,
             views: {
                 'v2-dataset-actions': {
                     click: true,

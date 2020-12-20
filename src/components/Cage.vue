@@ -1,5 +1,5 @@
 <template>
-    <div class="cage boxes" :class="{ hidden: !show }">
+    <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]">
         <box class="animate" :config="boxes['v2-main-nav']"></box>
         <box class="animate" :config="boxes['login-bt-top']"></box>
         <box class="animate" :config="boxes['v2-head-controls']"></box>
@@ -28,14 +28,20 @@ export default {
     components: {
         Box
     },
+    props: {
+        isModalOverlay: {
+            default: false
+        }
+    },
     data() {
         return {
             viewMode: 'home',
             viewModePrev: null,
-            show: false,
+            showCage: false,
             boxes: new BoxDefinitions().boxes,
             // fast hardcoded stuff
-            myDatasetsHistoryView: false
+            myDatasetsHistoryView: false,
+            modalClass: this.isModalOverlay ? 'modal-overlay' : 'modal-below'
         }
     },
     created() {
@@ -46,6 +52,7 @@ export default {
             box.views = box.views ? box.views : { [box.id]: {} }
             _.each(box.views, (view, key) => {
                 view.visible = view.visible || false
+                view.modal = _.isBoolean(box.modal) ? box.modal : view.modal === true
                 view.id = view.id || key
                 view.elements = view.elements || {}
                 view.zones = view.zones || {}
@@ -62,13 +69,14 @@ export default {
     },
     mounted() {
         this.setViewMode('init')
+        this.setModalOverlay(false)
         // this.setBoxConnectedNavState('inspector-nav', 'info')
         // this.setBoxConnectedNavState('facets-nav', 'f0')
         setTimeout(() => {
-            this.show = true
-            // this.setViewMode('mywork')
+            if (!this.isModalOverlay) {
+                this.showCage = true
+            }
             this.setViewMode('home')
-            // this.setViewMode('register')
         }, 400)
     },
     methods: {
@@ -324,10 +332,10 @@ export default {
             // }
         },
         setLoggedIn() {
-            $('.nav.quick-actions').removeClass('hidden')
-            this.$store.dispatch('setLoggedInState', true)
-            this.setViewMode('mywork')
-            this.boxes.facets.close = false
+            // $('.nav.quick-actions').removeClass('hidden')
+            // this.$store.dispatch('setLoggedInState', true)
+            // this.setViewMode('mywork')
+            // this.boxes.facets.close = false
         },
         setViewMode(mode, options = {}) {
             const speed = 0.3
@@ -389,7 +397,7 @@ export default {
             }
             this.$store.dispatch('setSubPath', path)
 
-            const animationTargets = '.cage.boxes .animate'
+            const animationTargets = `.${this.modalClass}.cage.boxes .animate`
             let goOuts = [...Object.keys(this.boxes)]
             goOuts[goOuts.indexOf('v2-main-nav')] = null
             if (options._00 && _.isPlainObject(options._00.targets)) {
@@ -399,7 +407,8 @@ export default {
                 if (key) {
                     gsap.to($(`${animationTargets}.${key}`), speed, {
                         opacity: 0,
-                        ease: Expo.easeOut
+                        ease: Expo.easeOut,
+                        display: 'none'
                     })
                     this.boxes[key].visible = false
                 }
@@ -546,6 +555,8 @@ export default {
                 }
             }
 
+            let hasModal = false
+
             _.each(goIns, (args, boxId) => {
                 // handle the box
                 gsap.killTweensOf($(`${animationTargets}.${boxId}`))
@@ -563,14 +574,13 @@ export default {
                 gsap.to($targetBox, sp, {
                     opacity: opc,
                     delay: _.isNumber(prms.delay) ? prms.delay : 0,
-                    ease: Expo.easeOut
+                    ease: Expo.easeOut,
+                    display: 'block'
                 })
 
                 // handle the different views inside the box
                 const view = this.boxes[boxId].views[prms.view]
 
-                console.log('obj:fc view = ', view)
-                console.log('obj:fc this.boxes[boxId] = ', this.boxes[boxId])
                 _.each(this.boxes[boxId].views, vu => {
                     if (view !== vu) {
                         gsap.killTweensOf($(`${animationTargets}.${boxId} .${vu.id}`))
@@ -580,14 +590,23 @@ export default {
                         vu.visible = false
                     }
                 })
-                if (!view.visible) {
+
+                // handle the 'split' of boxes above and below the modal layer
+                let vOpacity = _.isNumber(view.opacity) ? view.opacity : _.isNumber(prms.opacity) ? prms.opacity : 1
+                if (view.modal) {
+                    hasModal = true
+                } else if (this.isModalOverlay) {
+                    vOpacity = 0
+                }
+                const $targetView = $(`${animationTargets}.${boxId} .${view.id}`)
+                //
+                if (vOpacity === 0) { // avoid invisible views could be clicked anyway
+                    gsap.set($targetView, {
+                        visibility: 'hidden'
+                    })
+                }
+                else if (!view.visible) {
                     view.visible = true
-                    const $targetView = $(`${animationTargets}.${boxId} .${view.id}`)
-                    const vOpacity = _.isNumber(view.opacity)
-                        ? view.opacity
-                        : _.isNumber(prms.opacity)
-                        ? prms.opacity
-                        : 1
                     const vDelay = _.isNumber(view.delay) ? view.delay : _.isNumber(prms.delay) ? prms.delay : 0.1
                     const vSpeed = _.isNumber(view.speed) ? view.speed : _.isNumber(prms.speed) ? prms.speed : 0.3
                     gsap.to($targetView, vDelay, {
@@ -597,7 +616,24 @@ export default {
                     })
                 }
             })
+            this.setModalOverlay(hasModal)
+        },
+
+        setModalOverlay(yes) {
+            yes = yes === true
+            if (this.isModalOverlay) {
+                const tg = `.centered-view .modal-bg`
+                yes ? $(tg).css('visibility', 'visible') : $(tg).css('visibility', 'hidden')
+                this.showCage = yes
+                console.log('obj:setModalOverlay this.showCage = ', this.showCage)
+            }
         }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.hidden {
+    display: none;
+}
+</style>

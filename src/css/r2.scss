@@ -15,7 +15,7 @@ body {
     font-weight: 400;
     font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;   
+    -moz-osx-font-smoothing: grayscale;
 
     #app {
         // -webkit-font-smoothing: antialiased;
@@ -63,7 +63,8 @@ body {
         @media (max-width: #{$media-start-center-width}) {
             margin-left: 0;
         }
-        .centered-bg {
+        .centered-bg,
+        .modal-bg {
             position: absolute;
             top: 48px;
             left: 0px;
@@ -71,6 +72,13 @@ body {
             height: calc(100vh - 80px);
             border-radius: unset;
             background-color: #657c7a78;
+            pointer-events: none;
+        }
+        .modal-bg {
+            left: calc(0px - var(--left-edge));
+            width: 100vw;
+            background-color: #00000085;
+            z-index: 2;
         }
     }
     .no-events {
@@ -152,7 +160,6 @@ body {
         }
     }
 
-
     .boxes {
         position: absolute;
         top: 100px;
@@ -165,7 +172,10 @@ body {
             height: calc(100vh - 32px);
             border-radius: unset;
             background-color: unset;
-            z-index: 100;
+            z-index: 1;
+            &.modal-overlay {
+                z-index: 3;
+            }
         }
         .box {
             position: absolute;

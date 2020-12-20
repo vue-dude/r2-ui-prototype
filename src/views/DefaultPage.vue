@@ -3,6 +3,8 @@
     <div class="centered-view">
         <div class="centered-bg"></div>
         <cage></cage>
+        <div class="modal-bg"></div>
+        <cage isModalOverlay="true"></cage>
     </div>
     <nav-bar></nav-bar>
     <sub-bar></sub-bar>

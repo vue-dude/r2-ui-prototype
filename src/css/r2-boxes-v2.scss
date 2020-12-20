@@ -493,16 +493,6 @@
 
             &.v2-dataset-actions {
                 left: 0px;
-                .inner {
-                    left: -10px;
-                    top: -3px;
-                    .bg-img {
-                        // visibility: hidden;
-                        background-color: #0000007d;
-                        width: calc(1150px + 30px);
-                        height: calc(100vh - 80px);
-                    }
-                }
                 .view {
                     .v2-dataset-actions-publish {
                         top: 0px;
