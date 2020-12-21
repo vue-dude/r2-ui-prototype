@@ -489,14 +489,14 @@
                         .fixed {
                             .v2-file-view-download {
                                 width: calc(548px / 2);
-                                height: calc(222px / 2);
+                                height: calc(167px / 2); // 167 222px
                                 top: 0px;
                                 left: 860px;
                             }
                             .v2-file-view-facets-top {
                                 width: calc(548px / 2);
                                 height: calc(480px / 2);
-                                top: 118px;
+                                top: 92px;
                                 left: 860px;
                             }
                             .v2-file-view-headline {
