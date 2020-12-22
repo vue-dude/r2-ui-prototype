@@ -45,7 +45,8 @@ export default {
             // fast hardcoded stuff
             myDatasetsHistoryView: false,
             modalClass: this.isModalOverlay ? 'modal-overlay' : 'modal-below',
-            modalViewKey: null
+            modalViewKey: null, // temp solution !! 2Do
+            viewStack: []
         }
     },
     created() {
@@ -82,6 +83,7 @@ export default {
                 this.showCage = true
             }
             this.setViewMode('home')
+            this.modifyViewStack({ action: 'reset' })
         }, 400)
     },
     methods: {
@@ -93,12 +95,98 @@ export default {
             $(`${tg}.all`).removeAttr('style')
             $(`${tg}.${key}`).removeAttr('style')
         },
+        modifyViewStack(args = {}) {
+            args.key = args.key || 'home'
+            args.action = args.action || 'reset'
+            if (args.action === 'reset') {
+                this.viewStack = [args.key]
+            } else if (args.action === 'add') {
+                this.viewStack.push(args.key)
+            } else if (args.action === 'remove') {
+                this.viewStack.pop()
+                if (this.viewStack.length === 0) {
+                    this.modifyViewStack({ action: 'reset' })
+                }
+            }
+            console.log('modifyViewStack this.viewStack = ', this.viewStack)
+        },
+        getViewStack() {
+            return [...this.viewStack].reverse()
+        },
         onClickCage() {
             if (this.modalViewKey) {
                 globals.eventBus.$emit('click', { key: 'modal-bg' })
             }
         },
         onClick(evt) {
+            evt.box = evt.box || { id: null }
+            console.log('CG:onClick evt = ', evt)
+            console.log('CG:onClick this.$store.state.loggedIn = ', this.$store.state.loggedIn)
+            let options = { _00: { targets: null } }
+            switch (evt.key) {
+                // cancel and close
+                case 'modal-bg':
+                    return this.setViewMode(this.getViewStack()[0], options)
+                case 'confirm':
+                case 'cancel':
+                case 'close':
+                    return this.setViewMode(this.getViewStack()[0], options)
+                case 'v2-head-crtl-bt-close':
+                    this.modifyViewStack({ action: 'remove' })
+                    return this.setViewMode(this.getViewStack()[0], options)
+                // base views
+                case 'public':
+                    this.modifyViewStack({ action: 'reset' })
+                    return this.setViewMode('home', options)
+                case 'private':
+                    this.modifyViewStack({ key: 'mywork', action: 'reset' })
+                    return this.setViewMode('mywork', options)
+                // main stack views
+                case 'show-public-dataset':
+                    this.modifyViewStack({ key: 'public-dataset', action: 'add' })
+                    return this.setViewMode('public-dataset', options)
+                case 'show-private-dataset':
+                    this.modifyViewStack({ key: 'private-dataset', action: 'add' })
+                    return this.setViewMode('private-dataset', options)
+                case 'show-search-page':
+                    this.modifyViewStack({ key: 'search', action: 'add' })
+                    return this.setViewMode('search', options)
+
+                // file list stuff
+                case 'show-filelist-public':
+                    this.modifyViewStack({ key: 'file-list-public', action: 'add' })
+                    return this.setViewMode('file-list-public', options)
+
+                case 'show-filelist-private':
+                    this.modifyViewStack({ key: 'file-list-private', action: 'add' })
+                    return this.setViewMode('file-list-private', options)
+
+                case 'open-file-collection':
+                    options._00 = {
+                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-open' } }
+                    }
+                    return this.setViewMode(this.getViewStack()[0], options)
+                case 'close-file-collection':
+                    options._00 = {
+                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-closed' } }
+                    }
+                    return this.setViewMode(this.getViewStack()[0], options)
+
+                // actions and messages
+                case 'download-all':
+                    options['v2-messages'] = {
+                        view: 'msg-large-dataset'
+                    }
+                    return this.setViewMode(`${this.getViewStack()[0]}`, options)
+                case 'v2-head-crtl-bt-actions':
+                    options['v2-dataset-actions'] = {
+                        view: 'v2-dataset-actions-publish'
+                    }
+                    return this.setViewMode(`${this.getViewStack()[0]}`, options)
+            }
+        },
+
+        onClickXXX(evt) {
             evt.box = evt.box || { id: null }
             console.log('CG:onClick evt = ', evt)
             console.log('CG:onClick this.$store.state.loggedIn = ', this.$store.state.loggedIn)
@@ -116,17 +204,39 @@ export default {
                         return this.setViewMode('private-dataset', options)
                     }
                     return null
+
+                case 'v2-head-crtl-bt-close':
+                    // new: view stack thing
+                    const stack = this.getViewStack()
+                    switch (stack[0]) {
+                        case 'search':
+                        case 'public-dataset':
+                        case 'file-list-public':
+                            this.modifyViewStack({ action: 'remove' })
+                            return this.setViewMode(stack[1], options)
+                    }
+
+                    switch (true) {
+                        case this.viewMode === 'dataset-actions':
+                            return this.setViewMode('private-dataset', options)
+                    }
+                    return this.setViewMode('home', options)
                 case 'public':
+                    this.modifyViewStack({ action: 'reset' })
                     return this.setViewMode('home', options)
                 case 'private':
+                    this.modifyViewStack({ key: 'mywork', action: 'reset' })
                     return this.setViewMode('mywork', options)
                 case 'show-public-dataset':
+                    this.modifyViewStack({ key: 'public-dataset', action: 'add' })
                     return this.setViewMode('public-dataset', options)
                 case 'show-private-dataset':
                     return this.setViewMode('private-dataset', options)
                 case 'show-search-page':
+                    this.modifyViewStack({ key: 'search', action: 'add' })
                     return this.setViewMode('search', options)
                 case 'show-filelist-public':
+                    this.modifyViewStack({ key: 'file-list-public', action: 'add' })
                     return this.setViewMode('file-list-public', options)
                 case 'open-file-collection':
                     options._00 = {
@@ -138,18 +248,6 @@ export default {
                         targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-closed' } }
                     }
                     return this.setViewMode('file-list-public', options)
-
-                case 'v2-head-crtl-bt-close':
-                    switch (true) {
-                        case this.viewModePrev === 'search':
-                            return this.setViewMode('search', options)
-                        case this.viewMode === 'file-list-public':
-                            return this.setViewMode('public-dataset', options)
-                        case this.viewMode === 'dataset-actions':
-                            return this.setViewMode('private-dataset', options)
-                    }
-                    return this.setViewMode('home', options)
-
                 case 'v2-head-crtl-bt-actions':
                     return this.setViewMode('dataset-actions', options)
 
@@ -367,6 +465,7 @@ export default {
             this.modalViewKey = null
             console.log('CG:setViewMode viewMode prev = ', this.viewModePrev)
             console.log('CG:setViewMode viewMode new = ', this.viewMode)
+            console.log('CG:setViewMode options = ', options)
 
             let path = 'Home'
             let privateView = false
@@ -463,30 +562,17 @@ export default {
                 case 'public-dataset':
                     goIns = {
                         'v2-dataset-view-public': { delay: 0.1, speed: 0.4 },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4 }
+                        'v2-head-controls': { delay: 0.1, speed: 0.4 },
+                        'v2-messages': { delay: 0.1, speed: 0.4 }
                     }
                     break
                 case 'private-dataset':
                     goIns = {
                         'v2-dataset-view-private-content': { delay: 0.1, speed: 0.4 },
                         'v2-dataset-view-private-infos': { delay: 0.1, speed: 0.4 },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-edit' }
-                    }
-                    break
-                case 'private-dataset-msg':
-                    goIns = {
-                        'v2-dataset-view-private-content': { delay: 0.1, speed: 0.4 },
-                        'v2-dataset-view-private-infos': { delay: 0.1, speed: 0.4 },
                         'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-edit' },
-                        'v2-messages': { delay: 0.1, speed: 0.4, view: 'msg-large-dataset' }
-                    }
-                    break
-                case 'dataset-actions':
-                    goIns = {
-                        'v2-dataset-actions': { delay: 0, speed: 0.4 },
-                        'v2-dataset-view-private-content': { delay: 0, speed: 0.4 },
-                        'v2-dataset-view-private-infos': { delay: 0, speed: 0.4 },
-                        'v2-head-controls': { delay: 0, speed: 0.4, view: 'v2-head-controls-edit-actions-active' }
+                        'v2-messages': { delay: 0.1, speed: 0.4 },
+                        'v2-dataset-actions': { delay: 0, speed: 0.4 }
                     }
                     break
 
@@ -494,7 +580,8 @@ export default {
                 case 'file-list-private':
                     goIns = {
                         'v2-file-list': { delay: 0.1, speed: 0.4, view: 'file-list-collection-closed' },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' }
+                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' },
+                        'v2-messages': { delay: 0.1, speed: 0.4 }
                     }
                     break
                 // v1
@@ -661,7 +748,6 @@ export default {
                 }
             })
 
-            // this.modalViewKey
             this.setModalOverlay(hasModal)
         },
 

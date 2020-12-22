@@ -505,6 +505,16 @@
                                 border-top: 1px solid #ffffff8c;
                             }
                         }
+                        .click-zones {
+                            .click-zone {
+                                &.download-all {
+                                    left: 971px;
+                                    width: 47px;
+                                    height: 43px;
+                                    top: 12px;
+                                }
+                            }
+                        }
                         .scrollable {
                             height: calc(100vh - 288px);
                             width: calc(1688px / 2 + 10px);

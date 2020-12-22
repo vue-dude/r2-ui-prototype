@@ -32,6 +32,9 @@ function R2UiBoxDefinitions() {
                         'v2-file-view-download': {},
                         'v2-file-view-facets-top': {}
                     },
+                    zones: {
+                        'download-all': {}
+                    },
                     scroll: {
                         elements: {
                             'v2-file-view-list-collection-closed': {}
@@ -48,6 +51,9 @@ function R2UiBoxDefinitions() {
                         sp: {},
                         'v2-file-view-download': {},
                         'v2-file-view-facets-top': {}
+                    },
+                    zones: {
+                        'download-all': {}
                     },
                     scroll: {
                         elements: {
@@ -69,10 +75,10 @@ function R2UiBoxDefinitions() {
                                 key: 'show-search-page'
                             },
                             'show-ds-1': {
-                                key: 'show-private-dataset'
+                                key: 'show-public-dataset'
                             },
                             'show-ds-2': {
-                                key: 'show-private-dataset'
+                                key: 'show-public-dataset'
                             },
                             'show-ds-3': {
                                 key: 'show-public-dataset'
@@ -113,19 +119,19 @@ function R2UiBoxDefinitions() {
                                 key: 'show-private-dataset'
                             },
                             'show-ds-3': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-4': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-5': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-6': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             },
                             'show-ds-7': {
-                                key: 'show-public-dataset'
+                                key: 'show-private-dataset'
                             }
                         }
                     },
@@ -167,10 +173,10 @@ function R2UiBoxDefinitions() {
                     scroll: {
                         zones: {
                             'show-ds-1': {
-                                key: 'show-private-dataset'
+                                key: 'show-public-dataset'
                             },
                             'show-ds-2': {
-                                key: 'show-private-dataset'
+                                key: 'show-public-dataset'
                             },
                             'show-ds-3': {
                                 key: 'show-public-dataset'
@@ -213,6 +219,9 @@ function R2UiBoxDefinitions() {
                             },
                             'show-filelist-2': {
                                 key: 'show-filelist-public'
+                            },
+                            'download-all': {
+                                click: true
                             }
                         }
                     }
@@ -225,13 +234,12 @@ function R2UiBoxDefinitions() {
                     scroll: {
                         zones: {
                             'show-filelist-1': {
-                                key: 'show-filelist-public'
+                                key: 'show-filelist-private'
                             },
                             'show-filelist-2': {
-                                key: 'show-filelist-public'
+                                key: 'show-filelist-private'
                             },
                             'download-all': {
-                                key: 'show-filelist',
                                 click: true
                             }
                         }
@@ -315,12 +323,14 @@ function R2UiBoxDefinitions() {
             modal: true,
             views: {
                 'v2-dataset-actions': {
-                    click: true,
+                    modal: false
+                },
+                'v2-dataset-actions-publish': {
                     elements: {
-                        'v2-dataset-actions-publish': {}
+                        'v2-dataset-actions-publish': { click: true }
                     },
                     zones: {
-                        'v2-dataset-actions-close': {}
+                        'v2-dataset-actions-close': { key: 'cancel' }
                     }
                 }
             }
