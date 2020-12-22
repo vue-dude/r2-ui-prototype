@@ -104,7 +104,6 @@ function R2UiBoxDefinitions() {
             views: {
                 'v2-mywork-page': {
                     elements: {
-                        // 'v2-mywork-page-search-bar-top': {},
                         'v2-search-bar-top-with-pager': {},
                         sp: {},
                         'v2-mywork-page-facets-term': {},
@@ -133,12 +132,6 @@ function R2UiBoxDefinitions() {
                             'show-ds-7': {
                                 key: 'show-private-dataset'
                             }
-                        }
-                    },
-                    overlay: {
-                        elements: {
-                            // 'v2-search-page-pager-go-bt': { click: true },
-                            // 'v2-search-page-pager-left': {}
                         }
                     }
                 }
@@ -193,13 +186,6 @@ function R2UiBoxDefinitions() {
                             'show-ds-7': {
                                 key: 'show-public-dataset'
                             }
-                        }
-                    },
-                    overlay: {
-                        elements: {
-                            // 'v2-search-page-pager-go-bt': { click: true },
-                            // 'v2-search-page-pager-left': {}
-                            // 'v2-search-page-pager-right': {}
                         }
                     }
                 }
