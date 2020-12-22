@@ -1,5 +1,5 @@
 <template>
-    <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]">
+    <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]" @click="onClickCage">
         <box class="animate" :config="boxes['v2-main-nav']"></box>
         <box class="animate" :config="boxes['login-bt-top']"></box>
         <box class="animate" :config="boxes['v2-head-controls']"></box>
@@ -12,7 +12,10 @@
         <box class="animate" :config="boxes['v2-dataset-view-public']"></box>
         <box class="animate" :config="boxes['v2-dataset-view-private-content']"></box>
         <box class="animate" :config="boxes['v2-dataset-view-private-infos']"></box>
+        <!--  -->
+
         <box class="animate" :config="boxes['v2-dataset-actions']"></box>
+        <box class="animate" :config="boxes['v2-messages']"></box>
 
         <!--  -->
         <box class="animate" :config="boxes['v2-file-list']"></box>
@@ -41,7 +44,8 @@ export default {
             boxes: new BoxDefinitions().boxes,
             // fast hardcoded stuff
             myDatasetsHistoryView: false,
-            modalClass: this.isModalOverlay ? 'modal-overlay' : 'modal-below'
+            modalClass: this.isModalOverlay ? 'modal-overlay' : 'modal-below',
+            modalViewKey: null
         }
     },
     created() {
@@ -49,10 +53,11 @@ export default {
         _.each(this.boxes, (box, key) => {
             box.id = box.id ? box.id : key
             box.visible = box.visible || false
+            box.modal = box.modal || false
             box.views = box.views ? box.views : { [box.id]: {} }
             _.each(box.views, (view, key) => {
                 view.visible = view.visible || false
-                view.modal = _.isBoolean(box.modal) ? box.modal : view.modal === true
+                view.modal = _.isBoolean(view.modal) ? view.modal : box.modal
                 view.id = view.id || key
                 view.elements = view.elements || {}
                 view.zones = view.zones || {}
@@ -88,12 +93,29 @@ export default {
             $(`${tg}.all`).removeAttr('style')
             $(`${tg}.${key}`).removeAttr('style')
         },
+        onClickCage() {
+            if (this.modalViewKey) {
+                globals.eventBus.$emit('click', { key: 'modal-bg' })
+            }
+        },
         onClick(evt) {
             evt.box = evt.box || { id: null }
             console.log('CG:onClick evt = ', evt)
             console.log('CG:onClick this.$store.state.loggedIn = ', this.$store.state.loggedIn)
             let options = { _00: { targets: null } }
             switch (evt.key) {
+                case 'modal-bg':
+                    return this.onClick({ key: 'cancel', viewKey: this.modalViewKey })
+                case 'confirm':
+                case 'cancel':
+                case 'close':
+                    if (evt.viewKey === 'msg-large-dataset') {
+                        return this.setViewMode('private-dataset', options)
+                    }
+                    if (evt.viewKey === 'v2-dataset-actions') {
+                        return this.setViewMode('private-dataset', options)
+                    }
+                    return null
                 case 'public':
                     return this.setViewMode('home', options)
                 case 'private':
@@ -132,9 +154,10 @@ export default {
                     return this.setViewMode('dataset-actions', options)
 
                 case 'v2-head-crtl-bt-actions-active':
-                case 'v2-dataset-actions':
-                case 'v2-dataset-actions-close':
                     return this.setViewMode('private-dataset', options)
+
+                case 'show-filelist':
+                    return this.setViewMode('private-dataset-msg', options)
 
                 case 'v2-head-crtl-bt-open-in-tab':
                     // const evt = new MouseEvent('contextmenu', {
@@ -341,6 +364,7 @@ export default {
             const speed = 0.3
             this.viewModePrev = this.viewMode
             this.viewMode = mode || 'home'
+            this.modalViewKey = null
             console.log('CG:setViewMode viewMode prev = ', this.viewModePrev)
             console.log('CG:setViewMode viewMode new = ', this.viewMode)
 
@@ -447,6 +471,14 @@ export default {
                         'v2-dataset-view-private-content': { delay: 0.1, speed: 0.4 },
                         'v2-dataset-view-private-infos': { delay: 0.1, speed: 0.4 },
                         'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-edit' }
+                    }
+                    break
+                case 'private-dataset-msg':
+                    goIns = {
+                        'v2-dataset-view-private-content': { delay: 0.1, speed: 0.4 },
+                        'v2-dataset-view-private-infos': { delay: 0.1, speed: 0.4 },
+                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-edit' },
+                        'v2-messages': { delay: 0.1, speed: 0.4, view: 'msg-large-dataset' }
                     }
                     break
                 case 'dataset-actions':
@@ -597,17 +629,27 @@ export default {
                 let vOpacity = _.isNumber(view.opacity) ? view.opacity : _.isNumber(prms.opacity) ? prms.opacity : 1
                 if (view.modal) {
                     hasModal = true
+                    this.modalViewKey = view.id
                 } else if (this.isModalOverlay) {
                     vOpacity = 0
                 }
                 const $targetView = $(`${animationTargets}.${boxId} .${view.id}`)
+
+                if (view.modal) {
+                    if (!this.isModalOverlay) {
+                        gsap.set($targetView, {
+                            visibility: 'hidden'
+                        })
+                    }
+                }
+
                 //
-                if (vOpacity === 0) { // avoid invisible views could be clicked anyway
+                if (vOpacity === 0) {
+                    // avoid invisible views could be clicked anyway
                     gsap.set($targetView, {
                         visibility: 'hidden'
                     })
-                }
-                else if (!view.visible) {
+                } else if (!view.visible) {
                     view.visible = true
                     const vDelay = _.isNumber(view.delay) ? view.delay : _.isNumber(prms.delay) ? prms.delay : 0.1
                     const vSpeed = _.isNumber(view.speed) ? view.speed : _.isNumber(prms.speed) ? prms.speed : 0.3
@@ -618,6 +660,8 @@ export default {
                     })
                 }
             })
+
+            // this.modalViewKey
             this.setModalOverlay(hasModal)
         },
 

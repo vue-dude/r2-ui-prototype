@@ -11,7 +11,7 @@
                     <div
                         class="inner bg-img"
                         :class="[view.id]"
-                        @click="view.click ? onClickThing(view.id) : null"
+                        @click.stop="view.click ? onClickThing(view.id) : null"
                     ></div>
                 </div>
                 <div class="elements">
@@ -20,7 +20,7 @@
                         class="element"
                         :class="[key, { clickable: elm.click }]"
                         :key="key"
-                        @click="elm.click ? onClickThing(elm.key || key, elm.args) : null"
+                        @click.stop="elm.click ? onClickThing(elm.key || key, elm.args) : null"
                     >
                         <div v-if="elm.html" v-html="elm.html" :class="[key, elm.classes]"></div>
                         <div v-else class="bg-img" :class="[key, elm.classes]"></div>
@@ -35,7 +35,7 @@
                         :key="key"
                         class="click-zone"
                         :class="[key]"
-                        @click="onClickThing(zone.key || key, zone.args)"
+                        @click.stop="onClickThing(zone.key || key, zone.args)"
                     ></div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                             class="element"
                             :class="[key, { clickable: elm.click }]"
                             :key="key"
-                            @click="elm.click ? onClickThing(elm.key || key, elm.args) : null"
+                            @click.stop="elm.click ? onClickThing(elm.key || key, elm.args) : null"
                         >
                             <div v-if="elm.html" v-html="elm.html" :class="[key, elm.classes]"></div>
                             <div v-else class="bg-img" :class="[key, elm.classes]"></div>
@@ -60,7 +60,7 @@
                         <div
                             class="inner bg-img"
                             :class="[`${view.id}-scroll`]"
-                            @click="view.click ? onClickThing(`${view.id}-scroll`) : null"
+                            @click.stop="view.click ? onClickThing(`${view.id}-scroll`) : null"
                         ></div>
                     </div>
                     <div class="click-zones">
@@ -69,7 +69,7 @@
                             :key="key"
                             class="click-zone"
                             :class="[key]"
-                            @click="onClickThing(zone.key || key, zone.args)"
+                            @click.stop="onClickThing(zone.key || key, zone.args)"
                         ></div>
                     </div>
                     <div class="scroll-bg"></div>
@@ -82,7 +82,7 @@
                         class="element"
                         :class="[key, { clickable: elm.click }]"
                         :key="key"
-                        @click="elm.click ? onClickThing(elm.key || key, elm.args) : null"
+                        @click.stop="elm.click ? onClickThing(elm.key || key, elm.args) : null"
                     >
                         <div v-if="elm.html" v-html="elm.html" :class="[key, elm.classes]"></div>
                         <div v-else class="bg-img" :class="[key, elm.classes]"></div>
@@ -94,12 +94,12 @@
                         :key="key"
                         class="click-zone"
                         :class="[key]"
-                        @click="onClickThing(zone.key || key, zone.args)"
+                        @click.stop="onClickThing(zone.key || key, zone.args)"
                     ></div>
                 </div>
             </div>
         </div>
-        <div v-if="config.close" class="box-close" @click="onClickThing('close')">
+        <div v-if="config.close" class="box-close" @click.stop="onClickThing('close')">
             <div class="inner bg-img close-x"></div>
         </div>
     </div>

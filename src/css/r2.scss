@@ -34,7 +34,7 @@ body {
 
 .r2 {
     .click-zone {
-        // background-color: rgba(255, 0, 0, 0.2); // COLOR TEST ON OFF
+        background-color: rgba(255, 0, 0, 0.2); // COLOR TEST ON OFF
     }
 
     //
@@ -65,20 +65,22 @@ body {
         }
         .centered-bg,
         .modal-bg {
-            position: absolute;
-            top: 48px;
-            left: 0px;
-            width: calc(1150px + 10px);
-            height: calc(100vh - 80px);
-            border-radius: unset;
-            background-color: #657c7a78;
-            pointer-events: none;
         }
         .modal-bg {
+            position: absolute;
+            z-index: 2;
+            pointer-events: none;
+            top: 48px;
+            // left: 0px;
+            // width: calc(1150px + 10px);
+
+            // background-color: #657c7a78;
+
             left: calc(0px - var(--left-edge));
             width: 100vw;
+            height: calc(100vh - 80px);
             background-color: #00000085;
-            z-index: 2;
+            border-radius: unset;
         }
     }
     .no-events {
@@ -181,8 +183,8 @@ body {
             position: absolute;
             top: 55px;
             left: 10px;
-            width: 200px;
-            height: 200px;
+            // width: 200px;
+            // height: 200px;
             border-radius: 10px;
             background-size: contain;
             background-repeat: no-repeat;

@@ -129,8 +129,14 @@
         &.v2-dataset-view-private-infos-scroll {
             background-image: url(./r2-ui/v2/png/dataset-view-private-infos.png);
         }
+
+        // actions and messages
+
         &.v2-dataset-actions-publish {
             background-image: url(./r2-ui/v2/png/dataset-actions-publish.png);
+        }
+        &.msg-large-dataset {
+            background-image: url(./r2-ui/v2/png/msg-large-dataset.png);
         }
         //
 

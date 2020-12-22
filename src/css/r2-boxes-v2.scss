@@ -398,6 +398,12 @@
                                     height: 28px;
                                     top: 849px;
                                 }
+                                &.download-all {
+                                    left: 292px;
+                                    width: 144px;
+                                    height: 28px;
+                                    top: 642px;
+                                }
                             }
                         }
                     }
@@ -434,6 +440,12 @@
                                     height: 28px;
                                     top: 849px;
                                 }
+                                &.download-all {
+                                    left: 292px;
+                                    width: 144px;
+                                    height: 28px;
+                                    top: 642px;
+                                }
                             }
                         }
                     }
@@ -455,28 +467,6 @@
                             &.bg-img.v2-dataset-view-private-infos-scroll {
                                 width: var(--width);
                                 height: calc(2070px / 2);
-                            }
-                        }
-                    }
-                }
-            }
-
-            &.v2-dataset-actions {
-                left: 0px;
-                .view {
-                    .v2-dataset-actions-publish {
-                        top: 0px;
-                        left: 865px;
-                        width: calc(548px / 2);
-                        height: calc(1084px / 2);
-                    }
-                    .click-zones {
-                        .click-zone {
-                            &.v2-dataset-actions-close {
-                                top: 490px;
-                                left: 1048px;
-                                width: 81px;
-                                height: 30px;
                             }
                         }
                     }
@@ -608,6 +598,58 @@
                             right: 85px;
                             width: 200px;
                             font-size: 13px;
+                        }
+                    }
+                }
+            }
+
+            // actions and messages
+
+            &.v2-dataset-actions {
+                left: 0px;
+                .view {
+                    .v2-dataset-actions-publish {
+                        top: 0px;
+                        left: 865px;
+                        width: calc(548px / 2);
+                        height: calc(1084px / 2);
+                    }
+                    .click-zones {
+                        .click-zone {
+                            &.v2-dataset-actions-close {
+                                top: 490px;
+                                left: 1048px;
+                                width: 81px;
+                                height: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.v2-messages {
+                left: 0px;
+                .view {
+                    .msg-large-dataset {
+                        top: 88px;
+                        left: 317px;
+                        width: calc(1035px / 2);
+                        height: calc(428px / 2);
+                    }
+                    .click-zones {
+                        .click-zone {
+                            &.confirm {
+                                top: 255px;
+                                left: 653px;
+                                width: 170px;
+                                height: 30px;
+                            }
+                            &.cancel {
+                                top: 255px;
+                                left: 578px;
+                                width: 66px;
+                                height: 30px;
+                            }
                         }
                     }
                 }

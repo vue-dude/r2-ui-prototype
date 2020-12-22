@@ -219,20 +219,6 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
-        'v2-dataset-actions': {
-            modal: true,
-            views: {
-                'v2-dataset-actions': {
-                    click: true,
-                    elements: {
-                        'v2-dataset-actions-publish': {}
-                    },
-                    zones: {
-                        'v2-dataset-actions-close': {}
-                    }
-                }
-            }
-        },
         'v2-dataset-view-private-content': {
             views: {
                 'v2-dataset-view-private-content': {
@@ -243,6 +229,10 @@ function R2UiBoxDefinitions() {
                             },
                             'show-filelist-2': {
                                 key: 'show-filelist-public'
+                            },
+                            'download-all': {
+                                key: 'show-filelist',
+                                click: true
                             }
                         }
                     }
@@ -306,6 +296,7 @@ function R2UiBoxDefinitions() {
                     }
                 },
                 'v2-head-controls-edit-actions-active': {
+                    modal: true,
                     elements: {
                         'v2-head-crtl-bt-close': { click: true },
                         'v2-head-crtl-sep-1': {},
@@ -316,6 +307,37 @@ function R2UiBoxDefinitions() {
                 'v2-head-controls-close-only': {
                     elements: {
                         'v2-head-crtl-bt-close': { click: true }
+                    }
+                }
+            }
+        },
+        'v2-dataset-actions': {
+            modal: true,
+            views: {
+                'v2-dataset-actions': {
+                    click: true,
+                    elements: {
+                        'v2-dataset-actions-publish': {}
+                    },
+                    zones: {
+                        'v2-dataset-actions-close': {}
+                    }
+                }
+            }
+        },
+        'v2-messages': {
+            modal: true,
+            views: {
+                'v2-messages': {
+                    modal: false
+                },
+                'msg-large-dataset': {
+                    elements: {
+                        'msg-large-dataset': {}
+                    },
+                    zones: {
+                        confirm: {},
+                        cancel: {}
                     }
                 }
             }
