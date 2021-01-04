@@ -176,6 +176,12 @@ export default {
                     options['v2-dataset-actions'] = {
                         view: 'v2-dataset-actions-publish'
                     }
+                    options['v2-head-controls'] = {
+                        delay: 0,
+                        speed: 0.3,
+                        view: 'v2-head-controls-edit-actions-active'
+                    }
+
                     return this.setViewMode(`${this.getViewStack()[0]}`, options)
             }
         },
@@ -208,7 +214,7 @@ export default {
                 case 'private-dataset':
                 case 'dataset-actions':
                     privateView = true
-                    path = 'View my Dataset / xxxx'
+                    path = 'View my Dataset / Dual Color Imaging from a Single BF2 ...'
                     break
                 case 'mywork':
                     privateView = true
@@ -216,6 +222,10 @@ export default {
                     break
                 case 'file-list-public':
                     path = 'List & Search Files of Dataset / DOI / 10.1002/0470841559.ch1'
+                    break
+                case 'file-list-private':
+                    privateView = true
+                    path = 'List & Search Files of my Dataset / Dual Color Imaging from a Single BF2 ...'
                     break
             }
             this.$store.dispatch('setSubPath', path)

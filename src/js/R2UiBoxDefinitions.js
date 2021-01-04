@@ -294,7 +294,7 @@ function R2UiBoxDefinitions() {
                     elements: {
                         'v2-head-crtl-bt-close': { click: true },
                         'v2-head-crtl-sep-1': {},
-                        'v2-head-crtl-bt-actions-active': { click: true }
+                        'v2-head-crtl-bt-actions-active': { key: 'cancel', click: true }
                     }
                 },
 
