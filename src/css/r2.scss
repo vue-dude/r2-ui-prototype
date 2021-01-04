@@ -1,4 +1,6 @@
 $centered-width: 1150px;
+$top-bar-height: 45px;
+$sub-bar-height: 30px;
 
 @import 'css/r2-assets.scss';
 @import 'css/r2-boxes-v1.scss';
@@ -63,19 +65,24 @@ body {
         @media (max-width: #{$media-start-center-width}) {
             margin-left: 0;
         }
-        .centered-bg,
-        .modal-bg {
+        // .centered-bg,
+        // .modal-bg {
+        // }
+        .centered-bg {
+            position: absolute;
+            width: #{$centered-width};
+            height: calc(100vh - 78px);
+            top: 47px;
+            background-color: #00000042;
+            border: 1px solid #a8b4c9;
+            border-top: 1px solid #ffffff40;
         }
+
         .modal-bg {
             position: absolute;
             z-index: 2;
             pointer-events: none;
             top: 48px;
-            // left: 0px;
-            // width: calc(1150px + 10px);
-
-            // background-color: #657c7a78;
-
             left: calc(0px - var(--left-edge));
             width: 100vw;
             height: calc(100vh - 80px);
@@ -88,20 +95,50 @@ body {
         cursor: none;
     }
 
-    .sub-bar,
-    .nav-bar {
+    .nav-bar,
+    .sub-bar {
         position: absolute;
         width: 100vw;
-        height: 30px;
-        top: calc(100vh - 31px);
-        border-top: 1px solid rgba(0, 0, 0, 0.3);
-        background-color: rgba(0, 0, 0, 0.3);
+        top: 0px;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: 1px solid #373b4230;
         --right: calc(var(--left-edge) + #{$centered-width});
         --right-fixed: calc(var(--left-edge-min) + #{$centered-width});
         .left-adjusted-text {
             margin-left: calc(var(--left-edge) + 14px);
             @media (max-width: #{$media-start-center-width}) {
                 margin-left: calc(var(--left-edge-min) + 4px);
+            }
+        }
+        .headline {
+            font-family: 'Roboto Condensed', sans-serif;
+            color: white;
+            height: #{$top-bar-height};
+            line-height: #{$top-bar-height};
+            font-size: 17px;
+            font-weight: 300;
+            font-family: 'Roboto', sans-serif;
+            width: 50vw;
+        }
+        .bar-background {
+            position: absolute;
+            width: calc(100vw - 2 * var(--left-edge));
+            height: #{$top-bar-height};
+            left: calc(var(--left-edge) - 1px);
+            background-color: rgba(0, 0, 0, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+            // border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid #5d636c;
+            .border {
+                position: absolute;
+                width: 1px;
+                height: #{$top-bar-height};
+                background-color: #00000052;
+                &.right {
+                    right: 0px;
+                    background-color: #00000030;
+                }
             }
         }
         .path {
@@ -114,7 +151,7 @@ body {
             overflow: hidden;
             width: 140px;
             height: 45px;
-            left: calc(var(--right) - 131px);
+            left: calc(var(--right) - 141px);
             bottom: 0px;
             background-color: #f9f9f1;
             border-radius: 10px 0 0 0;
@@ -146,19 +183,16 @@ body {
             }
         }
     }
-    .nav-bar {
-        top: 0px;
-        height: 45px;
-        border: 1px solid rgba(0, 0, 0, 0.3);
-        .headline {
-            font-family: 'Roboto Condensed', sans-serif;
-            color: white;
-            height: 45px;
-            line-height: 45px;
-            font-size: 17px;
-            font-weight: 300;
-            font-family: 'Roboto', sans-serif;
-            width: 50vw;
+    .sub-bar {
+        height: #{$sub-bar-height};
+        top: calc(100vh - 32px);
+        border-bottom: none;
+        .bar-background {
+            height: #{$sub-bar-height};
+            border-bottom: none;
+            .border {
+                height: #{$sub-bar-height};
+            }
         }
     }
 
@@ -183,8 +217,6 @@ body {
             position: absolute;
             top: 55px;
             left: 10px;
-            // width: 200px;
-            // height: 200px;
             border-radius: 10px;
             background-size: contain;
             background-repeat: no-repeat;

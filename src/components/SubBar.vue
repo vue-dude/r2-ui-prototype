@@ -1,5 +1,9 @@
 <template>
     <div class="sub-bar">
+        <div class="bar-background">
+            <div class="border left"></div>
+            <div class="border right"></div>
+        </div>
         <div class="left-adjusted-text path">{{ $store.state.subPath }}</div>
         <div class="legal" v-html="legal"></div>
         <div class="logo">
@@ -34,10 +38,8 @@ export default {
     mounted() {
         this.uKey++
     },
-    beforeUnmount() {
-    },
-    methods: {
-    },
+    beforeUnmount() {},
+    methods: {},
     computed: {
         legal() {
             const keyz = 'terms,sp,imprint,sp,privacy'.split(',')

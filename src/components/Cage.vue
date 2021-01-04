@@ -256,8 +256,8 @@ export default {
                     break
                 case 'mywork':
                     goIns = {
-                        'v2-mywork-page': { delay: 0.1, speed: 0.8 },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' }
+                        'v2-mywork-page': { delay: 0.1, speed: 0.8 }
+                        // 'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' }
                     }
                     break
                 case 'search':
