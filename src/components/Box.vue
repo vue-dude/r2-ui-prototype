@@ -18,7 +18,7 @@
                     <div
                         v-for="(elm, key) in view.elements"
                         class="element"
-                        :class="[key, { clickable: elm.click }]"
+                        :class="[key, { clickable: elm.click }, elm.classes]"
                         :key="key"
                         @click.stop="elm.click ? onClickThing(elm.key || key, elm.args) : null"
                     >
@@ -48,7 +48,7 @@
                         <div
                             v-for="(elm, key) in view.scroll.elements"
                             class="element"
-                            :class="[key, { clickable: elm.click }]"
+                            :class="[key, { clickable: elm.click }, elm.classes]"
                             :key="key"
                             @click.stop="elm.click ? onClickThing(elm.key || key, elm.args) : null"
                         >
@@ -80,7 +80,7 @@
                     <div
                         v-for="(elm, key) in view.overlay.elements"
                         class="element"
-                        :class="[key, { clickable: elm.click }]"
+                        :class="[key, { clickable: elm.click }, elm.classes]"
                         :key="key"
                         @click.stop="elm.click ? onClickThing(elm.key || key, elm.args) : null"
                     >

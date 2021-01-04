@@ -1,7 +1,7 @@
 .r2 {
     .boxes {
         .box {
-            &.v2-main-nav {
+            &.v2-main-nav-v1 {
                 top: 3px;
                 left: 420px;
                 --width: 10px;
@@ -44,6 +44,62 @@
                 }
             }
 
+            &.v2-main-nav {
+                top: 8px;
+                left: 400px;
+
+                .element {
+                    &.sp-h {
+                        top: 4px;
+                        height: 24px;
+                        width: 1px;
+                        &.s-1-a {
+                            left: -20px;
+                            background-color: #555555;
+                        }
+                        &.s-1-b {
+                            left: -19px;
+                            background-color: #acacac;
+                        }
+                        &.s-2-a {
+                            left: 183px;
+                            background-color: #555555;
+                        }
+                        &.s-2-b {
+                            left: 182px;
+                            background-color: #acacac;
+                        }
+                    }
+                    &.nav-item {
+                        width: 80px;
+                        height: 30px;
+                        background-color: #7a7f85;
+                        border: 1px solid #eaeaea;
+                        color: #e4e4e4;
+                        line-height: 30px;
+                        text-align: center;
+                        &.public {
+                            border-radius: 10px 0 0 10px;
+                        }
+                        &.private {
+                            left: 83px;
+                            border-radius: 0 10px 10px 0;
+                        }
+                        &.sel {
+                            background-color: #4d5261;
+                            border: 1px solid #d5f8e8;
+                            color: #d5f8e8;
+                        }
+                        &.sp-nv {
+                            left: 82px;
+                            height: 30px;
+                            border: none;
+                            width: 1px;
+                            background-color: #000;
+                        }
+                    }
+                }
+            }
             &.v2-landing-page {
                 .view {
                     .scrollable {
