@@ -3,6 +3,20 @@ function R2UiBoxDefinitions() {
         'v2-main-nav': {
             visible: true,
             views: {
+                default: {
+                    elements: {
+                        's-1-a': { classes: 'sp-h' },
+                        private: { click: true, html: 'PRIVATE', classes: 'nav-item left' },
+                        public: { click: true, html: 'PUBLIC', classes: 'nav-item right' },
+                        arrow: { },
+                        info: { html: '-' }
+                    }
+                }
+            }
+        },
+        'v2-main-nav-V2': {
+            visible: true,
+            views: {
                 public: {
                     elements: {
                         's-1-a': { classes: 'sp-h' },
@@ -27,7 +41,7 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
-        'v2-main-navXXX': {
+        'v2-main-nav-V1': {
             visible: true,
             views: {
                 public: {

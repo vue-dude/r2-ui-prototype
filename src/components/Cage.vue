@@ -40,6 +40,7 @@ export default {
         return {
             viewMode: 'home',
             viewModePrev: null,
+            privateView: false,
             showCage: false,
             boxes: new BoxDefinitions().boxes,
             modalClass: this.isModalOverlay ? 'modal-overlay' : 'modal-below',
@@ -72,6 +73,7 @@ export default {
     },
     mounted() {
         this.setModalOverlay(false)
+        this.updateHeadNav(this.privateView, true, 'HOME')
         // this.setBoxConnectedNavState('inspector-nav', 'info')
         // this.setBoxConnectedNavState('facets-nav', 'f0')
         setTimeout(() => {
@@ -138,6 +140,7 @@ export default {
                 // main stack views
                 case 'show-public-dataset':
                     this.modifyViewStack({ key: 'public-dataset', action: 'add' })
+                    console.log('CG:onClick show-public-dataset this.getViewStack() = ', this.getViewStack())
                     return this.setViewMode('public-dataset', options)
                 case 'show-private-dataset':
                     this.modifyViewStack({ key: 'private-dataset', action: 'add' })
@@ -192,14 +195,113 @@ export default {
             // this.setViewMode('mywork')
             // this.boxes.facets.close = false
         },
+        updateHeadNav(privateView, animateAll, info = 'HOME') {
+            const view = '.v2-main-nav .view.default'
+            $(view).css('opacity', 1) // fix this issue globally!
+            $(view).removeClass('no-events')
+            const $public = $(`${view} .element.nav-item.public`)
+            const $private = $(`${view} .element.nav-item.private`)
+            const $info = $(`${view} .element.info`)
+            const $arrow = $(`${view} .element.arrow`)
+            const $tg1 = privateView ? $public : $private
+            const $tg2 = privateView ? $private : $public
+
+            const html = 'views.default.elements.info.html'
+            const infoNow = _.get(this.boxes['v2-main-nav'], html)
+            _.set(this.boxes['v2-main-nav'], html, info)
+
+            const resetInfo = () => {
+                gsap.set($info, {
+                    left: 150,
+                    opacity: 0
+                })
+                gsap.set($arrow, {
+                    left: 150,
+                    opacity: 0
+                })
+            }
+
+            const animateInfo = (delay = 0) => {
+                gsap.to($arrow, 0.2, {
+                    delay: delay + 0.1,
+                    left: 165,
+                    opacity: 1
+                })
+                gsap.to($info, 0.25, {
+                    delay: delay + 0.2,
+                    left: 182,
+                    opacity: 1
+                })
+            }
+
+            if (!animateAll) {
+                if (info !== infoNow) {
+                    resetInfo()
+                    animateInfo(0.15)
+                }
+            } else {
+                resetInfo()
+
+                gsap.set($tg1, {
+                    left: -50,
+                    opacity: 0
+                })
+
+                gsap.to($tg1, 0.1, {
+                    left: -30,
+                    onComplete: () => {
+                        gsap.to($tg1, 0.4, {
+                            left: 0,
+                            opacity: 1,
+                            ease: Expo.easeOut
+                        })
+                    }
+                })
+
+                gsap.to($tg2, 0.1, {
+                    left: 30,
+                    ease: Sine.easeIn,
+                    onComplete: () => {
+                        gsap.to($tg2, 0.4, {
+                            left: 75,
+                            ease: Expo.easeOut
+                        })
+                        animateInfo()
+                    }
+                })
+                $tg1.removeClass('right')
+                $tg1.addClass('left')
+                $tg1.addClass('no-events')
+                //
+                $tg2.removeClass('left')
+                $tg2.addClass('right')
+                $tg2.addClass('no-events')
+
+                setTimeout(() => {
+                    $tg1.removeClass('no-events')
+                    $tg2.removeClass('no-events')
+                }, 1300)
+            }
+        },
+
         setViewMode(mode, options = {}) {
-            const speed = 0.3
+            // console.log('CG:setViewMode viewMode this.viewModePrev = ', this.viewModePrev)
+            // console.log('CG:setViewMode viewMode this.viewMode = ', this.viewMode)
+            // console.log('CG:setViewMode viewMode mode = ', mode)
+            switch (mode) {
+                case 'home':
+                case 'mywork':
+                    if (this.viewModePrev && this.viewMode === mode) {
+                        return
+                    }
+            }
+
             this.viewModePrev = this.viewMode
             this.viewMode = mode || 'home'
-            console.log('CG:setViewMode viewMode prev = ', this.viewModePrev)
-            console.log('CG:setViewMode viewMode new = ', this.viewMode)
+
             console.log('CG:setViewMode options = ', options)
             let path = 'Home'
+            let headInfo = 'HOME'
             let privateView = false
             switch (this.viewMode) {
                 case 'home':
@@ -207,47 +309,50 @@ export default {
                     break
                 case 'search':
                     path = 'List & Search Datasets' // Search datasets
+                    headInfo = 'SEARCH DATASETS'
                     break
                 case 'public-dataset':
                     path = 'View Dataset / DOI / 10.1002/0470841559.ch1'
+                    headInfo = 'VIEW DATASET'
                     break
                 case 'private-dataset':
                 case 'dataset-actions':
                     privateView = true
+                    headInfo = 'WORK ON MY DATASET'
                     path = 'View my Dataset / Dual Color Imaging from a Single BF2 ...'
                     break
                 case 'mywork':
+                    headInfo = 'ALL MY DATASETS'
                     privateView = true
                     path = 'My Work / List & Search Datasets'
                     break
                 case 'file-list-public':
+                    headInfo = 'FILES OF THIS DATASET'
                     path = 'List & Search Files of Dataset / DOI / 10.1002/0470841559.ch1'
                     break
                 case 'file-list-private':
+                    headInfo = 'FILES OF THIS DATASET'
                     privateView = true
                     path = 'List & Search Files of my Dataset / Dual Color Imaging from a Single BF2 ...'
                     break
             }
             this.$store.dispatch('setSubPath', path)
+            let delay = 0
+            if (privateView !== this.privateView) {
+                delay = 0.6
+            }
+            this.updateHeadNav(privateView, delay > 0, headInfo)
 
-            const animationTargets = `.${this.modalClass}.cage.boxes .animate`
+            this.privateView = privateView
+
             let goOuts = [...Object.keys(this.boxes)]
             goOuts[goOuts.indexOf('v2-main-nav')] = null
             if (options._00 && _.isPlainObject(options._00.targets)) {
                 goOuts = [...Object.keys(options._00.targets)]
             }
-            _.each(goOuts, key => {
-                if (key) {
-                    gsap.to($(`${animationTargets}.${key}`), speed, {
-                        opacity: 0,
-                        ease: Expo.easeOut,
-                        display: 'none'
-                    })
-                    this.boxes[key].visible = false
-                }
-            })
+
             let goIns = {}
-            switch (mode) {
+            switch (this.viewMode) {
                 // v2
                 case 'home':
                     goIns = {
@@ -297,18 +402,36 @@ export default {
             if (options._00 && options._00.targets) {
                 goIns = options._00.targets
             } else {
-                goIns['v2-main-nav'] = {
-                    view: privateView ? 'private' : 'public',
-                    delay: 0,
-                    speed: 0.2
-                }
-                if (!this.$store.state.loggedIn) {
-                    goIns['login-bt-top'] = { delay: 0, speed: 0.1 }
-                }
+                // for non animated main-nav versions
+                // goIns['v2-main-nav'] = {
+                //     // view: privateView ? 'private' : 'public',
+                //     view: 'default',
+                //     delay: 0,
+                //     speed: 0.2
+                // }
             }
+            this.animateOut(goOuts, goIns, options, delay)
+        },
 
+        animateOut(goOuts, goIns, options, delay = 0) {
+            console.log('obj:fc goOuts = ', goOuts)
+            const speed = 0.3
+            const animationTargets = `.${this.modalClass}.cage.boxes .animate`
+            _.each(goOuts, key => {
+                if (key) {
+                    gsap.to($(`${animationTargets}.${key}`), speed, {
+                        opacity: 0,
+                        ease: Expo.easeOut,
+                        display: 'none'
+                    })
+                    this.boxes[key].visible = false
+                }
+            })
+            gsap.delayedCall(delay, this.animateIn, [goOuts, goIns, options, animationTargets])
+        },
+
+        animateIn(goOuts, goIns, options, animationTargets) {
             let hasModal = false
-
             _.each(goIns, (args, boxId) => {
                 // handle the box
                 gsap.killTweensOf($(`${animationTargets}.${boxId}`))
