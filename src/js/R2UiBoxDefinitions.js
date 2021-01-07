@@ -14,54 +14,6 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
-        'v2-main-nav-V2': {
-            visible: true,
-            views: {
-                public: {
-                    elements: {
-                        's-1-a': { classes: 'sp-h' },
-                        's-1-b': { classes: 'sp-h' },
-                        public: { click: true, html: 'PUBLIC', classes: 'nav-item sel' },
-                        sp: { classes: 'nav-item sp-nv' },
-                        private: { click: true, html: 'PRIVATE', classes: 'nav-item' },
-                        's-2-a': { classes: 'sp-h' },
-                        's-2-b': { classes: 'sp-h' }
-                    }
-                },
-                private: {
-                    elements: {
-                        's-1-a': { classes: 'sp-h' },
-                        's-1-b': { classes: 'sp-h' },
-                        public: { click: true, html: 'PUBLIC', classes: 'nav-item' },
-                        sp: { classes: 'nav-item sp-nv' },
-                        private: { click: true, html: 'PRIVATE', classes: 'nav-item sel' },
-                        's-2-a': { classes: 'sp-h' },
-                        's-2-b': { classes: 'sp-h' }
-                    }
-                }
-            }
-        },
-        'v2-main-nav-V1': {
-            visible: true,
-            views: {
-                public: {
-                    elements: {
-                        'bg-1': { key: 'public', click: true, classes: 'circ-bg-sel' },
-                        'sym-diamond-sel': { key: 'public', click: true },
-                        'bg-2': { key: 'private', click: true, classes: 'circ-bg' },
-                        'sym-work': { key: 'private', click: true }
-                    }
-                },
-                private: {
-                    elements: {
-                        'bg-1': { key: 'public', click: true, classes: 'circ-bg' },
-                        'sym-diamond': { key: 'public', click: true },
-                        'bg-2': { key: 'private', click: true, classes: 'circ-bg-sel' },
-                        'sym-work-sel': { key: 'private', click: true }
-                    }
-                }
-            }
-        },
         'v2-file-list': {
             views: {
                 'file-list-collection-closed': {

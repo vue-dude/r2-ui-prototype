@@ -344,15 +344,10 @@ export default {
                     break
             }
             this.$store.dispatch('setSubPath', path)
-            let animateAll = false
-            let delay = 0.6 // 0
-            if (privateView !== this.privateView) {
-                animateAll = true
-                delay = 0.6
-            }
-            delay = this.updateHeadNav(privateView, animateAll, headInfo)
 
+            const animateAll = privateView !== this.privateView
             this.privateView = privateView
+            const delay = this.updateHeadNav(privateView, animateAll, headInfo)
 
             let goOuts = [...Object.keys(this.boxes)]
             goOuts[goOuts.indexOf('v2-main-nav')] = null
