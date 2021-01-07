@@ -128,11 +128,12 @@
                         }
                     }
                     &.info {
-                        top: 6px;
-                        left: 166px;
+                        top: 1px;
                         color: #ffffff;
-                        font-size: 15px;
+                        font-size: 14px;
                         width: 200px;
+                        height: 30px;
+                        line-height: 30px;
                     }
 
                     &.arrow {
@@ -151,7 +152,7 @@
                             width: 65px;
                             height: 22px;
                             font-size: 12px;
-                            line-height: 20px;
+                            line-height: 22px;
                             top: 4px;
                             border-radius: 7px;
                             //
@@ -162,6 +163,7 @@
                         &.right {
                             width: 80px;
                             height: 30px;
+                            font-size: 14px;
                             line-height: 30px;
                             border-radius: 10px;
                             //
@@ -721,6 +723,7 @@
 
                 .view {
                     &.v2-head-controls-edit,
+                    &.v2-head-controls-new-dataset-only,
                     &.v2-head-controls-edit-actions-active {
                         .v2-head-crtl-bt-actions,
                         .v2-head-crtl-bt-actions-active {
@@ -729,6 +732,20 @@
                             height: 34px;
                             left: -56px;
                         }
+
+                        .v2-head-crtl-bt-new-dataset {
+                            top: -1px;
+                            width: 34px;
+                            height: 34px;
+                        }
+                        .v2-head-crtl-label-new-dataset {
+                            top: 10px;
+                            width: 141px;
+                            height: 34px;
+                            right: -19px;
+                            font-size: 13px;
+                        }
+
                         .v2-head-crtl-bt-edit {
                             top: -1px;
                             width: 34px;

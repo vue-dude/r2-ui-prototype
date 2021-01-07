@@ -8,7 +8,7 @@ function R2UiBoxDefinitions() {
                         's-1-a': { classes: 'sp-h' },
                         private: { click: true, html: 'PRIVATE', classes: 'nav-item left' },
                         public: { click: true, html: 'PUBLIC', classes: 'nav-item right' },
-                        arrow: { },
+                        arrow: {},
                         info: { html: '-' }
                     }
                 }
@@ -341,6 +341,12 @@ function R2UiBoxDefinitions() {
                 'v2-head-controls-close-only': {
                     elements: {
                         'v2-head-crtl-bt-close': { click: true }
+                    }
+                },
+                'v2-head-controls-new-dataset-only': {
+                    elements: {
+                        'v2-head-crtl-label-new-dataset': { html: 'Create new Dataset', classes: 'text' },
+                        'v2-head-crtl-bt-new-dataset': { click: true }
                     }
                 }
             }

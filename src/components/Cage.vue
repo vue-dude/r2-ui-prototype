@@ -209,6 +209,11 @@ export default {
             const html = 'views.default.elements.info.html'
             const infoNow = _.get(this.boxes['v2-main-nav'], html)
             _.set(this.boxes['v2-main-nav'], html, info)
+            let delay = 0.6
+            if (infoNow === info) {
+                animateAll = false
+                delay = 0
+            }
 
             const resetInfo = () => {
                 gsap.set($info, {
@@ -282,6 +287,8 @@ export default {
                     $tg2.removeClass('no-events')
                 }, 1300)
             }
+
+            return delay
         },
 
         setViewMode(mode, options = {}) {
@@ -331,17 +338,19 @@ export default {
                     path = 'List & Search Files of Dataset / DOI / 10.1002/0470841559.ch1'
                     break
                 case 'file-list-private':
-                    headInfo = 'FILES OF THIS DATASET'
+                    headInfo = 'FILES OF MY DATASET'
                     privateView = true
                     path = 'List & Search Files of my Dataset / Dual Color Imaging from a Single BF2 ...'
                     break
             }
             this.$store.dispatch('setSubPath', path)
-            let delay = 0
+            let animateAll = false
+            let delay = 0.6 // 0
             if (privateView !== this.privateView) {
+                animateAll = true
                 delay = 0.6
             }
-            this.updateHeadNav(privateView, delay > 0, headInfo)
+            delay = this.updateHeadNav(privateView, animateAll, headInfo)
 
             this.privateView = privateView
 
@@ -361,8 +370,8 @@ export default {
                     break
                 case 'mywork':
                     goIns = {
-                        'v2-mywork-page': { delay: 0.1, speed: 0.8 }
-                        // 'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' }
+                        'v2-mywork-page': { delay: 0.1, speed: 0.8 },
+                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-new-dataset-only' }
                     }
                     break
                 case 'search':
