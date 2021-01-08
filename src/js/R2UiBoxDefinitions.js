@@ -5,7 +5,8 @@ function R2UiBoxDefinitions() {
             views: {
                 default: {
                     elements: {
-                        's-1-a': { classes: 'sp-h' },
+                        'sp-1-a': { classes: 'sp-h' },
+                        'sp-1-b': { classes: 'sp-h' },
                         private: { click: true, html: 'PRIVATE', classes: 'nav-item left' },
                         public: { click: true, html: 'PUBLIC', classes: 'nav-item right' },
                         arrow: {},
@@ -222,12 +223,38 @@ function R2UiBoxDefinitions() {
                             }
                         }
                     }
+                },
+                'v2-dataset-view-private-init-content': {
+                    scroll: {
+                        zones: {
+                            'show-filelist-1': {
+                                key: 'show-filelist-private'
+                            },
+                            'show-filelist-2': {
+                                key: 'show-filelist-private'
+                            },
+                            'download-all': {
+                                click: true
+                            }
+                        }
+                    }
                 }
             }
         },
         'v2-dataset-view-private-infos': {
             views: {
-                'v2-dataset-view-private-infos': {}
+                'v2-dataset-view-private-infos': {},
+                'v2-dataset-view-private-init-infos': {
+                    elements: {
+                        // 'v2-dataset-view-private-controls-bg': {},
+                        // 'v2-head-crtl-bt-actions': { key: 'dataset-actions', click: true },
+                        // 'v2-head-crtl-bt-edit': {},
+                        // 'sp-1-a': { classes: 'sp-h' },
+                        // 'sp-1-b': { classes: 'sp-h' },
+                        // 'v2-head-crtl-sym-upload': {},
+                        // 'v2-upload-info': { html: 'Upload files here:', classes: 'text' }
+                    }
+                }
             }
         },
         'main-nav': {
@@ -297,8 +324,32 @@ function R2UiBoxDefinitions() {
                 },
                 'v2-head-controls-new-dataset-only': {
                     elements: {
-                        'v2-head-crtl-label-new-dataset': { html: 'Create new Dataset', classes: 'text' },
-                        'v2-head-crtl-bt-new-dataset': { click: true }
+                        'v2-head-crtl-label-new-dataset': {
+                            key: 'create-new-dataset',
+                            click: true,
+                            html: 'Create new Dataset',
+                            classes: 'text'
+                        },
+                        'v2-head-crtl-bt-new-dataset': { key: 'create-new-dataset', click: true }
+                    }
+                }
+            }
+        },
+        'v2-dataset-controls': {
+            views: {
+                'v2-dataset-controls': {
+                    modal: null, // gets set via state dynamical
+                    elements: {
+                        'v2-dataset-view-private-controls-bg': {},
+                        'v2-head-crtl-bt-actions-active': { key: 'dataset-actions-off', click: true },
+                        'v2-head-crtl-bt-actions': { key: 'dataset-actions-on', click: true },
+                        'v2-head-crtl-bt-edit-active': { key: 'dataset-edit-off', click: true },
+                        'v2-head-crtl-bt-edit': { key: 'dataset-edit-on', click: true },
+
+                        'sp-1-a': { classes: 'sp-h' },
+                        'sp-1-b': { classes: 'sp-h' },
+                        'v2-head-crtl-sym-upload': {},
+                        'v2-upload-info': { html: 'Upload files here:', classes: 'text' }
                     }
                 }
             }

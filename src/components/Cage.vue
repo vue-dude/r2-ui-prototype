@@ -13,7 +13,7 @@
         <box class="animate" :config="boxes['v2-dataset-view-private-content']"></box>
         <box class="animate" :config="boxes['v2-dataset-view-private-infos']"></box>
         <!--  -->
-
+        <box class="animate" :config="boxes['v2-dataset-controls']"></box>
         <box class="animate" :config="boxes['v2-dataset-actions']"></box>
         <box class="animate" :config="boxes['v2-messages']"></box>
 
@@ -85,115 +85,63 @@ export default {
         }, 400)
     },
     methods: {
-        setBoxConnectedNavState(target, key) {
-            const tg = `.box.${target} .element`
-            $(tg).css('visibility', 'hidden')
-            $(`${tg}.all`).removeAttr('style')
-            $(`${tg}.${key}`).removeAttr('style')
-        },
-        modifyViewStack(args = {}) {
-            args.key = args.key || 'home'
-            args.action = args.action || 'reset'
-            if (args.action === 'reset') {
-                this.viewStack = [args.key]
-            } else if (args.action === 'add') {
-                this.viewStack.push(args.key)
-            } else if (args.action === 'remove') {
-                this.viewStack.pop()
-                if (this.viewStack.length === 0) {
-                    this.modifyViewStack({ action: 'reset' })
-                }
+        updateDatasetControls(args = {}) {
+            const element = '.v2-dataset-controls .elements .element'
+
+            const setEditState = yes => {
+                let targets = [`${element}.v2-head-crtl-bt-edit`, `${element}.v2-head-crtl-bt-edit-active`]
+                let t1 = yes ? targets[1] : targets[0]
+                let t2 = yes ? targets[0] : targets[1]
+                console.log('obj:setEditState t1 = ', $(t1))
+                console.log('obj:setEditState t2 = ', $(t2))
+                gsap.set($(t1), {
+                    visibility: 'visible'
+                })
+                gsap.set($(t2), {
+                    visibility: 'hidden'
+                })
             }
-            console.log('modifyViewStack this.viewStack = ', this.viewStack)
-        },
-        getViewStack() {
-            return [...this.viewStack].reverse()
-        },
-        onClickCage() {
-            if (this.isModalOverlay && this.showCage) {
-                globals.eventBus.$emit('click', { key: 'modal-bg' })
+
+            if (!_.isNil(args.edit)) {
+                setEditState(args.edit)
             }
-        },
-        onClick(evt) {
-            evt.box = evt.box || { id: null }
-            console.log('CG:onClick evt = ', evt)
-            console.log('CG:onClick this.$store.state.loggedIn = ', this.$store.state.loggedIn)
-            let options = { _00: { targets: null } }
-            switch (evt.key) {
-                // cancel and close
-                case 'modal-bg':
-                    return this.setViewMode(this.getViewStack()[0], options)
-                case 'confirm':
-                case 'cancel':
-                case 'close':
-                    return this.setViewMode(this.getViewStack()[0], options)
-                case 'v2-head-crtl-bt-close':
-                    this.modifyViewStack({ action: 'remove' })
-                    return this.setViewMode(this.getViewStack()[0], options)
-                // base views
-                case 'public':
-                    this.modifyViewStack({ action: 'reset' })
-                    return this.setViewMode('home', options)
-                case 'private':
-                    this.modifyViewStack({ key: 'mywork', action: 'reset' })
-                    return this.setViewMode('mywork', options)
-                // main stack views
-                case 'show-public-dataset':
-                    this.modifyViewStack({ key: 'public-dataset', action: 'add' })
-                    console.log('CG:onClick show-public-dataset this.getViewStack() = ', this.getViewStack())
-                    return this.setViewMode('public-dataset', options)
-                case 'show-private-dataset':
-                    this.modifyViewStack({ key: 'private-dataset', action: 'add' })
-                    return this.setViewMode('private-dataset', options)
-                case 'show-search-page':
-                    this.modifyViewStack({ key: 'search', action: 'add' })
-                    return this.setViewMode('search', options)
 
-                // file list stuff
-                case 'show-filelist-public':
-                    this.modifyViewStack({ key: 'file-list-public', action: 'add' })
-                    return this.setViewMode('file-list-public', options)
-
-                case 'show-filelist-private':
-                    this.modifyViewStack({ key: 'file-list-private', action: 'add' })
-                    return this.setViewMode('file-list-private', options)
-
-                case 'open-file-collection':
-                    options._00 = {
-                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-open' } }
-                    }
-                    return this.setViewMode(this.getViewStack()[0], options)
-                case 'close-file-collection':
-                    options._00 = {
-                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-closed' } }
-                    }
-                    return this.setViewMode(this.getViewStack()[0], options)
-
-                // actions and messages
-                case 'download-all':
-                    options['v2-messages'] = {
-                        view: 'msg-large-dataset'
-                    }
-                    return this.setViewMode(`${this.getViewStack()[0]}`, options)
-                case 'v2-head-crtl-bt-actions':
-                    options['v2-dataset-actions'] = {
-                        view: 'v2-dataset-actions-publish'
-                    }
-                    options['v2-head-controls'] = {
-                        delay: 0,
-                        speed: 0.3,
-                        view: 'v2-head-controls-edit-actions-active'
-                    }
-
-                    return this.setViewMode(`${this.getViewStack()[0]}`, options)
+            const setActionsState = yes => {
+                let targets = [`${element}.v2-head-crtl-bt-actions`, `${element}.v2-head-crtl-bt-actions-active`]
+                let t1 = yes ? targets[1] : targets[0]
+                let t2 = yes ? targets[0] : targets[1]
+                console.log('obj:setActionsState t1 = ', $(t1))
+                console.log('obj:setActionsState t2 = ', $(t2))
+                gsap.set($(t1), {
+                    visibility: 'visible'
+                })
+                gsap.set($(t2), {
+                    visibility: 'hidden'
+                })
+                // this.boxes['v2-dataset-controls'].modal = yes === true
+                this.boxes['v2-dataset-controls'].views['v2-dataset-controls'].modal = yes === true
+                console.log('obj:setActionsState box = ', this.boxes['v2-dataset-controls'])
             }
-        },
 
-        setLoggedIn() {
-            // $('.nav.quick-actions').removeClass('hidden')
-            // this.$store.dispatch('setLoggedInState', true)
-            // this.setViewMode('mywork')
-            // this.boxes.facets.close = false
+            if (!_.isNil(args.actions)) {
+                setActionsState(args.actions)
+            }
+
+            //         'v2-dataset-controls': {
+            // modal: null, // gets set via state dynamical
+            // views: {
+            //     'v2-dataset-controls': {
+            //         elements: {
+            //             'v2-dataset-view-private-controls-bg': {},
+            //             'v2-head-crtl-bt-actions-active': { key: 'dataset-actions-off', click: true },
+            //             'v2-head-crtl-bt-actions': { key: 'dataset-actions-on', click: true },
+            //             'v2-head-crtl-bt-edit-active': { key: 'dataset-edit-off', click: true },
+            //             'v2-head-crtl-bt-edit': { key: 'dataset-edit-on', click: true },
+
+            //             'sp-1-a': { classes: 'sp-h' },
+            //             'sp-1-b': { classes: 'sp-h' },
+            //             'v2-head-crtl-sym-upload': {},
+            //             'v2-upload-info': { html: 'Upload files here:', classes: 'text' }
         },
         updateHeadNav(privateView, animateAll, info = 'HOME') {
             const view = '.v2-main-nav .view.default'
@@ -287,10 +235,131 @@ export default {
                     $tg2.removeClass('no-events')
                 }, 1300)
             }
-
             return delay
         },
+        setBoxConnectedNavState(target, key) {
+            const tg = `.box.${target} .element`
+            $(tg).css('visibility', 'hidden')
+            $(`${tg}.all`).removeAttr('style')
+            $(`${tg}.${key}`).removeAttr('style')
+        },
+        modifyViewStack(args = {}) {
+            args.key = args.key || 'home'
+            args.action = args.action || 'reset'
+            if (args.action === 'reset') {
+                this.viewStack = [args.key]
+            } else if (args.action === 'add') {
+                this.viewStack.push(args.key)
+            } else if (args.action === 'remove') {
+                this.viewStack.pop()
+                if (this.viewStack.length === 0) {
+                    this.modifyViewStack({ action: 'reset' })
+                }
+            }
+            console.log('modifyViewStack this.viewStack = ', this.viewStack)
+        },
+        getViewStack() {
+            return [...this.viewStack].reverse()
+        },
+        onClickCage() {
+            if (this.isModalOverlay && this.showCage) {
+                globals.eventBus.$emit('click', { key: 'modal-bg' })
+            }
+        },
+        onClick(evt) {
+            evt.box = evt.box || { id: null }
+            console.log('CG:onClick evt = ', evt)
+            console.log('CG:onClick this.$store.state.loggedIn = ', this.$store.state.loggedIn)
+            let options = { _00: { targets: null } }
+            switch (evt.key) {
+                // cancel and close
+                case 'modal-bg':
+                    return this.setViewMode(this.getViewStack()[0], options)
+                case 'confirm':
+                case 'cancel':
+                case 'close':
+                    return this.setViewMode(this.getViewStack()[0], options)
+                case 'v2-head-crtl-bt-close':
+                    this.modifyViewStack({ action: 'remove' })
+                    return this.setViewMode(this.getViewStack()[0], options)
+                // base views
+                case 'public':
+                    this.modifyViewStack({ action: 'reset' })
+                    return this.setViewMode('home', options)
+                case 'private':
+                    this.modifyViewStack({ key: 'mywork', action: 'reset' })
+                    return this.setViewMode('mywork', options)
+                // main stack views
+                case 'show-public-dataset':
+                    this.modifyViewStack({ key: 'public-dataset', action: 'add' })
+                    console.log('CG:onClick show-public-dataset this.getViewStack() = ', this.getViewStack())
+                    return this.setViewMode('public-dataset', options)
+                case 'show-private-dataset':
+                    this.modifyViewStack({ key: 'private-dataset', action: 'add' })
+                    return this.setViewMode('private-dataset', options)
+                case 'create-new-dataset':
+                    this.modifyViewStack({ key: 'initial-dataset', action: 'add' })
+                    this.updateDatasetControls({ edit: true, actions: false })
+                    return this.setViewMode('initial-dataset', options)
+                case 'show-search-page':
+                    this.modifyViewStack({ key: 'search', action: 'add' })
+                    return this.setViewMode('search', options)
+                // file list stuff
+                case 'show-filelist-public':
+                    this.modifyViewStack({ key: 'file-list-public', action: 'add' })
+                    return this.setViewMode('file-list-public', options)
+                case 'show-filelist-private':
+                    this.modifyViewStack({ key: 'file-list-private', action: 'add' })
+                    return this.setViewMode('file-list-private', options)
 
+                case 'open-file-collection':
+                    options._00 = {
+                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-open' } }
+                    }
+                    return this.setViewMode(this.getViewStack()[0], options)
+                case 'close-file-collection':
+                    options._00 = {
+                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-closed' } }
+                    }
+                    return this.setViewMode(this.getViewStack()[0], options)
+
+                // actions and messages
+                case 'download-all':
+                    options['v2-messages'] = {
+                        view: 'msg-large-dataset'
+                    }
+                    return this.setViewMode(`${this.getViewStack()[0]}`, options)
+                case 'v2-head-crtl-bt-actions':
+                    options['v2-dataset-actions'] = {
+                        view: 'v2-dataset-actions-publish'
+                    }
+                    options['v2-head-controls'] = {
+                        delay: 0,
+                        speed: 0.3,
+                        view: 'v2-head-controls-edit-actions-active'
+                    }
+                    return this.setViewMode(`${this.getViewStack()[0]}`, options)
+
+                case 'dataset-edit-on':
+                    this.updateDatasetControls({ edit: true })
+                    return null
+                case 'dataset-edit-off':
+                    this.updateDatasetControls({ edit: false })
+                    return null
+                case 'dataset-actions-on':
+                    this.updateDatasetControls({ actions: true })
+                    return this.setViewMode('initial-dataset', options)
+                case 'dataset-actions-off':
+                    this.updateDatasetControls({ actions: false })
+                    return this.setViewMode('initial-dataset', options)
+            }
+        },
+        setLoggedIn() {
+            // $('.nav.quick-actions').removeClass('hidden')
+            // this.$store.dispatch('setLoggedInState', true)
+            // this.setViewMode('mywork')
+            // this.boxes.facets.close = false
+        },
         setViewMode(mode, options = {}) {
             // console.log('CG:setViewMode viewMode this.viewModePrev = ', this.viewModePrev)
             // console.log('CG:setViewMode viewMode this.viewMode = ', this.viewMode)
@@ -327,6 +396,11 @@ export default {
                     privateView = true
                     headInfo = 'WORK ON MY DATASET'
                     path = 'View my Dataset / Dual Color Imaging from a Single BF2 ...'
+                    break
+                case 'initial-dataset':
+                    privateView = true
+                    headInfo = 'CREATE NEW DATASET'
+                    path = 'Create new Dataset'
                     break
                 case 'mywork':
                     headInfo = 'ALL MY DATASETS'
@@ -391,6 +465,29 @@ export default {
                         'v2-messages': { delay: 0.1, speed: 0.4 },
                         'v2-dataset-actions': { delay: 0, speed: 0.4 }
                     }
+                    break
+                case 'initial-dataset':
+                    goIns = {
+                        'v2-dataset-view-private-content': {
+                            delay: 0.1,
+                            speed: 0.4,
+                            view: 'v2-dataset-view-private-init-content'
+                        },
+                        'v2-dataset-view-private-infos': {
+                            delay: 0.1,
+                            speed: 0.4,
+                            view: 'v2-dataset-view-private-init-infos'
+                        },
+                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' },
+                        'v2-dataset-controls': { delay: 0.1, speed: 0.4 },
+                        'v2-messages': { delay: 0.1, speed: 0.4 },
+                        'v2-dataset-actions': { delay: 0, speed: 0.4 }
+                    }
+
+                    if (this.viewMode === this.viewModePrev) {
+                        goIns['v2-dataset-controls'] = { delay: 0, speed: 0 }
+                    }
+
                     break
 
                 case 'file-list-public':
@@ -478,14 +575,16 @@ export default {
                     vOpacity = 0
                 }
                 const $targetView = $(`${animationTargets}.${boxId} .${view.id}`)
-
-                if (view.modal) {
-                    if (!this.isModalOverlay) {
-                        gsap.set($targetView, {
-                            visibility: 'hidden'
-                        })
-                    }
+                //
+                let visibility = 'visible'
+                switch (true) {
+                    case view.modal && !this.isModalOverlay:
+                    case !view.modal && this.isModalOverlay:
+                        visibility = 'hidden'
                 }
+                gsap.set($targetView, {
+                    visibility
+                })
                 //
                 if (vOpacity === 0) {
                     // avoid invisible views could be clicked anyway

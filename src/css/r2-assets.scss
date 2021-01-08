@@ -123,11 +123,21 @@
             background-image: url(./r2-ui/v2/webp/dataset-view-public-infos.webp);
         }
 
+        &.v2-dataset-view-private-controls {
+            background-image: url(./r2-ui/v2/webp/dataset-view-private-controls.webp);
+        }
+
         &.v2-dataset-view-private-content-scroll {
             background-image: url(./r2-ui/v2/webp/dataset-view-private-content.webp);
         }
         &.v2-dataset-view-private-infos-scroll {
             background-image: url(./r2-ui/v2/webp/dataset-view-private-infos.webp);
+        }
+        &.v2-dataset-view-private-init-content-scroll {
+            background-image: url(./r2-ui/v2/webp/dataset-view-init-content.webp);
+        }
+        &.v2-dataset-view-private-init-infos-scroll {
+            background-image: url(./r2-ui/v2/webp/dataset-view-init-infos.webp);
         }
 
         // actions and messages
@@ -150,8 +160,11 @@
         &.v2-head-crtl-bt-edit {
             background-image: url(./r2-ui/v2/webp/head-crtl-bt-edit.webp);
         }
+        &.v2-head-crtl-bt-edit-active {
+            background-image: url(./r2-ui/v2/webp/head-crtl-bt-edit-active.webp);
+        }
         &.v2-head-crtl-bt-new-dataset {
-            background-image: url(./r2-ui/v2/png/head-crtl-bt-new-dataset.png);
+            background-image: url(./r2-ui/v2/webp/head-crtl-bt-new-dataset.webp);
         }
 
         &.v2-head-crtl-bt-actions {
