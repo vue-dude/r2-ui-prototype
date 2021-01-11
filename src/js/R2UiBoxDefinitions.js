@@ -228,14 +228,15 @@ function R2UiBoxDefinitions() {
                     scroll: {
                         zones: {
                             'show-filelist-1': {
-                                key: 'show-filelist-private'
-                            },
-                            'show-filelist-2': {
-                                key: 'show-filelist-private'
-                            },
-                            'download-all': {
-                                click: true
+                                // key: 'show-filelist-private',
+                                key: null
                             }
+                            // 'show-filelist-2': {
+                            //     key: 'show-filelist-private'
+                            // },
+                            // 'download-all': {
+                            //     click: true
+                            // }
                         }
                     }
                 }
@@ -362,7 +363,7 @@ function R2UiBoxDefinitions() {
                 },
                 'v2-dataset-actions-publish': {
                     elements: {
-                        'v2-dataset-actions-publish': { click: true }
+                        'v2-dataset-actions-publish': { key: 'actions-panel-close', click: true }
                     },
                     zones: {
                         'v2-dataset-actions-close': { key: 'cancel' }

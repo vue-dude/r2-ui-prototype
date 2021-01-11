@@ -528,7 +528,7 @@
                 .view {
                     &.v2-dataset-view-private-infos {
                         .scrollable {
-                            top: 0px;
+                            top: 70px;
                             left: 0px;
                             width: calc(var(--width) + 10px);
                             height: calc(100vh - 90px);
@@ -777,9 +777,9 @@
             // actions and messages
 
             &.v2-dataset-controls {
-                left: 863px;
-                width: 274px;
-                height: 59px;
+                left: 865px;
+                // width: 274px;
+                // height: 59px;
                 .view {
                     .elements {
                         .v2-dataset-view-private-controls-bg {
@@ -788,7 +788,7 @@
                                 background-color: #697f9e;
                                 border: 1px solid white;
                                 border-radius: 8px;
-                                width: 274px;
+                                width: 272px;
                                 height: 59px;
                             }
                         }
@@ -843,6 +843,7 @@
 
             &.v2-dataset-actions {
                 left: 0px;
+                top: 126px;
                 .view {
                     .v2-dataset-actions-publish {
                         top: 0px;

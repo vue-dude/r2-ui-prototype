@@ -88,6 +88,11 @@ export default {
         updateDatasetControls(args = {}) {
             const element = '.v2-dataset-controls .elements .element'
 
+            if (args.reset === true) {
+                args.edit = false
+                args.actions = false
+            }
+
             const setEditState = yes => {
                 let targets = [`${element}.v2-head-crtl-bt-edit`, `${element}.v2-head-crtl-bt-edit-active`]
                 let t1 = yes ? targets[1] : targets[0]
@@ -274,10 +279,10 @@ export default {
             switch (evt.key) {
                 // cancel and close
                 case 'modal-bg':
-                    return this.setViewMode(this.getViewStack()[0], options)
-                case 'confirm':
                 case 'cancel':
+                case 'confirm':
                 case 'close':
+                    this.updateDatasetControls({ reset: true })
                     return this.setViewMode(this.getViewStack()[0], options)
                 case 'v2-head-crtl-bt-close':
                     this.modifyViewStack({ action: 'remove' })
@@ -329,16 +334,6 @@ export default {
                         view: 'msg-large-dataset'
                     }
                     return this.setViewMode(`${this.getViewStack()[0]}`, options)
-                case 'v2-head-crtl-bt-actions':
-                    options['v2-dataset-actions'] = {
-                        view: 'v2-dataset-actions-publish'
-                    }
-                    options['v2-head-controls'] = {
-                        delay: 0,
-                        speed: 0.3,
-                        view: 'v2-head-controls-edit-actions-active'
-                    }
-                    return this.setViewMode(`${this.getViewStack()[0]}`, options)
 
                 case 'dataset-edit-on':
                     this.updateDatasetControls({ edit: true })
@@ -348,10 +343,16 @@ export default {
                     return null
                 case 'dataset-actions-on':
                     this.updateDatasetControls({ actions: true })
-                    return this.setViewMode('initial-dataset', options)
+                    options['v2-dataset-actions'] = {
+                        view: 'v2-dataset-actions-publish'
+                    }
+                    return this.setViewMode(this.viewMode, options)
                 case 'dataset-actions-off':
                     this.updateDatasetControls({ actions: false })
-                    return this.setViewMode('initial-dataset', options)
+                    options['v2-dataset-actions'] = {
+                        view: 'v2-dataset-actions'
+                    }
+                    return this.setViewMode(this.viewMode, options)
             }
         },
         setLoggedIn() {
@@ -457,7 +458,7 @@ export default {
                         'v2-messages': { delay: 0.1, speed: 0.4 }
                     }
                     break
-                case 'private-dataset':
+                case 'private-datasetXXX':
                     goIns = {
                         'v2-dataset-view-private-content': { delay: 0.1, speed: 0.4 },
                         'v2-dataset-view-private-infos': { delay: 0.1, speed: 0.4 },
@@ -466,30 +467,32 @@ export default {
                         'v2-dataset-actions': { delay: 0, speed: 0.4 }
                     }
                     break
+                case 'private-dataset':
                 case 'initial-dataset':
                     goIns = {
                         'v2-dataset-view-private-content': {
                             delay: 0.1,
                             speed: 0.4,
-                            view: 'v2-dataset-view-private-init-content'
+                            view: 'v2-dataset-view-private-content'
                         },
                         'v2-dataset-view-private-infos': {
                             delay: 0.1,
                             speed: 0.4,
-                            view: 'v2-dataset-view-private-init-infos'
+                            view: 'v2-dataset-view-private-infos'
                         },
                         'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' },
                         'v2-dataset-controls': { delay: 0.1, speed: 0.4 },
                         'v2-messages': { delay: 0.1, speed: 0.4 },
                         'v2-dataset-actions': { delay: 0, speed: 0.4 }
                     }
-
                     if (this.viewMode === this.viewModePrev) {
                         goIns['v2-dataset-controls'] = { delay: 0, speed: 0 }
                     }
-
+                    if (this.viewMode === 'initial-dataset') {
+                        goIns['v2-dataset-view-private-content'].view = 'v2-dataset-view-private-init-content'
+                        goIns['v2-dataset-view-private-infos'].view = 'v2-dataset-view-private-init-infos'
+                    }
                     break
-
                 case 'file-list-public':
                 case 'file-list-private':
                     goIns = {
