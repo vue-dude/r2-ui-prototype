@@ -131,22 +131,6 @@ export default {
             if (!_.isNil(args.actions)) {
                 setActionsState(args.actions)
             }
-
-            //         'v2-dataset-controls': {
-            // modal: null, // gets set via state dynamical
-            // views: {
-            //     'v2-dataset-controls': {
-            //         elements: {
-            //             'v2-dataset-view-private-controls-bg': {},
-            //             'v2-head-crtl-bt-actions-active': { key: 'dataset-actions-off', click: true },
-            //             'v2-head-crtl-bt-actions': { key: 'dataset-actions-on', click: true },
-            //             'v2-head-crtl-bt-edit-active': { key: 'dataset-edit-off', click: true },
-            //             'v2-head-crtl-bt-edit': { key: 'dataset-edit-on', click: true },
-
-            //             'sp-1-a': { classes: 'sp-h' },
-            //             'sp-1-b': { classes: 'sp-h' },
-            //             'v2-head-crtl-sym-upload': {},
-            //             'v2-upload-info': { html: 'Upload files here:', classes: 'text' }
         },
         updateHeadNav(privateView, animateAll, info = 'HOME') {
             const view = '.v2-main-nav .view.default'
@@ -607,6 +591,9 @@ export default {
             })
 
             this.setModalOverlay(hasModal)
+            setTimeout(() => {
+                globals.eventBus.$emit('updateActiveView')
+            }, 10)
         },
 
         setModalOverlay(yes) {

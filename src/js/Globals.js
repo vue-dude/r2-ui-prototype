@@ -1,6 +1,8 @@
 import EventBus from 'mitt'
 const gBus = new EventBus()
 
+
+
 function Globals() {
     this.eventBus = {
         $on: gBus.on,
@@ -11,6 +13,13 @@ function Globals() {
     this.registerStore = () => null
     this.registerRouter = () => null
     this.init = () => null
+
+    let uid = 0
+    this.getUid = () => `uid-${++uid}`
+
 }
+
+
+
 
 export default Globals

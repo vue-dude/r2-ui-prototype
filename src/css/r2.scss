@@ -266,15 +266,14 @@ body {
                 .scrollable {
                     position: relative;
                     // height: 0px;
-                    overflow-y: auto;
+                    overflow-y: hidden; // scroll
                     overflow-x: hidden;
+                    // -webkit-overflow-scrolling: touch; // chrome no effect
                     top: 60px;
                     left: 10px;
                     .content {
-                        // width: 200px;
-                        // height: 1000px;
-                        // background-color: gray;
-                        // border: 1px solid black;
+                        position: absolute;
+                        // transition: top 0.05s;
                     }
                 }
 
