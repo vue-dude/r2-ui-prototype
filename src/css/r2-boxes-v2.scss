@@ -94,11 +94,8 @@
                         }
                         .scrollbar {
                             top: 0px;
-                            height: calc(100% - 7px);
+                            height: calc(100% - 15px); // 15px because of mpdl logo
                             right: 22px;
-                            .thumb {
-                                top: 41%;
-                            }
                         }
                     }
                     .inner {
@@ -164,6 +161,9 @@
                         left: 810px;
                         height: calc(100vh - 483px);
                         width: 310px;
+                        .scrollbar {
+                            height: calc(100% - 4px);
+                        }
                         .elements {
                             .v2-search-page-facets-dn-inner-list-1,
                             .v2-search-page-facets-dn-inner-list-2 {
@@ -222,7 +222,7 @@
                             width: 766px;
                             height: 1px;
                             left: 4px;
-                            top: 57px;
+                            top: 54px;
                             border-top: 1px solid #ffffff8c;
                         }
                         .v2-search-page-facets-term {
@@ -258,11 +258,20 @@
                         left: 0px;
                         height: calc(100vh - 88px - 65px);
                         width: 785px;
+                        .content {
+                            transform: scaleX(0.97);
+                        }
+                        .scrollbar {
+                            right: 12px;
+                            top: 0px;
+                            height: calc(100% - 2px);
+                        }
                         .inner {
                             left: 0px;
                             top: 0px;
                             &.bg-img.v2-search-page-scroll {
-                                width: calc(1547px / 2);
+                                //1565 × 2317
+                                width: calc(1565px / 2);
                                 height: calc(2317px / 2);
                             }
                         }
@@ -338,7 +347,7 @@
                             width: 766px;
                             height: 1px;
                             left: 4px;
-                            top: 57px;
+                            top: 55px;
                             border-top: 1px solid #ffffff8c;
                         }
                         .v2-mywork-page-facets-term {
@@ -356,19 +365,30 @@
                             left: 789px;
                         }
                     }
+
                     .scrollable {
                         top: 62px;
                         left: 0px;
-                        height: calc(100vh - 88px - 64px);
+                        height: calc(100vh - 88px - 65px);
                         width: 785px;
+                        .content {
+                            transform: scaleX(0.97);
+                        }
+                        .scrollbar {
+                            right: 12px;
+                            top: 0px;
+                            height: calc(100% - 2px);
+                        }
                         .inner {
                             left: 0px;
                             top: 0px;
                             &.bg-img.v2-mywork-page-scroll {
-                                width: calc(1547px / 2);
+                                //1565 × 2317
+                                width: calc(1565px / 2);
                                 height: calc(2317px / 2);
                             }
                         }
+
                         .click-zones {
                             .click-zone {
                                 left: 13px;
@@ -413,7 +433,16 @@
                         top: 0px;
                         left: 0px;
                         height: calc(100vh - 90px);
-                        width: 1400px;
+                        width: calc(#{$centered-width} + 10px);
+                        .content {
+                            top: 2px;
+                            transform: scaleX(0.988);
+                        }
+                        .scrollbar {
+                            top: -1px;
+                            height: calc(100% - 16px);
+                            right: 22px;
+                        }
                         .elements {
                             .v2-dataset-view-public-content {
                                 width: calc(1695px / 2);
@@ -460,13 +489,21 @@
                             left: 0px;
                             width: calc(var(--width) + 10px);
                             height: calc(100vh - 90px);
-                            .inner {
-                                left: 0px;
-                                top: 0px;
-                                &.bg-img.v2-dataset-view-private-content-scroll {
-                                    width: var(--width);
-                                    height: calc(2257px / 2);
+                            .content {
+                                transform: scaleX(0.98);
+                                .inner {
+                                    left: 0px;
+                                    top: 0px;
+                                    &.bg-img.v2-dataset-view-private-content-scroll {
+                                        width: var(--width);
+                                        height: calc(2257px / 2);
+                                    }
                                 }
+                            }
+                            .scrollbar {
+                                right: 8px;
+                                top: -1px;
+                                height: calc(100% - 0px);
                             }
                             .click-zones {
                                 .click-zone {
@@ -498,13 +535,21 @@
                             left: 0px;
                             width: calc(var(--width) + 10px);
                             height: calc(100vh - 90px);
-                            .inner {
-                                left: 0px;
-                                top: 0px;
-                                &.bg-img.v2-dataset-view-private-init-content-scroll {
-                                    width: var(--width);
-                                    height: calc(2257px / 2);
+                            .content {
+                                transform: scaleX(0.98);
+                                .inner {
+                                    left: 0px;
+                                    top: 0px;
+                                    &.bg-img.v2-dataset-view-private-init-content-scroll {
+                                        width: var(--width);
+                                        height: calc(2257px / 2);
+                                    }
                                 }
+                            }
+                            .scrollbar {
+                                right: 8px;
+                                top: -1px;
+                                height: calc(100% - 0px);
                             }
                             .click-zones {
                                 .click-zone {
@@ -537,98 +582,38 @@
                 left: calc(calc(1695px / 2) + 7px + 10px);
                 --width: calc(549px / 2);
                 .view {
-                    &.v2-dataset-view-private-infos {
-                        .scrollable {
-                            top: 70px;
-                            left: 0px;
-                            width: calc(var(--width) + 10px);
-                            height: calc(100vh - 160px);
-                            .inner {
-                                left: 0px;
-                                top: 0px;
-                                &.bg-img.v2-dataset-view-private-infos-scroll {
-                                    width: var(--width);
-                                    height: calc(2070px / 2);
-                                }
-                            }
-                        }
-                    }
+                    &.v2-dataset-view-private-infos,
                     &.v2-dataset-view-private-init-infos {
                         .scrollable {
                             top: 70px;
                             left: 0px;
                             width: calc(var(--width) + 10px);
                             height: calc(100vh - 160px);
-                            .inner {
-                                left: 0px;
-                                top: 0px;
-                                &.bg-img.v2-dataset-view-private-init-infos-scroll {
-                                    width: var(--width);
-                                    height: calc(1325px / 2);
+                            .content {
+                                transform: scaleX(0.95);
+                                .inner {
+                                    left: 0px;
+                                    top: 0px;
+                                    &.bg-img.v2-dataset-view-private-infos-scroll {
+                                        width: var(--width);
+                                        height: calc(2070px / 2);
+                                    }
+                                    &.bg-img.v2-dataset-view-private-init-infos-scroll {
+                                        width: var(--width);
+                                        height: calc(1325px / 2);
+                                    }
                                 }
                             }
-                        }
-                        .fixed {
-                            // .elements {
-                            //     .v2-dataset-view-private-controls-bg {
-                            //         .bg-img {
-                            //             background-color: #acbeda;
-                            //             background-color: #697f9e;
-                            //             border: 1px solid white;
-                            //             border-radius: 10px;
-                            //             width: 274px;
-                            //             height: 59px;
-                            //         }
-                            //     }
-
-                            //     .v2-head-crtl-bt-actions,
-                            //     .v2-head-crtl-bt-actions-active {
-                            //         top: 13px;
-                            //         left: 233px;
-                            //         width: 34px;
-                            //         height: 34px;
-                            //     }
-                            //     .v2-head-crtl-bt-edit {
-                            //         top: 13px;
-                            //         left: 194px;
-                            //         width: 34px;
-                            //         height: 34px;
-                            //     }
-                            //     .v2-head-crtl-sym-upload {
-                            //         top: 14px;
-                            //         width: 58px;
-                            //         height: 33px;
-                            //         left: 119px;
-                            //     }
-
-                            //     .element {
-                            //         &.sp-h {
-                            //             top: 20px;
-                            //             height: 20px;
-                            //             width: 1px;
-                            //             &.sp-1-a {
-                            //                 left: 184px;
-                            //                 background-color: #555555;
-                            //             }
-                            //             &.sp-1-b {
-                            //                 left: 185px;
-                            //                 background-color: #cdcdcd;
-                            //             }
-                            //         }
-                            //     }
-
-                            //     .v2-upload-info {
-                            //         top: 23px;
-                            //         left: 13px;
-                            //         width: 200px;
-                            //         font-size: 13px;
-                            //         color: #e6e6e6;
-                            //     }
-                            // }
+                            .scrollbar {
+                                top: -1px;
+                                right: 4px;
+                                height: calc(100% - 18px);
+                            }
                         }
                     }
                 }
             }
+
             &.v2-file-list {
                 .view {
                     &.file-list-collection-closed,
@@ -677,6 +662,14 @@
                             width: calc(1688px / 2 + 10px);
                             top: 196px;
                             left: 0px;
+                            .content {
+                                transform: scaleX(0.98);
+                            }
+                            .scrollbar {
+                                right: 5px;
+                                top: -1px;
+                                height: calc(100% - 0px);
+                            }
                             .elements {
                                 .v2-file-view-list-collection-closed {
                                     width: calc(1688px / 2);
@@ -702,6 +695,7 @@
                     }
                 }
             }
+
             &.v2-head-controls {
                 top: 8px;
                 left: 1109px;
@@ -789,8 +783,6 @@
 
             &.v2-dataset-controls {
                 left: 865px;
-                // width: 274px;
-                // height: 59px;
                 .view {
                     .elements {
                         .v2-dataset-view-private-controls-bg {
@@ -799,7 +791,7 @@
                                 background-color: #697f9e;
                                 border: 1px solid white;
                                 border-radius: 8px;
-                                width: 272px;
+                                width: 276px;
                                 height: 59px;
                             }
                         }

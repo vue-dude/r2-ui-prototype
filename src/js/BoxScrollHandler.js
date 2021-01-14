@@ -77,13 +77,17 @@ function BoxScrollHandler(config) {
             height = SCROLL_THUMB_MAX_HEIGHT_PIX
         }
         $scrollThumb.height(`${height}%`)
-        const deltaRailPix = $scrollBar.height() - $scrollThumb.height()
+        const deltaRailPix = Math.floor($scrollBar.height() - $scrollThumb.height()) - 2
         const deltaContentPix = $scrollContent[0].scrollHeight - $scrollContainer.height()
         scrollThumbDeltaFc = deltaRailPix / deltaContentPix
         updateThumbPosition()
     }
 
     this.destroy = () => {
+        // TODO reset to top position, make optional
+        // gsap.set($scrollContent, { top: 0 })
+        // gsap.set($scrollThumb, { top: 0 })
+        //
         $scrollContainer.off('wheel', onMouseWheel)
         $(window).off('resize', updateThumbDimensions)
         config.scrollContainer = null
