@@ -81,12 +81,23 @@
                         left: 0px;
                         width: calc(#{$centered-width} + 10px);
                         height: calc(100vh - 92px);
-                        .inner {
-                            left: 0px;
+                        .content {
+                            transform: scaleX(0.99);
+                            .inner {
+                                left: 0px;
+                                top: 0px;
+                                &.bg-img.v2-landing-page-scroll {
+                                    width: calc(2266px / 2);
+                                    height: calc(2825px / 2);
+                                }
+                            }
+                        }
+                        .scrollbar {
                             top: 0px;
-                            &.bg-img.v2-landing-page-scroll {
-                                width: calc(2266px / 2);
-                                height: calc(2825px / 2);
+                            height: calc(100% - 7px);
+                            right: 22px;
+                            .thumb {
+                                top: 41%;
                             }
                         }
                     }

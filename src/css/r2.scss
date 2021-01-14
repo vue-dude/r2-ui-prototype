@@ -10,9 +10,10 @@ html,
 body {
     background-color: black;
     margin: 0;
-    margin: 0;
     padding: 0;
     overflow-x: hidden;
+    overflow-y: hidden; // TODO this only for the windows edge crap
+    height: 100%;
     font-size: 14px;
     font-weight: 400;
     font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
@@ -64,6 +65,7 @@ body {
         margin-left: var(--left-edge);
         @media (max-width: #{$media-start-center-width}) {
             margin-left: 0;
+            left: 0px;
         }
         // .centered-bg,
         // .modal-bg {
@@ -221,6 +223,24 @@ body {
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
+            .scrollbar {
+                position: absolute;
+                width: 12px;
+                height: calc(100% - 7px);
+                background-color: #beccd77d;
+                border: 1px solid #607087;
+                border-radius: 4px;
+                right: 0px;
+                opacity: 0;
+                .thumb {
+                    position: absolute;
+                    width: 10px;
+                    height: 40px;
+                    background-color: #728ca8;
+                    border: 1px solid #f1fcfb99;
+                    border-radius: 4px;
+                }
+            }
             &.no-events {
                 pointer-events: none;
             }
