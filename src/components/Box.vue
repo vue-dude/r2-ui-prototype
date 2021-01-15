@@ -75,7 +75,11 @@
                     <div class="scroll-bg"></div>
                 </div>
                 <div class="scrollbar" v-if="showScrollbar">
-                    <div class="thumb"></div>
+                    <div class="thumb">
+                        <div class="edge up bg-img scrollbar-edge-arrow"></div>
+                        <div class="center bg-img scrollbar-center-grid "></div>
+                        <div class="edge dn bg-img scrollbar-edge-arrow"></div>
+                    </div>
                 </div>
             </div>
             <div class="overlay">

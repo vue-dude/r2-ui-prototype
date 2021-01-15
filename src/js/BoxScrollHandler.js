@@ -11,7 +11,6 @@ function BoxScrollHandler(config) {
     let scrollDownLimitCrossed = false
     //
     const ACCELERATE_FC = 1.2
-    const SCROLL_THUMB_MAX_HEIGHT_PIX = 70
     //
     let scrollThumbDeltaFc = 0
 
@@ -73,13 +72,21 @@ function BoxScrollHandler(config) {
 
     const updateThumbDimensions = () => {
         let height = (100 * $scrollContainer.height()) / $scrollContent[0].scrollHeight
-        if (height > SCROLL_THUMB_MAX_HEIGHT_PIX) {
-            height = SCROLL_THUMB_MAX_HEIGHT_PIX
+        if (height > 80) {
+            height = 80
         }
         $scrollThumb.height(`${height}%`)
+
+        if ($scrollBar.height() < 200) {
+            $scrollThumb.height(`${Math.floor($scrollBar.height() * 0.5)}px`)
+        }
+        if ($scrollBar.height() < 100) {
+            $scrollThumb.height(`${Math.floor($scrollBar.height() * 0.8)}px`)
+        }
         const deltaRailPix = Math.floor($scrollBar.height() - $scrollThumb.height()) - 2
         const deltaContentPix = $scrollContent[0].scrollHeight - $scrollContainer.height()
         scrollThumbDeltaFc = deltaRailPix / deltaContentPix
+
         updateThumbPosition()
     }
 
