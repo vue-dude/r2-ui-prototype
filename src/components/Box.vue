@@ -115,8 +115,6 @@
 <script>
 //
 import BoxScrollHandler from '@/js/BoxScrollHandler.js'
-let boxScrollHandler = null
-
 //
 export default {
     components: {},
@@ -126,19 +124,30 @@ export default {
     data() {
         return {
             uid: globals.getUid(),
-            showScrollbar: false
+            showScrollbar: false,
+            tme1: null,
+            tme2: null,
+            boxScrollHandler: null
         }
     },
     created() {
         globals.eventBus.$on('updateActiveView', this.onUpdateActiveView)
     },
+    beforeUnmount() {
+        this.destroyBoxScrollHandler()
+    },
     methods: {
+        destroyBoxScrollHandler() {
+            clearTimeout(this.tme1)
+            clearTimeout(this.tme2)
+            this.boxScrollHandler ? this.boxScrollHandler.destroy() : null
+            this.boxScrollHandler = null
+        },
         onUpdateActiveView() {
+            this.destroyBoxScrollHandler()
             const scrollContainer = `.box.${this.config.id}.${this.uid} .view.active .scrollable`
             this.showScrollbar = false
-            boxScrollHandler ? boxScrollHandler.destroy() : null
-            boxScrollHandler = null
-            setTimeout(() => {
+            this.tme1 = setTimeout(() => {
                 const $scrollContent = $(`${scrollContainer} .content`)
                 this.showScrollbar = $scrollContent[0] && $scrollContent[0].scrollHeight > 0 ? true : false
                 if (this.showScrollbar) {
@@ -147,10 +156,12 @@ export default {
                             opacity: 1
                         })
                     }
-                    setTimeout(() => {
-                        boxScrollHandler = new BoxScrollHandler({
+                    this.tme2 = setTimeout(() => {
+                        console.log('boxScrollHandler CREATE = ', this.uid)
+                        this.boxScrollHandler = new BoxScrollHandler({
                             scrollContainer,
-                            animateIn
+                            animateIn,
+                            uid: this.uid
                         })
                     }, 10)
                 }

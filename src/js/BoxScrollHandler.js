@@ -88,6 +88,53 @@ function BoxScrollHandler(config) {
         scrollThumbDeltaFc = deltaRailPix / deltaContentPix
 
         updateThumbPosition()
+
+        $scrollContainer.off('wheel', onMouseWheel)
+        $scrollThumb.hide()
+        if ($scrollContent[0].scrollHeight > $scrollContainer.height()) {
+            $scrollThumb.show()
+            $scrollContainer.on('wheel', onMouseWheel)
+        }
+    }
+
+    const updateContentScrollPosition = top => {
+        const delta1 = $scrollBar.height() - $scrollThumb.height()
+        const delta2 = _.isNumber(top) ? top : $scrollThumb.position().top
+        const fc = delta2 / delta1
+        const deltaContentPix = $scrollContent[0].scrollHeight - $scrollContainer.height()
+        yScrollPos = deltaContentPix * fc
+        gsap.killTweensOf($scrollContent)
+        gsap.to($scrollContent, 0.1, { top: -yScrollPos })
+    }
+
+    let lastClickTs = 0
+
+    const onMouseClickBar = evt => {
+        const fc = 1000000000000
+        const clickEnabled = fc * evt.timeStamp - lastClickTs === 0 ? false : true
+        lastClickTs = fc * evt.timeStamp
+        if (clickEnabled) {
+            const yPos = evt.originalEvent.offsetY
+            const edgeUp = $scrollThumb.position().top
+            const edgeDn = edgeUp + $scrollThumb.height()
+            let top
+
+            if (yPos > edgeDn) {
+                top = yPos - $scrollThumb.height() + 20
+            } else {
+                top = yPos - 20
+            }
+
+            if (top < 0) {
+                top = 0
+            } else if (top > $scrollBar.height() - $scrollThumb.height()) {
+                top = $scrollBar.height() - $scrollThumb.height()
+            }
+
+            gsap.killTweensOf($scrollThumb)
+            gsap.to($scrollThumb, 0.15, { top })
+            updateContentScrollPosition(top)
+        }
     }
 
     this.destroy = () => {
@@ -96,14 +143,37 @@ function BoxScrollHandler(config) {
         // gsap.set($scrollThumb, { top: 0 })
         //
         $scrollContainer.off('wheel', onMouseWheel)
+        destroyDraggable()
         $(window).off('resize', updateThumbDimensions)
+        $scrollBar.off('click', onMouseClickBar)
         config.scrollContainer = null
         config = null
+    }
+
+    const destroyDraggable = () => {
+        try {
+            $scrollThumb.draggable('destroy')
+        } catch (error) {
+            //
+        }
     }
 
     const init = () => {
         updateThumbDimensions()
         $scrollContainer.on('wheel', onMouseWheel)
+        $scrollThumb.click(function(event) {
+            event.stopPropagation()
+        })
+        $scrollThumb.dblclick(function(event) {
+            event.stopPropagation()
+        })
+        $scrollThumb.draggable({
+            containment: $scrollBar,
+            scroll: false,
+            axis: 'y',
+            drag: updateContentScrollPosition
+        })
+        $scrollBar.on('click', onMouseClickBar)
         $(window).on('resize', updateThumbDimensions)
         if (_.isFunction(config.animateIn)) {
             config.animateIn($scrollBar)
