@@ -112,7 +112,7 @@ body {
                 margin-left: calc(var(--left-edge-min) + 4px);
             }
         }
-        .headline {
+        .headlineXX {
             font-family: 'Roboto Condensed', sans-serif;
             color: white;
             height: #{$top-bar-height};
@@ -122,6 +122,32 @@ body {
             font-family: 'Roboto', sans-serif;
             width: 50vw;
         }
+
+        .brand {
+            margin-left: calc(var(--left-edge));
+            width: calc((374px + 20px) / 2);
+            height: calc(88px / 2);
+            background-color: #2b3e4e;
+            @media (max-width: #{$media-start-center-width}) {
+                margin-left: calc(var(--left-edge-min) + 4px);
+            }
+            .edmond-logo {
+                position: absolute; // its brighter with that ... ??
+                width: calc(374px / 2);
+                height: calc(88px / 2);
+                $url: './assets/nu-edmond-logo.png';
+                background-image: url($url);
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            .fade-bgXX {
+                margin-left: 195px;
+                background-image: linear-gradient(to right, #2b3e4eff, #2b3e4e00);
+                width: 30px;
+                height: 44px;
+            }
+        }
+
         .bar-background {
             position: absolute;
             width: calc(100vw - 2 * var(--left-edge));
