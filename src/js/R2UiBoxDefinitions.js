@@ -235,15 +235,9 @@ function R2UiBoxDefinitions() {
                     scroll: {
                         zones: {
                             'show-filelist-1': {
-                                // key: 'show-filelist-private',
                                 key: null
-                            }
-                            // 'show-filelist-2': {
-                            //     key: 'show-filelist-private'
-                            // },
-                            // 'download-all': {
-                            //     click: true
-                            // }
+                            },
+                            'edit-meta': {}
                         }
                     }
                 }
@@ -253,14 +247,10 @@ function R2UiBoxDefinitions() {
             views: {
                 'v2-dataset-view-private-infos': {},
                 'v2-dataset-view-private-init-infos': {
-                    elements: {
-                        // 'v2-dataset-view-private-controls-bg': {},
-                        // 'v2-head-crtl-bt-actions': { key: 'dataset-actions', click: true },
-                        // 'v2-head-crtl-bt-edit': {},
-                        // 'sp-1-a': { classes: 'sp-h' },
-                        // 'sp-1-b': { classes: 'sp-h' },
-                        // 'v2-head-crtl-sym-upload': {},
-                        // 'v2-upload-info': { html: 'Upload files here:', classes: 'text' }
+                    scroll: {
+                        zones: {
+                            'edit-meta': {}
+                        }
                     }
                 }
             }
@@ -374,6 +364,23 @@ function R2UiBoxDefinitions() {
                     },
                     zones: {
                         'v2-dataset-actions-close': { key: 'cancel' }
+                    }
+                },
+                'v2-meta-actions-edit-authors': {
+                    elements: {
+                        'box-title': { html: 'Edit Authors', classes: '' },
+                        'a1-name': { html: 'Alexander', classes: 'form input' },
+                        'a1-given-name': { html: 'Linan', classes: 'form input' },
+                        'a1-institute': { html: 'Missouri Botanical Garden', classes: 'form input' },
+                        'a1-orchid': { html: '0000-0002-8281-1346', classes: 'form input' },
+                        'a2-name': { html: 'Miller', classes: 'form input' },
+                        'a2-given-name': { html: 'Allison', classes: 'form input' },
+                        'a2-institute': { html: 'Saint Louis University', classes: 'form input' },
+                        'a2-orchid': { html: '0000-0002-8281-9999', classes: 'form input' }
+                    },
+                    zones: {
+                        'v2-meta-actions-commmit': { key: 'cancel' },
+                        'v2-meta-actions-close': { key: 'cancel' }
                     }
                 }
             }

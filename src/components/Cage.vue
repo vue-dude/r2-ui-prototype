@@ -510,6 +510,15 @@ export default {
                         view: 'v2-dataset-actions'
                     }
                     return this.setViewMode(this.viewMode, options)
+                case 'edit-meta':
+                    // this.updateDatasetControls({ actions: true })
+                    options['v2-dataset-actions'] = {
+                        view: 'v2-meta-actions-edit-authors'
+                    }
+                    return this.setViewMode(this.viewMode, options)
+
+
+
             }
         },
         setLoggedIn() {
