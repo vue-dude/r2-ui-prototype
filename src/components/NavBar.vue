@@ -1,8 +1,8 @@
 <template>
     <div class="nav-bar">
         <div class="bar-background">
-            <div class="border left"></div>
-            <div class="border right"></div>
+            <!-- <div class="border left"></div> -->
+            <!-- <div class="border right"></div> -->
         </div>
         <!-- <div class="left-adjusted-text headline" v-html="headline"></div> -->
         <div class="left-adjusted-text brand">

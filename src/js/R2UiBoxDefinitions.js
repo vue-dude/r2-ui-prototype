@@ -7,8 +7,15 @@ function R2UiBoxDefinitions() {
                     elements: {
                         'sp-1-a': { classes: 'sp-h' },
                         'sp-1-b': { classes: 'sp-h' },
-                        private: { click: true, html: 'PRIVATE', classes: 'nav-item left' },
-                        public: { click: true, html: 'PUBLIC', classes: 'nav-item right' },
+                        'sp-2-a': { classes: 'sp-h' },
+                        'sp-2-b': { classes: 'sp-h' },
+                        'sp-3-a': { classes: 'sp-h' },
+                        'sp-3-b': { classes: 'sp-h' },
+                        'sp-4-a': { classes: 'sp-h' },
+                        'sp-4-b': { classes: 'sp-h' },
+                        public: { click: true, html: 'HOME', classes: 'nav-item left selected' },
+                        private: { click: true, html: 'MY DATASETS', classes: 'nav-item right' },
+                        'head-nav-back': { click: true, classes: 'nav-item' },
                         arrow: {},
                         info: { html: '-' }
                     }

@@ -129,7 +129,8 @@ body {
             height: calc(88px / 2);
             background-color: #2b3e4e;
             @media (max-width: #{$media-start-center-width}) {
-                margin-left: calc(var(--left-edge-min) + 4px);
+                // margin-left: calc(var(--left-edge-min) + 4px);
+                margin-left: calc(var(--left-edge-min) - 10px);
             }
             .edmond-logo {
                 position: absolute; // its brighter with that ... ??
@@ -154,9 +155,8 @@ body {
             height: #{$top-bar-height};
             left: calc(var(--left-edge) - 1px);
             background-color: rgba(0, 0, 0, 0.1);
-            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            // border-left: 1px solid rgba(255, 255, 255, 0.3);
             border-right: 1px solid rgba(255, 255, 255, 0.3);
-            // border-bottom: 1px solid rgba(0, 0, 0, 0.2);
             border-bottom: 1px solid #5d636c;
             .border {
                 position: absolute;

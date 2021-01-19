@@ -73,7 +73,7 @@ export default {
     },
     mounted() {
         this.setModalOverlay(false)
-        this.updateHeadNav(this.privateView, true, 'HOME')
+        this.updateHeadNav(this.privateView, true)
         // this.setBoxConnectedNavState('inspector-nav', 'info')
         // this.setBoxConnectedNavState('facets-nav', 'f0')
         setTimeout(() => {
@@ -132,7 +132,96 @@ export default {
                 setActionsState(args.actions)
             }
         },
-        updateHeadNav(privateView, animateAll, info = 'HOME') {
+        updateHeadNav(privateView, animateAll, info = { length: 0, html: '' }) {
+            const view = '.v2-main-nav .view.default'
+            $(view).css('opacity', 1) // fix this issue globally!
+            $(view).removeClass('no-events')
+            const $public = $(`${view} .element.nav-item.public`)
+            const $private = $(`${view} .element.nav-item.private`)
+            const $back = $(`${view} .element.nav-item.head-nav-back`)
+            const $info = $(`${view} .element.info`)
+            const $arrow = $(`${view} .element.arrow`)
+            const $sp2_a = $(`${view} .element.sp-2-a`)
+            const $sp2_b = $(`${view} .element.sp-2-b`)
+            const $sp3_a = $(`${view} .element.sp-3-a`)
+            const $sp3_b = $(`${view} .element.sp-3-b`)
+            const $sp4_a = $(`${view} .element.sp-4-a`)
+            const $sp4_b = $(`${view} .element.sp-4-b`)
+            //
+            const $tg1 = privateView ? $public : $private
+            const $tg2 = privateView ? $private : $public
+
+            const updatePositions = hasInfo => {
+                const stopL1 = $public.position().left + $public.width() + 10
+                const stopR1 = $private.position().left + $private.width() + 15
+                const reset = [
+                    [$info, null, true, { clearProps: 'all' }],
+                    [$public, null, true, { clearProps: 'all' }],
+                    [$private, null, true, { clearProps: 'all' }],
+                    [$back, null, true, { clearProps: 'all' }],
+                    [$arrow, null, true, { clearProps: 'all' }],
+                    [$sp4_a, null, true, { visibility: 'hidden' }],
+                    [$sp4_b, null, true, { visibility: 'hidden' }]
+                ]
+                const queue1 = [
+                    ...reset,
+                    [$sp2_a, stopL1, true, {}],
+                    [$sp2_b, 1, false, {}],
+                    [$sp3_a, stopR1, true, {}],
+                    [$sp3_b, 1, false, {}]
+                ]
+                const queue2 = [
+                    ...reset,
+                    [$arrow, stopL1, true, { opacity: 1 }],
+                    [$info, 18, false, { visibility: 'visible' }],
+                    [$sp2_a, $info.width() + 10, false, {}],
+                    [$sp2_b, 1, false, {}],
+                    [$back, 10, false, { visibility: 'visible' }],
+                    [$sp3_a, $back.width() + 10, false, {}],
+                    [$sp3_b, 1, false, {}],
+                    [$private, 10, false, {}],
+                    [$sp4_a, $private.width() + 15, false, { visibility: 'visible' }],
+                    [$sp4_b, 1, false, { visibility: 'visible' }]
+                ]
+
+                const queue3 = [
+                    ...reset,
+                    [$sp2_a, stopL1, true, {}],
+                    [$sp2_b, 1, false, {}],
+                    //
+                    [$arrow, stopR1, true, { opacity: 1 }],
+                    [$info, 18, false, { visibility: 'visible' }],
+                    [$sp3_a, $info.width() + 10, false, {}],
+                    [$sp3_b, 1, false, {}],
+                    [$back, 10, false, { visibility: 'visible' }],
+                    [$sp4_a, $back.width() + 10, false, { visibility: 'visible' }],
+                    [$sp4_b, 1, false, { visibility: 'visible' }]
+                ]
+
+                let queue = queue1
+                if (hasInfo) {
+                    queue = privateView ? queue3 : queue2
+                }
+
+                let left = 0
+                _.each(queue, elm => {
+                    left = elm[2] ? elm[1] : left + elm[1]
+                    const args = { left, ...elm[3] }
+                    // console.log('obj:updateHeadNav args = ', args)
+                    gsap.set(elm[0], args)
+                })
+            }
+
+            $tg1.removeClass('selected')
+            $tg2.addClass('selected')
+
+            const html = 'views.default.elements.info.html'
+            const hasInfo = info.html.length > 0
+            _.set(this.boxes['v2-main-nav'], html, info.html)
+            this.$nextTick(() => updatePositions(hasInfo))
+        },
+
+        updateHeadNavXX(privateView, animateAll, info = 'HOME') {
             const view = '.v2-main-nav .view.default'
             $(view).css('opacity', 1) // fix this issue globally!
             $(view).removeClass('no-events')
@@ -266,9 +355,11 @@ export default {
                 case 'cancel':
                 case 'confirm':
                 case 'close':
+                    // case 'head-nav-back':
                     this.updateDatasetControls({ reset: true })
                     return this.setViewMode(this.getViewStack()[0], options)
                 case 'v2-head-crtl-bt-close':
+                case 'head-nav-back':
                     this.modifyViewStack({ action: 'remove' })
                     return this.setViewMode(this.getViewStack()[0], options)
                 // base views
@@ -362,7 +453,10 @@ export default {
 
             console.log('CG:setViewMode options = ', options)
             let path = 'Home'
-            let headInfo = 'HOME'
+            let headInfo = {
+                html: '',
+                length: 0
+            }
             let privateView = false
             switch (this.viewMode) {
                 case 'home':
@@ -370,34 +464,55 @@ export default {
                     break
                 case 'search':
                     path = 'List & Search Datasets' // Search datasets
-                    headInfo = 'SEARCH DATASETS'
+                    headInfo = {
+                        html: 'SEARCH DATASETS',
+                        length: 250
+                    }
                     break
                 case 'public-dataset':
                     path = 'View Dataset / DOI / 10.1002/0470841559.ch1'
-                    headInfo = 'VIEW DATASET'
+                    headInfo = {
+                        html: 'VIEW DATASET',
+                        length: 250
+                    }
                     break
                 case 'private-dataset':
                 case 'dataset-actions':
                     privateView = true
-                    headInfo = 'WORK ON MY DATASET'
+                    headInfo = {
+                        html: 'WORK ON MY DATASET',
+                        length: 250
+                    }
                     path = 'View my Dataset / Dual Color Imaging from a Single BF2 ...'
                     break
                 case 'initial-dataset':
                     privateView = true
-                    headInfo = 'CREATE NEW DATASET'
+                    headInfo = {
+                        html: 'CREATE NEW DATASET',
+                        length: 250
+                    }
                     path = 'Create new Dataset'
                     break
                 case 'mywork':
-                    headInfo = 'ALL MY DATASETS'
+                    // headInfo = {
+                    //     html: 'ALL MY DATASETS',
+                    //     length: 250
+                    // }
                     privateView = true
                     path = 'My Work / List & Search Datasets'
                     break
                 case 'file-list-public':
-                    headInfo = 'FILES OF THIS DATASET'
+                    headInfo = {
+                        html: 'FILES OF THIS DATASET',
+                        length: 250
+                    }
                     path = 'List & Search Files of Dataset / DOI / 10.1002/0470841559.ch1'
                     break
                 case 'file-list-private':
-                    headInfo = 'FILES OF MY DATASET'
+                    headInfo = {
+                        html: 'FILES OF MY DATASET',
+                        length: 250
+                    }
                     privateView = true
                     path = 'List & Search Files of my Dataset / Dual Color Imaging from a Single BF2 ...'
                     break
