@@ -141,6 +141,8 @@ export default {
             const $back = $(`${view} .element.nav-item.head-nav-back`)
             const $info = $(`${view} .element.info`)
             const $arrow = $(`${view} .element.arrow`)
+            const $sp1_a = $(`${view} .element.sp-1-a`)
+            const $sp1_b = $(`${view} .element.sp-1-b`)
             const $sp2_a = $(`${view} .element.sp-2-a`)
             const $sp2_b = $(`${view} .element.sp-2-b`)
             const $sp3_a = $(`${view} .element.sp-3-a`)
@@ -155,48 +157,96 @@ export default {
                 const stopL1 = $public.position().left + $public.width() + 10
                 const stopR1 = $private.position().left + $private.width() + 15
                 const reset = [
-                    [$info, null, true, { clearProps: 'all' }],
-                    [$public, null, true, { clearProps: 'all' }],
-                    [$private, null, true, { clearProps: 'all' }],
-                    [$back, null, true, { clearProps: 'all' }],
-                    [$arrow, null, true, { clearProps: 'all' }],
-                    [$sp4_a, null, true, { visibility: 'hidden' }],
-                    [$sp4_b, null, true, { visibility: 'hidden' }]
+                    [$sp1_a, null, true, 0, { opacity: 1 }],
+                    [$sp1_b, null, true, 0, { opacity: 1 }],
+                    [$info, null, true, 0, { clearProps: 'all' }],
+                    [$public, null, true, 0, { clearProps: 'all' }],
+                    [$public, null, true, 0, { opacity: 1 }],
+                    [$private, null, true, 0, { clearProps: 'all' }],
+                    [$private, null, true, 0, { opacity: 1 }],
+                    [$back, null, true, 0, { clearProps: 'all' }],
+                    [$arrow, null, true, 0, { clearProps: 'all' }],
+                    [$sp4_a, null, true, 0, { visibility: 'hidden' }],
+                    [$sp4_b, null, true, 0, { visibility: 'hidden' }]
                 ]
+                // const reset2 = [
+                //     [$sp1_a, null, true, 0, { opacity: 1 }],
+                //     [$sp1_b, null, true, 0, { opacity: 1 }],
+                //     [$info, null, true, 0, { clearProps: 'all' }],
+                //     [$public, null, true, 0, { clearProps: 'all' }],
+                //     [$public, null, true, 0, { opacity: 1 }],
+                //     [$private, null, true, 0, { clearProps: 'all' }],
+                //     [$private, null, true, 0, { opacity: 1 }],
+                //     [$back, null, true, 0, { clearProps: 'all' }],
+                //     [$arrow, null, true, 0, { clearProps: 'all' }],
+                //     [$sp4_a, null, true, 0, { visibility: 'hidden' }],
+                //     [$sp4_b, null, true, 0, { visibility: 'hidden' }]
+                // ]
                 const queue1 = [
                     ...reset,
-                    [$sp2_a, stopL1, true, {}],
-                    [$sp2_b, 1, false, {}],
-                    [$sp3_a, stopR1, true, {}],
-                    [$sp3_b, 1, false, {}]
+                    [$sp2_a, stopL1, true, 0, { opacity: 1 }],
+                    [$sp2_b, 1, false, 0, { opacity: 1 }],
+                    [$sp3_a, stopR1, true, 0, { opacity: 1 }],
+                    [$sp3_b, 1, false, 0, { opacity: 1 }]
                 ]
                 const queue2 = [
                     ...reset,
-                    [$arrow, stopL1, true, { opacity: 1 }],
-                    [$info, 18, false, { visibility: 'visible' }],
-                    [$sp2_a, $info.width() + 10, false, {}],
-                    [$sp2_b, 1, false, {}],
-                    [$back, 10, false, { visibility: 'visible' }],
-                    [$sp3_a, $back.width() + 10, false, {}],
-                    [$sp3_b, 1, false, {}],
-                    [$private, 10, false, {}],
-                    [$sp4_a, $private.width() + 15, false, { visibility: 'visible' }],
-                    [$sp4_b, 1, false, { visibility: 'visible' }]
+                    // set start values
+                    [$arrow, stopL1 - 5, true, 0, {}],
+                    [$info, 18 - 10, false, 0, { visibility: 'visible' }],
+                    [$sp2_a, $info.width() + 22, false, 0, {}],
+                    [$sp2_b, 1, false, 0, {}],
+                    [$back, 5, false, 0, { visibility: 'visible' }],
+                    [$sp3_a, $back.width() + 15, false, 0, {}],
+                    [$sp3_b, 1, false, 0, {}],
+                    //
+                    [$arrow, stopL1, true, 0.2, { delay: 0.1, opacity: 1 }],
+                    [$info, 18, false, 0.2, { delay: 0.1, opacity: 1 }],
+                    [$sp2_a, $info.width() + 10, false, 0.2, { delay: 0.2, opacity: 1 }],
+                    [$sp2_b, 1, false, 0.2, { delay: 0.2, opacity: 1 }],
+                    [$back, 10, false, 0.15, { delay: 0.25, opacity: 1 }],
+                    [$sp3_a, $back.width() + 10, false, 0.4, { delay: 0.35, opacity: 1 }],
+                    [$sp3_b, 1, false, 0.3, { delay: 0.4, opacity: 1 }],
+                    [$private, 10, false, 0.3, { ease: Expo.easeOut }],
+                    [$sp4_a, $private.width() + 15, false, 0, { visibility: 'visible', opacity: 0 }],
+                    [$sp4_b, 1, false, 0, { visibility: 'visible', opacity: 0 }]
                 ]
 
                 const queue3 = [
                     ...reset,
-                    [$sp2_a, stopL1, true, {}],
-                    [$sp2_b, 1, false, {}],
+                    [$arrow, stopR1 - 5, true, 0, {}],
+                    [$info, 18 - 10, false, 0, { visibility: 'visible' }],
+                    [$sp2_a, $info.width() + 22, false, 0, {}],
+                    [$sp2_b, 1, false, 0, {}],
+                    [$back, 5, false, 0, { visibility: 'visible' }],
+                    [$sp3_a, $back.width() + 15, false, 0, {}],
+                    [$sp3_b, 1, false, 0, {}],
                     //
-                    [$arrow, stopR1, true, { opacity: 1 }],
-                    [$info, 18, false, { visibility: 'visible' }],
-                    [$sp3_a, $info.width() + 10, false, {}],
-                    [$sp3_b, 1, false, {}],
-                    [$back, 10, false, { visibility: 'visible' }],
-                    [$sp4_a, $back.width() + 10, false, { visibility: 'visible' }],
-                    [$sp4_b, 1, false, { visibility: 'visible' }]
+                    [$arrow, stopR1, true, 0.2, { delay: 0.1, opacity: 1 }],
+                    [$info, 18, false, 0.2, { delay: 0.1, opacity: 1 }],
+                    [$sp2_a, $info.width() + 10, false, 0.2, { delay: 0.2, opacity: 1 }],
+                    [$sp2_b, 1, false, 0.2, { delay: 0.2, opacity: 1 }],
+                    [$back, 10, false, 0.15, { delay: 0.25, opacity: 1 }],
+                    [$sp3_a, $back.width() + 10, false, 0.4, { delay: 0.35, opacity: 1 }],
+                    [$sp3_b, 1, false, 0.3, { delay: 0.4, opacity: 1 }]
+                    // [$private, 10, false, 0.3, { ease: Expo.easeOut }],
+                    // [$sp4_a, $private.width() + 15, false, 0, { visibility: 'visible', opacity: 0 }],
+                    // [$sp4_b, 1, false, 0, { visibility: 'visible', opacity: 0 }]
                 ]
+
+                // const queue3 = [
+                //     ...reset,
+                //     [$sp2_a, stopL1, true, 0, {}],
+                //     [$sp2_b, 1, false, 0, {}],
+                //     //
+                //     [$arrow, stopR1, true, 0, { opacity: 1 }],
+                //     [$info, 18, false, 0, { visibility: 'visible' }],
+                //     [$sp3_a, $info.width() + 10, false, 0, {}],
+                //     [$sp3_b, 1, false, 0, {}],
+                //     [$back, 10, false, 0, { visibility: 'visible' }],
+                //     [$sp4_a, $back.width() + 10, false, 0, { visibility: 'visible' }],
+                //     [$sp4_b, 1, false, 0, { visibility: 'visible' }]
+                // ]
 
                 let queue = queue1
                 if (hasInfo) {
@@ -206,19 +256,51 @@ export default {
                 let left = 0
                 _.each(queue, elm => {
                     left = elm[2] ? elm[1] : left + elm[1]
-                    const args = { left, ...elm[3] }
+                    const args = { left, ...elm[4] }
+                    if (elm[3]) {
+                        gsap.to(elm[0], elm[3], args)
+                    } else {
+                        gsap.set(elm[0], args)
+                    }
                     // console.log('obj:updateHeadNav args = ', args)
-                    gsap.set(elm[0], args)
                 })
             }
 
             $tg1.removeClass('selected')
             $tg2.addClass('selected')
 
-            const html = 'views.default.elements.info.html'
+            const htmlPath = 'views.default.elements.info.html'
+            const infoNow = _.get(this.boxes['v2-main-nav'], htmlPath)
             const hasInfo = info.html.length > 0
-            _.set(this.boxes['v2-main-nav'], html, info.html)
-            this.$nextTick(() => updatePositions(hasInfo))
+            _.set(this.boxes['v2-main-nav'], htmlPath, info.html)
+
+            let delay = 0
+            let update = true
+
+            switch (true) {
+                case hasInfo && infoNow === info.html:
+                    update = false
+                    break
+                case hasInfo && infoNow !== info.html:
+                    delay = 0.3
+            }
+
+            if (update) {
+                this.$nextTick(() => updatePositions(hasInfo))
+            }
+
+            console.log('obj:updateHeadNav +++++ delay = ', delay)
+            console.log('obj:updateHeadNav infoNow = ', infoNow)
+            console.log('obj:updateHeadNav info.html = ', info.html)
+
+            // let delay = 0.4
+            // if (!hasInfo || (hasInfo && infoNow === info)) {
+            //     delay = 0.1
+            // }
+            // if (condition) {
+            // }
+
+            return delay
         },
 
         updateHeadNavXX(privateView, animateAll, info = 'HOME') {
