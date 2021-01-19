@@ -22,6 +22,11 @@ function BoxScrollHandler(config) {
     }
     const onMouseWheel = evt => {
         const dim = getScrollDimensions()
+        if (dim.scrollDownEdge <= 0) {
+            return gsap.set($($scrollContent), {
+                top: 0
+            })
+        }
         if (yScrollPos < dim.scrollTopEdge && !scrollTopLimitCrossed) {
             const edgeDelta = Math.abs(evt.originalEvent.deltaY) * ACCELERATE_FC
             // top border
