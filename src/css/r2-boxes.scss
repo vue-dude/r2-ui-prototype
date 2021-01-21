@@ -1,7 +1,7 @@
 .r2 {
     .boxes {
         .box {
-            &.v2-main-nav {
+            &.main-nav {
                 top: 8px;
                 left: 228px;
                 .element {
@@ -82,7 +82,7 @@
                 }
             }
 
-            &.v2-main-navXX {
+            &.main-navXX {
                 top: 8px;
                 left: 240px;
                 .element {
@@ -155,7 +155,7 @@
                 }
             }
 
-            &.v2-landing-page {
+            &.landing-page {
                 .view {
                     .scrollable {
                         top: 0px;
@@ -167,7 +167,7 @@
                             .inner {
                                 left: 0px;
                                 top: 0px;
-                                &.bg-img.v2-landing-page-scroll {
+                                &.bg-img.landing-page-scroll {
                                     width: calc(2266px / 2);
                                     height: calc(2825px / 2);
                                 }
@@ -227,8 +227,8 @@
                 }
             }
 
-            &.v2-search-page-facets-dn-inner {
-                .v2-search-page-facets-dn-inner-box {
+            &.search-page-facets-dn-inner {
+                .search-page-facets-dn-inner-box {
                     width: 322px;
                     height: calc(100vh - 464px);
                     top: 361px;
@@ -246,14 +246,14 @@
                             height: calc(100% - 4px);
                         }
                         .elements {
-                            .v2-search-page-facets-dn-inner-list-1,
-                            .v2-search-page-facets-dn-inner-list-2 {
+                            .search-page-facets-dn-inner-list-1,
+                            .search-page-facets-dn-inner-list-2 {
                                 left: 8px;
                                 top: 4px;
                                 width: calc(560px / 2);
                                 height: calc(640px / 2);
                             }
-                            .v2-search-page-facets-dn-inner-list-2 {
+                            .search-page-facets-dn-inner-list-2 {
                                 top: 324px;
                             }
                         }
@@ -261,25 +261,25 @@
                 }
             }
 
-            &.v2-search-page {
+            &.search-page {
                 .inner {
                     left: 0;
                     top: 0;
-                    &.bg-img.v2-search-page {
+                    &.bg-img.search-page {
                         width: calc(2267px / 2);
                         height: calc(1297px / 2);
                     }
                 }
                 .view {
                     .overlay {
-                        .v2-search-page-pager-go-bt {
+                        .search-page-pager-go-bt {
                             pointer-events: all;
                             width: calc(81px / 2);
                             height: calc(77px / 2);
                             top: calc(100vh - 90px);
                             left: 2px;
                         }
-                        .v2-search-page-pager-left {
+                        .search-page-pager-left {
                             width: calc(628px / 2);
                             height: calc(75px / 2);
                             top: calc(100vh - 90px);
@@ -287,13 +287,13 @@
                         }
                     }
                     .fixed {
-                        .v2-search-page-search-bar-top {
+                        .search-page-search-bar-top {
                             width: calc(1542px / 2);
                             height: calc(93px / 2);
                             left: 1px;
                             top: 1px;
                         }
-                        .v2-search-bar-top-with-pager {
+                        .search-bar-top-with-pager {
                             width: calc(1542px / 2);
                             height: calc(93px / 2);
                             left: 1px;
@@ -306,26 +306,26 @@
                             top: 54px;
                             border-top: 1px solid #ffffff8c;
                         }
-                        .v2-search-page-facets-term {
+                        .search-page-facets-term {
                             // 687 × 93
                             width: calc(689px / 2);
                             height: calc(93px / 2);
                             top: 0px;
                             left: 789px;
                         }
-                        .v2-search-page-facets-up {
+                        .search-page-facets-up {
                             width: calc(689px / 2);
                             height: calc(479px / 2);
                             top: 58px;
                             left: 789px;
                         }
-                        .v2-search-page-facets-dn-head {
+                        .search-page-facets-dn-head {
                             width: calc(616px / 2);
                             height: calc(50px / 2);
                             top: 323px;
                             left: 809px;
                         }
-                        .v2-search-page-facets-dn-box {
+                        .search-page-facets-dn-box {
                             width: calc(689px / 2);
                             height: calc(100vh - 405px);
                             top: 309px;
@@ -350,7 +350,7 @@
                         .inner {
                             left: 0px;
                             top: 0px;
-                            &.bg-img.v2-search-page-scroll {
+                            &.bg-img.search-page-scroll {
                                 //1565 × 2317
                                 width: calc(1565px / 2);
                                 height: calc(2317px / 2);
@@ -394,17 +394,17 @@
                 }
             }
 
-            &.v2-mywork-page {
+            &.mywork-page {
                 .view {
                     .overlay {
-                        .v2-search-page-pager-go-bt {
+                        .search-page-pager-go-bt {
                             pointer-events: all;
                             width: calc(81px / 2);
                             height: calc(77px / 2);
                             top: calc(100vh - 90px);
                             left: 2px;
                         }
-                        .v2-search-page-pager-left {
+                        .search-page-pager-left {
                             width: calc(628px / 2);
                             height: calc(75px / 2);
                             top: calc(100vh - 90px);
@@ -412,13 +412,13 @@
                         }
                     }
                     .fixed {
-                        .v2-mywork-page-search-bar-top {
+                        .mywork-page-search-bar-top {
                             width: calc(1542px / 2);
                             height: calc(93px / 2);
                             left: 1px;
                             top: 1px;
                         }
-                        .v2-search-bar-top-with-pager {
+                        .search-bar-top-with-pager {
                             width: calc(1542px / 2);
                             height: calc(93px / 2);
                             left: 1px;
@@ -431,14 +431,14 @@
                             top: 55px;
                             border-top: 1px solid #ffffff8c;
                         }
-                        .v2-mywork-page-facets-term {
+                        .mywork-page-facets-term {
                             // 687 × 93
                             width: calc(689px / 2);
                             height: calc(93px / 2);
                             top: 0px;
                             left: 789px;
                         }
-                        .v2-mywork-page-facets-up {
+                        .mywork-page-facets-up {
                             // 689 × 536
                             width: calc(689px / 2);
                             height: calc(536px / 2);
@@ -463,7 +463,7 @@
                         .inner {
                             left: 0px;
                             top: 0px;
-                            &.bg-img.v2-mywork-page-scroll {
+                            &.bg-img.mywork-page-scroll {
                                 //1565 × 2317
                                 width: calc(1565px / 2);
                                 height: calc(2317px / 2);
@@ -508,7 +508,7 @@
                 }
             }
 
-            &.v2-dataset-view-public {
+            &.dataset-view-public {
                 .view {
                     .scrollable {
                         top: 0px;
@@ -525,11 +525,11 @@
                             right: 22px;
                         }
                         .elements {
-                            .v2-dataset-view-public-content {
+                            .dataset-view-public-content {
                                 width: calc(1695px / 2);
                                 height: calc(2257px / 2);
                             }
-                            .v2-dataset-view-public-infos {
+                            .dataset-view-public-infos {
                                 left: 860px;
                                 width: calc(549px / 2);
                                 height: calc(1192px / 2);
@@ -561,10 +561,10 @@
                 }
             }
 
-            &.v2-dataset-view-private-content {
+            &.dataset-view-private-content {
                 --width: calc(1695px / 2);
                 .view {
-                    &.v2-dataset-view-private-content {
+                    &.dataset-view-private-content {
                         .scrollable {
                             top: 0px;
                             left: 0px;
@@ -575,7 +575,7 @@
                                 .inner {
                                     left: 0px;
                                     top: 0px;
-                                    &.bg-img.v2-dataset-view-private-content-scroll {
+                                    &.bg-img.dataset-view-private-content-scroll {
                                         width: var(--width);
                                         height: calc(2257px / 2);
                                     }
@@ -610,7 +610,7 @@
                             }
                         }
                     }
-                    &.v2-dataset-view-private-init-content {
+                    &.dataset-view-private-init-content {
                         .scrollable {
                             top: 0px;
                             left: 0px;
@@ -621,7 +621,7 @@
                                 .inner {
                                     left: 0px;
                                     top: 0px;
-                                    &.bg-img.v2-dataset-view-private-init-content-scroll {
+                                    &.bg-img.dataset-view-private-init-content-scroll {
                                         width: var(--width);
                                         height: calc(2257px / 2);
                                     }
@@ -670,12 +670,12 @@
                 }
             }
 
-            &.v2-dataset-view-private-infos {
+            &.dataset-view-private-infos {
                 left: calc(calc(1695px / 2) + 7px + 10px);
                 --width: calc(549px / 2);
                 .view {
-                    &.v2-dataset-view-private-infos,
-                    &.v2-dataset-view-private-init-infos {
+                    &.dataset-view-private-infos,
+                    &.dataset-view-private-init-infos {
                         .scrollable {
                             top: 70px;
                             left: 0px;
@@ -686,11 +686,11 @@
                                 .inner {
                                     left: 0px;
                                     top: 0px;
-                                    &.bg-img.v2-dataset-view-private-infos-scroll {
+                                    &.bg-img.dataset-view-private-infos-scroll {
                                         width: var(--width);
                                         height: calc(2070px / 2);
                                     }
-                                    &.bg-img.v2-dataset-view-private-init-infos-scroll {
+                                    &.bg-img.dataset-view-private-init-infos-scroll {
                                         width: var(--width);
                                         height: calc(1325px / 2);
                                     }
@@ -703,7 +703,7 @@
                             }
                         }
                     }
-                    &.v2-dataset-view-private-init-infos {
+                    &.dataset-view-private-init-infos {
                         .scrollable {
                             .click-zones {
                                 .click-zone {
@@ -720,28 +720,28 @@
                 }
             }
 
-            &.v2-file-list {
+            &.file-list {
                 .view {
                     &.file-list-collection-closed,
                     &.file-list-collection-open {
                         .fixed {
-                            .v2-file-view-download {
+                            .file-view-download {
                                 width: calc(548px / 2);
                                 height: calc(167px / 2); // 167 222px
                                 top: 0px;
                                 left: 860px;
                             }
-                            .v2-file-view-facets-top {
+                            .file-view-facets-top {
                                 width: calc(548px / 2);
                                 height: calc(480px / 2);
                                 top: 92px;
                                 left: 860px;
                             }
-                            .v2-file-view-headline {
+                            .file-view-headline {
                                 width: calc(1694px / 2);
                                 height: calc(222px / 2);
                             }
-                            .v2-file-view-pager {
+                            .file-view-pager {
                                 width: calc(1694px / 2);
                                 height: calc(126px / 2);
                                 top: 118px;
@@ -777,11 +777,11 @@
                                 height: calc(100% - 0px);
                             }
                             .elements {
-                                .v2-file-view-list-collection-closed {
+                                .file-view-list-collection-closed {
                                     width: calc(1688px / 2);
                                     height: calc(1195px / 2);
                                 }
-                                .v2-file-view-list-collection-open {
+                                .file-view-list-collection-open {
                                     width: calc(1688px / 2);
                                     height: calc(2368px / 2);
                                 }
@@ -802,24 +802,24 @@
                 }
             }
 
-            &.v2-head-controls {
+            &.head-controls {
                 top: 8px;
                 left: 1109px;
                 .fixed {
-                    .v2-head-crtl-bt-close {
+                    .head-crtl-bt-close {
                         // TODO remove box close bt completely because of new menu
                         width: 30px;
                         height: 30px;
                         left: 0px;
                         visibility: hidden;
                     }
-                    .v2-head-crtl-bt-open-in-tab {
+                    .head-crtl-bt-open-in-tab {
                         width: 30px;
                         height: 30px;
                         // left: -35px;
                         left: -0px;
                     }
-                    .v2-head-crtl-sharing-bar {
+                    .head-crtl-sharing-bar {
                         top: -8px;
                         width: 167px;
                         height: 48px;
@@ -829,23 +829,23 @@
                 }
 
                 .view {
-                    &.v2-head-controls-edit,
-                    &.v2-head-controls-new-dataset-only,
-                    &.v2-head-controls-edit-actions-active {
-                        .v2-head-crtl-bt-actions,
-                        .v2-head-crtl-bt-actions-active {
+                    &.head-controls-edit,
+                    &.head-controls-new-dataset-only,
+                    &.head-controls-edit-actions-active {
+                        .head-crtl-bt-actions,
+                        .head-crtl-bt-actions-active {
                             top: -1px;
                             width: 34px;
                             height: 34px;
                             left: -56px;
                         }
 
-                        .v2-head-crtl-bt-new-dataset {
+                        .head-crtl-bt-new-dataset {
                             top: -1px;
                             width: 34px;
                             height: 34px;
                         }
-                        .v2-head-crtl-label-new-dataset {
+                        .head-crtl-label-new-dataset {
                             top: 10px;
                             width: 141px;
                             height: 34px;
@@ -853,33 +853,33 @@
                             font-size: 13px;
                         }
 
-                        .v2-head-crtl-bt-edit {
+                        .head-crtl-bt-edit {
                             top: -1px;
                             width: 34px;
                             height: 34px;
                             left: -96px;
                         }
 
-                        .v2-head-crtl-sym-upload {
+                        .head-crtl-sym-upload {
                             top: 0px;
                             width: 58px;
                             height: 33px;
                             left: -179px;
                         }
 
-                        .v2-head-crtl-sep-1,
-                        .v2-head-crtl-sep-2 {
+                        .head-crtl-sep-1,
+                        .head-crtl-sep-2 {
                             top: 0px;
                             width: 4px;
                             height: 30px;
                             left: -12px;
                             background-color: #98afd3f0;
                         }
-                        .v2-head-crtl-sep-2 {
+                        .head-crtl-sep-2 {
                             left: -110px;
                         }
 
-                        .v2-upload-info {
+                        .upload-info {
                             top: 8px;
                             right: 85px;
                             width: 200px;
@@ -891,11 +891,11 @@
 
             // actions and messages
 
-            &.v2-dataset-controls {
+            &.dataset-controls {
                 left: 865px;
                 .view {
                     .elements {
-                        .v2-dataset-view-private-controls-bg {
+                        .dataset-view-private-controls-bg {
                             .bg-img {
                                 background-color: #acbeda;
                                 background-color: #697f9e;
@@ -906,21 +906,21 @@
                             }
                         }
 
-                        .v2-head-crtl-bt-actions,
-                        .v2-head-crtl-bt-actions-active {
+                        .head-crtl-bt-actions,
+                        .head-crtl-bt-actions-active {
                             top: 13px;
                             left: 233px;
                             width: 34px;
                             height: 34px;
                         }
-                        .v2-head-crtl-bt-edit,
-                        .v2-head-crtl-bt-edit-active {
+                        .head-crtl-bt-edit,
+                        .head-crtl-bt-edit-active {
                             top: 13px;
                             left: 194px;
                             width: 34px;
                             height: 34px;
                         }
-                        .v2-head-crtl-sym-upload {
+                        .head-crtl-sym-upload {
                             top: 14px;
                             width: 58px;
                             height: 33px;
@@ -942,7 +942,7 @@
                                 }
                             }
                         }
-                        .v2-upload-info {
+                        .upload-info {
                             top: 23px;
                             left: 13px;
                             width: 110px;
@@ -954,18 +954,18 @@
                 }
             }
 
-            &.v2-dataset-actions {
+            &.dataset-actions {
                 left: 0px;
                 top: 126px;
                 .view {
-                    &.v2-dataset-actions-publish {
+                    &.dataset-actions-publish {
                         top: 0px;
                         left: 865px;
                         width: calc(548px / 2);
                         height: calc(1084px / 2);
                         .click-zones {
                             .click-zone {
-                                &.v2-dataset-actions-close {
+                                &.dataset-actions-close {
                                     top: 491px;
                                     left: 191px;
                                     width: 74px;
@@ -974,20 +974,20 @@
                             }
                         }
                     }
-                    &.v2-meta-actions-edit-authors {
+                    &.meta-actions-edit-authors {
                         top: -60px;
                         left: 130px;
                         width: calc(1697px / 2);
                         height: calc(1200px / 2);
                         .click-zones {
                             .click-zone {
-                                &.v2-meta-actions-commmit {
+                                &.meta-actions-commmit {
                                     top: 548px;
                                     left: 652px;
                                     width: 104px;
                                     height: 30px;
                                 }
-                                &.v2-meta-actions-close {
+                                &.meta-actions-close {
                                     top: 548px;
                                     left: 759px;
                                     width: 74px;
@@ -1048,7 +1048,7 @@
                 }
             }
 
-            &.v2-messages {
+            &.r2-messages {
                 left: 0px;
                 .view {
                     .msg-large-dataset {

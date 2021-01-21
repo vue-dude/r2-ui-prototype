@@ -1,24 +1,23 @@
 <template>
     <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]" @click="onClickCage">
-        <box class="animate" :config="boxes['v2-main-nav']"></box>
-        <box class="animate" :config="boxes['login-bt-top']"></box>
-        <box class="animate" :config="boxes['v2-head-controls']"></box>
+        <box class="animate" :config="boxes['main-nav']"></box>
+        <box class="animate" :config="boxes['head-controls']"></box>
         <!--  -->
-        <box class="animate" :config="boxes['v2-landing-page']"></box>
-        <box class="animate" :config="boxes['v2-search-page']"></box>
-        <box class="animate" :config="boxes['v2-search-page-facets-dn-inner']"></box>
-        <box class="animate" :config="boxes['v2-mywork-page']"></box>
+        <box class="animate" :config="boxes['landing-page']"></box>
+        <box class="animate" :config="boxes['search-page']"></box>
+        <box class="animate" :config="boxes['search-page-facets-dn-inner']"></box>
+        <box class="animate" :config="boxes['mywork-page']"></box>
         <!--  -->
-        <box class="animate" :config="boxes['v2-dataset-view-public']"></box>
-        <box class="animate" :config="boxes['v2-dataset-view-private-content']"></box>
-        <box class="animate" :config="boxes['v2-dataset-view-private-infos']"></box>
+        <box class="animate" :config="boxes['dataset-view-public']"></box>
+        <box class="animate" :config="boxes['dataset-view-private-content']"></box>
+        <box class="animate" :config="boxes['dataset-view-private-infos']"></box>
         <!--  -->
-        <box class="animate" :config="boxes['v2-dataset-controls']"></box>
-        <box class="animate" :config="boxes['v2-dataset-actions']"></box>
-        <box class="animate" :config="boxes['v2-messages']"></box>
+        <box class="animate" :config="boxes['dataset-controls']"></box>
+        <box class="animate" :config="boxes['dataset-actions']"></box>
+        <box class="animate" :config="boxes['r2-messages']"></box>
 
         <!--  -->
-        <box class="animate" :config="boxes['v2-file-list']"></box>
+        <box class="animate" :config="boxes['file-list']"></box>
     </div>
 </template>
 
@@ -86,7 +85,7 @@ export default {
     },
     methods: {
         updateDatasetControls(args = {}) {
-            const element = '.v2-dataset-controls .elements .element'
+            const element = '.dataset-controls .elements .element'
 
             if (args.reset === true) {
                 args.edit = false
@@ -94,7 +93,7 @@ export default {
             }
 
             const setEditState = yes => {
-                let targets = [`${element}.v2-head-crtl-bt-edit`, `${element}.v2-head-crtl-bt-edit-active`]
+                let targets = [`${element}.head-crtl-bt-edit`, `${element}.head-crtl-bt-edit-active`]
                 let t1 = yes ? targets[1] : targets[0]
                 let t2 = yes ? targets[0] : targets[1]
                 console.log('obj:setEditState t1 = ', $(t1))
@@ -112,7 +111,7 @@ export default {
             }
 
             const setActionsState = yes => {
-                let targets = [`${element}.v2-head-crtl-bt-actions`, `${element}.v2-head-crtl-bt-actions-active`]
+                let targets = [`${element}.head-crtl-bt-actions`, `${element}.head-crtl-bt-actions-active`]
                 let t1 = yes ? targets[1] : targets[0]
                 let t2 = yes ? targets[0] : targets[1]
                 console.log('obj:setActionsState t1 = ', $(t1))
@@ -123,9 +122,9 @@ export default {
                 gsap.set($(t2), {
                     visibility: 'hidden'
                 })
-                // this.boxes['v2-dataset-controls'].modal = yes === true
-                this.boxes['v2-dataset-controls'].views['v2-dataset-controls'].modal = yes === true
-                console.log('obj:setActionsState box = ', this.boxes['v2-dataset-controls'])
+                // this.boxes['dataset-controls'].modal = yes === true
+                this.boxes['dataset-controls'].views['dataset-controls'].modal = yes === true
+                console.log('obj:setActionsState box = ', this.boxes['dataset-controls'])
             }
 
             if (!_.isNil(args.actions)) {
@@ -133,7 +132,7 @@ export default {
             }
         },
         updateHeadNav(privateView, animateAll, info = { length: 0, html: '' }) {
-            const view = '.v2-main-nav .view.default'
+            const view = '.main-nav .view.default'
             $(view).css('opacity', 1) // fix this issue globally!
             $(view).removeClass('no-events')
             const $public = $(`${view} .element.nav-item.public`)
@@ -270,9 +269,9 @@ export default {
             $tg2.addClass('selected')
 
             const htmlPath = 'views.default.elements.info.html'
-            const infoNow = _.get(this.boxes['v2-main-nav'], htmlPath)
+            const infoNow = _.get(this.boxes['main-nav'], htmlPath)
             const hasInfo = info.html.length > 0
-            _.set(this.boxes['v2-main-nav'], htmlPath, info.html)
+            _.set(this.boxes['main-nav'], htmlPath, info.html)
 
             let delay = 0
             let update = true
@@ -304,7 +303,7 @@ export default {
         },
 
         updateHeadNavXX(privateView, animateAll, info = 'HOME') {
-            const view = '.v2-main-nav .view.default'
+            const view = '.main-nav .view.default'
             $(view).css('opacity', 1) // fix this issue globally!
             $(view).removeClass('no-events')
             const $public = $(`${view} .element.nav-item.public`)
@@ -315,8 +314,8 @@ export default {
             const $tg2 = privateView ? $private : $public
 
             const html = 'views.default.elements.info.html'
-            const infoNow = _.get(this.boxes['v2-main-nav'], html)
-            _.set(this.boxes['v2-main-nav'], html, info)
+            const infoNow = _.get(this.boxes['main-nav'], html)
+            _.set(this.boxes['main-nav'], html, info)
             let delay = 0.6
             if (infoNow === info) {
                 animateAll = false
@@ -440,7 +439,7 @@ export default {
                     // case 'head-nav-back':
                     this.updateDatasetControls({ reset: true })
                     return this.setViewMode(this.getViewStack()[0], options)
-                case 'v2-head-crtl-bt-close':
+                case 'head-crtl-bt-close':
                 case 'head-nav-back':
                     this.modifyViewStack({ action: 'remove' })
                     return this.setViewMode(this.getViewStack()[0], options)
@@ -476,18 +475,18 @@ export default {
 
                 case 'open-file-collection':
                     options._00 = {
-                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-open' } }
+                        targets: { 'file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-open' } }
                     }
                     return this.setViewMode(this.getViewStack()[0], options)
                 case 'close-file-collection':
                     options._00 = {
-                        targets: { 'v2-file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-closed' } }
+                        targets: { 'file-list': { delay: 0, speed: 0.3, view: 'file-list-collection-closed' } }
                     }
                     return this.setViewMode(this.getViewStack()[0], options)
 
                 // actions and messages
                 case 'download-all':
-                    options['v2-messages'] = {
+                    options['r2-messages'] = {
                         view: 'msg-large-dataset'
                     }
                     return this.setViewMode(`${this.getViewStack()[0]}`, options)
@@ -500,25 +499,22 @@ export default {
                     return null
                 case 'dataset-actions-on':
                     this.updateDatasetControls({ actions: true })
-                    options['v2-dataset-actions'] = {
-                        view: 'v2-dataset-actions-publish'
+                    options['dataset-actions'] = {
+                        view: 'dataset-actions-publish'
                     }
                     return this.setViewMode(this.viewMode, options)
                 case 'dataset-actions-off':
                     this.updateDatasetControls({ actions: false })
-                    options['v2-dataset-actions'] = {
-                        view: 'v2-dataset-actions'
+                    options['dataset-actions'] = {
+                        view: 'dataset-actions'
                     }
                     return this.setViewMode(this.viewMode, options)
                 case 'edit-meta':
                     // this.updateDatasetControls({ actions: true })
-                    options['v2-dataset-actions'] = {
-                        view: 'v2-meta-actions-edit-authors'
+                    options['dataset-actions'] = {
+                        view: 'meta-actions-edit-authors'
                     }
                     return this.setViewMode(this.viewMode, options)
-
-
-
             }
         },
         setLoggedIn() {
@@ -615,7 +611,7 @@ export default {
             const delay = this.updateHeadNav(privateView, animateAll, headInfo)
 
             let goOuts = [...Object.keys(this.boxes)]
-            goOuts[goOuts.indexOf('v2-main-nav')] = null
+            goOuts[goOuts.indexOf('main-nav')] = null
             if (options._00 && _.isPlainObject(options._00.targets)) {
                 goOuts = [...Object.keys(options._00.targets)]
             }
@@ -625,70 +621,61 @@ export default {
                 // v2
                 case 'home':
                     goIns = {
-                        'v2-landing-page': { delay: 0.1, speed: 0.8 }
+                        'landing-page': { delay: 0.1, speed: 0.8 }
                     }
                     break
                 case 'mywork':
                     goIns = {
-                        'v2-mywork-page': { delay: 0.1, speed: 0.8 },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-new-dataset-only' }
+                        'mywork-page': { delay: 0.1, speed: 0.8 },
+                        'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-new-dataset-only' }
                     }
                     break
                 case 'search':
                     goIns = {
-                        'v2-search-page': { delay: 0.1, speed: 0.8 },
-                        'v2-search-page-facets-dn-inner': { delay: 0.1, speed: 0.8 },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' }
+                        'search-page': { delay: 0.1, speed: 0.8 },
+                        'search-page-facets-dn-inner': { delay: 0.1, speed: 0.8 },
+                        'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' }
                     }
                     break
                 case 'public-dataset':
                     goIns = {
-                        'v2-dataset-view-public': { delay: 0.1, speed: 0.4 },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4 },
-                        'v2-messages': { delay: 0.1, speed: 0.4 }
-                    }
-                    break
-                case 'private-datasetXXX':
-                    goIns = {
-                        'v2-dataset-view-private-content': { delay: 0.1, speed: 0.4 },
-                        'v2-dataset-view-private-infos': { delay: 0.1, speed: 0.4 },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-edit' },
-                        'v2-messages': { delay: 0.1, speed: 0.4 },
-                        'v2-dataset-actions': { delay: 0, speed: 0.4 }
+                        'dataset-view-public': { delay: 0.1, speed: 0.4 },
+                        'head-controls': { delay: 0.1, speed: 0.4 },
+                        'r2-messages': { delay: 0.1, speed: 0.4 }
                     }
                     break
                 case 'private-dataset':
                 case 'initial-dataset':
                     goIns = {
-                        'v2-dataset-view-private-content': {
+                        'dataset-view-private-content': {
                             delay: 0.1,
                             speed: 0.4,
-                            view: 'v2-dataset-view-private-content'
+                            view: 'dataset-view-private-content'
                         },
-                        'v2-dataset-view-private-infos': {
+                        'dataset-view-private-infos': {
                             delay: 0.1,
                             speed: 0.4,
-                            view: 'v2-dataset-view-private-infos'
+                            view: 'dataset-view-private-infos'
                         },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' },
-                        'v2-dataset-controls': { delay: 0.1, speed: 0.4 },
-                        'v2-messages': { delay: 0.1, speed: 0.4 },
-                        'v2-dataset-actions': { delay: 0, speed: 0.4 }
+                        'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' },
+                        'dataset-controls': { delay: 0.1, speed: 0.4 },
+                        'r2-messages': { delay: 0.1, speed: 0.4 },
+                        'dataset-actions': { delay: 0, speed: 0.4 }
                     }
                     if (this.viewMode === this.viewModePrev) {
-                        goIns['v2-dataset-controls'] = { delay: 0, speed: 0 }
+                        goIns['dataset-controls'] = { delay: 0, speed: 0 }
                     }
                     if (this.viewMode === 'initial-dataset') {
-                        goIns['v2-dataset-view-private-content'].view = 'v2-dataset-view-private-init-content'
-                        goIns['v2-dataset-view-private-infos'].view = 'v2-dataset-view-private-init-infos'
+                        goIns['dataset-view-private-content'].view = 'dataset-view-private-init-content'
+                        goIns['dataset-view-private-infos'].view = 'dataset-view-private-init-infos'
                     }
                     break
                 case 'file-list-public':
                 case 'file-list-private':
                     goIns = {
-                        'v2-file-list': { delay: 0.1, speed: 0.4, view: 'file-list-collection-closed' },
-                        'v2-head-controls': { delay: 0.1, speed: 0.4, view: 'v2-head-controls-close-only' },
-                        'v2-messages': { delay: 0.1, speed: 0.4 }
+                        'file-list': { delay: 0.1, speed: 0.4, view: 'file-list-collection-closed' },
+                        'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' },
+                        'r2-messages': { delay: 0.1, speed: 0.4 }
                     }
                     break
             }
@@ -697,7 +684,7 @@ export default {
                 goIns = options._00.targets
             } else {
                 // for non animated main-nav versions
-                // goIns['v2-main-nav'] = {
+                // goIns['main-nav'] = {
                 //     // view: privateView ? 'private' : 'public',
                 //     view: 'default',
                 //     delay: 0,
