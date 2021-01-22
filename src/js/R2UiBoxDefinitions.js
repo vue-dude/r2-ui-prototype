@@ -360,6 +360,21 @@ function R2UiBoxDefinitions() {
                         'meta-actions-commmit': { key: 'cancel' },
                         'meta-actions-close': { key: 'cancel' }
                     }
+                },
+                'meta-actions-edit-generic': {
+                    elements: {
+                        'box-bg': {},
+                        'box-title': { html: 'Edit Authors Generic', classes: '' },
+                        'sp-up': { classes: 'box-sp' },
+                        'sp-dn': { classes: 'box-sp' },
+                        'bt-save': { key: 'save', click: true, html: 'Save', classes: 'bt' },
+                        'bt-close': { key: 'close', click: true, html: 'Close', classes: 'bt' }
+                    },
+                    scroll: {
+                        components: {
+                            'meta-generic-authors': { component: 'dynamic-form', config: { schema: null, data: null } }
+                        }
+                    }
                 }
             }
         },

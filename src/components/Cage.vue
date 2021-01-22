@@ -57,13 +57,16 @@ export default {
                 view.modal = _.isBoolean(view.modal) ? view.modal : box.modal
                 view.id = view.id || key
                 view.elements = view.elements || {}
+                view.components = view.components || {}
                 view.zones = view.zones || {}
                 view.scroll = view.scroll || {}
                 view.scroll.id = view.scroll.id || view.id
                 view.scroll.elements = view.scroll.elements || {}
+                view.scroll.components = view.scroll.components || {}
                 view.scroll.zones = view.scroll.zones || {}
                 view.overlay = view.overlay || {}
                 view.overlay.elements = view.overlay.elements || {}
+                view.overlay.components = view.overlay.components || {}
                 view.overlay.zones = view.overlay.zones || {}
             })
         })
@@ -317,6 +320,7 @@ export default {
                 case 'cancel':
                 case 'confirm':
                 case 'close':
+                case 'save':
                     // case 'head-nav-back':
                     this.updateDatasetControls({ reset: true })
                     return this.setViewMode(this.getViewStack()[0], options)
@@ -392,7 +396,8 @@ export default {
                 case 'edit-meta':
                     // this.updateDatasetControls({ actions: true })
                     options['dataset-actions'] = {
-                        view: 'meta-actions-edit-authors'
+                        // view: 'meta-actions-edit-authors'
+                        view: 'meta-actions-edit-generic'
                     }
                     return this.setViewMode(this.viewMode, options)
             }

@@ -26,6 +26,17 @@
                         <div v-else class="bg-img" :class="[key, elm.classes]"></div>
                     </div>
                 </div>
+                <div class="components">
+                    <!-- TODO add  typeof component, like form, upload -->
+                    <div
+                        v-for="(cmp, key) in view.scroll.components"
+                        class="component"
+                        :class="[key, { clickable: cmp.click }, cmp.classes]"
+                        :config="cmp.config"
+                        :key="key"
+                        @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
+                    ></div>
+                </div>
                 <div class="inner" v-if="view.setBgImageOverElements">
                     <div class="inner bg-img" :class="[view.id]"></div>
                 </div>
@@ -56,6 +67,20 @@
                             <div v-else class="bg-img" :class="[key, elm.classes]"></div>
                         </div>
                     </div>
+
+                    <div class="components">
+                        <!-- TODO add  typeof component, like form, upload -->
+                        <div
+                            v-for="(cmp, key) in view.scroll.components"
+                            class="component"
+                            :class="[key, { clickable: cmp.click }, cmp.classes]"
+                            :key="key"
+                            @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
+                        >
+                            <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
+                        </div>
+                    </div>
+
                     <div class="inner" v-if="view.setScrollBgImageOverElements">
                         <div
                             class="inner bg-img"
@@ -115,9 +140,12 @@
 <script>
 //
 import BoxScrollHandler from '@/js/BoxScrollHandler.js'
+import DynamicForm from '@/components/DynamicFormComponent.vue'
 //
 export default {
-    components: {},
+    components: {
+        DynamicForm
+    },
     props: {
         config: {}
     },

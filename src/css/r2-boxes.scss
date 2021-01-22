@@ -972,6 +972,78 @@
                             }
                         }
                     }
+
+                    &.meta-actions-edit-generic {
+                        top: -60px;
+                        left: 130px;
+                        width: calc(1697px / 2);
+                        height: calc(1200px / 2);
+                        .click-zones {
+                            .click-zone {
+                                // &.meta-actions-commmit {
+                                //     top: 548px;
+                                //     left: 652px;
+                                //     width: 104px;
+                                //     height: 30px;
+                                // }
+                                // &.meta-actions-close {
+                                //     top: 548px;
+                                //     left: 759px;
+                                //     width: 74px;
+                                //     height: 30px;
+                                // }
+                            }
+                        }
+
+                        .element {
+                            &.box-bg {
+                                width: calc(1697px / 2);
+                                height: calc(1200px / 2);
+                                background-color: #53586a;
+                                border: 1px solid white;
+                                border-radius: 8px;
+                            }
+                            &.box-title {
+                                width: 400px;
+                                font-size: 18px;
+                                color: #dfdfe0;
+                                left: 25px;
+                                top: 15px;
+                            }
+                            &.box-sp {
+                                left: 25px;
+                                width: 800px;
+                                height: 1px;
+                                background-color: #c5c8cd;
+                                &.sp-up {
+                                    top: 52px;
+                                }
+                                &.sp-dn {
+                                    top: 535px;
+                                }
+                            }
+                            &.bt {
+                                text-align: center;
+                                font-size: 15px;
+                                height: 24px;
+                                background-color: #f5f6f6;
+                                border: 1px solid #7590bf;
+                                border-radius: 8px;
+                                line-height: 22px;
+                                &.bt-save {
+                                    top: 555px;
+                                    left: 745px;
+                                    width: 81px;
+                                    background-color: #d9fff9;
+                                }
+                                &.bt-close {
+                                    top: 555px;
+                                    left: 645px;
+                                    width: 90px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
