@@ -978,22 +978,6 @@
                         left: 130px;
                         width: calc(1697px / 2);
                         height: calc(1200px / 2);
-                        .click-zones {
-                            .click-zone {
-                                // &.meta-actions-commmit {
-                                //     top: 548px;
-                                //     left: 652px;
-                                //     width: 104px;
-                                //     height: 30px;
-                                // }
-                                // &.meta-actions-close {
-                                //     top: 548px;
-                                //     left: 759px;
-                                //     width: 74px;
-                                //     height: 30px;
-                                // }
-                            }
-                        }
 
                         .element {
                             &.box-bg {
@@ -1040,6 +1024,22 @@
                                     top: 555px;
                                     left: 645px;
                                     width: 90px;
+                                }
+                            }
+                        }
+                        .scrollable {
+                            top: 58px;
+                            left: 24px;
+                            height: 468px;
+                            width: 802px;
+                            .scrollbar {
+                                top: 2px;
+                                height: 464px;
+                            }
+                            .components {
+                                .meta-generic-authors {
+                                    width: 400px;
+                                    height: 1000px;
                                 }
                             }
                         }

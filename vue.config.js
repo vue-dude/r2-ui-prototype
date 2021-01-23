@@ -2,7 +2,7 @@
 //     lintOnSave: false
 // }
 
-const webpack = require("webpack");
+const webpack = require("webpack")
 // // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {

@@ -2,6 +2,10 @@ $centered-width: 1150px;
 $top-bar-height: 45px;
 $sub-bar-height: 30px;
 
+// font error
+// @import 'element-plus/packages/theme-chalk/src/index.scss';
+
+@import 'css/element-ui-r2-style.scss';
 @import 'css/r2-assets.scss';
 @import 'css/r2-boxes.scss';
 

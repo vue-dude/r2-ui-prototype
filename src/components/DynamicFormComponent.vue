@@ -1,7 +1,16 @@
 <template>
-    <div class="form">
-        <div class="form-elements">
-            <b-form-group
+    <div class="form-container" @keydown.tab.prevent="onKeyDownTab">
+        <div class="form-elements form">
+            <div v-for="(cell, index) in cells" :key="index" class="input-container">
+                <el-input
+                    :placeholder="cell.plc"
+                    suffix-icon="el-icon-date"
+                    v-model="cell.selected"
+                    :tabindex="cell.tabIndex"
+                ></el-input>
+                <!-- <input type="text" :tabindex="index" ref="ip" :data-key="index" /> -->
+            </div>
+            <!-- <b-form-group
                 v-for="(item, index) in form"
                 :key="index"
                 :id="item.key"
@@ -149,7 +158,7 @@
                     :config="item"
                     v-model="item.selected"
                 ></value-cell>
-            </b-form-group>
+            </b-form-group> -->
         </div>
     </div>
 </template>
@@ -162,6 +171,11 @@ export default {
     },
     data() {
         return {
+            //
+            input1: null,
+            cells: [],
+            numOfCells: 50, // TEST
+            //
             fh: null,
             form: null,
             data: {
@@ -185,11 +199,38 @@ export default {
     created() {
         this.fh = new DynamicFormHandler()
         this.form = this.fh.getForm(this.data, this.schema)
-        console.log('FORM:created this.form = ', this.form)
+        // console.log('FORM:created this.form = ', this.form)
+        let cnt = 0
+        while (++cnt <= this.numOfCells) {
+            this.cells.push({ plc: `Text Input -${cnt}`, tabIndex: cnt })
+        }
+        // console.log('FORM:created this.cells = ',this.cells)
         // globals.eventBus.$on('updateActiveView', this.onUpdateActiveView)
+    },
+    methods: {
+        onKeyDownTab(evt) {
+            // Simple test function for focus handling
+            // default bowser method sadly destroys coded scroll setup
+            const $focused = $('.form-container .form-elements :focus')
+            let tabindex = parseInt($focused.attr('tabindex'))
+            let nextIndex
+            if (evt.shiftKey) {
+                nextIndex = tabindex === 1 ? this.numOfCells : tabindex - 1
+            } else {
+                nextIndex = tabindex >= this.numOfCells ? 1 : tabindex + 1
+            }
+            const sel = `.form-container .form-elements input[tabindex=${nextIndex}]`
+            const $next = $(sel)
+            // $next.focus({ preventScroll: true }) // dont works and without its scroll hassle !!
+            $next.select()
+        }
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.input-container {
+    margin-bottom: 10px;
+}
+</style>

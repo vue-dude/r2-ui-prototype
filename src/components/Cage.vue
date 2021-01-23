@@ -56,14 +56,18 @@ export default {
                 view.visible = view.visible || false
                 view.modal = _.isBoolean(view.modal) ? view.modal : box.modal
                 view.id = view.id || key
+                // fixed
+                // TODO unify structure, add 'fixed' ?
                 view.elements = view.elements || {}
                 view.components = view.components || {}
                 view.zones = view.zones || {}
+                // scrollable
                 view.scroll = view.scroll || {}
                 view.scroll.id = view.scroll.id || view.id
                 view.scroll.elements = view.scroll.elements || {}
                 view.scroll.components = view.scroll.components || {}
                 view.scroll.zones = view.scroll.zones || {}
+                // overlay
                 view.overlay = view.overlay || {}
                 view.overlay.elements = view.overlay.elements || {}
                 view.overlay.components = view.overlay.components || {}

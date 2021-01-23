@@ -7,6 +7,19 @@
             :class="[view.id, { 'no-events': !view.visible, active: view.visible }]"
         >
             <div class="fixed">
+                <div class="components">
+                    <!-- TODO add  typeof component, like form, upload -->
+                    <!-- TODO unify structure, add 'fixed' ? -->
+                    <div
+                        v-for="(cmp, key) in view.components"
+                        class="component"
+                        :class="[key, { clickable: cmp.click }, cmp.classes]"
+                        :key="key"
+                        @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
+                    >
+                        <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
+                    </div>
+                </div>
                 <div class="inner" v-if="!view.setBgImageOverElements">
                     <div
                         class="inner bg-img"
@@ -26,17 +39,7 @@
                         <div v-else class="bg-img" :class="[key, elm.classes]"></div>
                     </div>
                 </div>
-                <div class="components">
-                    <!-- TODO add  typeof component, like form, upload -->
-                    <div
-                        v-for="(cmp, key) in view.scroll.components"
-                        class="component"
-                        :class="[key, { clickable: cmp.click }, cmp.classes]"
-                        :config="cmp.config"
-                        :key="key"
-                        @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
-                    ></div>
-                </div>
+
                 <div class="inner" v-if="view.setBgImageOverElements">
                     <div class="inner bg-img" :class="[view.id]"></div>
                 </div>
@@ -51,7 +54,21 @@
                 </div>
             </div>
             <div class="scrollable">
+                <!-- <div class="content" @keydown.tab.prevent="onKeyDownTab"> -->
                 <div class="content">
+                    <div class="components">
+                        <!-- TODO add  typeof component, like form, upload -->
+                        <!-- figure out reason components gets overlayed by inner if other position -->
+                        <div
+                            v-for="(cmp, key) in view.scroll.components"
+                            class="component"
+                            :class="[key, { clickable: cmp.click }, cmp.classes]"
+                            :key="key"
+                            @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
+                        >
+                            <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
+                        </div>
+                    </div>
                     <div class="inner" v-if="!view.setScrollBgImageOverElements">
                         <div class="inner bg-img" :class="[`${view.id}-scroll`]"></div>
                     </div>
@@ -65,19 +82,6 @@
                         >
                             <div v-if="elm.html" v-html="elm.html" :class="[key, elm.classes]"></div>
                             <div v-else class="bg-img" :class="[key, elm.classes]"></div>
-                        </div>
-                    </div>
-
-                    <div class="components">
-                        <!-- TODO add  typeof component, like form, upload -->
-                        <div
-                            v-for="(cmp, key) in view.scroll.components"
-                            class="component"
-                            :class="[key, { clickable: cmp.click }, cmp.classes]"
-                            :key="key"
-                            @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
-                        >
-                            <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
                         </div>
                     </div>
 
@@ -118,6 +122,18 @@
                     >
                         <div v-if="elm.html" v-html="elm.html" :class="[key, elm.classes]"></div>
                         <div v-else class="bg-img" :class="[key, elm.classes]"></div>
+                    </div>
+                </div>
+                <div class="components">
+                    <!-- TODO add  typeof component, like form, upload -->
+                    <div
+                        v-for="(cmp, key) in view.overlay.components"
+                        class="component"
+                        :class="[key, { clickable: cmp.click }, cmp.classes]"
+                        :key="key"
+                        @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
+                    >
+                        <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
                     </div>
                 </div>
                 <div class="click-zones">
@@ -165,6 +181,10 @@ export default {
         this.destroyBoxScrollHandler()
     },
     methods: {
+        onKeyDownTab(evt) {
+            // $.tabNext()
+            // console.log('BOX:onKeyDownTab evt = ', evt)
+        },
         destroyBoxScrollHandler() {
             clearTimeout(this.tme1)
             clearTimeout(this.tme2)

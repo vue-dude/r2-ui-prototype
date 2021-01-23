@@ -115,6 +115,7 @@ function BoxScrollHandler(config) {
     let lastClickTs = 0
 
     const onMouseClickBar = evt => {
+        evt.stopPropagation()
         const fc = 1000000000000
         const clickEnabled = fc * evt.timeStamp - lastClickTs === 0 ? false : true
         lastClickTs = fc * evt.timeStamp
@@ -183,6 +184,30 @@ function BoxScrollHandler(config) {
         if (_.isFunction(config.animateIn)) {
             config.animateIn($scrollBar)
         }
+
+        // $("#parentOfTextbox").on('keydown', '#textbox', function(e) {
+        //     var keyCode = e.keyCode || e.which;
+
+        //     if (keyCode == 9) {
+        //       e.preventDefault();
+        //       // call custom function here
+        //     }
+        //   });
+
+        // const onKeyDown = evt => {
+        //     const top = $scrollContent.position().top
+        //     console.log('BSH:onKeyUp top = ', top)
+        //     const keyCode = evt.keyCode || evt.which
+        //     if (keyCode === 9) {
+        //         evt.preventDefault()
+        //     }
+        //     console.log('BSH:onKeyUp keyCode = ', keyCode)
+
+        //     // const prms = gsap.getProperty($scrollContent, 'top')
+        // }
+
+        // $scrollContainer.on('keydown', onKeyUp)
+        // $scrollContainer.on('keyup', onKeyUp)
     }
 
     init()

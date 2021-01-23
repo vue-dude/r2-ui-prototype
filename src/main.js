@@ -13,6 +13,10 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import { createI18n } from 'vue-i18n' // is vue-i18n@next
+
+import ElementPlus from 'element-plus'
+import 'element-plus/packages/theme-chalk/src/index.scss'
+
 const createVueApp = async () => {
     await datasource.getInitialData().then(data => {
         console.log('MAIN: data = ', data)
@@ -35,6 +39,7 @@ const createVueApp = async () => {
                 .use(i18n)
                 .use(store)
                 .use(router)
+                .use(ElementPlus)
             app.mount('#app')
             //
             globals.registerStore(app.$store)
