@@ -1,5 +1,32 @@
 const DynamicFormHandler = function() {
     //
+    const setupDropdownFormCell = item => {
+        console.log('FORM:setupDropdownFormCell item = ', item)
+        // selection by value
+        item.selected = _.isNil(item.selected) ? item.options[0] : item.selected
+        // selection by index
+        if (_.isNumber(item.selected)) {
+            if (_.isPlainObject(item.options[item.selected])) {
+                item.selected = item.options[item.selected].value
+            } else {
+                item.selected = item.options[item.selected]
+            }
+        }
+        // adapted for element-ui
+        let options = item.options
+        if (!_.isPlainObject(item.options[0])) {
+            options = []
+            _.each(item.options, key => {
+                options.push({
+                    label: key,
+                    value: key
+                })
+            })
+        }
+        item.options = options
+        return item
+    }
+    //
     const LY = {
         START: '_START',
         END: '_END',
@@ -201,7 +228,8 @@ const DynamicFormHandler = function() {
             __strc: {
                 level: args.level,
                 class: `level-${args.level}`,
-                tree
+                tree,
+                lastIndex: getTree(tree).lastIndex
             }
         }
         const props = 'startNode,endNode,addNode,removeNode,shift2FirstNode,shift1UpNode,shift1DownNode,shift2LastNode'.split(
@@ -383,7 +411,8 @@ const DynamicFormHandler = function() {
     }
 
     const getFormItem = (tree, value, args) => {
-        const res = _.get(schema, getTree(tree).schemaTree)
+        const tryee = getTree(tree)
+        const res = _.get(schema, tryee.schemaTree)
         const key = tree.join('--')
         const defaultItem = {
             type: 'input',
@@ -395,7 +424,8 @@ const DynamicFormHandler = function() {
             __strc: {
                 level: args.level,
                 class: `level-${args.level}`,
-                tree
+                tree,
+                lastIndex: tryee.lastIndex
             },
             selected: value,
             key,
@@ -418,7 +448,7 @@ const DynamicFormHandler = function() {
         item.label = `${item.label}:` // mock hardcoded, TODO: generate i18n id here!
         //
         if (item.type === 'dropdown') {
-            item = globals.setupDropdownFormCell(item)
+            item = setupDropdownFormCell(item)
         } else {
             // MOCK just remove the annoying bootstrap propz error :-((
             // TODO get this working

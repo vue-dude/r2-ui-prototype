@@ -1,5 +1,5 @@
 <template>
-    <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]" @click="onClickCage">
+    <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]">
         <box class="animate" :config="boxes['main-nav']"></box>
         <box class="animate" :config="boxes['head-controls']"></box>
         <!--  -->
@@ -308,11 +308,6 @@ export default {
         },
         getViewStack() {
             return [...this.viewStack].reverse()
-        },
-        onClickCage() {
-            if (this.isModalOverlay && this.showCage) {
-                globals.eventBus.$emit('click', { key: 'modal-bg' })
-            }
         },
         onClick(evt) {
             evt.box = evt.box || { id: null }

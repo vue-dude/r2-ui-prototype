@@ -1,5 +1,5 @@
 <template>
-    <div class="box" :class="[config.id, uid, { 'no-events': !config.visible }]">
+    <div class="box" :class="[config.id, uid, { 'no-events': !config.visible }]" @keydown.tab="onKeyDownTab">
         <div
             v-for="(view, vKey) in config.views"
             :key="vKey"
@@ -54,7 +54,6 @@
                 </div>
             </div>
             <div class="scrollable">
-                <!-- <div class="content" @keydown.tab.prevent="onKeyDownTab"> -->
                 <div class="content">
                     <div class="components">
                         <!-- TODO add  typeof component, like form, upload -->
@@ -103,14 +102,15 @@
                     </div>
                     <div class="scroll-bg"></div>
                 </div>
-                <div class="scrollbar" v-if="showScrollbar">
-                    <div class="thumb">
-                        <div class="edge up bg-img scrollbar-edge-arrow"></div>
-                        <div class="center bg-img scrollbar-center-grid "></div>
-                        <div class="edge dn bg-img scrollbar-edge-arrow"></div>
-                    </div>
+            </div>
+            <div class="scrollbar" v-if="showScrollbar">
+                <div class="thumb">
+                    <div class="edge up bg-img scrollbar-edge-arrow"></div>
+                    <div class="center bg-img scrollbar-center-grid "></div>
+                    <div class="edge dn bg-img scrollbar-edge-arrow"></div>
                 </div>
             </div>
+
             <div class="overlay">
                 <div class="elements">
                     <div
@@ -182,8 +182,16 @@ export default {
     },
     methods: {
         onKeyDownTab(evt) {
-            // $.tabNext()
-            // console.log('BOX:onKeyDownTab evt = ', evt)
+            // setTimeout(() => {
+            //     const view = `.box.${this.config.id}.${this.uid} .view.active`
+            //     const $scrollable = $(`${view} .scrollable`)
+            //     const $scrollContent = $(`${view} .scrollable .content`)
+            //     const $components = $(`${view} .scrollable .content .components`)
+            //     // $.tabNext()
+            //     console.log('BOX:onKeyDownTab $scrollable.scrollTop() = ', $scrollable.scrollTop())
+            //     console.log('BOX:onKeyDownTab $scrollContent.scrollTop() = ', $scrollContent.scrollTop())
+            //     console.log('BOX:onKeyDownTab $components.scrollTop() = ', $components.scrollTop())
+            // }, 100)
         },
         destroyBoxScrollHandler() {
             clearTimeout(this.tme1)
@@ -193,10 +201,11 @@ export default {
         },
         onUpdateActiveView() {
             this.destroyBoxScrollHandler()
-            const scrollContainer = `.box.${this.config.id}.${this.uid} .view.active .scrollable`
+            // const scrollContainer = `.box.${this.config.id}.${this.uid} .view.active .scrollable`
+            const view = `.box.${this.config.id}.${this.uid} .view.active`
             this.showScrollbar = false
             this.tme1 = setTimeout(() => {
-                const $scrollContent = $(`${scrollContainer} .content`)
+                const $scrollContent = $(`${view} .scrollable .content`)
                 this.showScrollbar = $scrollContent[0] && $scrollContent[0].scrollHeight > 0 ? true : false
                 if (this.showScrollbar) {
                     const animateIn = $scrollbar => {
@@ -207,7 +216,8 @@ export default {
                     this.tme2 = setTimeout(() => {
                         console.log('boxScrollHandler CREATE = ', this.uid)
                         this.boxScrollHandler = new BoxScrollHandler({
-                            scrollContainer,
+                            view,
+                            // scrollContainer,
                             animateIn,
                             uid: this.uid
                         })

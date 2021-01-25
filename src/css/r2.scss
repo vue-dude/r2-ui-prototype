@@ -80,13 +80,22 @@ body {
         }
 
         .modal-bg {
+            // position: absolute;
+            // z-index: 2;
+            // pointer-events: none;
+            // top: 48px;
+            // left: calc(0px - var(--left-edge));
+            // width: 100vw;
+            // height: calc(100vh - 80px);
+            // background-color: #00000085;
+            // border-radius: unset;
+            top: 0px;
             position: absolute;
             z-index: 2;
             pointer-events: none;
-            top: 48px;
-            left: calc(0px - var(--left-edge));
-            width: 100vw;
-            height: calc(100vh - 80px);
+            left: -500000px;
+            width: 1000000px;
+            height: 100vh;
             background-color: #00000085;
             border-radius: unset;
         }
@@ -229,52 +238,7 @@ body {
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
-            .scrollbar {
-                position: absolute;
-                width: 12px;
-                height: calc(100% - 7px);
 
-                border-radius: 4px;
-                right: 0px;
-                opacity: 0;
-                //
-                background-color: #9fabb54d;
-                border: 1px solid #57677d;
-                box-shadow: inset 0 0 6px #9fa3a8;
-
-                .thumb {
-                    position: absolute;
-                    width: 10px;
-                    height: 40px;
-                    background-color: #728ca8;
-                    border: 1px solid #f1fcfb99;
-                    border-radius: 4px;
-                    box-shadow: inset 0 0 6px #4c5262;
-                    cursor: pointer;
-                    .edge {
-                        position: absolute;
-                        width: 8px;
-                        height: 9px;
-                        left: 1px;
-                        opacity: 0.9;
-                        &.up {
-                            top: 0px;
-                        }
-                        &.dn {
-                            bottom: 1px;
-                            transform: scaleY(-1);
-                        }
-                    }
-                    .center {
-                        position: absolute;
-                        top: calc(50% - 5px);
-                        width: 6px;
-                        height: 9px;
-                        left: 2px;
-                        opacity: 0.8;
-                    }
-                }
-            }
             &.no-events {
                 pointer-events: none;
             }
@@ -318,16 +282,58 @@ body {
                     // position: absolute;
                 }
                 .scrollable {
-                    position: relative;
-                    // height: 0px;
-                    overflow-y: hidden; // scroll
+                    position: absolute;
+                    overflow-y: hidden;
                     overflow-x: hidden;
                     // -webkit-overflow-scrolling: touch; // chrome no effect
                     top: 60px;
                     left: 10px;
                     .content {
                         position: absolute;
-                        // transition: top 0.05s;
+                    }
+                }
+                .scrollbar {
+                    cursor: pointer;
+                    position: absolute;
+                    width: 12px;
+                    border-radius: 4px;
+                    right: 0px;
+                    opacity: 0;
+                    //
+                    background-color: #9fabb54d;
+                    border: 1px solid #57677d;
+                    box-shadow: inset 0 0 6px #9fa3a8;
+                    .thumb {
+                        position: absolute;
+                        width: 10px;
+                        height: 40px;
+                        background-color: #728ca8;
+                        border: 1px solid #f1fcfb99;
+                        border-radius: 4px;
+                        box-shadow: inset 0 0 6px #4c5262;
+                        cursor: pointer;
+                        .edge {
+                            position: absolute;
+                            width: 8px;
+                            height: 9px;
+                            left: 1px;
+                            opacity: 0.9;
+                            &.up {
+                                top: 0px;
+                            }
+                            &.dn {
+                                bottom: 1px;
+                                transform: scaleY(-1);
+                            }
+                        }
+                        .center {
+                            position: absolute;
+                            top: calc(50% - 5px);
+                            width: 6px;
+                            height: 9px;
+                            left: 2px;
+                            opacity: 0.8;
+                        }
                     }
                 }
 

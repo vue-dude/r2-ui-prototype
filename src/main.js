@@ -17,6 +17,8 @@ import { createI18n } from 'vue-i18n' // is vue-i18n@next
 import ElementPlus from 'element-plus'
 import 'element-plus/packages/theme-chalk/src/index.scss'
 
+// import DynamicForm from 'vue-dynamic-form-component'
+
 const createVueApp = async () => {
     await datasource.getInitialData().then(data => {
         console.log('MAIN: data = ', data)
@@ -40,6 +42,7 @@ const createVueApp = async () => {
                 .use(store)
                 .use(router)
                 .use(ElementPlus)
+                // .use(DynamicForm)
             app.mount('#app')
             //
             globals.registerStore(app.$store)

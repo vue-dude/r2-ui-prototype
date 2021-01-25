@@ -341,7 +341,9 @@ function R2UiBoxDefinitions() {
                         'dataset-actions-publish': { key: 'actions-panel-close', click: true }
                     },
                     zones: {
-                        'dataset-actions-close': { key: 'cancel' }
+                        'dataset-actions-close': { key: 'cancel' },
+                        'dataset-actions-submit': { key: 'cancel' },
+                        'dataset-actions-withdraw': { key: 'cancel' }
                     }
                 },
                 'meta-actions-edit-authors': {

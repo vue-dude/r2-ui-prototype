@@ -1,14 +1,21 @@
 function BoxScrollHandler(config) {
+    //   const scrollContainer = `.box.${this.config.id}.${this.uid} .view.active .scrollable`
+    //   const view = `.box.${this.config.id}.${this.uid} .view.active`
+
+    // const $scrollable = $(`${view} .scrollable`) this to check!!
+
     //
-    const $scrollContainer = $(config.scrollContainer)
-    const $scrollContent = $(`${config.scrollContainer} .content`)
-    const $scrollThumb = $(`${config.scrollContainer} .scrollbar .thumb`)
-    const $scrollBar = $(`${config.scrollContainer} .scrollbar`)
+    // const $scrollContainer = $(config.scrollContainer)
+    const $scrollContainer = $(`${config.view} .scrollable`)
+    const $scrollContent = $(`${config.view} .scrollable .content`)
+    const $scrollThumb = $(`${config.view} .scrollbar .thumb`)
+    const $scrollBar = $(`${config.view} .scrollbar`)
     //
     let yScrollValue = 0
     let yScrollPos = 0
     let scrollTopLimitCrossed = false
     let scrollDownLimitCrossed = false
+    let dirty = false
     //
     const ACCELERATE_FC = 1.2
     //
@@ -21,6 +28,11 @@ function BoxScrollHandler(config) {
         }
     }
     const onMouseWheel = evt => {
+        if (dirty) {
+            dirty = false
+            yScrollPos += $scrollContainer.scrollTop()
+            $scrollContainer.scrollTop(0)
+        }
         const dim = getScrollDimensions()
         if (dim.scrollDownEdge <= 0) {
             return gsap.set($($scrollContent), {
@@ -71,8 +83,10 @@ function BoxScrollHandler(config) {
         updateThumbPosition()
     }
 
-    const updateThumbPosition = () => {
-        gsap.set($scrollThumb, { top: yScrollPos * scrollThumbDeltaFc })
+    const updateThumbPosition = outerOffset => {
+        const top = _.isNumber(outerOffset) ? outerOffset + yScrollPos : yScrollPos
+        console.log('BSH:updateThumbPosition outerOffset, yScrollPos, top = ', outerOffset, yScrollPos, top)
+        gsap.set($scrollThumb, { top: top * scrollThumbDeltaFc })
     }
 
     const updateThumbDimensions = () => {
@@ -149,9 +163,12 @@ function BoxScrollHandler(config) {
         // gsap.set($scrollThumb, { top: 0 })
         //
         $scrollContainer.off('wheel', onMouseWheel)
+        $scrollContainer.off('keyup', onKeyUp)
         destroyDraggable()
         $(window).off('resize', updateThumbDimensions)
         $scrollBar.off('click', onMouseClickBar)
+        $scrollBar.off('wheel', onMouseWheel)
+
         config.scrollContainer = null
         config = null
     }
@@ -164,9 +181,21 @@ function BoxScrollHandler(config) {
         }
     }
 
+    const onKeyUp = evt => {
+        if (evt.which === 9) {
+            dirty = true
+            // TODO initiate better update here, e.g. frameloop
+            setTimeout(() => {
+                const top = $scrollContainer.scrollTop()
+                updateThumbPosition(top)
+            }, 50)
+        }
+    }
+
     const init = () => {
         updateThumbDimensions()
         $scrollContainer.on('wheel', onMouseWheel)
+        $scrollContainer.on('keyup', onKeyUp)
         $scrollThumb.click(function(event) {
             event.stopPropagation()
         })
@@ -179,6 +208,7 @@ function BoxScrollHandler(config) {
             axis: 'y',
             drag: updateContentScrollPosition
         })
+        $scrollBar.on('wheel', onMouseWheel)
         $scrollBar.on('click', onMouseClickBar)
         $(window).on('resize', updateThumbDimensions)
         if (_.isFunction(config.animateIn)) {

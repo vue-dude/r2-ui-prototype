@@ -84,6 +84,11 @@
 
             &.landing-page {
                 .view {
+                    .scrollbar {
+                        top: -1px;
+                        left: calc(1150px + -26px);
+                        height: calc(100vh - 108px);
+                    }
                     .scrollable {
                         top: 0px;
                         left: 0px;
@@ -99,11 +104,6 @@
                                     height: calc(2825px / 2);
                                 }
                             }
-                        }
-                        .scrollbar {
-                            top: 0px;
-                            height: calc(100% - 15px); // 15px because of mpdl logo
-                            right: 22px;
                         }
                     }
                     .inner {
@@ -164,14 +164,16 @@
                     background-color: #7b8594;
                 }
                 .view {
+                    .scrollbar {
+                        top: 372px;
+                        left: calc(1150px - 46px);
+                        height: calc(100vh - 483px);
+                    }
                     .scrollable {
                         top: 370px;
                         left: 810px;
                         height: calc(100vh - 483px);
                         width: 310px;
-                        .scrollbar {
-                            height: calc(100% - 4px);
-                        }
                         .elements {
                             .search-page-facets-dn-inner-list-1,
                             .search-page-facets-dn-inner-list-2 {
@@ -261,6 +263,11 @@
                             background-color: #e5e8f5;
                         }
                     }
+                    .scrollbar {
+                        left: 758px;
+                        top: 61px;
+                        height: calc(100vh - 152px);
+                    }
                     .scrollable {
                         top: 62px;
                         left: 0px;
@@ -268,11 +275,6 @@
                         width: 785px;
                         .content {
                             transform: scaleX(0.97);
-                        }
-                        .scrollbar {
-                            right: 12px;
-                            top: 0px;
-                            height: calc(100% - 2px);
                         }
                         .inner {
                             left: 0px;
@@ -373,7 +375,11 @@
                             left: 789px;
                         }
                     }
-
+                    .scrollbar {
+                        left: 759px;
+                        top: 61px;
+                        height: calc(100vh - 152px);
+                    }
                     .scrollable {
                         top: 62px;
                         left: 0px;
@@ -381,11 +387,6 @@
                         width: 785px;
                         .content {
                             transform: scaleX(0.97);
-                        }
-                        .scrollbar {
-                            right: 12px;
-                            top: 0px;
-                            height: calc(100% - 2px);
                         }
                         .inner {
                             left: 0px;
@@ -437,6 +438,11 @@
 
             &.dataset-view-public {
                 .view {
+                    .scrollbar {
+                        top: -1px;
+                        left: calc(1150px + -26px);
+                        height: calc(100vh - 108px);
+                    }
                     .scrollable {
                         top: 0px;
                         left: 0px;
@@ -445,11 +451,6 @@
                         .content {
                             top: 2px;
                             transform: scaleX(0.988);
-                        }
-                        .scrollbar {
-                            top: -1px;
-                            height: calc(100% - 16px);
-                            right: 22px;
                         }
                         .elements {
                             .dataset-view-public-content {
@@ -492,6 +493,11 @@
                 --width: calc(1695px / 2);
                 .view {
                     &.dataset-view-private-content {
+                        .scrollbar {
+                            left: 832px;
+                            top: -1px;
+                            height: calc(100vh - 90px);
+                        }
                         .scrollable {
                             top: 0px;
                             left: 0px;
@@ -508,11 +514,11 @@
                                     }
                                 }
                             }
-                            .scrollbar {
-                                right: 8px;
-                                top: -1px;
-                                height: calc(100% - 0px);
-                            }
+                            // .scrollbar {
+                            //     right: 8px;
+                            //     top: -1px;
+                            //     height: calc(100% - 0px);
+                            // }
                             .click-zones {
                                 .click-zone {
                                     &.show-filelist-1 {
@@ -538,6 +544,11 @@
                         }
                     }
                     &.dataset-view-private-init-content {
+                        .scrollbar {
+                            left: 832px;
+                            top: -1px;
+                            height: calc(100vh - 90px);
+                        }
                         .scrollable {
                             top: 0px;
                             left: 0px;
@@ -554,42 +565,14 @@
                                     }
                                 }
                             }
-                            .scrollbar {
-                                right: 8px;
-                                top: -1px;
-                                height: calc(100% - 0px);
-                            }
                             .click-zones {
                                 .click-zone {
                                     &.edit-meta {
-                                        // left: 22px;
-                                        // width: 224px;
-                                        // height: 36px;
-                                        // top: 275px;
                                         top: 0px;
                                         left: 0px;
                                         width: calc(var(--width) + 10px);
                                         height: calc(2257px / 2);
                                     }
-
-                                    // &.show-filelist-1 {
-                                    //     left: 648px;
-                                    //     width: 170px;
-                                    //     height: 115px;
-                                    //     top: 720px;
-                                    // }
-                                    // &.show-filelist-2 {
-                                    //     left: 66px;
-                                    //     width: 187px;
-                                    //     height: 28px;
-                                    //     top: 849px;
-                                    // }
-                                    // &.download-all {
-                                    //     left: 292px;
-                                    //     width: 144px;
-                                    //     height: 28px;
-                                    //     top: 642px;
-                                    // }
                                 }
                             }
                         }
@@ -603,6 +586,11 @@
                 .view {
                     &.dataset-view-private-infos,
                     &.dataset-view-private-init-infos {
+                        .scrollbar {
+                            left: 266px;
+                            top: 68px;
+                            height: calc(100vh - 177px);
+                        }
                         .scrollable {
                             top: 70px;
                             left: 0px;
@@ -622,11 +610,6 @@
                                         height: calc(1325px / 2);
                                     }
                                 }
-                            }
-                            .scrollbar {
-                                top: -1px;
-                                right: 4px;
-                                height: calc(100% - 18px);
                             }
                         }
                     }
@@ -690,6 +673,11 @@
                                 }
                             }
                         }
+                        .scrollbar {
+                            left: 834px;
+                            top: 194px;
+                            height: calc(100vh - 285px);
+                        }
                         .scrollable {
                             height: calc(100vh - 288px);
                             width: calc(1688px / 2 + 10px);
@@ -697,11 +685,6 @@
                             left: 0px;
                             .content {
                                 transform: scaleX(0.98);
-                            }
-                            .scrollbar {
-                                right: 5px;
-                                top: -1px;
-                                height: calc(100% - 0px);
                             }
                             .elements {
                                 .file-view-list-collection-closed {
@@ -898,6 +881,18 @@
                                     width: 74px;
                                     height: 30px;
                                 }
+                                &.dataset-actions-submit {
+                                    top: 196px;
+                                    left: 86px;
+                                    width: 172px;
+                                    height: 30px;
+                                }
+                                &.dataset-actions-withdraw {
+                                    top: 426px;
+                                    left: 86px;
+                                    width: 172px;
+                                    height: 30px;
+                                }
                             }
                         }
                     }
@@ -979,10 +974,18 @@
                         width: calc(1697px / 2);
                         height: calc(1200px / 2);
 
+                        .fixed {
+                            height: calc(100vh - 120px);
+                            .elements {
+                                height: inherit;
+                            }
+                        }
+
                         .element {
                             &.box-bg {
                                 width: calc(1697px / 2);
-                                height: calc(1200px / 2);
+                                // height: calc(1200px / 2);
+                                height: calc(100vh - 122px);
                                 background-color: #53586a;
                                 border: 1px solid white;
                                 border-radius: 8px;
@@ -1003,7 +1006,7 @@
                                     top: 52px;
                                 }
                                 &.sp-dn {
-                                    top: 535px;
+                                    bottom: 66px;
                                 }
                             }
                             &.bt {
@@ -1014,14 +1017,13 @@
                                 border: 1px solid #7590bf;
                                 border-radius: 8px;
                                 line-height: 22px;
+                                bottom: 20px;
                                 &.bt-save {
-                                    top: 555px;
                                     left: 745px;
                                     width: 81px;
                                     background-color: #d9fff9;
                                 }
                                 &.bt-close {
-                                    top: 555px;
                                     left: 645px;
                                     width: 90px;
                                 }
@@ -1030,18 +1032,21 @@
                         .scrollable {
                             top: 58px;
                             left: 24px;
-                            height: 468px;
+                            height: calc(100vh - 255px);
                             width: 802px;
-                            .scrollbar {
-                                top: 2px;
-                                height: 464px;
+                            .inner {
+                                height: 0px;
                             }
                             .components {
                                 .meta-generic-authors {
                                     width: 400px;
-                                    height: 1000px;
                                 }
                             }
+                        }
+                        .scrollbar {
+                            top: 58px;
+                            right: 24px;
+                            height: calc(100vh - 255px);
                         }
                     }
                 }
