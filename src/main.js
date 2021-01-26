@@ -15,26 +15,27 @@ import VueAxios from 'vue-axios'
 import { createI18n } from 'vue-i18n' // is vue-i18n@next
 
 import ElementPlus from 'element-plus'
-import 'element-plus/packages/theme-chalk/src/index.scss'
-
-// import DynamicForm from 'vue-dynamic-form-component'
+import 'element-plus/lib/theme-chalk/index.css'
+// TODO explore scss vars override 
+// import 'element-plus/packages/theme-chalk/src/index.scss'
 
 const createVueApp = async () => {
+    gsap.config({ nullTargetWarn: false })
     await datasource.getInitialData().then(data => {
-        console.log('MAIN: data = ', data)
         //
         const i18n = createI18n({
             fallbackLocale: data.setup.fallbackLocale || 'en',
             locale: 'en', // set locale
             messages: data.translations, // set locale messages
-            silentTranslationWarn: true
+            silentTranslationWarn: true,
+            fallbackWarn: false,
+            missingWarn: false
         })
         globals.registerI18n(i18n)
         //
         const router = getRouter()
-        console.log('MAIN: router = ', router)
         globals.registerRouter(router)
-
+        //
         setTimeout(() => {
             const app = createApp(App)
                 .use(VueAxios, axios)
@@ -42,9 +43,10 @@ const createVueApp = async () => {
                 .use(store)
                 .use(router)
                 .use(ElementPlus)
-                // .use(DynamicForm)
+
+            // app.config.errorHandler = () => null
+            app.config.warnHandler = () => null
             app.mount('#app')
-            //
             globals.registerStore(app.$store)
         }, 500)
         //

@@ -514,11 +514,6 @@
                                     }
                                 }
                             }
-                            // .scrollbar {
-                            //     right: 8px;
-                            //     top: -1px;
-                            //     height: calc(100% - 0px);
-                            // }
                             .click-zones {
                                 .click-zone {
                                     &.show-filelist-1 {
@@ -1037,6 +1032,31 @@
                             .inner {
                                 height: 0px;
                             }
+                            // TODO move generic part to global
+                            .form-container {
+                                width: 720px;
+                                .index-group {
+                                    background-color: #4a586c;
+                                    border: 1px solid white;
+                                    border-radius: 10px;
+                                    width: calc(100% - 20px);
+                                    margin-left: 50px;
+                                    margin-bottom: 20px;
+                                    .el-row {
+                                        margin-bottom: 15px;
+                                    }
+                                    .input-container {
+                                        margin: 10px;
+                                        margin-left: 20px;
+                                        .label {
+                                            margin-bottom: 5px;
+                                            margin-left: 5px;
+                                            color: #c8d3f3;
+                                        }
+                                    }
+                                }
+                            }
+
                             .components {
                                 .meta-generic-authors {
                                     width: 400px;

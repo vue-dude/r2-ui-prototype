@@ -201,7 +201,6 @@ export default {
         },
         onUpdateActiveView() {
             this.destroyBoxScrollHandler()
-            // const scrollContainer = `.box.${this.config.id}.${this.uid} .view.active .scrollable`
             const view = `.box.${this.config.id}.${this.uid} .view.active`
             this.showScrollbar = false
             this.tme1 = setTimeout(() => {
@@ -217,7 +216,6 @@ export default {
                         console.log('boxScrollHandler CREATE = ', this.uid)
                         this.boxScrollHandler = new BoxScrollHandler({
                             view,
-                            // scrollContainer,
                             animateIn,
                             uid: this.uid
                         })

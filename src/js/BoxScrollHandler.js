@@ -1,11 +1,5 @@
 function BoxScrollHandler(config) {
-    //   const scrollContainer = `.box.${this.config.id}.${this.uid} .view.active .scrollable`
-    //   const view = `.box.${this.config.id}.${this.uid} .view.active`
-
-    // const $scrollable = $(`${view} .scrollable`) this to check!!
-
     //
-    // const $scrollContainer = $(config.scrollContainer)
     const $scrollContainer = $(`${config.view} .scrollable`)
     const $scrollContent = $(`${config.view} .scrollable .content`)
     const $scrollThumb = $(`${config.view} .scrollbar .thumb`)
@@ -85,7 +79,6 @@ function BoxScrollHandler(config) {
 
     const updateThumbPosition = outerOffset => {
         const top = _.isNumber(outerOffset) ? outerOffset + yScrollPos : yScrollPos
-        console.log('BSH:updateThumbPosition outerOffset, yScrollPos, top = ', outerOffset, yScrollPos, top)
         gsap.set($scrollThumb, { top: top * scrollThumbDeltaFc })
     }
 
@@ -214,30 +207,6 @@ function BoxScrollHandler(config) {
         if (_.isFunction(config.animateIn)) {
             config.animateIn($scrollBar)
         }
-
-        // $("#parentOfTextbox").on('keydown', '#textbox', function(e) {
-        //     var keyCode = e.keyCode || e.which;
-
-        //     if (keyCode == 9) {
-        //       e.preventDefault();
-        //       // call custom function here
-        //     }
-        //   });
-
-        // const onKeyDown = evt => {
-        //     const top = $scrollContent.position().top
-        //     console.log('BSH:onKeyUp top = ', top)
-        //     const keyCode = evt.keyCode || evt.which
-        //     if (keyCode === 9) {
-        //         evt.preventDefault()
-        //     }
-        //     console.log('BSH:onKeyUp keyCode = ', keyCode)
-
-        //     // const prms = gsap.getProperty($scrollContent, 'top')
-        // }
-
-        // $scrollContainer.on('keydown', onKeyUp)
-        // $scrollContainer.on('keyup', onKeyUp)
     }
 
     init()

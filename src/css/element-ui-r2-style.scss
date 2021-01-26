@@ -1,17 +1,14 @@
 .form-container {
-    .form-elements {
-        .el-input {
-            width: 200px;
-            .el-input__suffix {
-              color: #a13a95;
-            }
-            .el-input__inner {
-                color: #333744;
-                background-color: #e5e7eb;
-                &::placeholder {
-                    color: #60667a;
-                    font-style: italic;
-                }
+    .el-input {
+        .el-input__suffix {
+            color: #a13a95;
+        }
+        .el-input__inner {
+            color: #333744;
+            background-color: #e5e7eb;
+            &::placeholder {
+                color: #60667a;
+                font-style: italic;
             }
         }
     }

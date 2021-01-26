@@ -2,213 +2,34 @@
     <!-- <div class="form-container" @keydown.tab.prevent="onKeyDownTab"> -->
     <div class="form-container">
         <div v-for="(group, index) in form" :key="index" class="index-group">
-            <div v-for="(item, index) in group" :key="index">
-                <!-- <div class="input-container"> -->
-                <!-- <div class="input-container" v-if="item.tabIndex > -1"> -->
-                <!-- <div class="input-container" v-if="item.tabYndex > 0"> -->
-                <div class="input-container" v-if="item.isInputElement">
-                    <div class="label" v-html="item.label"></div>
-
-                    <el-input
-                        v-if="item.type === 'input'"
-                        v-model="item.selected"
-                        :placeholder="item.label"
-                        suffix-icon="el-icon-name"
-                    />
-                    <el-select
-                        v-if="item.type === 'dropdown'"
-                        v-model="item.selected"
-                        :placeholder="item.label"
-                        suffix-icon="el-icon-date"
-                    >
-                        <el-option
-                            v-for="(option, index) in item.options"
-                            :key="index"
-                            :label="option.label"
-                            :value="option.value"
-                        ></el-option>
-                    </el-select>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div v-if="false" class="form-container" @keydown.tab.prevent="onKeyDownTab">
-        <!-- <vue-dynamic-form v-model="dfData" :descriptors="dfDescriptors" :lang="lang"></vue-dynamic-form> -->
-        <div class="form-elements form">
-            <!-- <div v-for="(item, index) in form" :key="index" :class="item.__strc ? item.__strc.class : ''"> -->
-            <div v-for="(item, index) in form" :key="index">
-                <!-- <el-input
-                    v-if="item.tabIndex > -1"
-                    :placeholder="item.tabIndex.toString()"
-                    :tabindex="item.tabIndex.toString()"    
-                ></el-input> -->
-                <div class="input-container" v-if="item.tabIndex > -1">
-                    <div class="label" v-html="item.label"></div>
-                    <el-input
-                        :placeholder="item.label"
-                        :tabindex="item.tabIndex.toString()"
-                        v-model="item.selected"
-                        suffix-icon="el-icon-date"
-                    />
-                </div>
-                <div class="layout-container" v-else>{{ JSON.stringify(item) }}</div>
-                <div>-----------------</div>
-                <!-- <div v-else class="layout">{{ item.type }}</div> -->
-            </div>
-
-            <!-- <div v-for="(cell, index) in cells" :key="index" class="input-container">
-                <el-input :placeholder="cell.plc" suffix-icon="el-icon-date" v-model="cell.selected"></el-input>
-            </div> -->
-            <!-- <b-form-group
-                v-for="(item, index) in form"
-                :key="index"
-                :id="item.key"
-                :label="item.type === 'button' ? null : item.label"
-                :label-for="item.key"
-                :description="item.description"
-                :class="item.__strc ? item.__strc.class : ''"
-            >
-                <div v-if="item.type === 'LY'" class="layout">
-                    <div class="line"></div>
-                    <div class="label">{{ item.spLabel }}</div>
-                    <div class="action">
-                        <b-button
-                            v-if="item.addNode"
-                            class="add"
-                            size="sm"
-                            @click="onClickActionButton({ item, action: 'addNode' })"
+            <el-row>
+                <div v-for="(item, index) in group" :key="index">
+                    <div class="input-container" v-if="item.isInputElement">
+                        <div class="label" v-html="item.label"></div>
+                        <el-input
+                            v-if="item.type === 'input'"
+                            v-model="item.selected"
+                            :placeholder="item.label"
+                            suffix-icon="el-icon-date"
+                            size="small"
+                        />
+                        <el-select
+                            v-if="item.type === 'dropdown'"
+                            v-model="item.selected"
+                            :placeholder="item.label"
+                            prefix-icon="el-icon-date"
+                            size="small"
                         >
-                            (+) Add
-                        </b-button>
-
-                        <b-button
-                            v-if="item.shift2FirstNode"
-                            class="shift"
-                            size="sm"
-                            @click="onClickActionButton({ item, action: 'shift2FirstNode' })"
-                        >
-                            &#x25B2;&#x25B2;
-                        </b-button>
-
-                        <b-button
-                            v-if="item.shift1UpNode"
-                            class="shift"
-                            size="sm"
-                            @click="onClickActionButton({ item, action: 'shift1UpNode' })"
-                        >
-                            &#x25B2;
-                        </b-button>
-
-                        <b-button
-                            v-if="item.shift1DownNode"
-                            class="shift"
-                            size="sm"
-                            @click="onClickActionButton({ item, action: 'shift1DownNode' })"
-                        >
-                            &#x25BC;
-                        </b-button>
-
-                        <b-button
-                            v-if="item.shift2LastNode"
-                            class="shift"
-                            size="sm"
-                            @click="onClickActionButton({ item, action: 'shift2LastNode' })"
-                        >
-                            &#x25BC;&#x25BC;
-                        </b-button>
-
-                        <b-button
-                            v-if="item.removeNode"
-                            class="remove"
-                            size="sm"
-                            @click="onClickActionButton({ item, action: 'removeNode' })"
-                        >
-                            (-) Remove
-                        </b-button>
+                            <el-option
+                                v-for="(option, index) in item.options"
+                                :key="index"
+                                :label="option.label"
+                                :value="option.value"
+                            ></el-option>
+                        </el-select>
                     </div>
                 </div>
-
-                <b-input-group
-                    v-if="item.type === 'button' && item.show"
-                    size="sm"
-                    :prepend="item.prepend"
-                    :append="item.append"
-                >
-                    <b-button :id="item.key" class="bt-form" size="sm" @click="onClickButton(item)">
-                        {{ item.label }}
-                    </b-button>
-                </b-input-group>
-
-                <b-input-group
-                    v-if="item.type === 'input' && item.show"
-                    size="sm"
-                    :prepend="item.prepend"
-                    :append="item.append"
-                >
-                    <b-form-input :id="item.key" :placeholder="item.placeholder" v-model="item.selected"></b-form-input>
-                </b-input-group>
-
-                <b-input-group
-                    v-if="item.type === 'textarea' && item.show"
-                    :prepend="item.prepend"
-                    :append="item.append"
-                >
-                    <b-form-textarea
-                        :id="item.key"
-                        v-model="item.selected"
-                        :placeholder="item.placeholder"
-                        :rows="item.rows"
-                        :max-rows="item.maxRows"
-                    ></b-form-textarea>
-                </b-input-group>
-                <b-input-group
-                    v-if="item.type === 'dropdown' && item.show"
-                    :prepend="item.prepend"
-                    :append="item.append"
-                >
-                    <b-form-select :id="item.key" v-model="item.selected" :options="item.options" size="sm">
-                        <option :value="null" :name="item.key" disabled>{{ item.placeholder }}</option>
-                    </b-form-select>
-                </b-input-group>
-                <b-input-group v-if="item.type === 'tags'" :prepend="item.prepend" :append="item.append">
-                    <b-form-tags :id="item.key" v-model="item.selected" :options="item.options" size="md"></b-form-tags>
-                </b-input-group>
-                <b-input-group v-if="item.type === 'date' && item.show">
-                    <b-form-datepicker :id="item.key" v-model="item.selected" class="mb-2"></b-form-datepicker>
-                </b-input-group>
-                <b-input-group v-if="item.type === 'multi-select'">
-                    <b-form-checkbox-group
-                        :id="item.key"
-                        class="pointer"
-                        v-model="item.selected"
-                        :options="item.options"
-                    ></b-form-checkbox-group>
-                </b-input-group>
-                <b-input-group v-if="item.type === 'single-select' && item.show">
-                    <b-form-radio-group
-                        :id="item.key"
-                        class="pointer"
-                        v-model="item.selected"
-                        :options="item.options"
-                    ></b-form-radio-group>
-                </b-input-group>
-                <b-input-group v-if="item.type === 'file-upload' && item.show" class="pointer">
-                    <b-form-file
-                        :id="item.key"
-                        v-model="item.meta"
-                        :state="Boolean(item.meta)"
-                        :placeholder="item.placeholder"
-                        :drop-placeholder="item.placeholder"
-                        @input="onFileInput(item)"
-                    ></b-form-file>
-                </b-input-group>
-                <value-cell
-                    v-if="item.type === 'value-cell' && item.show"
-                    :config="item"
-                    v-model="item.selected"
-                ></value-cell>
-            </b-form-group> -->
+            </el-row>
         </div>
     </div>
 </template>
@@ -274,22 +95,25 @@ export default {
             fh: null,
             form: null,
             data: {
-                authors: [{}, {}, {}, {}, {}, {}, {}]
-            },
-            schemaXX: {
-                correspondingPapers: [
+                authors: [
                     {
-                        __0: {
-                            sublist: true
-                        },
-                        url: {},
-                        type: {},
-                        identifier: {},
-                        identifierType: {}
-                    }
+                        givenName: 'author 1',
+                        familyName: 'foo 1',
+                        nameIdentifier: 'https://orcid.org/1234-1234-1234-1234'
+                    },
+                    {
+                        givenName: 'author 2',
+                        familyName: 'foo 2',
+                        nameIdentifier: 'https://orcid.org/1234-1234-1234-1234'
+                    },
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {}
                 ]
             },
-
             schema: {
                 authors: [
                     {
@@ -306,8 +130,7 @@ export default {
                         givenName: {},
                         familyName: {},
                         nameIdentifier: {},
-                        test1: {},
-                        test2: {}
+                        test1: {}
 
                         // affiliations: [
                         //     {
@@ -327,14 +150,10 @@ export default {
         }
     },
     created() {
-        // this.fh = new DynamicFormHandler()
-        // this.form = this.fh.getForm(this.data, this.schema)
-        // console.log('FORM:created this.form = ', this.form)
-        let cnt = 0
-        while (++cnt <= this.numOfTabs) {
-            this.cells.push({ plc: `Text Input -${cnt}`, tabIndex: cnt })
-        }
-        // console.log('FORM:created this.cells = ',this.cells)
+        // let cnt = 0
+        // while (++cnt <= this.numOfTabs) {
+        //     this.cells.push({ plc: `Text Input -${cnt}`, tabIndex: cnt })
+        // }
         // globals.eventBus.$on('updateActiveView', this.onUpdateActiveView)
     },
     mounted() {
@@ -358,8 +177,6 @@ export default {
                     elm.isInputElement = true
             }
 
-            console.log('FORM:mounted elm lastIndex = ', elm.__strc.lastIndex)
-            console.log('FORM:mounted elm lastIndex = ', lastIndex)
             if (elm.__strc.lastIndex >= 0) {
                 if (elm.__strc.lastIndex > lastIndex) {
                     lastIndex = elm.__strc.lastIndex
@@ -367,12 +184,10 @@ export default {
                     this.form.push(target)
                     cnt++ // TEST
                 }
-                elm.selected = cnt // TEST
+
+                // elm.selected = elm.selected || cnt // TEST
                 target.push(elm)
             }
-
-            // console.log('FORM:mounted elm level = ', elm.__strc.level)
-            // console.log('FORM:mounted elm lastIndex = ', elm.__strc.lastIndex)
         })
         this.numOfTabs = tabIndex
         console.log('FORM:mounted this.form = ', this.form)
@@ -401,6 +216,7 @@ export default {
         // [[IsRevoked]]: false
     },
     methods: {
+        // obsolete for now, returned to browser native tabbing
         onKeyDownTab(evt) {
             // Simple test function for focus handling
             // default bowser method sadly destroys coded scroll setup
@@ -408,7 +224,7 @@ export default {
             const $focused = $('.form-container :focus')
 
             let tabindex = parseInt($focused.attr('tabindex'))
-            tabindex = isNaN(tabindex) ?  this.lastTabIndex : tabindex
+            tabindex = isNaN(tabindex) ? this.lastTabIndex : tabindex
             this.lastTabIndex = tabindex
             console.log('FORM:onKeyDownTab tabindex = ', tabindex)
 
@@ -420,41 +236,14 @@ export default {
             }
             console.log('FORM:onKeyDownTab nextIndex = ', nextIndex)
 
-            // const sel = `.form-container .form-elements input[tabindex=${nextIndex}]`
             const sel = `.form-container [tabindex=${nextIndex}]`
             const $next = $(sel)
             console.log('FORM:onKeyDownTab nextIndex = ', nextIndex)
 
             // $next.focus({ preventScroll: true }) // dont works and without its scroll hassle !!
-            // $next.select()
+            // $next.select() // this dont works with dropdowns, drops key enter feature
             $next.focus()
         }
     }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-.form-container {
-    .index-group {
-        background-color: gray;
-        border: 1px solid white;
-        border-radius: 10px;
-        width: 500px;
-        // height: 200px;
-        margin-bottom: 20px;
-        .input-container {
-            margin: 20px;
-            // margin-left: 20px;
-            // margin-right: 20px;
-            // margin-bottom: 10px;
-            // margin-bottom: 10px;
-            .label {
-                margin-bottom: 5px;
-                margin-left: 5px;
-                color: #c8d3f3;
-            }
-        }
-    }
-}
-</style>

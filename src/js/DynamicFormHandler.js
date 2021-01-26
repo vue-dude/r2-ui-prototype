@@ -1,7 +1,6 @@
 const DynamicFormHandler = function() {
     //
     const setupDropdownFormCell = item => {
-        console.log('FORM:setupDropdownFormCell item = ', item)
         // selection by value
         item.selected = _.isNil(item.selected) ? item.options[0] : item.selected
         // selection by index
