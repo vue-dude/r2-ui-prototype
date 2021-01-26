@@ -1,35 +1,88 @@
 <template>
     <!-- <div class="form-container" @keydown.tab.prevent="onKeyDownTab"> -->
     <div class="form-container">
+        <div class="top space">
+            <div class="add-index-group">
+                <div class="r2-circle-button bt-action icon add"></div>
+            </div>
+        </div>
         <div v-for="(group, index) in form" :key="index" class="index-group">
-            <el-row>
+            <div class="left-side">
                 <div v-for="(item, index) in group" :key="index">
                     <div class="input-container" v-if="item.isInputElement">
-                        <div class="label" v-html="item.label"></div>
-                        <el-input
-                            v-if="item.type === 'input'"
-                            v-model="item.selected"
-                            :placeholder="item.label"
-                            suffix-icon="el-icon-date"
-                            size="small"
-                        />
-                        <el-select
-                            v-if="item.type === 'dropdown'"
-                            v-model="item.selected"
-                            :placeholder="item.label"
-                            prefix-icon="el-icon-date"
-                            size="small"
-                        >
-                            <el-option
-                                v-for="(option, index) in item.options"
-                                :key="index"
-                                :label="option.label"
-                                :value="option.value"
-                            ></el-option>
-                        </el-select>
+                        <div class="input-cell" v-if="item.__strc.classes === 'left'">
+                            <div class="label" v-html="item.label"></div>
+                            <el-input
+                                v-if="item.type === 'input'"
+                                v-model="item.selected"
+                                :placeholder="item.label"
+                                suffix-icon="el-icon-date"
+                                size="small"
+                            />
+                            <el-select
+                                v-if="item.type === 'dropdown'"
+                                v-model="item.selected"
+                                :placeholder="item.label"
+                                prefix-icon="el-icon-date"
+                                size="small"
+                            >
+                                <el-option
+                                    v-for="(option, index) in item.options"
+                                    :key="index"
+                                    :label="option.label"
+                                    :value="option.value"
+                                ></el-option>
+                            </el-select>
+                        </div>
                     </div>
                 </div>
-            </el-row>
+            </div>
+            <div class="right-side">
+                <div v-for="(item, index) in group" :key="index">
+                    <div class="input-container" v-if="item.isInputElement">
+                        <div class="input-cell" v-if="item.__strc.classes === 'right'">
+                            <div class="label" v-html="item.label"></div>
+                            <el-input
+                                v-if="item.type === 'input'"
+                                v-model="item.selected"
+                                :placeholder="item.label"
+                                suffix-icon="el-icon-date"
+                                size="mini"
+                            />
+                            <el-select
+                                v-if="item.type === 'dropdown'"
+                                v-model="item.selected"
+                                :placeholder="item.label"
+                                prefix-icon="el-icon-date"
+                                size="mini"
+                            >
+                                <el-option
+                                    v-for="(option, index) in item.options"
+                                    :key="index"
+                                    :label="option.label"
+                                    :value="option.value"
+                                ></el-option>
+                            </el-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="r2-circle-button bt-danger icon trash"></div>
+                <!-- <el-button type="danger" icon="el-icon-delete" circle size="mini" tabindex="-1"></el-button> -->
+            </div>
+
+            <div class="add-index-group">
+                <div class="r2-circle-button bt-action icon add"></div>
+            </div>
+            <div class="move-controls">
+                <div class="buttons">
+                    <div class="r2-circle-button bt-action icon move"></div>
+                    <div class="r2-circle-button bt-action icon move"></div>
+                    <div class="r2-circle-button bt-action icon move"></div>
+                    <div class="r2-circle-button bt-action icon move"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -114,6 +167,9 @@ export default {
                     {}
                 ]
             },
+            dataXX: {
+                // authors: []
+            },
             schema: {
                 authors: [
                     {
@@ -124,13 +180,31 @@ export default {
                             __0: {
                                 type: 'dropdown',
                                 // options: ['a-1', 'a-2', 'a-3', 'a-4']
-                                options: getMockOptions('department', 100)
+                                options: getMockOptions('department', 100),
+                                // TODO replace classes by custom setup, which can contain everything
+                                classes: 'right'
                             }
                         },
-                        givenName: {},
-                        familyName: {},
-                        nameIdentifier: {},
-                        test1: {}
+                        givenName: {
+                            __0: {
+                                classes: 'left'
+                            }
+                        },
+                        familyName: {
+                            __0: {
+                                classes: 'left'
+                            }
+                        },
+                        nameIdentifier: {
+                            __0: {
+                                classes: 'right'
+                            }
+                        }
+                        // test1: {
+                        //     __0: {
+                        //         classes: 'right'
+                        //     }
+                        // }
 
                         // affiliations: [
                         //     {
@@ -157,6 +231,12 @@ export default {
         // globals.eventBus.$on('updateActiveView', this.onUpdateActiveView)
     },
     mounted() {
+        const $sel = $('.form-container .controls button')
+        $sel.attr('tabindex', -1)
+
+        // all: none;
+
+        //
         this.fh = new DynamicFormHandler()
         this.fhForm = this.fh.getForm(this.data, this.schema)
         let tabIndex = 0
@@ -184,11 +264,12 @@ export default {
                     this.form.push(target)
                     cnt++ // TEST
                 }
-
                 // elm.selected = elm.selected || cnt // TEST
                 target.push(elm)
             }
         })
+        this.form.pop() // mock, remove the last 'add' element
+
         this.numOfTabs = tabIndex
         console.log('FORM:mounted this.form = ', this.form)
 

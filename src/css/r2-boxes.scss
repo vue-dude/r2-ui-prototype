@@ -1034,14 +1034,118 @@
                             }
                             // TODO move generic part to global
                             .form-container {
-                                width: 720px;
+                                width: 700px;
+                                .top.space {
+                                    position: relative;
+                                    height: 48px;
+                                    margin-left: 50px;
+                                    .add-index-group {
+                                        top: 0px;
+                                    }
+                                }
+
+                                .add-index-group,
+                                .move-controls {
+                                    position: absolute;
+                                    width: 40px;
+                                    height: 40px;
+                                    background-color: #979cad;
+                                    border: 1px solid white;
+                                    bottom: -48px;
+                                    border-radius: 10px;
+                                    left: -38px;
+                                    display: flex;
+                                    justify-content: center;
+                                }
+
+                                .move-controls {
+                                    height: 120px;
+                                    top: 20px;
+                                    .buttons {
+                                        margin: auto;
+                                    }
+                                }
+
+                                .r2-circle-button {
+                                    border-radius: 50%;
+                                    padding: 7px;
+                                    cursor: pointer;
+                                    background-color: #bfbfbf;
+                                    width: 10px;
+                                    height: 10px;
+                                }
+                                .r2-circle-button {
+                                    &.bt-danger {
+                                        background-color: #f56c6c;
+                                        border: 1px solid white;
+                                    }
+                                    &.bt-action {
+                                        background-color: #3d4454;
+                                        border: 1px solid #b5c6e4;
+                                    }
+                                    &.icon {
+                                        font-family: element-icons !important;
+                                        font-weight: 900;
+                                        line-height: 10px;
+                                        font-size: 15px;
+                                        text-align: center;
+                                        color: white;
+                                        margin: auto;
+                                        &.trash {
+                                            &::before {
+                                                margin-left: -2px;
+                                                content: '';
+                                            }
+                                        }
+                                        &.add {
+                                            &::before {
+                                                margin-left: -2px;
+                                                content: '';
+                                                font-size: 14px;
+                                            }
+                                        }
+                                        &.move {
+                                            &::before {
+                                                margin-left: -2px;
+                                                content: '';
+                                                font-size: 14px;
+                                            }
+                                        }
+                                    }
+                                }
+
                                 .index-group {
-                                    background-color: #4a586c;
+                                    display: flex;
+                                    position: relative;
+                                    background-color: #979cad;
                                     border: 1px solid white;
                                     border-radius: 10px;
-                                    width: calc(100% - 20px);
+                                    width: inherit;
+                                    height: max-content;
                                     margin-left: 50px;
-                                    margin-bottom: 20px;
+                                    margin-bottom: 52px;
+
+                                    .controls {
+                                        position: absolute;
+                                        width: inherit;
+                                        height: inherit;
+                                        .r2-circle-button.bt-danger {
+                                            position: absolute;
+                                            right: -12px;
+                                            top: -12px;
+                                        }
+                                    }
+                                    .left-side {
+                                        width: 50%;
+                                        margin-bottom: 20px;
+                                        height: max-content;
+                                    }
+                                    .right-side {
+                                        width: 50%;
+                                        margin-bottom: 20px;
+                                        height: max-content;
+                                    }
+
                                     .el-row {
                                         margin-bottom: 15px;
                                     }

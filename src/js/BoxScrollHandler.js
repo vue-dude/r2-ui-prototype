@@ -79,7 +79,8 @@ function BoxScrollHandler(config) {
 
     const updateThumbPosition = outerOffset => {
         const top = _.isNumber(outerOffset) ? outerOffset + yScrollPos : yScrollPos
-        gsap.set($scrollThumb, { top: top * scrollThumbDeltaFc })
+        const speed = _.isNumber(outerOffset) ? 0.1 : 0
+        gsap.to($scrollThumb, speed, { top: top * scrollThumbDeltaFc })
     }
 
     const updateThumbDimensions = () => {

@@ -221,7 +221,7 @@ export default {
                         })
                     }, 10)
                 }
-            }, 300)
+            }, 200)
         },
         onClickThing(key, args = {}) {
             let viewKey = null

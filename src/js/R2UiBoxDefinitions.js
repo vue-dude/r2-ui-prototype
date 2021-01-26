@@ -366,7 +366,7 @@ function R2UiBoxDefinitions() {
                 'meta-actions-edit-generic': {
                     elements: {
                         'box-bg': {},
-                        'box-title': { html: 'Edit Authors Generic', classes: '' },
+                        'box-title': { html: 'Edit Authors', classes: '' },
                         'sp-up': { classes: 'box-sp' },
                         'sp-dn': { classes: 'box-sp' },
                         'bt-save': { key: 'save', click: true, html: 'Save', classes: 'bt' },

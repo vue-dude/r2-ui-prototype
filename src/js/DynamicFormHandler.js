@@ -418,11 +418,15 @@ const DynamicFormHandler = function() {
             label: tree.join('.')
         }
         let item = res && _.isPlainObject(res.__0) && _.isString(res.__0.type) ? res.__0 : defaultItem
+        // console.log('DFH:getFormItem key = ', key)
+        // console.log('DFH:getFormItem res.__0 = ', res.__0)
+        // console.log('DFH:getFormItem item = ', item)
         item = _.cloneDeep(item)
         const add = {
             __strc: {
                 level: args.level,
                 class: `level-${args.level}`,
+                classes: res.__0 && res.__0.classes ? res.__0.classes : '',
                 tree,
                 lastIndex: tryee.lastIndex
             },
