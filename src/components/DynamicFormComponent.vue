@@ -17,14 +17,14 @@
                                 v-model="item.selected"
                                 :placeholder="item.label"
                                 suffix-icon="el-icon-date"
-                                size="small"
+                                size="mini"
                             />
                             <el-select
                                 v-if="item.type === 'dropdown'"
                                 v-model="item.selected"
                                 :placeholder="item.label"
                                 prefix-icon="el-icon-date"
-                                size="small"
+                                size="mini"
                             >
                                 <el-option
                                     v-for="(option, index) in item.options"
@@ -67,21 +67,24 @@
                     </div>
                 </div>
             </div>
-            <div class="controls">
-                <div class="r2-circle-button bt-danger icon trash"></div>
-                <!-- <el-button type="danger" icon="el-icon-delete" circle size="mini" tabindex="-1"></el-button> -->
-            </div>
-
+            <div class="r2-circle-button bt-danger icon trash"></div>
             <div class="add-index-group">
                 <div class="r2-circle-button bt-action icon add"></div>
             </div>
+            s
             <div class="move-controls">
                 <div class="buttons">
-                    <div class="r2-circle-button bt-action icon move"></div>
-                    <div class="r2-circle-button bt-action icon move"></div>
-                    <div class="r2-circle-button bt-action icon move"></div>
-                    <div class="r2-circle-button bt-action icon move"></div>
+                    <div class="r2-circle-button bt-action light icon move-to-first"></div>
+                    <div class="r2-circle-button bt-action light icon move-1-up"></div>
+                    <div class="space"></div>
+                    <div class="r2-circle-button bt-action light icon move-1-down"></div>
+                    <div class="r2-circle-button bt-action light icon move-to-end"></div>
                 </div>
+            </div>
+            <div class="group-headline">
+                <div class="shape sh-1"></div>
+                <div class="shape sh-2"></div>
+                <div class="label" v-html="group[0].label"></div>
             </div>
         </div>
     </div>
