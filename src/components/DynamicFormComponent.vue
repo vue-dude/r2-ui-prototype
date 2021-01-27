@@ -71,14 +71,13 @@
             <div class="add-index-group">
                 <div class="r2-circle-button bt-action icon add"></div>
             </div>
-            s
             <div class="move-controls">
                 <div class="buttons">
-                    <div class="r2-circle-button bt-action light icon move-to-first"></div>
-                    <div class="r2-circle-button bt-action light icon move-1-up"></div>
+                    <div class="r2-circle-button bt-action violet icon move-to-first"></div>
+                    <div class="r2-circle-button bt-action violet icon move-1-up"></div>
                     <div class="space"></div>
-                    <div class="r2-circle-button bt-action light icon move-1-down"></div>
-                    <div class="r2-circle-button bt-action light icon move-to-end"></div>
+                    <div class="r2-circle-button bt-action violet icon move-1-down"></div>
+                    <div class="r2-circle-button bt-action violet icon move-to-end"></div>
                 </div>
             </div>
             <div class="group-headline">

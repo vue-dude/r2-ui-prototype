@@ -1039,6 +1039,7 @@
                                     position: relative;
                                     height: 58px;
                                     margin-left: 50px;
+                                    margin-top: 5px;
                                     .add-index-group {
                                         top: 0px;
                                     }
@@ -1058,6 +1059,9 @@
                                     display: flex;
                                     justify-content: center;
                                 }
+                                .add-index-group {
+                                    background: radial-gradient(circle, rgb(122, 133, 158) 0%, rgb(82, 88, 107) 100%);
+                                }
 
                                 .group-headline {
                                     display: block;
@@ -1075,9 +1079,14 @@
                                         top: 3px;
                                         left: 0px;
                                         border: 1px solid white;
-                                        
                                         border-bottom: 1px solid #979cad;
                                         transform: perspective(5px) rotateX(2deg);
+                                        background: linear-gradient(
+                                            0deg,
+                                            rgb(134, 145, 174) 10%,
+                                            rgb(124, 133, 155) 50%,
+                                            rgb(119, 124, 139) 90%
+                                        );
                                         &.sh-1 {
                                             left: 0px;
                                             width: 70px;
@@ -1106,6 +1115,13 @@
                                     top: calc(50% - 65px); // height/2
                                     width: 32px;
                                     left: -30px;
+                                    border-right: 1px solid #acbae4;
+                                    background: linear-gradient(
+                                        270deg,
+                                        rgb(124, 131, 152) 20%,
+                                        rgb(159, 147, 194) 50%,
+                                        rgb(132, 142, 170) 80%
+                                    );
                                     .buttons {
                                         margin: auto;
                                         .space {
@@ -1133,6 +1149,10 @@
                                         &.light {
                                             background-color: #75849c;
                                         }
+                                        &.violet {
+                                            background-color: #605d70;
+                                        }
+                                        
                                     }
                                     &.icon {
                                         font-family: element-icons !important;
@@ -1194,7 +1214,12 @@
                                     height: max-content;
                                     margin-left: 50px;
                                     margin-bottom: 70px;
-
+                                    background: linear-gradient(
+                                        341deg,
+                                        rgb(150, 156, 174) 10%,
+                                        rgb(149, 161, 196) 50%,
+                                        rgb(119, 124, 139) 90%
+                                    );
                                     .r2-circle-button.bt-danger {
                                         position: absolute;
                                         right: -12px;
@@ -1220,7 +1245,7 @@
                                         .label {
                                             margin-bottom: 5px;
                                             margin-left: 5px;
-                                            color: #c8d3f3;
+                                            color: #ffffff;
                                         }
                                     }
                                 }
