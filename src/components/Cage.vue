@@ -58,6 +58,7 @@ export default {
                 view.id = view.id || key
                 // fixed
                 // TODO unify structure, add 'fixed' ?
+                view.tabs = view.tabs || {}
                 view.elements = view.elements || {}
                 view.components = view.components || {}
                 view.zones = view.zones || {}
@@ -313,6 +314,19 @@ export default {
             evt.box = evt.box || { id: null }
             console.log('CG:onClick evt = ', evt)
             let options = { _00: { targets: null } }
+
+            switch (true) {
+                case evt.viewKey === 'meta-actions-edit-generic' && evt.args.isViewTab:
+                    const tabs = this.boxes['dataset-actions'].views[evt.viewKey].tabs
+                    _.each(tabs, tab => {
+                        tab.active = false
+                        // console.log('obj:fc tab = ', tab)
+                    })
+                    tabs[evt.key].active = true
+                    // console.log('obj:fc tabs = ', tabs)
+                    return null
+            }
+
             switch (evt.key) {
                 // cancel and close
                 case 'modal-bg':
@@ -562,7 +576,7 @@ export default {
 
             if (options._00 && options._00.targets) {
                 goIns = options._00.targets
-            } 
+            }
             this.animateOut(goOuts, goIns, options, delay)
         },
 

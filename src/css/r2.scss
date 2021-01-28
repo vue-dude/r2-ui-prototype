@@ -290,6 +290,7 @@ body {
                     left: 10px;
                     .content {
                         position: absolute;
+                        will-change: transform;
                     }
                 }
                 .scrollbar {

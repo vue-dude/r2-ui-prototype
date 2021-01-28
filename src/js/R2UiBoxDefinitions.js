@@ -391,9 +391,23 @@ function R2UiBoxDefinitions() {
                     }
                 },
                 'meta-actions-edit-generic': {
+                    tabs: {
+                        'tab-authors': {
+                            html: 'Authors',
+                            classes: 'authors',
+                            active: true
+                        },
+                        'tab-common': {
+                            html: 'Common Data',
+                            classes: 'common'
+                        },
+                        'tab-papers': {
+                            html: 'Corresponding Papers',
+                            classes: 'papers'
+                        }
+                    },
                     elements: {
                         'box-bg': {},
-                        // 'box-title': { html: 'Edit Authors', classes: '' },
                         'sp-up': { classes: 'box-sp' },
                         'sp-dn': { classes: 'box-sp' },
                         'bt-save': { key: 'save', click: true, html: 'Save', classes: 'bt' },

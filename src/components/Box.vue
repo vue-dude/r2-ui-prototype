@@ -8,7 +8,13 @@
         >
             <div class="fixed">
                 <div class="tabs">
-                    <div class="tab papers">
+                    <div
+                        v-for="(tab, key) in view.tabs"
+                        class="tab"
+                        :class="[tab.classes, { active: tab.active }]"
+                        :key="key"
+                        @click.stop="onClickThing(key, { isViewTab: true })"
+                    >
                         <div class="shape-l">
                             <div class="shape sh-1"></div>
                         </div>
@@ -18,33 +24,7 @@
                         <div class="shape-c">
                             <div class="shape"></div>
                         </div>
-                        <div class="label">Papers</div>
-                    </div>
-
-                    <div class="tab common">
-                        <div class="shape-l">
-                            <div class="shape sh-1"></div>
-                        </div>
-                        <div class="shape-r">
-                            <div class="shape sh-2"></div>
-                        </div>
-                        <div class="shape-c">
-                            <div class="shape"></div>
-                        </div>
-                        <div class="label">Common</div>
-                    </div>
-                    
-                    <div class="tab authors active">
-                        <div class="shape-l">
-                            <div class="shape sh-1"></div>
-                        </div>
-                        <div class="shape-r">
-                            <div class="shape sh-2"></div>
-                        </div>
-                        <div class="shape-c">
-                            <div class="shape"></div>
-                        </div>
-                        <div class="label">Authors</div>
+                        <div class="label" v-html="tab.html"></div>
                     </div>
                 </div>
 

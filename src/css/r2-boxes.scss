@@ -1276,10 +1276,10 @@
                             }
                             .tabs {
                                 position: absolute;
-                                top: -31px;
+                                top: -40px;
                                 left: 7px;
-                                width: 400px;
-                                height: 32px;
+                                width: 600px;
+                                height: 41px;
                                 z-index: 1;
                                 overflow: hidden;
 
@@ -1287,31 +1287,25 @@
                                     display: block;
                                     position: absolute;
                                     width: 100%;
-                                    height: 35px;
+                                    height: 60px;
                                     overflow: hidden;
                                     top: 3px;
                                     .label {
                                         position: absolute;
-                                        color: rgb(237, 237, 237);
-                                        font-size: 14px;
-                                        line-height: 35px;
+                                        color: rgb(225, 225, 225);
+                                        font-size: 15px;
+                                        line-height: 46px;
                                         text-align: left;
                                     }
                                     &.active {
                                         top: -1px;
                                         .label {
-                                            font-size: 16px;
+                                            font-size: 15px;
                                             color: #cbffeb;
-                                            line-height: 35px;
+                                            line-height: 48px;
                                         }
                                         .shape-c .shape,
                                         .shape {
-                                            // background: linear-gradient(
-                                            //     0deg,
-                                            //     rgb(134, 145, 174) 10%,
-                                            //     rgb(124, 133, 155) 50%,
-                                            //     rgb(119, 124, 139) 90%
-                                            // );
                                             // background: linear-gradient(0deg, #b5e091 0%, #44464a 20%, #687cb8 90%);
                                             background: linear-gradient(0deg, #808bee 0%, #44464a 20%, #5f6c91 90%);
                                             border-color: #ade8d7;
@@ -1320,22 +1314,22 @@
                                     .shape-l {
                                         position: absolute;
                                         overflow: hidden;
-                                        width: 20px;
-                                        height: 40px;
+                                        width: 30px;
+                                        height: 50px;
                                     }
                                     .shape-r {
                                         position: absolute;
                                         overflow: hidden;
-                                        width: 30px;
-                                        height: 40px;
+                                        width: 40px;
+                                        height: 50px;
                                         left: 80px;
                                     }
                                     .shape-c {
                                         position: absolute;
                                         overflow: hidden;
-                                        left: 20px;
-                                        width: 60px;
-                                        height: 40px;
+                                        left: 12px;
+                                        width: 10px;
+                                        height: 50px;
                                         .shape {
                                             border: none;
                                             border-top: 1px solid white;
@@ -1346,7 +1340,8 @@
                                     .shape {
                                         background-color: #979cad;
                                         width: 70px;
-                                        height: 30px;
+                                        // height: 30px;
+                                        height: 45px;
                                         position: absolute;
                                         top: 3px;
                                         left: 0px;
@@ -1360,11 +1355,15 @@
                                             rgb(119, 124, 139) 90%
                                         );
                                         &.sh-1 {
+                                            // left: 5px;
+                                            // width: 70px;
                                             left: 5px;
                                             width: 70px;
                                             border-radius: 5px 0 0 0;
                                         }
                                         &.sh-2 {
+                                            // left: -180px;
+                                            // width: 200px;
                                             left: -180px;
                                             width: 200px;
                                             border-left: none;
@@ -1375,64 +1374,40 @@
 
                                 .tab {
                                     cursor: pointer;
+                                    overflow: hidden;
+                                    --tab-width: 50px;
                                     &.active {
                                         z-index: 1;
                                     }
-
                                     &.authors {
-                                        --tab-width: 100px;
+                                        --tab-width: 120px;
                                     }
                                     &.common {
-                                        --tab-width: 125px;
+                                        --tab-width: 160px;
                                         left: 85px;
                                     }
                                     &.papers {
-                                        --tab-width: 100px;
-                                        left: 185px;
+                                        --tab-width: 214px;
+                                        left: 212px;
                                     }
                                     .shape-l {
-                                        width: 20px; // fix
+                                        // width: 30px; // fix
                                     }
                                     .shape-c {
-                                        // width: 80px;
-                                        width: calc(var(--tab-width) - 30px - 20px);
+                                        // width: calc(var(--tab-width) - 30px - 20px);
+                                        width: calc(var(--tab-width) - 18px - 30px); // 18 ??
                                     }
                                     .shape-r {
-                                        // left: 100px;
-                                        left: calc(var(--tab-width) - 30px);
-                                        width: 30px; // fix
+                                        left: calc(var(--tab-width) - 40px);
+                                        // left: calc(var(--tab-width) - 30px);
+                                        // width: 40px; // fix
                                     }
                                     .label {
-                                        width: calc(var(--tab-width) - 5px);
+                                        // width: calc(var(--tab-width) - 5px);
+                                        width: calc(var(--tab-width) - 14px);
                                         text-align: center;
                                     }
-
-                                    // &.active {
-                                    //     z-index: 2;
-                                    //     top: -5px;
-                                    //     .shape {
-                                    //         height: 30px;
-                                    //     }
-                                    // }
-                                    // &.authors {
-                                    //     width: 100px;
-                                    //     .shape {
-                                    //         height: 30px;
-                                    //         &.sh-1 {
-                                    //             left: 0px;
-                                    //             width: 70px;
-                                    //         }
-                                    //         &.sh-2 {
-                                    //             left: 10px;
-                                    //             width: 100px;
-                                    //             transform: perspective(5px) rotateX(2deg);
-                                    //         }
-
-                                    //     }
-                                    // }
-                                    // &.common {
-                                    //     left: 132px;
-                                    // }
+                                    width: var(--tab-width);
                                 }
                             }
                         }
