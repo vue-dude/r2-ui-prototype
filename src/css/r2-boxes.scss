@@ -963,7 +963,7 @@
                         }
                     }
 
-                    &.meta-actions-edit-generic {
+                    &.meta-actions-edit-generic-v1 {
                         top: -60px;
                         left: 130px;
                         width: calc(1697px / 2);
@@ -1152,7 +1152,6 @@
                                         &.violet {
                                             background-color: #605d70;
                                         }
-                                        
                                     }
                                     &.icon {
                                         font-family: element-icons !important;
@@ -1259,6 +1258,468 @@
                         }
                         .scrollbar {
                             top: 58px;
+                            right: 24px;
+                            height: calc(100vh - 255px);
+                        }
+                    }
+
+                    &.meta-actions-edit-generic {
+                        top: -20px;
+                        left: 130px;
+                        width: calc(1697px / 2);
+                        height: calc(1200px / 2);
+
+                        .fixed {
+                            height: calc(100vh - 120px);
+                            .elements {
+                                height: inherit;
+                            }
+                            .tabs {
+                                position: absolute;
+                                top: -31px;
+                                left: 7px;
+                                width: 400px;
+                                height: 32px;
+                                z-index: 1;
+                                overflow: hidden;
+
+                                .tab {
+                                    display: block;
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 35px;
+                                    overflow: hidden;
+                                    top: 3px;
+                                    .label {
+                                        position: absolute;
+                                        color: rgb(237, 237, 237);
+                                        font-size: 14px;
+                                        line-height: 35px;
+                                        text-align: left;
+                                    }
+                                    &.active {
+                                        top: -1px;
+                                        .label {
+                                            font-size: 16px;
+                                            color: #cbffeb;
+                                            line-height: 35px;
+                                        }
+                                        .shape-c .shape,
+                                        .shape {
+                                            // background: linear-gradient(
+                                            //     0deg,
+                                            //     rgb(134, 145, 174) 10%,
+                                            //     rgb(124, 133, 155) 50%,
+                                            //     rgb(119, 124, 139) 90%
+                                            // );
+                                            // background: linear-gradient(0deg, #b5e091 0%, #44464a 20%, #687cb8 90%);
+                                            background: linear-gradient(0deg, #808bee 0%, #44464a 20%, #5f6c91 90%);
+                                            border-color: #ade8d7;
+                                        }
+                                    }
+                                    .shape-l {
+                                        position: absolute;
+                                        overflow: hidden;
+                                        width: 20px;
+                                        height: 40px;
+                                    }
+                                    .shape-r {
+                                        position: absolute;
+                                        overflow: hidden;
+                                        width: 30px;
+                                        height: 40px;
+                                        left: 80px;
+                                    }
+                                    .shape-c {
+                                        position: absolute;
+                                        overflow: hidden;
+                                        left: 20px;
+                                        width: 60px;
+                                        height: 40px;
+                                        .shape {
+                                            border: none;
+                                            border-top: 1px solid white;
+                                            width: 800px;
+                                            left: -50px;
+                                        }
+                                    }
+                                    .shape {
+                                        background-color: #979cad;
+                                        width: 70px;
+                                        height: 30px;
+                                        position: absolute;
+                                        top: 3px;
+                                        left: 0px;
+                                        border: 1px solid white;
+                                        border-bottom: 1px solid #979cad;
+                                        transform: perspective(5px) rotateX(2deg);
+                                        background: linear-gradient(
+                                            0deg,
+                                            rgb(134, 145, 174) 10%,
+                                            rgb(124, 133, 155) 50%,
+                                            rgb(119, 124, 139) 90%
+                                        );
+                                        &.sh-1 {
+                                            left: 5px;
+                                            width: 70px;
+                                            border-radius: 5px 0 0 0;
+                                        }
+                                        &.sh-2 {
+                                            left: -180px;
+                                            width: 200px;
+                                            border-left: none;
+                                            border-radius: 0 5px 0 0;
+                                        }
+                                    }
+                                }
+
+                                .tab {
+                                    cursor: pointer;
+                                    &.active {
+                                        z-index: 1;
+                                    }
+
+                                    &.authors {
+                                        --tab-width: 100px;
+                                    }
+                                    &.common {
+                                        --tab-width: 125px;
+                                        left: 85px;
+                                    }
+                                    &.papers {
+                                        --tab-width: 100px;
+                                        left: 185px;
+                                    }
+                                    .shape-l {
+                                        width: 20px; // fix
+                                    }
+                                    .shape-c {
+                                        // width: 80px;
+                                        width: calc(var(--tab-width) - 30px - 20px);
+                                    }
+                                    .shape-r {
+                                        // left: 100px;
+                                        left: calc(var(--tab-width) - 30px);
+                                        width: 30px; // fix
+                                    }
+                                    .label {
+                                        width: calc(var(--tab-width) - 5px);
+                                        text-align: center;
+                                    }
+
+                                    // &.active {
+                                    //     z-index: 2;
+                                    //     top: -5px;
+                                    //     .shape {
+                                    //         height: 30px;
+                                    //     }
+                                    // }
+                                    // &.authors {
+                                    //     width: 100px;
+                                    //     .shape {
+                                    //         height: 30px;
+                                    //         &.sh-1 {
+                                    //             left: 0px;
+                                    //             width: 70px;
+                                    //         }
+                                    //         &.sh-2 {
+                                    //             left: 10px;
+                                    //             width: 100px;
+                                    //             transform: perspective(5px) rotateX(2deg);
+                                    //         }
+
+                                    //     }
+                                    // }
+                                    // &.common {
+                                    //     left: 132px;
+                                    // }
+                                }
+                            }
+                        }
+
+                        .element {
+                            &.box-bg {
+                                width: calc(1697px / 2);
+                                // height: calc(1200px / 2);
+                                height: calc(100vh - 154px);
+                                background-color: #53586a;
+                                border: 1px solid white;
+                                border-radius: 8px;
+                            }
+                            // &.box-title {
+                            //     width: 400px;
+                            //     font-size: 18px;
+                            //     color: #dfdfe0;
+                            //     left: 25px;
+                            //     top: 15px;
+                            // }
+                            &.box-sp {
+                                left: 25px;
+                                width: 800px;
+                                height: 1px;
+                                background-color: #c5c8cd;
+                                &.sp-up {
+                                    top: 22px;
+                                }
+                                &.sp-dn {
+                                    bottom: 90px;
+                                }
+                            }
+                            &.bt {
+                                text-align: center;
+                                font-size: 15px;
+                                height: 24px;
+                                background-color: #f5f6f6;
+                                border: 1px solid #7590bf;
+                                border-radius: 8px;
+                                line-height: 22px;
+                                bottom: 50px;
+                                &.bt-save {
+                                    left: 745px;
+                                    width: 81px;
+                                    background-color: #d9fff9;
+                                }
+                                &.bt-close {
+                                    left: 645px;
+                                    width: 90px;
+                                }
+                            }
+                        }
+                        .scrollable {
+                            top: 28px;
+                            left: 24px;
+                            height: calc(100vh - 255px);
+                            width: 802px;
+                            .inner {
+                                height: 0px;
+                            }
+                            // TODO move generic part to global
+                            .form-container {
+                                width: 700px;
+                                .top.space {
+                                    position: relative;
+                                    height: 58px;
+                                    margin-left: 50px;
+                                    margin-top: 5px;
+                                    .add-index-group {
+                                        top: 0px;
+                                    }
+                                }
+
+                                .group-headline,
+                                .add-index-group,
+                                .move-controls {
+                                    position: absolute;
+                                    width: 40px;
+                                    height: 40px;
+                                    background-color: #979cad;
+                                    border: 1px solid white;
+                                    bottom: -58px;
+                                    border-radius: 10px;
+                                    left: -38px;
+                                    display: flex;
+                                    justify-content: center;
+                                }
+                                .add-index-group {
+                                    background: radial-gradient(circle, rgb(122, 133, 158) 0%, rgb(82, 88, 107) 100%);
+                                    left: -33px;
+                                }
+
+                                .group-headline {
+                                    display: block;
+                                    width: 300px;
+                                    height: 30px;
+                                    top: -31px;
+                                    left: 32px;
+                                    background-color: unset;
+                                    border: none;
+                                    .shape {
+                                        background-color: #979cad;
+                                        width: 70px;
+                                        height: 25px;
+                                        position: absolute;
+                                        top: 3px;
+                                        left: 0px;
+                                        border: 1px solid white;
+                                        border-bottom: 1px solid #979cad;
+                                        transform: perspective(5px) rotateX(2deg);
+                                        background: linear-gradient(
+                                            0deg,
+                                            rgb(134, 145, 174) 10%,
+                                            rgb(124, 133, 155) 50%,
+                                            rgb(119, 124, 139) 90%
+                                        );
+                                        &.sh-1 {
+                                            left: 0px;
+                                            width: 70px;
+                                            border-radius: 5px 0 0 0;
+                                        }
+                                        &.sh-2 {
+                                            left: 40px;
+                                            width: 200px;
+                                            border-left: none;
+                                            border-radius: 0 5px 0 0;
+                                        }
+                                    }
+
+                                    .label {
+                                        position: absolute;
+                                        color: white;
+                                        font-size: 14px;
+                                        line-height: 35px;
+                                        text-align: left;
+                                        padding-left: 18px;
+                                    }
+                                }
+
+                                .move-controls {
+                                    height: 130px;
+                                    top: calc(50% - 65px); // height/2
+                                    width: 32px;
+                                    left: -30px;
+                                    border-right: 1px solid #acbae4;
+                                    background: linear-gradient(
+                                        270deg,
+                                        rgb(124, 131, 152) 20%,
+                                        rgb(159, 147, 194) 50%,
+                                        rgb(132, 142, 170) 80%
+                                    );
+                                    .buttons {
+                                        margin: auto;
+                                        .space {
+                                            height: 12px;
+                                        }
+                                    }
+                                }
+
+                                .r2-circle-button {
+                                    border-radius: 50%;
+                                    padding: 7px;
+                                    cursor: pointer;
+                                    background-color: #bfbfbf;
+                                    width: 10px;
+                                    height: 10px;
+                                }
+                                .r2-circle-button {
+                                    &.bt-danger {
+                                        background-color: #f56c6c;
+                                        border: 1px solid white;
+                                    }
+                                    &.bt-action {
+                                        background-color: #3d4454;
+                                        border: 1px solid #b5c6e4;
+                                        &.light {
+                                            background-color: #75849c;
+                                        }
+                                        &.violet {
+                                            background-color: #605d70;
+                                        }
+                                    }
+                                    &.icon {
+                                        font-family: element-icons !important;
+                                        font-weight: 900;
+                                        line-height: 10px;
+                                        font-size: 14px;
+                                        text-align: center;
+                                        color: white;
+                                        margin: auto;
+                                        &::before {
+                                            display: inline-block;
+                                            margin-left: -2px;
+                                        }
+
+                                        &.trash {
+                                            &::before {
+                                                font-size: 15px;
+                                                content: '';
+                                            }
+                                        }
+                                        &.add {
+                                            &::before {
+                                                content: '';
+                                                font-size: 14px;
+                                            }
+                                        }
+                                        &.move-to-first {
+                                            &::before {
+                                                content: '';
+                                                transform: rotate(90deg);
+                                            }
+                                        }
+                                        &.move-1-up {
+                                            &::before {
+                                                content: '';
+                                            }
+                                        }
+                                        &.move-1-down {
+                                            &::before {
+                                                content: '';
+                                            }
+                                        }
+                                        &.move-to-end {
+                                            &::before {
+                                                transform: rotate(-90deg);
+                                                content: '';
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .index-group {
+                                    display: flex;
+                                    position: relative;
+                                    background-color: #979cad;
+                                    border: 1px solid white;
+                                    border-radius: 10px;
+                                    width: inherit;
+                                    height: max-content;
+                                    margin-left: 50px;
+                                    margin-bottom: 70px;
+                                    background: linear-gradient(
+                                        341deg,
+                                        rgb(150, 156, 174) 10%,
+                                        rgb(149, 161, 196) 50%,
+                                        rgb(119, 124, 139) 90%
+                                    );
+                                    .r2-circle-button.bt-danger {
+                                        position: absolute;
+                                        right: -12px;
+                                        top: -12px;
+                                    }
+                                    .left-side {
+                                        width: 50%;
+                                        margin-bottom: 20px;
+                                        height: max-content;
+                                    }
+                                    .right-side {
+                                        width: 50%;
+                                        margin-bottom: 20px;
+                                        height: max-content;
+                                    }
+
+                                    .el-row {
+                                        margin-bottom: 15px;
+                                    }
+                                    .input-container {
+                                        margin: 10px;
+                                        margin-left: 20px;
+                                        .label {
+                                            margin-bottom: 5px;
+                                            margin-left: 5px;
+                                            color: #ffffff;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .components {
+                                .meta-generic-authors {
+                                    width: 400px;
+                                }
+                            }
+                        }
+                        .scrollbar {
+                            top: 28px;
                             right: 24px;
                             height: calc(100vh - 255px);
                         }

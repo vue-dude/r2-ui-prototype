@@ -7,6 +7,47 @@
             :class="[view.id, { 'no-events': !view.visible, active: view.visible }]"
         >
             <div class="fixed">
+                <div class="tabs">
+                    <div class="tab papers">
+                        <div class="shape-l">
+                            <div class="shape sh-1"></div>
+                        </div>
+                        <div class="shape-r">
+                            <div class="shape sh-2"></div>
+                        </div>
+                        <div class="shape-c">
+                            <div class="shape"></div>
+                        </div>
+                        <div class="label">Papers</div>
+                    </div>
+
+                    <div class="tab common">
+                        <div class="shape-l">
+                            <div class="shape sh-1"></div>
+                        </div>
+                        <div class="shape-r">
+                            <div class="shape sh-2"></div>
+                        </div>
+                        <div class="shape-c">
+                            <div class="shape"></div>
+                        </div>
+                        <div class="label">Common</div>
+                    </div>
+                    
+                    <div class="tab authors active">
+                        <div class="shape-l">
+                            <div class="shape sh-1"></div>
+                        </div>
+                        <div class="shape-r">
+                            <div class="shape sh-2"></div>
+                        </div>
+                        <div class="shape-c">
+                            <div class="shape"></div>
+                        </div>
+                        <div class="label">Authors</div>
+                    </div>
+                </div>
+
                 <div class="components">
                     <!-- TODO add  typeof component, like form, upload -->
                     <!-- TODO unify structure, add 'fixed' ? -->

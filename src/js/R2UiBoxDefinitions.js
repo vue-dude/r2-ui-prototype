@@ -330,6 +330,18 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
+        // 'meta-edit-tab-navigation':{
+        //     modal: true,
+        //     views: {
+        //         'meta-edit-tab-navigation': {
+        //             elements: {
+        //                 'tab-authors': { key: 'tab-authors', click: true, classes: 'tab authors' },
+        //                 'tab-papers': { key: 'tab-authors', click: true },
+        //                 'tab-common': { key: 'tab-authors', click: true }
+        //             },
+        //             // modal: false
+        //         }
+        // },
         'dataset-actions': {
             modal: true,
             views: {
@@ -363,10 +375,25 @@ function R2UiBoxDefinitions() {
                         'meta-actions-close': { key: 'cancel' }
                     }
                 },
-                'meta-actions-edit-generic': {
+                'meta-actions-edit-generic-v1': {
                     elements: {
                         'box-bg': {},
                         'box-title': { html: 'Edit Authors', classes: '' },
+                        'sp-up': { classes: 'box-sp' },
+                        'sp-dn': { classes: 'box-sp' },
+                        'bt-save': { key: 'save', click: true, html: 'Save', classes: 'bt' },
+                        'bt-close': { key: 'close', click: true, html: 'Close', classes: 'bt' }
+                    },
+                    scroll: {
+                        components: {
+                            'meta-generic-authors': { component: 'dynamic-form', config: { schema: null, data: null } }
+                        }
+                    }
+                },
+                'meta-actions-edit-generic': {
+                    elements: {
+                        'box-bg': {},
+                        // 'box-title': { html: 'Edit Authors', classes: '' },
                         'sp-up': { classes: 'box-sp' },
                         'sp-dn': { classes: 'box-sp' },
                         'bt-save': { key: 'save', click: true, html: 'Save', classes: 'bt' },
