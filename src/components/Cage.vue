@@ -1,22 +1,22 @@
 <template>
     <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]">
-        <box class="animate" :config="boxes['main-nav']"></box>
-        <box class="animate" :config="boxes['head-controls']"></box>
+        <box class="animate" :config="boxes['main-nav']" :isModalOverlay="isModalOverlay"></box>
+        <box class="animate" :config="boxes['head-controls']" :isModalOverlay="isModalOverlay"></box>
         <!--  -->
-        <box class="animate" :config="boxes['landing-page']"></box>
-        <box class="animate" :config="boxes['search-page']"></box>
-        <box class="animate" :config="boxes['search-page-facets-dn-inner']"></box>
-        <box class="animate" :config="boxes['mywork-page']"></box>
+        <box class="animate" :config="boxes['landing-page']" :isModalOverlay="isModalOverlay"></box>
+        <box class="animate" :config="boxes['search-page']" :isModalOverlay="isModalOverlay"></box>
+        <box class="animate" :config="boxes['search-page-facets-dn-inner']"  :isModalOverlay="isModalOverlay"></box>
+        <box class="animate" :config="boxes['mywork-page']" :isModalOverlay="isModalOverlay"></box>
         <!--  -->
-        <box class="animate" :config="boxes['dataset-view-public']"></box>
-        <box class="animate" :config="boxes['dataset-view-private-content']"></box>
-        <box class="animate" :config="boxes['dataset-view-private-infos']"></box>
+        <box class="animate" :config="boxes['dataset-view-public']" :isModalOverlay="isModalOverlay"></box>
+        <box class="animate" :config="boxes['dataset-view-private-content']" :isModalOverlay="isModalOverlay"></box>
+        <box class="animate" :config="boxes['dataset-view-private-infos']" :isModalOverlay="isModalOverlay"></box>
         <!--  -->
-        <box class="animate" :config="boxes['dataset-controls']"></box>
-        <box class="animate" :config="boxes['dataset-actions']"></box>
-        <box class="animate" :config="boxes['r2-messages']"></box>
+        <box class="animate" :config="boxes['dataset-controls']" :isModalOverlay="isModalOverlay"></box>
+        <box class="animate" :config="boxes['dataset-actions']" :isModalOverlay="isModalOverlay"></box>
+        <box class="animate" :config="boxes['r2-messages']" :isModalOverlay="isModalOverlay"></box>
         <!--  -->
-        <box class="animate" :config="boxes['file-list']"></box>
+        <box class="animate" :config="boxes['file-list']" :isModalOverlay="isModalOverlay"></box>
     </div>
 </template>
 
@@ -310,6 +310,24 @@ export default {
         getViewStack() {
             return [...this.viewStack].reverse()
         },
+
+        updateMetaEditor(key) {
+            const viewKey = 'meta-actions-edit-generic'
+            const view = this.boxes['dataset-actions'].views[viewKey]
+            const tabs = view.tabs
+            console.log('CG:updateMetaEditor key, tabs = ', key, tabs)
+            _.each(tabs, tab => {
+                tab.active = false
+            })
+            const tabKey = `tab-${key}`
+            tabs[tabKey].active = true
+            view.scroll.components['meta-generic'].config.key = key
+            globals.eventBus.$emit('updateMetaEditor')
+            // setTimeout(() => {
+            //     globals.eventBus.$emit('updateMetaEditor')
+            // }, 10)
+        },
+
         onClick(evt) {
             evt.box = evt.box || { id: null }
             console.log('CG:onClick evt = ', evt)
@@ -317,13 +335,7 @@ export default {
 
             switch (true) {
                 case evt.viewKey === 'meta-actions-edit-generic' && evt.args.isViewTab:
-                    const tabs = this.boxes['dataset-actions'].views[evt.viewKey].tabs
-                    _.each(tabs, tab => {
-                        tab.active = false
-                        // console.log('obj:fc tab = ', tab)
-                    })
-                    tabs[evt.key].active = true
-                    // console.log('obj:fc tabs = ', tabs)
+                    this.updateMetaEditor(evt.key)
                     return null
             }
 
@@ -406,12 +418,12 @@ export default {
                         view: 'dataset-actions'
                     }
                     return this.setViewMode(this.viewMode, options)
-                case 'edit-meta':
+                case 'edit-meta-authors':
                     // this.updateDatasetControls({ actions: true })
                     options['dataset-actions'] = {
-                        // view: 'meta-actions-edit-authors'
                         view: 'meta-actions-edit-generic'
                     }
+                    this.updateMetaEditor('authors')
                     return this.setViewMode(this.viewMode, options)
             }
         },

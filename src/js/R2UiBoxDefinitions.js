@@ -23,6 +23,7 @@ function R2UiBoxDefinitions() {
             }
         },
         'file-list': {
+            belowModalExclusive: true,
             views: {
                 'file-list-collection-closed': {
                     elements: {
@@ -67,6 +68,7 @@ function R2UiBoxDefinitions() {
             }
         },
         'landing-page': {
+            belowModalExclusive: true,
             views: {
                 'landing-page': {
                     scroll: {
@@ -101,6 +103,7 @@ function R2UiBoxDefinitions() {
             }
         },
         'mywork-page': {
+            belowModalExclusive: true,
             views: {
                 'mywork-page': {
                     elements: {
@@ -138,6 +141,7 @@ function R2UiBoxDefinitions() {
             }
         },
         'search-page-facets-dn-inner': {
+            belowModalExclusive: true,
             views: {
                 'search-page-facets-dn-inner': {
                     elements: {
@@ -153,6 +157,7 @@ function R2UiBoxDefinitions() {
             }
         },
         'search-page': {
+            belowModalExclusive: true,
             views: {
                 'search-page': {
                     elements: {
@@ -192,6 +197,7 @@ function R2UiBoxDefinitions() {
             }
         },
         'dataset-view-public': {
+            belowModalExclusive: true,
             views: {
                 'dataset-view-public': {
                     scroll: {
@@ -215,6 +221,7 @@ function R2UiBoxDefinitions() {
             }
         },
         'dataset-view-private-content': {
+            belowModalExclusive: true,
             views: {
                 'dataset-view-private-content': {
                     scroll: {
@@ -237,19 +244,24 @@ function R2UiBoxDefinitions() {
                             'show-filelist-1': {
                                 key: null
                             },
-                            'edit-meta': {}
+                            'edit-meta': {
+                                key: 'edit-meta-authors'
+                            }
                         }
                     }
                 }
             }
         },
         'dataset-view-private-infos': {
+            belowModalExclusive: true,
             views: {
                 'dataset-view-private-infos': {},
                 'dataset-view-private-init-infos': {
                     scroll: {
                         zones: {
-                            'edit-meta': {}
+                            'edit-meta': {
+                                key: 'edit-meta-authors'
+                            }
                         }
                     }
                 }
@@ -330,20 +342,9 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
-        // 'meta-edit-tab-navigation':{
-        //     modal: true,
-        //     views: {
-        //         'meta-edit-tab-navigation': {
-        //             elements: {
-        //                 'tab-authors': { key: 'tab-authors', click: true, classes: 'tab authors' },
-        //                 'tab-papers': { key: 'tab-authors', click: true },
-        //                 'tab-common': { key: 'tab-authors', click: true }
-        //             },
-        //             // modal: false
-        //         }
-        // },
         'dataset-actions': {
             modal: true,
+            overModalExclusive: true,
             views: {
                 'dataset-actions': {
                     modal: false
@@ -375,35 +376,23 @@ function R2UiBoxDefinitions() {
                         'meta-actions-close': { key: 'cancel' }
                     }
                 },
-                'meta-actions-edit-generic-v1': {
-                    elements: {
-                        'box-bg': {},
-                        'box-title': { html: 'Edit Authors', classes: '' },
-                        'sp-up': { classes: 'box-sp' },
-                        'sp-dn': { classes: 'box-sp' },
-                        'bt-save': { key: 'save', click: true, html: 'Save', classes: 'bt' },
-                        'bt-close': { key: 'close', click: true, html: 'Close', classes: 'bt' }
-                    },
-                    scroll: {
-                        components: {
-                            'meta-generic-authors': { component: 'dynamic-form', config: { schema: null, data: null } }
-                        }
-                    }
-                },
                 'meta-actions-edit-generic': {
                     tabs: {
-                        'tab-authors': {
-                            html: 'Authors',
-                            classes: 'authors',
-                            active: true
+                        'tab-papers': {
+                            key: 'papers',
+                            html: 'Corresponding Papers',
+                            classes: 'papers'
                         },
                         'tab-common': {
+                            key: 'common',
                             html: 'Common Data',
                             classes: 'common'
                         },
-                        'tab-papers': {
-                            html: 'Corresponding Papers',
-                            classes: 'papers'
+                        'tab-authors': {
+                            key: 'authors',
+                            html: 'Authors',
+                            classes: 'authors',
+                            active: true
                         }
                     },
                     elements: {
@@ -415,7 +404,7 @@ function R2UiBoxDefinitions() {
                     },
                     scroll: {
                         components: {
-                            'meta-generic-authors': { component: 'dynamic-form', config: { schema: null, data: null } }
+                            'meta-generic': { component: 'dynamic-form', config: { key: null, test: 100 } }
                         }
                     }
                 }

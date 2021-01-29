@@ -16,8 +16,9 @@ function Globals() {
 
     let uid = 0
     this.getUid = () => `uid-${++uid}`
-
 }
+
+
 
 
 

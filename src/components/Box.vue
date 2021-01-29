@@ -1,5 +1,10 @@
 <template>
-    <div class="box" :class="[config.id, uid, { 'no-events': !config.visible }]" @keydown.tab="onKeyDownTab">
+    <div
+        v-if="boxEnabled"
+        class="box"
+        :class="[config.id, uid, { 'no-events': !config.visible }]"
+        @keydown.tab="onKeyDownTab"
+    >
         <div
             v-for="(view, vKey) in config.views"
             :key="vKey"
@@ -13,7 +18,7 @@
                         class="tab"
                         :class="[tab.classes, { active: tab.active }]"
                         :key="key"
-                        @click.stop="onClickThing(key, { isViewTab: true })"
+                        @click.stop="onClickThing(tab.key || key, { isViewTab: true })"
                     >
                         <div class="shape-l">
                             <div class="shape sh-1"></div>
@@ -184,7 +189,8 @@ export default {
         DynamicForm
     },
     props: {
-        config: {}
+        config: {},
+        isModalOverlay: false
     },
     data() {
         return {
@@ -196,10 +202,24 @@ export default {
         }
     },
     created() {
-        globals.eventBus.$on('updateActiveView', this.onUpdateActiveView)
+        if (this.boxEnabled) {
+            globals.eventBus.$on('updateActiveView', this.onUpdateActiveView)
+        }
+        console.log('BOX:created this.isModalOverlay = ', this.isModalOverlay)
     },
     beforeUnmount() {
         this.destroyBoxScrollHandler()
+    },
+    computed: {
+        boxEnabled() {
+            if (this.config.overModalExclusive && !this.isModalOverlay) {
+                return false
+            }
+            if (this.config.belowModalExclusive && this.isModalOverlay) {
+                return false
+            }
+            return true
+        }
     },
     methods: {
         onKeyDownTab(evt) {

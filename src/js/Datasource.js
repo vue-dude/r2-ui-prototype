@@ -1,6 +1,17 @@
 import axios from 'axios'
+import R2DataHandler from '@/js/R2DataHandler'
 
 function Datasource() {
+    // ui prptptype
+
+    let r2DataHandler = null
+    this.getR2DataHandler = () => {
+        if (!r2DataHandler) {
+            r2DataHandler = new R2DataHandler()
+        }
+        return r2DataHandler
+    }
+
     //
     let base = {
         cms: '/',
@@ -79,7 +90,7 @@ function Datasource() {
 
     const post = async (api, data = {}, options = {}) => {
         // data.token = globals.getAdminToken()
-        console.log('DS:post api = ',api)
+        console.log('DS:post api = ', api)
         return axios.create().post(getPath(api), data, options)
     }
 
@@ -130,9 +141,9 @@ function Datasource() {
 
     const getInitialData = () => {
         return getStructure().then(strc => {
-            console.log('DS:getInitialData: strc = ',strc)
+            console.log('DS:getInitialData: strc = ', strc)
             return getTranslations().then(trns => {
-                console.log('DS:getInitialData: trns = ',trns)
+                console.log('DS:getInitialData: trns = ', trns)
                 addTranslations(trns)
                 strc.translations = config.translations
                 return strc
@@ -144,7 +155,7 @@ function Datasource() {
         if (config.structure) {
             return config.structure
         }
-        console.log('DS:getStructure: config.structure = ',config.structure)
+        console.log('DS:getStructure: config.structure = ', config.structure)
         return get('/structure')
             .then(res => {
                 updateConfig(res.data)
