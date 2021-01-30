@@ -1,18 +1,18 @@
 <template>
     <!-- <div class="form-container" @keydown.tab.prevent="onKeyDownTab"> -->
-    <div class="preloader" v-show="preload">
+    <!-- <div class="preloader" v-show="preload">
         <i class="el-icon-loading"></i>
     </div>
-
-    <div class="form-container" v-show="!preload">
+    -->
+    <div class="form-container" v-show="true">
         <div class="top space" v-if="form.length > 0">
             <div class="add-index-group">
                 <div class="r2-circle-button bt-action icon add"></div>
             </div>
         </div>
         <div v-for="(group, index) in form" :key="index" class="index-group">
-            <div class="left-side">
-                <div v-for="(item, index) in group" :key="index">
+            <!-- <div class="left-side">
+                <div v-for="(item, setup, index) in group" :key="index">
                     <div class="input-container" v-if="item.isInputElement">
                         <div class="input-cell" v-if="item.__strc.classes === 'left'">
                             <div class="label" v-html="item.label"></div>
@@ -29,9 +29,10 @@
                                 :placeholder="item.label"
                                 prefix-icon="el-icon-date"
                                 size="mini"
+                                setup="getDropdownConfig(item.options.key)"
                             >
                                 <el-option
-                                    v-for="(option, index) in item.options"
+                                    v-for="(option, index) in setup.options"
                                     :key="index"
                                     :label="option.label"
                                     :value="option.value"
@@ -40,16 +41,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="right-side">
-                <div v-for="(item, index) in group" :key="index">
+                <!-- <div v-for="(item, index) in group" :key="index" :setup="(item.ddc = getDropdownConfig('departments'))"> -->
+                <div v-for="(item, index) in group" :key="index" :setup="(item = addItemConfig(item))">
                     <div class="input-container" v-if="item.isInputElement">
                         <div class="input-cell" v-if="item.__strc.classes === 'right'">
                             <div class="label" v-html="item.label"></div>
                             <el-input
                                 v-if="item.type === 'input'"
                                 v-model="item.selected"
-                                :placeholder="item.label"
+                                :placeholder="item.selected"
                                 suffix-icon="el-icon-date"
                                 size="mini"
                             />
@@ -61,7 +63,7 @@
                                 size="mini"
                             >
                                 <el-option
-                                    v-for="(option, index) in item.options"
+                                    v-for="(option, index) in item.ddc.options"
                                     :key="index"
                                     :label="option.label"
                                     :value="option.value"
@@ -107,6 +109,7 @@ export default {
         return {
             preload: false,
             fh: null,
+            r2DataHandler: datasource.getR2DataHandler(),
             form: [],
             uid: globals.getUid(),
             lastTabIndex: 0,
@@ -121,6 +124,23 @@ export default {
         this.fh = null
     },
     methods: {
+        addItemConfig(item) {
+            console.log('DFC:getItemConfig item ', item)
+            if (item.type === 'dropdown') {
+                item.ddc = this.r2DataHandler.getDropdownConfig('departments')
+                console.log('DFC:getItemConfig item.selected ', item.selected)
+                if (_.isNumber(item.selected)) {
+                    item.selected = item.ddc.options[item.selected].value
+                }
+            }
+            return item
+        },
+        getDropdownConfig(key) {
+            const res = this.r2DataHandler.getDropdownConfig(key)
+            console.log('DFC:getOptions res ', res)
+
+            return res.options
+        },
         onUpdateMetaEditor() {
             if (this.dataKey !== this.config.key) {
                 this.preload = true
@@ -136,8 +156,8 @@ export default {
         },
         updateForm() {
             console.log('DFC:updateForm this.config.key = ', this.config.key)
-            const data = datasource.getR2DataHandler().meta[`data-${this.config.key}`]
-            const schema = datasource.getR2DataHandler().meta[`schema-${this.config.key}`]
+            const data = this.r2DataHandler.meta[`data-${this.config.key}`]
+            const schema = this.r2DataHandler.meta[`schema-${this.config.key}`]
             if (schema) {
                 this.fh = new DynamicFormHandler()
                 this.fhForm = this.fh.getForm(data, schema)

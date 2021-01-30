@@ -1,30 +1,30 @@
 const DynamicFormHandler = function() {
     //
-    const setupDropdownFormCell = item => {
-        // selection by value
-        item.selected = _.isNil(item.selected) ? item.options[0] : item.selected
-        // selection by index
-        if (_.isNumber(item.selected)) {
-            if (_.isPlainObject(item.options[item.selected])) {
-                item.selected = item.options[item.selected].value
-            } else {
-                item.selected = item.options[item.selected]
-            }
-        }
-        // adapted for element-ui
-        let options = item.options
-        if (!_.isPlainObject(item.options[0])) {
-            options = []
-            _.each(item.options, key => {
-                options.push({
-                    label: key,
-                    value: key
-                })
-            })
-        }
-        item.options = options
-        return item
-    }
+    // const setupDropdownFormCell = item => {
+    //     // selection by value
+    //     item.selected = _.isNil(item.selected) ? item.options[0] : item.selected
+    //     // selection by index
+    //     if (_.isNumber(item.selected)) {
+    //         if (_.isPlainObject(item.options[item.selected])) {
+    //             item.selected = item.options[item.selected].value
+    //         } else {
+    //             item.selected = item.options[item.selected]
+    //         }
+    //     }
+    //     // adapted for element-ui
+    //     let options = item.options
+    //     if (!_.isPlainObject(item.options[0])) {
+    //         options = []
+    //         _.each(item.options, key => {
+    //             options.push({
+    //                 label: key,
+    //                 value: key
+    //             })
+    //         })
+    //     }
+    //     item.options = options
+    //     return item
+    // }
     //
     const LY = {
         START: '_START',
@@ -450,13 +450,16 @@ const DynamicFormHandler = function() {
         //
         item.label = `${item.label}:` // mock hardcoded, TODO: generate i18n id here!
         //
-        if (item.type === 'dropdown') {
-            item = setupDropdownFormCell(item)
-        } else {
-            // MOCK just remove the annoying bootstrap propz error :-((
-            // TODO get this working
-            item.selected = _.isArray(item.selected) ? item.selected.join(',') : item.selected
-        }
+        // if (item.type === 'dropdown') {
+        //     item = setupDropdownFormCell(item)
+        // } else {
+        //     // MOCK just remove the annoying bootstrap propz error :-((
+        //     // TODO get this working
+        //     item.selected = _.isArray(item.selected) ? item.selected.join(',') : item.selected
+        // }
+
+        item.selected = _.isArray(item.selected) ? item.selected.join(',') : item.selected
+
         //
         item.show = true
         return item

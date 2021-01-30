@@ -1,11 +1,24 @@
 const R2D2DataHandler = function() {
     const getMockOptions = (key, num) => {
+        // non generic for element-ui dropdowns, key-value
         const res = []
         for (let index = 1; index < num; index++) {
-            res.push(`${key}-${index}`)
+            res.push({
+                label: `${key}-${index}`,
+                value: `${key}-${index}`
+            })
+            // res.push(`${key}-${index}`)
         }
         return res
     }
+
+    this.getDropdownConfig = (key, selected) => {
+        return {
+            options: getMockOptions(key, 50),
+            selected: '4'
+        }
+    }
+
     this.meta = {
         'schema-authors': {
             authors: [
@@ -17,7 +30,8 @@ const R2D2DataHandler = function() {
                         __0: {
                             type: 'dropdown',
                             // options: ['a-1', 'a-2', 'a-3', 'a-4']
-                            options: getMockOptions('department', 100),
+                            // options: getMockOptions('department', 100),
+                            options: { key: 'departments' },
                             // TODO replace classes by custom setup, which can contain everything
                             classes: 'right'
                         }
@@ -64,7 +78,8 @@ const R2D2DataHandler = function() {
                 {
                     givenName: 'author 1',
                     familyName: 'foo 1',
-                    nameIdentifier: 'https://orcid.org/1234-1234-1234-1234'
+                    nameIdentifier: 'https://orcid.org/1234-1234-1234-1234',
+                    department: 4
                 },
                 {
                     givenName: 'author 2',
