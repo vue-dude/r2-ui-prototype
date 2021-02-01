@@ -240,7 +240,10 @@ export default {
             this.boxScrollHandler ? this.boxScrollHandler.destroy() : null
             this.boxScrollHandler = null
         },
-        onUpdateActiveView() {
+        onUpdateActiveView(args = {}) {
+            if (args.targets && !_.includes(args.targets, this.config.id)) {
+                return
+            }
             this.destroyBoxScrollHandler()
             const view = `.box.${this.config.id}.${this.uid} .view.active`
             this.showScrollbar = false
@@ -254,7 +257,6 @@ export default {
                         })
                     }
                     this.tme2 = setTimeout(() => {
-                        console.log('boxScrollHandler CREATE = ', this.uid)
                         this.boxScrollHandler = new BoxScrollHandler({
                             view,
                             animateIn,
@@ -271,7 +273,6 @@ export default {
                     viewKey = key
                 }
             })
-            console.log('BOX:onClickThing key, box.id, args = ', key, this.config.id, args)
             globals.eventBus.$emit('click', { key, box: this.config, args, viewKey })
         }
     }

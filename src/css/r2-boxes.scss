@@ -568,6 +568,24 @@
                                         width: calc(var(--width) + 10px);
                                         height: calc(2257px / 2);
                                     }
+                                    &.edit-authors {
+                                        top: 250px;
+                                        left: 20px;
+                                        width: 600px;
+                                        height: 110px;
+                                    }
+                                    &.edit-papers {
+                                        top: 505px;
+                                        left: 468px;
+                                        width: 359px;
+                                        height: 85px;
+                                    }
+                                    &.edit-common {
+                                        top: 400px;
+                                        left: 20px;
+                                        width: 400px;
+                                        height: 200px;
+                                    }
                                 }
                             }
                         }
@@ -1139,12 +1157,15 @@
 
                                 .group-headline {
                                     display: block;
-                                    width: 300px;
+                                    width: 350px;
                                     height: 30px;
                                     top: -31px;
-                                    left: 32px;
+                                    left: calc(32px + 25px);
                                     background-color: unset;
                                     border: none;
+                                    &.expandable {
+                                        left: 32px;
+                                    }
                                     .shape {
                                         background-color: #979cad;
                                         width: 70px;
@@ -1283,9 +1304,7 @@
                                     background-color: #979cad;
                                     border: 1px solid white;
                                     border-radius: 10px;
-                                    width: inherit;
                                     height: max-content;
-                                    margin-left: 50px;
                                     margin-bottom: 70px;
                                     background: linear-gradient(
                                         341deg,
@@ -1293,6 +1312,14 @@
                                         rgb(149, 161, 196) 50%,
                                         rgb(119, 124, 139) 90%
                                     );
+
+                                    width: 725px;
+                                    margin-left: 25px;
+                                    &.expandable {
+                                        width: 700px;
+                                        margin-left: 50px;
+                                    }
+
                                     .r2-circle-button.bt-danger {
                                         position: absolute;
                                         right: -12px;
@@ -1327,6 +1354,9 @@
                             .components {
                                 .meta-generic {
                                     width: 400px;
+                                    .el-input {
+                                        width: 300px;
+                                    }
                                 }
                             }
                         }

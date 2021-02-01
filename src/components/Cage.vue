@@ -5,7 +5,7 @@
         <!--  -->
         <box class="animate" :config="boxes['landing-page']" :isModalOverlay="isModalOverlay"></box>
         <box class="animate" :config="boxes['search-page']" :isModalOverlay="isModalOverlay"></box>
-        <box class="animate" :config="boxes['search-page-facets-dn-inner']"  :isModalOverlay="isModalOverlay"></box>
+        <box class="animate" :config="boxes['search-page-facets-dn-inner']" :isModalOverlay="isModalOverlay"></box>
         <box class="animate" :config="boxes['mywork-page']" :isModalOverlay="isModalOverlay"></box>
         <!--  -->
         <box class="animate" :config="boxes['dataset-view-public']" :isModalOverlay="isModalOverlay"></box>
@@ -315,7 +315,6 @@ export default {
             const viewKey = 'meta-actions-edit-generic'
             const view = this.boxes['dataset-actions'].views[viewKey]
             const tabs = view.tabs
-            console.log('CG:updateMetaEditor key, tabs = ', key, tabs)
             _.each(tabs, tab => {
                 tab.active = false
             })
@@ -323,9 +322,7 @@ export default {
             tabs[tabKey].active = true
             view.scroll.components['meta-generic'].config.key = key
             globals.eventBus.$emit('updateMetaEditor')
-            // setTimeout(() => {
-            //     globals.eventBus.$emit('updateMetaEditor')
-            // }, 10)
+            globals.eventBus.$emit('updateActiveView', { targets: ['dataset-actions'] })
         },
 
         onClick(evt) {
@@ -419,11 +416,13 @@ export default {
                     }
                     return this.setViewMode(this.viewMode, options)
                 case 'edit-meta-authors':
+                case 'edit-meta-papers':
+                case 'edit-meta-common':
                     // this.updateDatasetControls({ actions: true })
                     options['dataset-actions'] = {
                         view: 'meta-actions-edit-generic'
                     }
-                    this.updateMetaEditor('authors')
+                    this.updateMetaEditor(evt.key.split('-')[2])
                     return this.setViewMode(this.viewMode, options)
             }
         },

@@ -244,8 +244,17 @@ function R2UiBoxDefinitions() {
                             'show-filelist-1': {
                                 key: null
                             },
-                            'edit-meta': {
+                            // 'edit-meta': {
+                            //     key: 'edit-meta-authors'
+                            // },
+                            'edit-authors': {
                                 key: 'edit-meta-authors'
+                            },
+                            'edit-papers': {
+                                key: 'edit-meta-papers'
+                            },
+                            'edit-common': {
+                                key: 'edit-meta-common'
                             }
                         }
                     }
