@@ -1,4 +1,5 @@
 const DynamicFormHandler = function() {
+    const uid = globals.getUid()
     const LY = {
         START: '_START',
         END: '_END',
@@ -68,21 +69,37 @@ const DynamicFormHandler = function() {
         })
     }
 
+    let rcCnt = 0 // d3bug counter
     const sortRawDataByTree = (srcNnode, tgNode = [], reference = []) => {
+        // console.log('DFH:sortRawDataByTree IN +++++++++++ rcCnt = ', rcCnt)
+        // console.log('DFH:sortRawDataByTree IN tgNode = ', tgNode)
+        // console.log('DFH:sortRawDataByTree IN reference = ', reference)
+        // console.log('DFH:sortRawDataByTree IN srcNnode = ', srcNnode)
+        // console.log('DFH:sortRawDataByTree IN _.isArray(srcNnode) = ', _.isArray(srcNnode))
+        // console.log('DFH:sortRawDataByTree IN _.isPlainObject(srcNnode) = ', _.isPlainObject(srcNnode))
         if (_.isArray(srcNnode)) {
+            // console.log('DFH:sortRawDataByTree IN _.isArray(srcNnode)')
+            // console.log('DFH:sortRawDataByTree IN srcNnode.length === ', srcNnode.length)
             if (srcNnode.length === 0) {
-                srcNnode[0] = _.cloneDeep(reference)
+                // this caused a crash on empty array, clone created a inner array instead of an object!
+                // srcNnode[0] = _.cloneDeep(reference)
+                srcNnode[0] = {}
+                sortRawDataByTree(srcNnode, tgNode, reference)
             }
+            // console.log('DFH:sortRawDataByTree IN srcNnode[0] === ', srcNnode[0])
             let index = -1
             _.each(srcNnode, elm => {
                 if (!_.isNil(elm)) {
                     index++
                     tgNode[index] = []
+                    rcCnt++
+                    // console.log('DFH:sortRawDataByTree ------ RECALL rcCnt = ', rcCnt)
                     sortRawDataByTree(elm, tgNode[index], reference[0])
                 }
             })
         }
         const missingKeys = {}
+        // console.log('DFH:sortRawDataByTree CHECK MISSING rcCnt, reference = ', rcCnt, reference)
         _.each(reference, (rfObj, index) => {
             const key = rfObj.key
             if (_.isNil(srcNnode)) {
@@ -493,6 +510,7 @@ const DynamicFormHandler = function() {
         // add at index
         // shift by index delta
         const tr = [...tree]
+        // TODO improve this, so a tree like e.g. ['papers', 4] can be used
         const key = tr.pop()
         let node = data
         const isArrayNode = !isNaN(key)
@@ -502,11 +520,12 @@ const DynamicFormHandler = function() {
             const n = tr.pop()
             node = node[n]
         }
-
-        // console.log('NJ: tree = ', tree)
-        // console.log('NJ: key = ', key)
-        // console.log('NJ: node = ', node)
-
+        // console.log('DFH:NJ: IN ++++ uid = ', uid)
+        // console.log('DFH:NJ: action = ', action)
+        // console.log('DFH:NJ: isArrayNode = ', isArrayNode)
+        // console.log('DFH:NJ: tree = ', tree)
+        // console.log('DFH:NJ: key = ', key)
+        // console.log('DFH:NJ: node = ', node)
         switch (action) {
             case 'remove': // ok
                 isArrayNode ? node.splice(key, 1) : delete node[key]
@@ -531,10 +550,9 @@ const DynamicFormHandler = function() {
 
     this.modifyForm = args => {
         const meta = collectData()
+        // console.log('DFH:modifyForm:IN +++++++++++++++++++ uid, args = ', uid, args)
         args.tree.pop()
-        if (args.action === 'removeNode') {
-            nodeJob('remove', meta, args.tree)
-        }
+        // console.log('DFH:modifyForm:IN args.tree = ', args.tree)
         switch (args.action) {
             case 'removeNode':
                 nodeJob('remove', meta, args.tree)
@@ -555,7 +573,6 @@ const DynamicFormHandler = function() {
                 nodeJob('shift', meta, args.tree, { delta: '2last' })
                 break
         }
-        console.log('MF:END meta = ', meta)
         createNewForm(meta)
     }
 
