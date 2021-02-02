@@ -144,27 +144,34 @@ function BoxScrollHandler(config) {
             } else if (top > $scrollBar.height() - $scrollThumb.height()) {
                 top = $scrollBar.height() - $scrollThumb.height()
             }
-
             gsap.killTweensOf($scrollThumb)
             gsap.to($scrollThumb, 0.15, { top })
             updateContentScrollPosition(top)
         }
     }
 
+    this.reset = () => {
+        // this is optional, e.g. not triggered if want to keep position after scroller update
+        gsap.set($scrollContent, { clearProps: 'all' })
+        gsap.set($scrollThumb, { clearProps: 'all' })
+    }
+
     this.destroy = () => {
-        // TODO reset to top position, make optional
-        // gsap.set($scrollContent, { top: 0 })
-        // gsap.set($scrollThumb, { top: 0 })
-        //
         $scrollContainer.off('wheel', onMouseWheel)
         $scrollContainer.off('keyup', onKeyUp)
         destroyDraggable()
         $(window).off('resize', updateThumbDimensions)
         $scrollBar.off('click', onMouseClickBar)
         $scrollBar.off('wheel', onMouseWheel)
-
         config.scrollContainer = null
         config = null
+    }
+
+    this.getScrollProperties = () => {
+        const props = {
+            yScrollPosition: $scrollContent.position().top
+        }
+        return props
     }
 
     const destroyDraggable = () => {
@@ -187,6 +194,10 @@ function BoxScrollHandler(config) {
     }
 
     const init = () => {
+        // console.log('BSH:init config = ', config)
+        config.props = config.props || {}
+        const scrollY = config.props.yScrollPosition || null
+
         updateThumbDimensions()
         $scrollContainer.on('wheel', onMouseWheel)
         $scrollContainer.on('keyup', onKeyUp)
@@ -205,9 +216,27 @@ function BoxScrollHandler(config) {
         $scrollBar.on('wheel', onMouseWheel)
         $scrollBar.on('click', onMouseClickBar)
         $(window).on('resize', updateThumbDimensions)
+        setScrollPosition(scrollY)
         if (_.isFunction(config.animateIn)) {
             config.animateIn($scrollBar)
         }
+    }
+
+    const setScrollPosition = scrollY => {
+        // TODO improve this for edge cases
+        if (!scrollY) {
+            scrollY = 0
+        }else{
+            const dim = getScrollDimensions()
+            yScrollPos = -scrollY
+            // console.log('BSH:setScrollPosition dim = ', dim)
+            // console.log('BSH:setScrollPosition scrollY = ', scrollY)
+            if (yScrollPos > dim.scrollDownEdge) {
+                yScrollPos = dim.scrollDownEdge
+            }
+        }
+        gsap.set($scrollContent, { top: -yScrollPos })
+        gsap.set($scrollThumb, { top: yScrollPos * scrollThumbDeltaFc })
     }
 
     init()

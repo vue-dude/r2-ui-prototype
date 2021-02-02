@@ -234,17 +234,26 @@ export default {
             //     console.log('BOX:onKeyDownTab $components.scrollTop() = ', $components.scrollTop())
             // }, 100)
         },
-        destroyBoxScrollHandler() {
+        destroyBoxScrollHandler(reset) {
             clearTimeout(this.tme1)
             clearTimeout(this.tme2)
-            this.boxScrollHandler ? this.boxScrollHandler.destroy() : null
+            if (this.boxScrollHandler) {
+                reset ? this.boxScrollHandler.reset() : null
+                this.boxScrollHandler.destroy()
+            }
             this.boxScrollHandler = null
         },
         onUpdateActiveView(args = {}) {
             if (args.targets && !_.includes(args.targets, this.config.id)) {
                 return
             }
-            this.destroyBoxScrollHandler()
+            const props = this.boxScrollHandler ? this.boxScrollHandler.getScrollProperties() : {}
+            // console.log('BOX:onUpdateActiveView props = ', props)
+            if (!args.keepScrollPosition) {
+                props.yScrollPosition = 0
+            }
+            const keepPosition = _.isNumber(props.yScrollPosition) && Math.abs(props.yScrollPosition) > 0
+            this.destroyBoxScrollHandler(!keepPosition)
             const view = `.box.${this.config.id}.${this.uid} .view.active`
             this.showScrollbar = false
             this.tme1 = setTimeout(() => {
@@ -260,7 +269,8 @@ export default {
                         this.boxScrollHandler = new BoxScrollHandler({
                             view,
                             animateIn,
-                            uid: this.uid
+                            uid: this.uid,
+                            props
                         })
                     }, 10)
                 }

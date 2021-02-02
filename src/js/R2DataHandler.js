@@ -73,7 +73,7 @@ const R2D2DataHandler = function() {
                         }
                     },
                     givenName: {
-                        default: 'default-joe',
+                        // default: 'default-joe',
                         __0: {
                             classes: 'left'
                         }

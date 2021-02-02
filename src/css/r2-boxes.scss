@@ -1032,18 +1032,21 @@
                                     overflow: hidden;
                                     --tab-width: 50px;
                                     &.active {
-                                        z-index: 1;
+                                        // z-index: 10 !important;
                                     }
                                     &.authors {
                                         --tab-width: 120px;
+                                        z-index: 3;
                                     }
                                     &.common {
                                         --tab-width: 160px;
                                         left: 85px;
+                                        z-index: 2;
                                     }
                                     &.papers {
                                         --tab-width: 214px;
                                         left: 212px;
+                                        z-index: 1;
                                     }
                                     .shape-l {
                                         // width: 30px; // fix
@@ -1235,7 +1238,7 @@
                                 }
                                 .r2-circle-button {
                                     &.bt-danger {
-                                        background-color: #f56c6c;
+                                        background-color: #a82727;
                                         border: 1px solid white;
                                     }
                                     &.bt-action {

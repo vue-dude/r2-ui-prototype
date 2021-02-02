@@ -4,13 +4,20 @@
         <i class="el-icon-loading"></i>
     </div>
     -->
-    <div class="form-container" v-show="true">
+    <div class="form-container" :class="uid" v-show="true">
         <div class="top space">
-            <div class="add-index-group" v-if="expandableList">
+            <div class="add-index-group" v-if="expandableList" @click="onControlClick(0, 'addNode')">
                 <div class="r2-circle-button bt-action icon add"></div>
             </div>
         </div>
-        <div v-for="(group, index) in form" :key="index" class="index-group" :class="[{ expandable: expandableList }]">
+        <div class="index-group-space" :id="index"></div>
+        <div
+            v-for="(group, index) in form"
+            :key="index"
+            :id="index"
+            class="index-group"
+            :class="[{ expandable: expandableList }]"
+        >
             <div class="left-side">
                 <div v-for="(item, setup, index) in group" :key="index">
                     <div class="input-container" v-if="item.isInputElement">
@@ -32,17 +39,29 @@
                 </div>
             </div>
             <div v-if="expandableList">
-                <div class="r2-circle-button bt-danger icon trash"></div>
-                <div class="add-index-group">
+                <div class="r2-circle-button bt-danger icon trash" @click="onControlClick(index, 'removeNode')"></div>
+                <div class="add-index-group" @click="onControlClick(index + 1, 'addNode')">
                     <div class="r2-circle-button bt-action icon add"></div>
                 </div>
                 <div class="move-controls">
                     <div class="buttons">
-                        <div class="r2-circle-button bt-action violet icon move-to-first"></div>
-                        <div class="r2-circle-button bt-action violet icon move-1-up"></div>
+                        <div
+                            class="r2-circle-button bt-action violet icon move-to-first"
+                            @click="onControlClick(index, 'shift2FirstNode')"
+                        ></div>
+                        <div
+                            class="r2-circle-button bt-action violet icon move-1-up"
+                            @click="onControlClick(index, 'shift1UpNode')"
+                        ></div>
                         <div class="space"></div>
-                        <div class="r2-circle-button bt-action violet icon move-1-down"></div>
-                        <div class="r2-circle-button bt-action violet icon move-to-end"></div>
+                        <div
+                            class="r2-circle-button bt-action violet icon move-1-down"
+                            @click="onControlClick(index, 'shift1DownNode')"
+                        ></div>
+                        <div
+                            class="r2-circle-button bt-action violet icon move-to-end"
+                            @click="onControlClick(index, 'shift2LastNode')"
+                        ></div>
                     </div>
                 </div>
             </div>
@@ -86,26 +105,143 @@ export default {
         this.fh = null
     },
     methods: {
+        animateUpdate(index, action) {
+            if (action === 'addNode') {
+                const sel = `.form-container.${this.uid} .index-group.expandable#${index}`
+                const $target = $(sel)
+                gsap.set($target, { opacity: 0 })
+                gsap.to($target, 0.4, { opacity: 1, ease: Expo.easeOut })
+                gsap.from($target, 0.7, { 'margin-left': -40, ease: Expo.easeOut })
+            } else {
+                const all = `.form-container.${this.uid} .index-group.expandable`
+                const $all = $(all)
+                gsap.set($all, { clearProps: 'all' })
+            }
+        },
+        animateAction(index, action, finalize) {
+            const sel = `.form-container.${this.uid} .index-group.expandable#${index}`
+            const $target = $(sel)
+            // console.log('DFC:animateAction sel ', sel)
+            // console.log('DFC:animateAction $target ', $target)
+            // console.log('DFC:animateAction index ', index)
+            // console.log('DFC:animateAction this.form.length ', this.form.length)
+            // return finalize(index, action)
+
+            const onComplete = silent => {
+                silent ? null : finalize(index, action)
+                gsap.killTweensOf($target)
+                gsap.set($target, {
+                    clearProps: 'all'
+                })
+            }
+
+            switch (action) {
+                case 'addNode':
+                    if (index >= this.form.length) {
+                        return onComplete() // no out animation needed!
+                    }
+                    gsap.delayedCall(0.2, onComplete)
+                    return gsap.to($target, 0.6, {
+                        'margin-top': 230, // ui-preview hardcoded
+                        ease: Expo.easeOut
+                    })
+
+                case 'removeNode':
+                    gsap.set($target, { overflow: 'hidden' })
+                    gsap.to($target, 0.4, { opacity: 0, 'margin-left': 600 })
+                    return gsap.to($target, 0.3, {
+                        delay: 0.2,
+                        height: 0,
+                        'margin-bottom': 0,
+                        ease: Expo.easeOut,
+                        onComplete
+                    })
+
+                case 'shift1UpNodeDEAKT':
+                    const selUp = `.form-container.${this.uid} .index-group.expandable#${index - 1}`
+                    const $targetUp = $(selUp)
+                    const selDn = `.form-container.${this.uid} .index-group.expandable#${index + 1}`
+                    const $targetDn = $(selDn)
+
+                    // console.log('DFC:animateAction $target.height() = ', $target.height())
+                    // console.log('DFC:animateAction $target.targetUp() = ', $targetUp.height())
+
+                    const space = `.form-container.${this.uid} .index-group-space#${index - 1}`
+                    const $space = $(space)
+
+                    // index-group-space
+
+                    // gsap.to($target, 10.6, {
+                    //     'margin-top': -230 * 2, // ui-preview hardcoded
+                    //     ease: Expo.easeOut,
+                    //     onComplete
+                    // })
+                    // gsap.to($targetUp, 10.6, {
+                    //     'margin-top': 230, // ui-preview hardcoded
+                    //     ease: Expo.easeOut,
+                    //     onComplete: () => onComplete(true)
+                    // })
+                    // gsap.to($targetDn, 10.6, {
+                    //     'margin-top': 230 * 2, // ui-preview hardcoded
+                    //     ease: Expo.easeOut,
+                    //     onComplete: () => onComplete(true)
+                    // })
+                    return
+                default:
+                    return finalize(index, action)
+            }
+        },
+
+        onControlClick(index, action) {
+            // console.log('DFC:onControlClick IN uid, index ', this.uid, index)
+            // console.log('DFC:onControlClick action ', action)
+            const finalize = (index, action) => {
+                // console.log('DFC:onControlClick:finalize index, action ', index, action)
+                const mod = {
+                    tree: [this.config.key, index, 'url'],
+                    action
+                }
+                this.fh.modifyForm(mod)
+                this.updateForm(false)
+                this.$nextTick(() => this.animateUpdate(index, action))
+                // this.form = []
+                setTimeout(() => {
+                    // update scroller and scroll position
+                    globals.eventBus.$emit('updateActiveView', {
+                        targets: ['dataset-actions'],
+                        keepScrollPosition: true
+                    })
+                }, 100)
+            }
+            return this.animateAction(index, action, finalize)
+        },
+
         onUpdateMetaEditor() {
             if (this.dataKey !== this.config.key) {
                 this.preload = true
                 this.dataKey = this.config.key
-                console.log('DFC:onUpdateMetaEditor uid ', this.uid)
+                // console.log('DFC:onUpdateMetaEditor uid ', this.uid)
                 this.fh = null
                 this.form = []
                 this.expandableList = false
-                this.updateForm()
+                this.updateForm(true)
                 setTimeout(() => {
                     this.preload = false
                 }, 1000)
             }
         },
-        updateForm() {
-            const data = this.r2DataHandler.meta[`data-${this.config.key}`]
+        updateForm(createNew = false) {
             const schema = this.r2DataHandler.meta[`schema-${this.config.key}`]
+            if (createNew) {
+                const data = this.r2DataHandler.meta[`data-${this.config.key}`]
+                if (schema) {
+                    this.fh = new DynamicFormHandler()
+                    this.fhForm = this.fh.getForm(data, schema)
+                }
+            } else {
+                this.fhForm = this.fh.getForm()
+            }
             if (schema) {
-                this.fh = new DynamicFormHandler()
-                this.fhForm = this.fh.getForm(data, schema)
                 let tabIndex = 0
                 this.form = []
                 let target = null
@@ -153,7 +289,6 @@ export default {
                     this.expandableList = false
                     target = [
                         {
-                            // label: this.fh.geranslation(this.config.key)
                             label: this.$t(`form.group.label.${this.config.key}`)
                         }
                     ]
@@ -181,7 +316,7 @@ export default {
             let tabindex = parseInt($focused.attr('tabindex'))
             tabindex = isNaN(tabindex) ? this.lastTabIndex : tabindex
             this.lastTabIndex = tabindex
-            console.log('FORM:onKeyDownTab tabindex = ', tabindex)
+            // console.log('FORM:onKeyDownTab tabindex = ', tabindex)
 
             let nextIndex
             if (evt.shiftKey) {
@@ -189,11 +324,11 @@ export default {
             } else {
                 nextIndex = tabindex >= this.numOfTabs ? 1 : tabindex + 1
             }
-            console.log('FORM:onKeyDownTab nextIndex = ', nextIndex)
+            // console.log('FORM:onKeyDownTab nextIndex = ', nextIndex)
 
             const sel = `.form-container [tabindex=${nextIndex}]`
             const $next = $(sel)
-            console.log('FORM:onKeyDownTab nextIndex = ', nextIndex)
+            // console.log('FORM:onKeyDownTab nextIndex = ', nextIndex)
 
             // $next.focus({ preventScroll: true }) // dont works and without its scroll hassle !!
             // $next.select() // this dont works with dropdowns, drops key enter feature
