@@ -1,5 +1,5 @@
 <template>
-    <div class="active-list" :class="uid">
+    <div class="active-list" :class="uid" :key="uKey">
         <div class="list-container">
             <div class="list-element" v-for="(row, indexRow) in list" :key="indexRow">
                 <div v-for="(col, classes) in row" :key="classes" :class="classes" v-html="col"></div>
@@ -25,18 +25,29 @@ export default {
         return {
             uid: globals.getUid(),
             dataKey: null,
+            uKey: 0,
             r2DataHandler: datasource.getR2DataHandler()
         }
     },
     created() {
-        const data = this.r2DataHandler.getData(this.config.schemaKey, this.config.dataKey)
-        this.list = this.getList(data, this.config.listFilterKey)
-        console.log('ALC:created this.config.dataKey = ', this.config.dataKey)
-        console.log('ALC:created this.config.schemaKey = ', this.config.schemaKey)
-        console.log('ALC:created data = ', data)
+        globals.eventBus.$on('invokeSaveDataAction', this.onSaveDataAction)
+        this.updateList()
     },
-    onBeforeUnmount() {},
+    onBeforeUnmount() {
+        globals.eventBus.$off('invokeSaveDataAction', this.onSaveDataAction)
+    },
     methods: {
+        onSaveDataAction() {
+            this.updateList()
+            this.uKey++
+        },
+        updateList() {
+            const data = this.r2DataHandler.getData(this.config.schemaKey, this.config.dataKey)
+            this.list = this.getList(data, this.config.listFilterKey)
+            console.log('ALC:updateList this.config.dataKey = ', this.config.dataKey)
+            console.log('ALC:updateList this.config.schemaKey = ', this.config.schemaKey)
+            console.log('ALC:updateList data = ', data)
+        },
         getList(data) {
             const list = []
             if (this.config.listFilterKey === 'authors-list-in-private-dataset-view') {

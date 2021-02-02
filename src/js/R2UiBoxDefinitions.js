@@ -244,9 +244,6 @@ function R2UiBoxDefinitions() {
                             'show-filelist-1': {
                                 key: null
                             },
-                            // 'edit-meta': {
-                            //     key: 'edit-meta-authors'
-                            // },
                             'edit-authors': {
                                 key: 'edit-meta-authors',
                                 args: { dataKey: 'init', schemaKey: 'authors' }
@@ -379,23 +376,6 @@ function R2UiBoxDefinitions() {
                         'dataset-actions-close': { key: 'cancel' },
                         'dataset-actions-submit': { key: 'cancel' },
                         'dataset-actions-withdraw': { key: 'cancel' }
-                    }
-                },
-                'meta-actions-edit-authors': {
-                    elements: {
-                        'box-title': { html: 'Edit Authors', classes: '' },
-                        'a1-name': { html: 'Alexander', classes: 'form input' },
-                        'a1-given-name': { html: 'Linan', classes: 'form input' },
-                        'a1-institute': { html: 'Missouri Botanical Garden', classes: 'form input' },
-                        'a1-orchid': { html: '0000-0002-8281-1346', classes: 'form input' },
-                        'a2-name': { html: 'Miller', classes: 'form input' },
-                        'a2-given-name': { html: 'Allison', classes: 'form input' },
-                        'a2-institute': { html: 'Saint Louis University', classes: 'form input' },
-                        'a2-orchid': { html: '0000-0002-8281-9999', classes: 'form input' }
-                    },
-                    zones: {
-                        'meta-actions-commmit': { key: 'cancel' },
-                        'meta-actions-close': { key: 'cancel' }
                     }
                 },
                 'meta-actions-edit-generic': {

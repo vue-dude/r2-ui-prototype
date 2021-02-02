@@ -352,10 +352,19 @@ export default {
                 case evt.viewKey === 'meta-actions-edit-generic' && evt.args.isViewTab:
                     this.updateMetaEditor(evt.key)
                     return null
+
+                case evt.viewKey === 'meta-actions-edit-generic' && evt.key === 'save':
+                    // console.log('CG:onClick trigger = ',value)
+                    globals.eventBus.$emit('invokeSaveDataAction', { targets: ['meta-actions-edit-generic'] })
+
             }
 
             switch (evt.key) {
                 // cancel and close
+
+                // this.updateDatasetControls({ reset: true })
+                // return this.setViewMode(this.getViewStack()[0], options)
+
                 case 'modal-bg':
                 case 'cancel':
                 case 'confirm':

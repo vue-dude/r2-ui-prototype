@@ -163,42 +163,53 @@ const R2D2DataHandler = function() {
         let schema = schemes[schemaKey] || {}
         if (_.isArray(schemes[schemaKey])) {
             schema = {
-                [`${schemaKey}-${dataKey}`]: schemes[schemaKey] || []  
+                [`${schemaKey}-${dataKey}`]: schemes[schemaKey] || []
             }
         }
         return schema
     }
 
+    const data = {
+        'authors-init': [
+            {
+                familyName: 'Linan',
+                givenName: 'Alexander',
+                department: 'Missouri Botanical Garden',
+                nameIdentifier: '0000-0002-8281-1346'
+            },
+            {
+                familyName: 'Lowry II',
+                givenName: 'Porter',
+                department: 'Missouri Botanical Garden',
+                nameIdentifier: '0000-0002-8047-5019'
+            },
+            {
+                familyName: 'Miller',
+                givenName: 'Allison',
+                department: 'Saint Louis University'
+            }
+        ],
+        'papers-init': [
+            {
+                url: 'Science Today'
+            },
+            {}
+        ],
+        'common-init': {
+            language: 3,
+            license: 0
+        }
+    }
+
     this.getData = (schemaKey, dataKey) => {
         const key = `${schemaKey}-${dataKey}`
-        let data = {
-            'authors-init': [
-                {
-                    familyName: 'Linan',
-                    givenName: 'Alexander',
-                    department: 'Missouri Botanical Garden',
-                    nameIdentifier: '0000-0002-8281-1346'
-                },
-                {
-                    familyName: 'Lowry II',
-                    givenName: 'Porter',
-                    department: 'Missouri Botanical Garden',
-                    nameIdentifier: '0000-0002-8047-5019'
-                },
-                {
-                    familyName: 'Miller',
-                    givenName: 'Allison',
-                    department: 'Saint Louis University'
-                }
-            ],
-            'papers-init': [
-                {
-                    url: 'Science Today'
-                },
-                {}
-            ]
-        }
+        const res = _.isArray(data[key]) ? { [key]: data[key] || [] } : data[key]
+        return res
+    }
 
+    this.setData = (schemaKey, dataKey, dataset) => {
+        const key = `${schemaKey}-${dataKey}`
+        data[key] = dataset
         return { [key]: data[key] || [] }
     }
 

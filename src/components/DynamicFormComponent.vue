@@ -101,10 +101,12 @@ export default {
     },
     created() {
         globals.eventBus.$on('updateMetaEditor', this.onUpdateMetaEditor)
+        globals.eventBus.$on('invokeSaveDataAction', this.onSaveDataAction)
     },
     onBeforeUnmount() {
         globals.eventBus.$off('updateMetaEditor', this.onUpdateMetaEditor)
-        this.fh = null
+        globals.eventBus.$off('invokeSaveDataAction', this.onSaveDataAction)
+        this.formHandler = null
     },
     computed: {
         sKey() {
@@ -113,9 +115,6 @@ export default {
         dKey() {
             return this.config.dataKey
         }
-        // xKey (){
-        //     return `${this.sKey}-${this.dKey}`
-        // }
     },
     methods: {
         animateUpdate(index, action) {
@@ -214,7 +213,7 @@ export default {
                     tree: [this.dataKey, index, 'url'],
                     action
                 }
-                this.fh.modifyForm(mod)
+                this.formHandler.modifyForm(mod)
                 this.updateForm(false)
                 this.$nextTick(() => this.animateUpdate(index, action))
                 // this.form = []
@@ -229,11 +228,22 @@ export default {
             return this.animateAction(index, action, finalize)
         },
 
+        onSaveDataAction() {
+            console.log('DFC:onSaveDataAction ')
+            if (this.formHandler) {
+                let data = this.formHandler.getData()//[this.dataKey]
+                data = data[this.dataKey] ? data[this.dataKey] : data
+                console.log('DFC:onSaveDataAction data = ', data)
+                this.r2DataHandler.setData(this.sKey, this.dKey, data)
+                this.dataKey = null
+            }
+        },
+
         onUpdateMetaEditor() {
             if (this.dataKey !== `${this.sKey}-${this.dKey}`) {
                 this.preload = true
                 this.dataKey = `${this.sKey}-${this.dKey}`
-                this.fh = null
+                this.formHandler = null
                 this.form = []
                 this.expandableList = false
                 this.updateForm(true)
@@ -251,18 +261,20 @@ export default {
                 console.log('DFC:updateForm this.sKey, this.dKey = ', this.sKey, this.dKey)
                 console.log('DFC:updateForm data = ', data)
                 if (schema) {
-                    this.fh = new DynamicFormHandler()
-                    this.fhForm = this.fh.getForm(data, schema)
+                    this.formHandler = new DynamicFormHandler()
+                    this.formHandlerForm = this.formHandler.getForm(data, schema)
                 }
             } else {
-                this.fhForm = this.fh.getForm()
+                this.formHandlerForm = this.formHandler.getForm()
             }
             if (schema) {
+                //
                 let tabIndex = 0
                 this.form = []
                 let target = null
                 let lastIndex = -1
                 this.expandableList = true
+
                 const updateListElement = elm => {
                     switch (elm.type) {
                         case 'input':
@@ -289,7 +301,7 @@ export default {
                 }
 
                 if (schema[`${this.sKey}-${this.dKey}`]) {
-                    _.each(this.fhForm, elm => {
+                    _.each(this.formHandlerForm, elm => {
                         updateListElement(elm)
                         if (elm.__strc.lastIndex >= 0) {
                             if (elm.__strc.lastIndex > lastIndex) {
@@ -308,7 +320,7 @@ export default {
                             label: this.$t(`form.group.label.${this.sKey}`)
                         }
                     ]
-                    _.each(this.fhForm, elm => {
+                    _.each(this.formHandlerForm, elm => {
                         updateListElement(elm)
                         target.push(elm)
                     })
