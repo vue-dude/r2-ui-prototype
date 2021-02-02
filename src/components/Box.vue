@@ -81,19 +81,6 @@
             </div>
             <div class="scrollable">
                 <div class="content">
-                    <div class="components">
-                        <!-- TODO add  typeof component, like form, upload -->
-                        <!-- figure out reason components gets overlayed by inner if other position -->
-                        <div
-                            v-for="(cmp, key) in view.scroll.components"
-                            class="component"
-                            :class="[key, { clickable: cmp.click }, cmp.classes]"
-                            :key="key"
-                            @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
-                        >
-                            <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
-                        </div>
-                    </div>
                     <div class="inner" v-if="!view.setScrollBgImageOverElements">
                         <div class="inner bg-img" :class="[`${view.id}-scroll`]"></div>
                     </div>
@@ -117,6 +104,22 @@
                             @click.stop="view.click ? onClickThing(`${view.id}-scroll`) : null"
                         ></div>
                     </div>
+
+                    <div class="components">
+                        <!-- TODO add  typeof component, like form, upload -->
+                        <!-- figure out reason components gets overlayed by inner if other position -->
+                        <div
+                            v-for="(cmp, key) in view.scroll.components"
+                            class="component"
+                            :class="[key, { clickable: cmp.click }, cmp.classes]"
+                            :key="key"
+                            @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
+                        >
+                            <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
+                            <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
+                        </div>
+                    </div>
+
                     <div class="click-zones">
                         <div
                             v-for="(zone, key) in view.scroll.zones"
@@ -160,6 +163,7 @@
                         @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
                     >
                         <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
+                        <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
                     </div>
                 </div>
                 <div class="click-zones">
@@ -183,10 +187,12 @@
 //
 import BoxScrollHandler from '@/js/BoxScrollHandler.js'
 import DynamicForm from '@/components/DynamicFormComponent.vue'
+import ActiveList from '@/components/ActiveListComponent.vue'
 //
 export default {
     components: {
-        DynamicForm
+        DynamicForm,
+        ActiveList
     },
     props: {
         config: {},

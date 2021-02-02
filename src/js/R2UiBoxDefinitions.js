@@ -248,13 +248,26 @@ function R2UiBoxDefinitions() {
                             //     key: 'edit-meta-authors'
                             // },
                             'edit-authors': {
-                                key: 'edit-meta-authors'
+                                key: 'edit-meta-authors',
+                                args: { dataKey: 'init', schemaKey: 'authors' }
                             },
                             'edit-papers': {
-                                key: 'edit-meta-papers'
+                                key: 'edit-meta-papers',
+                                args: { dataKey: 'init', schemaKey: 'papers' }
                             },
                             'edit-common': {
-                                key: 'edit-meta-common'
+                                key: 'edit-meta-common',
+                                args: { dataKey: 'init', schemaKey: 'common' }
+                            }
+                        },
+                        components: {
+                            'list-authors': {
+                                component: 'active-list',
+                                config: {
+                                    schemaKey: 'authors',
+                                    dataKey: 'init',
+                                    listFilterKey: 'authors-list-in-private-dataset-view'
+                                }
                             }
                         }
                     }
@@ -389,16 +402,22 @@ function R2UiBoxDefinitions() {
                     tabs: {
                         'tab-papers': {
                             key: 'papers',
+                            schemaKey: 'papers',
+                            dataKey: null,
                             html: 'Corresponding Papers',
                             classes: 'papers'
                         },
                         'tab-common': {
                             key: 'common',
+                            schemaKey: 'common',
+                            dataKey: null,
                             html: 'Common Data',
                             classes: 'common'
                         },
                         'tab-authors': {
                             key: 'authors',
+                            schemaKey: 'authors',
+                            dataKey: null,
                             html: 'Authors',
                             classes: 'authors',
                             active: true

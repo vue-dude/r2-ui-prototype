@@ -57,8 +57,8 @@ const R2D2DataHandler = function() {
         return res
     }
 
-    this.meta = {
-        'schema-authors': {
+    this.getSchema = (schemaKey, dataKey) => {
+        const schemes = {
             authors: [
                 {
                     __0: {
@@ -88,12 +88,6 @@ const R2D2DataHandler = function() {
                             classes: 'right'
                         }
                     }
-                    // test1: {
-                    //     __0: {
-                    //         classes: 'right'
-                    //     }
-                    // }
-
                     // affiliations: [
                     //     {
                     //         __0: {
@@ -107,9 +101,108 @@ const R2D2DataHandler = function() {
                     //     }
                     // ]
                 }
-            ]
-        },
+            ],
+            papers: [
+                {
+                    __0: {
+                        sublist: true
+                    },
+                    url: {},
+                    type: {},
+                    identifier: {
+                        __0: {
+                            classes: 'right'
+                        }
+                    },
+                    identifierType: {
+                        __0: {
+                            classes: 'right'
+                        }
+                    }
+                }
+            ],
+            common: {
+                language: {
+                    __0: {
+                        type: 'dropdown',
+                        options: { key: 'languages' },
+                        classes: 'left'
+                    }
+                },
+                license: {
+                    __0: {
+                        type: 'dropdown',
+                        options: { key: 'licenses' },
+                        classes: 'left'
+                    }
+                },
+                genres: {
+                    __0: {
+                        classes: 'right'
+                    }
+                },
+                keywords: {
+                    __0: {
+                        classes: 'right'
+                    }
+                },
+                studyType: {
+                    __0: {
+                        type: 'dropdown',
+                        options: { key: 'study-type' },
+                        classes: 'right'
+                    }
+                },
+                funding: {
+                    __0: {
+                        classes: 'right'
+                    }
+                }
+            }
+        }
+        let schema = schemes[schemaKey] || {}
+        if (_.isArray(schemes[schemaKey])) {
+            schema = {
+                [`${schemaKey}-${dataKey}`]: schemes[schemaKey] || []  
+            }
+        }
+        return schema
+    }
 
+    this.getData = (schemaKey, dataKey) => {
+        const key = `${schemaKey}-${dataKey}`
+        let data = {
+            'authors-init': [
+                {
+                    familyName: 'Linan',
+                    givenName: 'Alexander',
+                    department: 'Missouri Botanical Garden',
+                    nameIdentifier: '0000-0002-8281-1346'
+                },
+                {
+                    familyName: 'Lowry II',
+                    givenName: 'Porter',
+                    department: 'Missouri Botanical Garden',
+                    nameIdentifier: '0000-0002-8047-5019'
+                },
+                {
+                    familyName: 'Miller',
+                    givenName: 'Allison',
+                    department: 'Saint Louis University'
+                }
+            ],
+            'papers-init': [
+                {
+                    url: 'Science Today'
+                },
+                {}
+            ]
+        }
+
+        return { [key]: data[key] || [] }
+    }
+
+    this.meta = {
         'data-authors': {
             authors: [
                 {
@@ -131,27 +224,6 @@ const R2D2DataHandler = function() {
                 },
                 {},
                 {}
-            ]
-        },
-        'schema-papers': {
-            papers: [
-                {
-                    __0: {
-                        sublist: true
-                    },
-                    url: {},
-                    type: {},
-                    identifier: {
-                        __0: {
-                            classes: 'right'
-                        }
-                    },
-                    identifierType: {
-                        __0: {
-                            classes: 'right'
-                        }
-                    }
-                }
             ]
         },
         'data-papers': {
@@ -183,6 +255,18 @@ const R2D2DataHandler = function() {
                 }
             },
             keywords: {
+                __0: {
+                    classes: 'right'
+                }
+            },
+            studyType: {
+                __0: {
+                    type: 'dropdown',
+                    options: { key: 'study-type' },
+                    classes: 'right'
+                }
+            },
+            funding: {
                 __0: {
                     classes: 'right'
                 }

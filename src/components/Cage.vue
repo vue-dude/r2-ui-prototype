@@ -311,16 +311,34 @@ export default {
             return [...this.viewStack].reverse()
         },
 
-        updateMetaEditor(key) {
+        updateMetaEditor(key, cfg = {}) {
+            console.log('CG:updateMetaEditor key = ', key)
+            console.log('CG:updateMetaEditor cfg = ', cfg)
+
+            // let dataKey = cfg.dataKey || null
+
             const viewKey = 'meta-actions-edit-generic'
             const view = this.boxes['dataset-actions'].views[viewKey]
             const tabs = view.tabs
             _.each(tabs, tab => {
+                console.log('CG:updateMetaEditor tab = ', tab)
                 tab.active = false
+                if (cfg.dataKey) {
+                    tab.dataKey = cfg.dataKey
+                }
             })
             const tabKey = `tab-${key}`
-            tabs[tabKey].active = true
-            view.scroll.components['meta-generic'].config.key = key
+            const tab = tabs[tabKey]
+            tab.active = true
+            console.log('CG:updateMetaEditor tabs = ', tabs)
+            console.log('CG:updateMetaEditor tabs[tabKey].dataKey = ', tabs[tabKey].dataKey)
+
+            // !! for the preview, schemaKey has a redundant config here, by tab and by clicksource!
+            // TODO cleanup this
+
+            view.scroll.components['meta-generic'].config.schemaKey = tab.schemaKey
+            view.scroll.components['meta-generic'].config.dataKey = tab.dataKey
+
             globals.eventBus.$emit('updateMetaEditor')
             globals.eventBus.$emit('updateActiveView', { targets: ['dataset-actions'] })
         },
@@ -422,7 +440,10 @@ export default {
                     options['dataset-actions'] = {
                         view: 'meta-actions-edit-generic'
                     }
-                    this.updateMetaEditor(evt.key.split('-')[2])
+                    this.updateMetaEditor(evt.key.split('-')[2], {
+                        dataKey: evt.args.dataKey,
+                        schemaKey: evt.args.schemaKey
+                    })
                     return this.setViewMode(this.viewMode, options)
             }
         },

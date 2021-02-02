@@ -94,7 +94,9 @@ export default {
             form: [],
             uid: globals.getUid(),
             lastTabIndex: 0,
-            dataKey: null
+            dataKey: null,
+            dataKey: null,
+            schemaKey: null
         }
     },
     created() {
@@ -103,6 +105,17 @@ export default {
     onBeforeUnmount() {
         globals.eventBus.$off('updateMetaEditor', this.onUpdateMetaEditor)
         this.fh = null
+    },
+    computed: {
+        sKey() {
+            return this.config.schemaKey
+        },
+        dKey() {
+            return this.config.dataKey
+        }
+        // xKey (){
+        //     return `${this.sKey}-${this.dKey}`
+        // }
     },
     methods: {
         animateUpdate(index, action) {
@@ -198,7 +211,7 @@ export default {
             const finalize = (index, action) => {
                 // console.log('DFC:onControlClick:finalize index, action ', index, action)
                 const mod = {
-                    tree: [this.config.key, index, 'url'],
+                    tree: [this.dataKey, index, 'url'],
                     action
                 }
                 this.fh.modifyForm(mod)
@@ -217,10 +230,9 @@ export default {
         },
 
         onUpdateMetaEditor() {
-            if (this.dataKey !== this.config.key) {
+            if (this.dataKey !== `${this.sKey}-${this.dKey}`) {
                 this.preload = true
-                this.dataKey = this.config.key
-                // console.log('DFC:onUpdateMetaEditor uid ', this.uid)
+                this.dataKey = `${this.sKey}-${this.dKey}`
                 this.fh = null
                 this.form = []
                 this.expandableList = false
@@ -231,9 +243,13 @@ export default {
             }
         },
         updateForm(createNew = false) {
-            const schema = this.r2DataHandler.meta[`schema-${this.config.key}`]
+            const schema = this.r2DataHandler.getSchema(this.sKey, this.dKey)
+            console.log('DFC:updateForm createNew = ', createNew)
+            console.log('DFC:updateForm schema = ', schema)
             if (createNew) {
-                const data = this.r2DataHandler.meta[`data-${this.config.key}`]
+                const data = this.r2DataHandler.getData(this.sKey, this.dKey)
+                console.log('DFC:updateForm this.sKey, this.dKey = ', this.sKey, this.dKey)
+                console.log('DFC:updateForm data = ', data)
                 if (schema) {
                     this.fh = new DynamicFormHandler()
                     this.fhForm = this.fh.getForm(data, schema)
@@ -272,7 +288,7 @@ export default {
                     }
                 }
 
-                if (schema[this.config.key]) {
+                if (schema[`${this.sKey}-${this.dKey}`]) {
                     _.each(this.fhForm, elm => {
                         updateListElement(elm)
                         if (elm.__strc.lastIndex >= 0) {
@@ -289,7 +305,7 @@ export default {
                     this.expandableList = false
                     target = [
                         {
-                            label: this.$t(`form.group.label.${this.config.key}`)
+                            label: this.$t(`form.group.label.${this.sKey}`)
                         }
                     ]
                     _.each(this.fhForm, elm => {

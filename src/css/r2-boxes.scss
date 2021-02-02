@@ -570,8 +570,8 @@
                                     }
                                     &.edit-authors {
                                         top: 250px;
-                                        left: 20px;
-                                        width: 600px;
+                                        left: 455px;
+                                        width: 400px;
                                         height: 110px;
                                     }
                                     &.edit-papers {
@@ -585,6 +585,48 @@
                                         left: 20px;
                                         width: 400px;
                                         height: 200px;
+                                    }
+                                }
+                            }
+                            .components {
+                                // position: absolute;
+                                // z-index: 2;
+                                .component.list-authors {
+                                    position: absolute;
+                                    left: 14px;
+                                    top: 240px;
+                                    width: 820px;
+                                    height: 140px;
+                                    // background-color: #e7e7e7a1;
+                                    background-color: white;
+                                    border: 1px solid black;
+                                    .list-container {
+                                        margin: 10px;
+                                    }
+                                    .list-element {
+                                        display: flex;
+                                        font-size: 15px;
+                                        line-height: 22px;
+                                        font-family: Avenir, Helvetica, Arial, sans-serif;
+                                        .sp {
+                                            margin-right: 5px;
+                                        }
+                                        .col {
+                                            font-weight: 600;
+                                            &.department {
+                                                font-weight: normal;
+                                            }
+                                        }
+                                        .icon.orchid {
+                                            width: 44px;
+                                            height: 44px;
+                                            transform: scale(0.44);
+                                            margin-top: -23px;
+                                            margin-right: -19px;
+                                            transform-origin: bottom left;
+                                            background-repeat: no-repeat;
+                                            background-image: url(./r2-ui/v2/png/icon-orchid.png);
+                                        }
                                     }
                                 }
                             }
