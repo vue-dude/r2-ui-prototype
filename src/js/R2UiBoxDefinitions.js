@@ -235,8 +235,22 @@ function R2UiBoxDefinitions() {
                             'download-all': {
                                 click: true
                             }
+                        },
+                        components: {
+                            'list-authors': {
+                                component: 'active-list',
+                                config: {
+                                    schemaKey: 'authors',
+                                    dataKey: 'mock55c4',
+                                    listFilterKey: 'authors-list-in-private-dataset-view'
+                                },
+                                click: true,
+                                key: 'edit-meta-authors',
+                                args: { dataKey: 'mock55c4', schemaKey: 'authors' }
+                            }
                         }
                     }
+
                 },
                 'dataset-view-private-init-content': {
                     scroll: {

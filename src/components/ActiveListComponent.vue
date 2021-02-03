@@ -67,7 +67,7 @@ export default {
                     if (row.nameIdentifier) {
                         elm['sp department'] = ','
                         elm['icon nameIdentifier orchid'] = ''
-                        elm['sp nameIdentifier'] = row.nameIdentifier
+                        elm['col nameIdentifier'] = row.nameIdentifier
                     }
                     list.push(elm)
                 })

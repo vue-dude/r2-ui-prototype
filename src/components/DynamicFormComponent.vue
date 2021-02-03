@@ -68,7 +68,7 @@
             <div class="group-headline" :class="[{ expandable: expandableList }]">
                 <div class="shape sh-1"></div>
                 <div class="shape sh-2"></div>
-                <div class="label" v-html="group[0].label"></div>
+                <div class="label" v-html="`${group[0].label.split('-')[0]}.${index}`"></div>
             </div>
         </div>
     </div>
