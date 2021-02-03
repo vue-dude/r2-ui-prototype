@@ -37,9 +37,12 @@ export default {
         globals.eventBus.$off('invokeSaveDataAction', this.onSaveDataAction)
     },
     methods: {
+        update() {
+            this.uKey = this.uKey > 1000 ? 1 : ++this.uKey
+        },
         onSaveDataAction() {
             this.updateList()
-            this.uKey++
+            this.update()
         },
         updateList() {
             const data = this.r2DataHandler.getData(this.config.schemaKey, this.config.dataKey)

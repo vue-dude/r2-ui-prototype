@@ -36,10 +36,14 @@ export default {
         // globals.eventBus.$on('routeWillChange', this.onRouteWillChange)
     },
     mounted() {
-        this.uKey++
+        this.update()
     },
     beforeUnmount() {},
-    methods: {},
+    methods: {
+        update() {
+            this.uKey = this.uKey > 1000 ? 1 : ++this.uKey
+        }
+    },
     computed: {
         legal() {
             const keyz = 'terms,sp,imprint,sp,privacy'.split(',')
