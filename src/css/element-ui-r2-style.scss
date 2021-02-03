@@ -1,4 +1,20 @@
 .form-container {
+    // .el-select .el-select__tags .el-tag .el-icon-close
+    .el-select {
+        .el-select__tags .el-tag .el-icon-close {
+            right: -5px;
+        }
+
+        .el-tag.el-tag--info {
+            font-size: 14px;
+            color: #545a6b;
+        }
+
+        .el-select__tags .el-tag {
+            border: 1px solid #b1c2ec;
+        }
+    }
+
     .el-input {
         border: 1px solid #5d698f;
         .el-input__suffix {

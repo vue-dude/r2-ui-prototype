@@ -571,7 +571,7 @@
                                     &.edit-authors {
                                         top: 250px;
                                         left: 455px;
-                                        width: 400px;
+                                        width: 300px;
                                         height: 110px;
                                     }
                                     &.edit-papers {
@@ -589,17 +589,14 @@
                                 }
                             }
                             .components {
-                                // position: absolute;
-                                // z-index: 2;
                                 .component.list-authors {
                                     position: absolute;
-                                    left: 14px;
+                                    left: 21px;
                                     top: 240px;
                                     width: 820px;
-                                    height: 140px;
-                                    // background-color: #e7e7e7a1;
-                                    background-color: white;
-                                    border: 1px solid black;
+                                    height: 120px;
+                                    background-color: #ffffff;
+                                    overflow: hidden;
                                     .list-container {
                                         margin: 10px;
                                     }

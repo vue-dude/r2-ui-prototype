@@ -7,12 +7,17 @@
         suffix-icon="el-icon-date"
         size="mini"
     />
+
     <el-select
-        v-if="config.type === 'dropdown'"
+        v-if="config.type === 'select'"
         v-model="config.selected"
         :placeholder="config.plc"
         prefix-icon="el-icon-date"
         size="mini"
+        :multiple="config.allowMultipleSelections"
+        :filterable="config.allowMultipleSelections || config.canFilter"
+        :allow-create="config.canCreateTags"
+        default-first-option
     >
         <el-option
             v-for="(option, index) in config.options"
@@ -24,6 +29,7 @@
 </template>
 
 <script>
+
 export default {
     props: {
         config: {}

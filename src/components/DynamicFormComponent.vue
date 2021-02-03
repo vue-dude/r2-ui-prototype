@@ -21,7 +21,7 @@
             <div class="left-side">
                 <div v-for="(item, setup, index) in group" :key="index">
                     <div class="input-container" v-if="item.isInputElement">
-                        <div class="input-cell" v-if="item.__strc.classes === 'left'">
+                        <div class="input-cell" v-if="item.layout.classes === 'left'">
                             <dynamic-form-cell :config="item" />
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                 <!-- <div v-for="(item, index) in group" :key="index" :setup="(item = addItemConfig(item))"> -->
                 <div v-for="(item, index) in group" :key="index">
                     <div class="input-container" v-if="item.isInputElement">
-                        <div class="input-cell" v-if="item.__strc.classes === 'right'">
+                        <div class="input-cell" v-if="item.layout.classes === 'right'">
                             <dynamic-form-cell :config="item" />
                         </div>
                     </div>
@@ -231,7 +231,7 @@ export default {
         onSaveDataAction() {
             console.log('DFC:onSaveDataAction ')
             if (this.formHandler) {
-                let data = this.formHandler.getData()//[this.dataKey]
+                let data = this.formHandler.getData() //[this.dataKey]
                 data = data[this.dataKey] ? data[this.dataKey] : data
                 console.log('DFC:onSaveDataAction data = ', data)
                 this.r2DataHandler.setData(this.sKey, this.dKey, data)
@@ -261,12 +261,14 @@ export default {
                 console.log('DFC:updateForm this.sKey, this.dKey = ', this.sKey, this.dKey)
                 console.log('DFC:updateForm data = ', data)
                 if (schema) {
-                    this.formHandler = new DynamicFormHandler()
-                    this.formHandlerForm = this.formHandler.getForm(data, schema)
+                    this.formHandler = new DynamicFormHandler({ convertSelectedArraysToStrings: false })
+                    this.fhForm = this.formHandler.getForm(data, schema)
                 }
             } else {
-                this.formHandlerForm = this.formHandler.getForm()
+                this.fhForm = this.formHandler.getForm()
             }
+            console.log('DFC:updateForm this.fhForm = ', this.fhForm)
+
             if (schema) {
                 //
                 let tabIndex = 0
@@ -278,30 +280,30 @@ export default {
                 const updateListElement = elm => {
                     switch (elm.type) {
                         case 'input':
-                        case 'dropdown':
+                        case 'select':
                             elm.tabIndex = ++tabIndex
                     }
                     elm.isInputElement = false
                     switch (elm.type) {
                         case 'input':
-                        case 'dropdown':
+                        case 'select':
                             elm.isInputElement = true
                     }
                     switch (elm.type) {
-                        case 'dropdown':
+                        case 'select':
                             const dropdownConfig = this.r2DataHandler.getDropdownConfig(elm.options.key, elm.selected)
                             elm.options = dropdownConfig.options
                             elm.selected = dropdownConfig.selected
                     }
                     elm.plc = this.$t(`form.item.plc.${elm.label}`)
                     elm.label = this.$t(`form.item.label.${elm.label}`)
-                    if (!elm.__strc.classes) {
-                        elm.__strc.classes = 'left'
+                    if (!elm.layout.classes) {
+                        elm.layout.classes = 'left'
                     }
                 }
 
                 if (schema[`${this.sKey}-${this.dKey}`]) {
-                    _.each(this.formHandlerForm, elm => {
+                    _.each(this.fhForm, elm => {
                         updateListElement(elm)
                         if (elm.__strc.lastIndex >= 0) {
                             if (elm.__strc.lastIndex > lastIndex) {
@@ -320,7 +322,7 @@ export default {
                             label: this.$t(`form.group.label.${this.sKey}`)
                         }
                     ]
-                    _.each(this.formHandlerForm, elm => {
+                    _.each(this.fhForm, elm => {
                         updateListElement(elm)
                         target.push(elm)
                     })

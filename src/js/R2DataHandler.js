@@ -48,7 +48,7 @@ const R2D2DataHandler = function() {
 
     this.getDropdownConfig = (key, selected) => {
         const res = {
-            options: getMockOptions(key, 50),
+            options: getMockOptions(key, 40),
             selected
         }
         if (_.isNumber(selected)) {
@@ -66,26 +66,35 @@ const R2D2DataHandler = function() {
                     },
                     department: {
                         __0: {
-                            type: 'dropdown',
+                            type: 'select',
+                            allowMultipleSelections: true,
+                            canCreateTags: true,
                             options: { key: 'departments' },
-                            // TODO replace classes by custom setup, which can contain everything
-                            classes: 'right'
+                            layout: {
+                                classes: 'right'
+                            }
                         }
                     },
                     givenName: {
                         // default: 'default-joe',
                         __0: {
-                            classes: 'left'
+                            layout: {
+                                classes: 'left'
+                            }
                         }
                     },
                     familyName: {
                         __0: {
-                            classes: 'left'
+                            layout: {
+                                classes: 'left'
+                            }
                         }
                     },
                     nameIdentifier: {
                         __0: {
-                            classes: 'right'
+                            layout: {
+                                classes: 'right'
+                            }
                         }
                     }
                     // affiliations: [
@@ -111,12 +120,16 @@ const R2D2DataHandler = function() {
                     type: {},
                     identifier: {
                         __0: {
-                            classes: 'right'
+                            layout: {
+                                classes: 'right'
+                            }
                         }
                     },
                     identifierType: {
                         __0: {
-                            classes: 'right'
+                            layout: {
+                                classes: 'right'
+                            }
                         }
                     }
                 }
@@ -124,38 +137,56 @@ const R2D2DataHandler = function() {
             common: {
                 language: {
                     __0: {
-                        type: 'dropdown',
+                        type: 'select',
                         options: { key: 'languages' },
-                        classes: 'left'
+                        layout: {
+                            classes: 'left'
+                        }
                     }
                 },
                 license: {
                     __0: {
-                        type: 'dropdown',
+                        type: 'select',
                         options: { key: 'licenses' },
-                        classes: 'left'
+                        layout: {
+                            classes: 'left'
+                        }
                     }
                 },
                 genres: {
                     __0: {
-                        classes: 'right'
+                        layout: {
+                            classes: 'right'
+                        }
                     }
                 },
                 keywords: {
                     __0: {
-                        classes: 'right'
+                        type: 'select',
+                        canCreateTags: true,
+                        allowMultipleSelections: true,
+                        options: { key: 'tag' },
+                        layout: {
+                            layout: {
+                                classes: 'left'
+                            }
+                        }
                     }
                 },
                 studyType: {
                     __0: {
-                        type: 'dropdown',
+                        type: 'select',
                         options: { key: 'study-type' },
-                        classes: 'right'
+                        layout: {
+                            classes: 'right'
+                        }
                     }
                 },
                 funding: {
                     __0: {
-                        classes: 'right'
+                        layout: {
+                            classes: 'right'
+                        }
                     }
                 }
             }
@@ -174,19 +205,19 @@ const R2D2DataHandler = function() {
             {
                 familyName: 'Linan',
                 givenName: 'Alexander',
-                department: 'Missouri Botanical Garden',
+                department: ['Missouri Botanical Garden'],
                 nameIdentifier: '0000-0002-8281-1346'
             },
             {
                 familyName: 'Lowry II',
                 givenName: 'Porter',
-                department: 'Missouri Botanical Garden',
+                department: ['Missouri Botanical Garden'],
                 nameIdentifier: '0000-0002-8047-5019'
             },
             {
                 familyName: 'Miller',
                 givenName: 'Allison',
-                department: 'Saint Louis University'
+                department: ['Saint Louis University']
             }
         ],
         'papers-init': [
@@ -197,7 +228,8 @@ const R2D2DataHandler = function() {
         ],
         'common-init': {
             language: 3,
-            license: 0
+            license: 0,
+            keywords: ['tag-2', 'tag-6', 'tag-5', 'tag-7', 'fskdfjskj']
         }
     }
 
@@ -248,38 +280,50 @@ const R2D2DataHandler = function() {
         'schema-common': {
             language: {
                 __0: {
-                    type: 'dropdown',
+                    type: 'select',
                     options: { key: 'languages' },
-                    classes: 'left'
+                    layout: {
+                        classes: 'left'
+                    }
                 }
             },
             license: {
                 __0: {
-                    type: 'dropdown',
+                    type: 'select',
                     options: { key: 'licenses' },
-                    classes: 'left'
+                    layout: {
+                        classes: 'left'
+                    }
                 }
             },
             genres: {
                 __0: {
-                    classes: 'right'
+                    layout: {
+                        classes: 'right'
+                    }
                 }
             },
             keywords: {
                 __0: {
-                    classes: 'right'
+                    layout: {
+                        classes: 'right'
+                    }
                 }
             },
             studyType: {
                 __0: {
-                    type: 'dropdown',
+                    type: 'select',
                     options: { key: 'study-type' },
-                    classes: 'right'
+                    layout: {
+                        classes: 'right'
+                    }
                 }
             },
             funding: {
                 __0: {
-                    classes: 'right'
+                    layout: {
+                        classes: 'right'
+                    }
                 }
             }
         },
