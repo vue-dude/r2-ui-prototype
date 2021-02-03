@@ -6,6 +6,8 @@
         :placeholder="config.plc"
         suffix-icon="el-icon-date"
         size="mini"
+        :type="config.isTextArea ? 'textarea' : 'input'"
+        :autosize="config.autoSize || false"
     />
 
     <el-select
@@ -29,7 +31,6 @@
 </template>
 
 <script>
-
 export default {
     props: {
         config: {}

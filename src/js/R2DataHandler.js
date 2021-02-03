@@ -46,13 +46,35 @@ const R2D2DataHandler = function() {
         return res
     }
 
+    this.getDropdownSelection = (key, selection, empty = '-') => {
+        // console.log('R2:getDropdownSelection key, selection = ', key, selection)
+        if (_.isArray(selection)) {
+            // console.log('R2:getDropdownSelection _.isArray(selection) = ', _.isArray(selection))
+            // TODO refine this
+            return selection.length === 0 ? empty : selection.join(', ')
+        }
+        const res = this.getDropdownConfig(key, selection)
+        // TODO i18n this
+        return _.isNumber(res.selected) || _.isString(res.selected) ? res.selectedLabel : empty
+    }
+
     this.getDropdownConfig = (key, selected) => {
         const res = {
             options: getMockOptions(key, 40),
             selected
         }
+        const index = res.options.findIndex(elm => elm.value === selected)
+        // console.log('R2:getDropdownConfig selected = ', selected)
+        // console.log('R2:getDropdownConfig options = ', res.options)
+        // console.log('R2:getDropdownConfig find index = ', index)
+        if (index > -1) {
+            selected = index
+            // console.log('R2:getDropdownConfig index > -1 selected = ', selected)
+        }
         if (_.isNumber(selected)) {
             res.selected = res.options[selected].value
+            res.selectedLabel = res.options[selected].label
+            // console.log('R2:getDropdownConfig index > -1 selected = ', selected)
         }
         return res
     }
@@ -155,6 +177,10 @@ const R2D2DataHandler = function() {
                 },
                 genres: {
                     __0: {
+                        type: 'select',
+                        canCreateTags: true,
+                        allowMultipleSelections: true,
+                        options: { key: 'genre' },
                         layout: {
                             classes: 'right'
                         }
@@ -165,11 +191,9 @@ const R2D2DataHandler = function() {
                         type: 'select',
                         canCreateTags: true,
                         allowMultipleSelections: true,
-                        options: { key: 'tag' },
+                        options: { key: 'kwd' },
                         layout: {
-                            layout: {
-                                classes: 'left'
-                            }
+                            classes: 'left'
                         }
                     }
                 },
@@ -184,6 +208,9 @@ const R2D2DataHandler = function() {
                 },
                 funding: {
                     __0: {
+                        type: 'input',
+                        isTextArea: true,
+                        autoSize: { minRows: 2, maxRows: 8 },
                         layout: {
                             classes: 'right'
                         }
@@ -240,9 +267,13 @@ const R2D2DataHandler = function() {
             {}
         ],
         'common-mock55c4': {
-            language: 3,
+            language: 'en',
             license: 0,
-            keywords: ['tag-2', 'tag-6', 'tag-5', 'tag-7', 'fskdfjskj']
+            studyType: 'Observational',
+            genres: ['Physics'],
+            keywords: ['Imaging', 'Lymph', 'Fluorophore'],
+            funding:
+                'Irish Government Department of BusinessEnterprise and Innovation’s Disruptive Technology Innovation Fund. Grant number: 17/TIDA/4936, AMBER 12/RC/2278 P2'
         },
         //
         'authors-init': [
@@ -251,30 +282,10 @@ const R2D2DataHandler = function() {
                 givenName: 'Alexander',
                 department: ['Missouri Botanical Garden'],
                 nameIdentifier: '0000-0002-8281-1346'
-            },
-            {
-                familyName: 'Lowry II',
-                givenName: 'Porter',
-                department: ['Missouri Botanical Garden'],
-                nameIdentifier: '0000-0002-8047-5019'
-            },
-            {
-                familyName: 'Miller',
-                givenName: 'Allison',
-                department: ['Saint Louis University']
             }
         ],
-        'papers-init': [
-            {
-                url: 'Science Today'
-            },
-            {}
-        ],
-        'common-init': {
-            language: 3,
-            license: 0,
-            keywords: ['tag-2', 'tag-6', 'tag-5', 'tag-7', 'fskdfjskj']
-        }
+        'papers-init': [],
+        'common-init': {}
     }
 
     this.getData = (schemaKey, dataKey) => {
@@ -288,6 +299,29 @@ const R2D2DataHandler = function() {
         data[key] = dataset
         return { [key]: data[key] || [] }
     }
+
+    // correspondingPapers: {type: "label", label: "correspondingPapers:", __strc: {…}, selected: null, key: "correspondingPapers", …}
+    // correspondingPapers.0: {type: "label", label: "correspondingPapers.0:", __strc: {…}, selected: null, key: "correspondingPapers--0", …}
+    // correspondingPapers.0._ACTIONS: {type: "LY", label: "", spLabel: "correspondingPapers.0._ACTIONS", __strc: {…}, startNode: false, …}
+    // correspondingPapers.0._ADD: {type: "LY", label: "", spLabel: "correspondingPapers.0._ADD", __strc: {…}, startNode: false, …}
+    // correspondingPapers.0._END: {type: "LY", label: "", spLabel: "correspondingPapers.0._END", __strc: {…}, startNode: true, …}
+    // correspondingPapers.0._START: {type: "LY", label: "", spLabel: "correspondingPapers.0._START", __strc: {…}, startNode: true, …}
+    // correspondingPapers.0.identifier: {type: "input", label: "identifier:", __strc: {…}, selected: null, key: "correspondingPapers--0--identifier", …}
+    // correspondingPapers.0.identifierType: {type: "input", label: "identifierType:", __strc: {…}, selected: null, key: "correspondingPapers--0--identifierType", …}
+    // correspondingPapers.0.type: {type: "input", label: "type:", __strc: {…}, selected: null, key: "correspondingPapers--0--type", …}
+    // correspondingPapers.0.url: {type: "input", label: "url:", __strc: {…}, selected: null, key: "correspondingPapers--0--url", …}
+    // correspondingPapers.1: {type: "label", label: "correspondingPapers.1:", __strc: {…}, selected: null, key: "correspondingPapers--1", …}
+    // correspondingPapers.1._ACTIONS: {type: "LY", label: "", spLabel: "correspondingPapers.1._ACTIONS", __strc: {…}, startNode: false, …}
+    // correspondingPapers.1._ADD: {type: "LY", label: "", spLabel: "correspondingPapers.1._ADD", __strc: {…}, startNode: false, …}
+    // correspondingPapers.1._END: {type: "LY", label: "", spLabel: "correspondingPapers.1._END", __strc: {…}, startNode: true, …}
+    // correspondingPapers.1._START: {type: "LY", label: "", spLabel: "correspondingPapers.1._START", __strc: {…}, startNode: true, …}
+    // correspondingPapers.1.identifier: {type: "input", label: "identifier:", __strc: {…}, selected: null, key: "correspondingPapers--1--identifier", …}
+    // correspondingPapers.1.identifierType: {type: "input", label: "identifierType:", __strc: {…}, selected: null, key: "correspondingPapers--1--identifierType", …}
+    // correspondingPapers.1.type: {type: "input", label: "type:", __strc: {…}, selected: null, key: "correspondingPapers--1--type", …}
+    // correspondingPapers.1.url: {type: "input", label: "url:", __strc: {…}, selected: null, key: "correspondingPapers--1--url", …}
+    // correspondingPapers.2._ADD: {type: "LY", label: "", spLabel: "correspondingPapers.2._ADD", __strc: {…}, startNode: false, …}
+    // __proto__: Object
+    // [[IsRevoked]]: false
 
     this.meta = {
         'data-authors': {
@@ -376,29 +410,6 @@ const R2D2DataHandler = function() {
             license: 0
         }
     }
-
-    // correspondingPapers: {type: "label", label: "correspondingPapers:", __strc: {…}, selected: null, key: "correspondingPapers", …}
-    // correspondingPapers.0: {type: "label", label: "correspondingPapers.0:", __strc: {…}, selected: null, key: "correspondingPapers--0", …}
-    // correspondingPapers.0._ACTIONS: {type: "LY", label: "", spLabel: "correspondingPapers.0._ACTIONS", __strc: {…}, startNode: false, …}
-    // correspondingPapers.0._ADD: {type: "LY", label: "", spLabel: "correspondingPapers.0._ADD", __strc: {…}, startNode: false, …}
-    // correspondingPapers.0._END: {type: "LY", label: "", spLabel: "correspondingPapers.0._END", __strc: {…}, startNode: true, …}
-    // correspondingPapers.0._START: {type: "LY", label: "", spLabel: "correspondingPapers.0._START", __strc: {…}, startNode: true, …}
-    // correspondingPapers.0.identifier: {type: "input", label: "identifier:", __strc: {…}, selected: null, key: "correspondingPapers--0--identifier", …}
-    // correspondingPapers.0.identifierType: {type: "input", label: "identifierType:", __strc: {…}, selected: null, key: "correspondingPapers--0--identifierType", …}
-    // correspondingPapers.0.type: {type: "input", label: "type:", __strc: {…}, selected: null, key: "correspondingPapers--0--type", …}
-    // correspondingPapers.0.url: {type: "input", label: "url:", __strc: {…}, selected: null, key: "correspondingPapers--0--url", …}
-    // correspondingPapers.1: {type: "label", label: "correspondingPapers.1:", __strc: {…}, selected: null, key: "correspondingPapers--1", …}
-    // correspondingPapers.1._ACTIONS: {type: "LY", label: "", spLabel: "correspondingPapers.1._ACTIONS", __strc: {…}, startNode: false, …}
-    // correspondingPapers.1._ADD: {type: "LY", label: "", spLabel: "correspondingPapers.1._ADD", __strc: {…}, startNode: false, …}
-    // correspondingPapers.1._END: {type: "LY", label: "", spLabel: "correspondingPapers.1._END", __strc: {…}, startNode: true, …}
-    // correspondingPapers.1._START: {type: "LY", label: "", spLabel: "correspondingPapers.1._START", __strc: {…}, startNode: true, …}
-    // correspondingPapers.1.identifier: {type: "input", label: "identifier:", __strc: {…}, selected: null, key: "correspondingPapers--1--identifier", …}
-    // correspondingPapers.1.identifierType: {type: "input", label: "identifierType:", __strc: {…}, selected: null, key: "correspondingPapers--1--identifierType", …}
-    // correspondingPapers.1.type: {type: "input", label: "type:", __strc: {…}, selected: null, key: "correspondingPapers--1--type", …}
-    // correspondingPapers.1.url: {type: "input", label: "url:", __strc: {…}, selected: null, key: "correspondingPapers--1--url", …}
-    // correspondingPapers.2._ADD: {type: "LY", label: "", spLabel: "correspondingPapers.2._ADD", __strc: {…}, startNode: false, …}
-    // __proto__: Object
-    // [[IsRevoked]]: false
 
     const metadata = {
         title: {

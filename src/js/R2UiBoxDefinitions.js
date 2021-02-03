@@ -247,6 +247,17 @@ function R2UiBoxDefinitions() {
                                 click: true,
                                 key: 'edit-meta-authors',
                                 args: { dataKey: 'mock55c4', schemaKey: 'authors' }
+                            },
+                            'list-common': {
+                                component: 'active-list',
+                                config: {
+                                    schemaKey: 'common',
+                                    dataKey: 'mock55c4',
+                                    listFilterKey: 'common-list-in-private-dataset-view'
+                                },
+                                click: true,
+                                key: 'edit-meta-common',
+                                args: { dataKey: 'mock55c4', schemaKey: 'common' }
                             }
                         }
                     }
@@ -278,6 +289,14 @@ function R2UiBoxDefinitions() {
                                     schemaKey: 'authors',
                                     dataKey: 'init',
                                     listFilterKey: 'authors-list-in-private-dataset-view'
+                                }
+                            },
+                            'list-common': {
+                                component: 'active-list',
+                                config: {
+                                    schemaKey: 'common',
+                                    dataKey: 'init',
+                                    listFilterKey: 'common-list-in-private-dataset-view'
                                 }
                             }
                         }

@@ -294,6 +294,8 @@ export default {
                             const dropdownConfig = this.r2DataHandler.getDropdownConfig(elm.options.key, elm.selected)
                             elm.options = dropdownConfig.options
                             elm.selected = dropdownConfig.selected
+                            // TODO explore the placeholder-not-show bug in multiselect
+                            // elm.selected = null
                     }
                     elm.plc = this.$t(`form.item.plc.${elm.label}`)
                     elm.label = this.$t(`form.item.label.${elm.label}`)

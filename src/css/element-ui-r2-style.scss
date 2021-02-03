@@ -14,7 +14,7 @@
             border: 1px solid #b1c2ec;
         }
     }
-
+    .el-textarea,
     .el-input {
         border: 1px solid #5d698f;
         .el-input__suffix {
@@ -30,5 +30,11 @@
                 font-style: italic;
             }
         }
+    }
+    .el-textarea__inner {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        line-height: 18px;
+        color: #1f2538;
     }
 }
