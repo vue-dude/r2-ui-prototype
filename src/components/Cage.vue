@@ -568,8 +568,8 @@ export default {
                 case 'search':
                     goIns = {
                         'search-page': { delay: 0.1, speed: 0.8 },
-                        'search-page-facets-dn-inner': { delay: 0.1, speed: 0.8 },
-                        'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' }
+                        'search-page-facets-dn-inner': { delay: 0.1, speed: 0.8 }
+                        // 'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' }
                     }
                     break
                 case 'public-dataset':
@@ -592,7 +592,7 @@ export default {
                             speed: 0.4,
                             view: 'dataset-view-private-infos'
                         },
-                        'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' },
+                        'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-new-dataset-only' },
                         'dataset-controls': { delay: 0.1, speed: 0.4 },
                         'r2-messages': { delay: 0.1, speed: 0.4 },
                         'dataset-actions': { delay: 0, speed: 0.4 }
@@ -609,7 +609,7 @@ export default {
                 case 'file-list-private':
                     goIns = {
                         'file-list': { delay: 0.1, speed: 0.4, view: 'file-list-collection-closed' },
-                        'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' },
+                        // 'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' },
                         'r2-messages': { delay: 0.1, speed: 0.4 }
                     }
                     break
