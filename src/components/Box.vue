@@ -79,7 +79,7 @@
                     ></div>
                 </div>
             </div>
-            <div class="scrollable">
+            <div class="scrollable" :class="{ native: $store.state.USE_NATIVE_SCROLL }">
                 <div class="content">
                     <div class="inner" v-if="!view.setScrollBgImageOverElements">
                         <div class="inner bg-img" :class="[`${view.id}-scroll`]"></div>
@@ -132,7 +132,7 @@
                     <div class="scroll-bg"></div>
                 </div>
             </div>
-            <div class="scrollbar" v-if="showScrollbar">
+            <div class="scrollbar" v-if="showScrollbar && !$store.state.USE_NATIVE_SCROLL">
                 <div class="thumb">
                     <div class="edge up bg-img scrollbar-edge-arrow"></div>
                     <div class="center bg-img scrollbar-center-grid "></div>
@@ -201,6 +201,7 @@ export default {
     data() {
         return {
             uid: globals.getUid(),
+            uKey: 0,
             showScrollbar: false,
             tme1: null,
             tme2: null,
@@ -211,7 +212,6 @@ export default {
         if (this.boxEnabled) {
             globals.eventBus.$on('updateActiveView', this.onUpdateActiveView)
         }
-        console.log('BOX:created this.isModalOverlay = ', this.isModalOverlay)
     },
     beforeUnmount() {
         this.destroyBoxScrollHandler()
@@ -225,7 +225,7 @@ export default {
                 return false
             }
             return true
-        }
+        },
     },
     methods: {
         onKeyDownTab(evt) {
@@ -249,12 +249,20 @@ export default {
             }
             this.boxScrollHandler = null
         },
+
         onUpdateActiveView(args = {}) {
             if (args.targets && !_.includes(args.targets, this.config.id)) {
                 return
             }
+            if (!this.$store.state.USE_NATIVE_SCROLL) {
+                this.updateCustomScrollbar(args)
+            }else{
+                this.destroyBoxScrollHandler(true)
+            }
+        },
+
+        updateCustomScrollbar(args = {}) {
             const props = this.boxScrollHandler ? this.boxScrollHandler.getScrollProperties() : {}
-            // console.log('BOX:onUpdateActiveView props = ', props)
             if (!args.keepScrollPosition) {
                 props.yScrollPosition = 0
             }

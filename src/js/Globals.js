@@ -1,9 +1,10 @@
 import EventBus from 'mitt'
 const gBus = new EventBus()
 
-
-
 function Globals() {
+    //
+    this.USE_NATIVE_SCROLL = true
+    //
     this.eventBus = {
         $on: gBus.on,
         $off: gBus.off,
@@ -17,10 +18,5 @@ function Globals() {
     let uid = 0
     this.getUid = () => `uid-${++uid}`
 }
-
-
-
-
-
 
 export default Globals

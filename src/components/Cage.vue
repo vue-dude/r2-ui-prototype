@@ -348,23 +348,22 @@ export default {
             console.log('CG:onClick evt = ', evt)
             let options = { _00: { targets: null } }
 
+            if (!this.isModalOverlay && evt.key === 'toggle-scroll-state') {
+                this.$store.dispatch('setNativeScrollState', !this.$store.state.USE_NATIVE_SCROLL)
+                return globals.eventBus.$emit('updateActiveView')
+            }
+
             switch (true) {
                 case evt.viewKey === 'meta-actions-edit-generic' && evt.args.isViewTab:
                     this.updateMetaEditor(evt.key)
                     return null
 
                 case evt.viewKey === 'meta-actions-edit-generic' && evt.key === 'save':
-                    // console.log('CG:onClick trigger = ',value)
                     globals.eventBus.$emit('invokeSaveDataAction', { targets: ['meta-actions-edit-generic'] })
-
             }
 
             switch (evt.key) {
                 // cancel and close
-
-                // this.updateDatasetControls({ reset: true })
-                // return this.setViewMode(this.getViewStack()[0], options)
-
                 case 'modal-bg':
                 case 'cancel':
                 case 'confirm':
@@ -445,7 +444,6 @@ export default {
                 case 'edit-meta-authors':
                 case 'edit-meta-papers':
                 case 'edit-meta-common':
-                    // this.updateDatasetControls({ actions: true })
                     options['dataset-actions'] = {
                         view: 'meta-actions-edit-generic'
                     }
@@ -569,7 +567,6 @@ export default {
                     goIns = {
                         'search-page': { delay: 0.1, speed: 0.8 },
                         'search-page-facets-dn-inner': { delay: 0.1, speed: 0.8 }
-                        // 'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' }
                     }
                     break
                 case 'public-dataset':
@@ -609,7 +606,6 @@ export default {
                 case 'file-list-private':
                     goIns = {
                         'file-list': { delay: 0.1, speed: 0.4, view: 'file-list-collection-closed' },
-                        // 'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-close-only' },
                         'r2-messages': { delay: 0.1, speed: 0.4 }
                     }
                     break
@@ -662,7 +658,6 @@ export default {
 
                 // handle the different views inside the box
                 const view = this.boxes[boxId].views[prms.view]
-
                 _.each(this.boxes[boxId].views, vu => {
                     if (view !== vu) {
                         gsap.killTweensOf($(`${animationTargets}.${boxId} .${vu.id}`))

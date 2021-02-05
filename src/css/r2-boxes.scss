@@ -80,6 +80,17 @@
                         }
                     }
                 }
+
+                .click-zones {
+                    .click-zone {
+                        &.toggle-scroll-state {
+                            left: -234px;
+                            width: 207px;
+                            height: 38px;
+                            top: 0px;
+                        }
+                    }
+                }
             }
 
             &.landing-page {
@@ -94,6 +105,9 @@
                         left: 0px;
                         width: calc(#{$centered-width} + 10px);
                         height: calc(100vh - 92px);
+                        &.native {
+                            width: calc(#{$centered-width} - 14px);
+                        }
                         .content {
                             transform: scaleX(0.99);
                             .inner {
@@ -174,6 +188,9 @@
                         left: 810px;
                         height: calc(100vh - 483px);
                         width: 310px;
+                        &.native {
+                            width: 308px;
+                        }
                         .elements {
                             .search-page-facets-dn-inner-list-1,
                             .search-page-facets-dn-inner-list-2 {
@@ -273,6 +290,9 @@
                         left: 0px;
                         height: calc(100vh - 88px - 65px);
                         width: 785px;
+                        &.native {
+                            width: 774px;
+                        }
                         .content {
                             transform: scaleX(0.97);
                         }
@@ -385,6 +405,9 @@
                         left: 0px;
                         height: calc(100vh - 88px - 65px);
                         width: 785px;
+                        &.native {
+                            width: 773px;
+                        }
                         .content {
                             transform: scaleX(0.97);
                         }
@@ -448,6 +471,9 @@
                         left: 0px;
                         height: calc(100vh - 90px);
                         width: calc(#{$centered-width} + 10px);
+                        &.native {
+                            width: calc(#{$centered-width} - 14px);
+                        }
                         .content {
                             top: 2px;
                             transform: scaleX(0.988);
@@ -551,7 +577,6 @@
                                     box-sizing: border-box;
                                     width: 275px;
                                 }
-                           
                             }
                         }
                     }
@@ -579,6 +604,9 @@
                             left: 0px;
                             width: calc(var(--width) + 10px);
                             height: calc(100vh - 90px);
+                            &.native {
+                                width: calc(var(--width) + 0px);
+                            }
                             .content {
                                 transform: scaleX(0.98);
                                 .inner {
@@ -625,6 +653,9 @@
                             left: 0px;
                             width: calc(var(--width) + 10px);
                             height: calc(100vh - 90px);
+                            &.native {
+                                width: calc(var(--width) + 0px);
+                            }
                             .content {
                                 transform: scaleX(0.98);
                                 .inner {
@@ -685,6 +716,9 @@
                             left: 0px;
                             width: calc(var(--width) + 10px);
                             height: calc(100vh - 160px);
+                            &.native {
+                                width: calc(var(--width) + 5px);
+                            }
                             .content {
                                 transform: scaleX(0.95);
                                 .inner {
@@ -704,6 +738,9 @@
                     }
                     &.dataset-view-private-init-infos {
                         .scrollable {
+                            &.native {
+                                // width: calc(#{$centered-width} - xxpx);
+                            }
                             .click-zones {
                                 .click-zone {
                                     // &.edit-meta {
@@ -772,6 +809,9 @@
                             width: calc(1688px / 2 + 10px);
                             top: 196px;
                             left: 0px;
+                            &.native {
+                                width: calc(1688px / 2 + 5px);
+                            }
                             .content {
                                 transform: scaleX(0.98);
                             }
@@ -1199,6 +1239,9 @@
                             left: 24px;
                             height: calc(100vh - 255px);
                             width: 802px;
+                            &.native {
+                                width: 790px;
+                            }
                             .inner {
                                 height: 0px;
                             }

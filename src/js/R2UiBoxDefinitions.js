@@ -18,6 +18,9 @@ function R2UiBoxDefinitions() {
                         'head-nav-back': { click: true, classes: 'nav-item' },
                         arrow: {},
                         info: { html: '-' }
+                    },
+                    zones: {
+                        'toggle-scroll-state': {}
                     }
                 }
             }

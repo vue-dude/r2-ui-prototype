@@ -292,8 +292,10 @@ body {
                 }
                 .scrollable {
                     position: absolute;
-                    overflow-y: hidden;
-                    overflow-x: hidden;
+                    overflow: hidden;
+                    &.native {
+                        overflow-y: scroll;
+                    }
                     // -webkit-overflow-scrolling: touch; // chrome no effect
                     top: 60px;
                     left: 10px;
