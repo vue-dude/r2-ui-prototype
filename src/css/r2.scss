@@ -5,9 +5,9 @@ $sub-bar-height: 30px;
 // font error
 // @import 'element-plus/packages/theme-chalk/src/index.scss';
 
-@import 'css/element-ui-r2-style.scss';
-@import 'css/r2-assets.scss';
-@import 'css/r2-boxes.scss';
+@import '@/css/element-ui-r2-style.scss';
+@import '@/css/r2-assets.scss';
+@import '@/css/r2-boxes.scss';
 
 html,
 body {
@@ -53,7 +53,7 @@ body {
         height: 100vh;
         position: absolute;
         .main-background.bg-1 {
-            background-image: url(./r2-ui/backgrounds/bg-1.webp);
+            background-image: url(./../r2-ui/backgrounds/bg-1.webp);
             width: 3840px;
             height: 2400px;
             transform: scale(0.5);
@@ -132,7 +132,7 @@ body {
                 position: absolute; // its brighter with that ... ??
                 width: calc(374px / 2);
                 height: calc(88px / 2);
-                $url: './assets/nu-edmond-logo.png';
+                $url: './../assets/nu-edmond-logo.png';
                 background-image: url($url);
                 background-repeat: no-repeat;
                 background-size: contain;
@@ -176,7 +176,8 @@ body {
             z-index: 100000;
             .image {
                 position: absolute;
-                $url: './assets/mpdl-logo.png';
+                // $url: './assets/mpdl-logo.png';
+                $url: './../assets/mpdl-logo.png';
                 background-image: url($url);
                 background-repeat: no-repeat;
                 background-size: contain;

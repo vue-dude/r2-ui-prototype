@@ -9,17 +9,17 @@
         }
         // for asset within elements, use the css definition like:
         // &.recent-facets-bt:before {
-        //     content: url(./r2-ui/v1/recent-facets-bt.webp);
+        //     content: url(./../r2-ui/v1/recent-facets-bt.webp);
         // }
         // for asset as inner / bg, use the css definition like:
         // &.recent-facets-bt {
-        //     background-image: url(./r2-ui/v1/recent-facets-bt.webp);
+        //     background-image: url(./../r2-ui/v1/recent-facets-bt.webp);
         // }
         //
         // v.2
 
         // &.xxx {
-        //     background-image: url(./r2-ui/v2/webp/xxx.webp);
+        //     background-image: url(./../r2-ui/v2/webp/xxx.webp);
         // }
 
         &.head-nav-back {
@@ -34,172 +34,172 @@
 
         // scrollbar
         &.scrollbar-center-grid {
-            background-image: url(./r2-ui/v2/webp/scrollbar-center-grid.webp);
+            background-image: url(./../r2-ui/v2/webp/scrollbar-center-grid.webp);
         }
         &.scrollbar-edge-arrow {
-            background-image: url(./r2-ui/v2/webp/scrollbar-edge-arrow.webp);
+            background-image: url(./../r2-ui/v2/webp/scrollbar-edge-arrow.webp);
         }
 
         // main nav v2
         &.circ-bg {
-            background-image: url(./r2-ui/v2/webp/circ-bg.webp);
+            background-image: url(./../r2-ui/v2/webp/circ-bg.webp);
         }
         &.circ-bg-sel {
-            background-image: url(./r2-ui/v2/webp/circ-bg-sel.webp);
+            background-image: url(./../r2-ui/v2/webp/circ-bg-sel.webp);
         }
         &.sym-work {
-            background-image: url(./r2-ui/v2/webp/sym-work.webp);
+            background-image: url(./../r2-ui/v2/webp/sym-work.webp);
         }
         &.sym-work-sel {
-            background-image: url(./r2-ui/v2/webp/sym-work-sel.webp);
+            background-image: url(./../r2-ui/v2/webp/sym-work-sel.webp);
         }
         &.sym-diamond {
-            background-image: url(./r2-ui/v2/webp/sym-diamond.webp);
+            background-image: url(./../r2-ui/v2/webp/sym-diamond.webp);
         }
         &.sym-diamond-sel {
-            background-image: url(./r2-ui/v2/webp/sym-diamond-sel.webp);
+            background-image: url(./../r2-ui/v2/webp/sym-diamond-sel.webp);
         }
 
         //
 
         &.landing-page-scroll {
-            background-image: url(./r2-ui/v2/webp/landing-page.webp);
+            background-image: url(./../r2-ui/v2/webp/landing-page.webp);
         }
         // file-list page
 
         &.file-view-facets-top {
-            background-image: url(./r2-ui/v2/webp/file-view-facets-top.webp);
+            background-image: url(./../r2-ui/v2/webp/file-view-facets-top.webp);
         }
         &.file-view-download {
-            background-image: url(./r2-ui/v2/webp/file-view-download.webp);
+            background-image: url(./../r2-ui/v2/webp/file-view-download.webp);
         }
         &.file-view-headline {
-            background-image: url(./r2-ui/v2/webp/file-view-headline.webp);
+            background-image: url(./../r2-ui/v2/webp/file-view-headline.webp);
         }
         &.file-view-list-collection-closed {
-            background-image: url(./r2-ui/v2/webp/file-view-list-collection-closed.webp);
+            background-image: url(./../r2-ui/v2/webp/file-view-list-collection-closed.webp);
         }
         &.file-view-list-collection-open {
-            background-image: url(./r2-ui/v2/webp/file-view-list-collection-open.webp);
+            background-image: url(./../r2-ui/v2/webp/file-view-list-collection-open.webp);
         }
         &.file-view-pager {
-            background-image: url(./r2-ui/v2/webp/file-view-pager.webp);
+            background-image: url(./../r2-ui/v2/webp/file-view-pager.webp);
         }
 
         // mywork page
         &.mywork-page-scroll {
-            background-image: url(./r2-ui/v2/webp/mywork-page-dataset-list.webp);
+            background-image: url(./../r2-ui/v2/webp/mywork-page-dataset-list.webp);
         }
         &.mywork-page-search-bar-top {
-            background-image: url(./r2-ui/v2/webp/mywork-page-search-bar-top.webp);
+            background-image: url(./../r2-ui/v2/webp/mywork-page-search-bar-top.webp);
         }
         &.mywork-page-facets-up {
-            background-image: url(./r2-ui/v2/webp/mywork-page-facets-up.webp);
+            background-image: url(./../r2-ui/v2/webp/mywork-page-facets-up.webp);
         }
         &.mywork-page-facets-term {
-            background-image: url(./r2-ui/v2/webp/mywork-page-facets-term.webp);
+            background-image: url(./../r2-ui/v2/webp/mywork-page-facets-term.webp);
         }
         &.mywork-page-facets-term {
-            background-image: url(./r2-ui/v2/webp/mywork-page-facets-term.webp);
+            background-image: url(./../r2-ui/v2/webp/mywork-page-facets-term.webp);
         }
         //
         &.search-bar-top-with-pager {
-            background-image: url(./r2-ui/v2/webp/search-bar-top-with-pager.webp);
+            background-image: url(./../r2-ui/v2/webp/search-bar-top-with-pager.webp);
         }
 
         //
         &.search-page-scroll {
-            background-image: url(./r2-ui/v2/webp/search-page-dataset-list.webp);
+            background-image: url(./../r2-ui/v2/webp/search-page-dataset-list.webp);
         }
         &.search-page-search-bar-top {
-            background-image: url(./r2-ui/v2/webp/search-page-search-bar-top.webp);
+            background-image: url(./../r2-ui/v2/webp/search-page-search-bar-top.webp);
         }
         &.search-page-pager-go-bt {
-            background-image: url(./r2-ui/v2/webp/search-page-pager-go-bt.webp);
+            background-image: url(./../r2-ui/v2/webp/search-page-pager-go-bt.webp);
         }
         &.search-page-pager-left {
-            background-image: url(./r2-ui/v2/webp/search-page-pager-left.webp);
+            background-image: url(./../r2-ui/v2/webp/search-page-pager-left.webp);
         }
         &.search-page-facets-term {
-            background-image: url(./r2-ui/v2/webp/search-page-facets-term.webp);
+            background-image: url(./../r2-ui/v2/webp/search-page-facets-term.webp);
         }
         &.search-page-facets-up {
-            background-image: url(./r2-ui/v2/webp/search-page-facets-up.webp);
+            background-image: url(./../r2-ui/v2/webp/search-page-facets-up.webp);
         }
         &.search-page-facets-dn-head {
-            background-image: url(./r2-ui/v2/webp/search-page-facets-dn-head.webp);
+            background-image: url(./../r2-ui/v2/webp/search-page-facets-dn-head.webp);
         }
         &.search-page-facets-dn-inner-list-1,
         &.search-page-facets-dn-inner-list-2 {
-            background-image: url(./r2-ui/v2/webp/search-page-facets-dn-list.webp);
+            background-image: url(./../r2-ui/v2/webp/search-page-facets-dn-list.webp);
         }
         //
         &.dataset-view-public-content {
-            background-image: url(./r2-ui/v2/webp/dataset-view-private-content.webp);
+            background-image: url(./../r2-ui/v2/webp/dataset-view-private-content.webp);
         }
         &.dataset-view-public-infos {
-            background-image: url(./r2-ui/v2/webp/dataset-view-public-infos.webp);
+            background-image: url(./../r2-ui/v2/webp/dataset-view-public-infos.webp);
         }
 
         &.dataset-view-private-controls {
-            background-image: url(./r2-ui/v2/webp/dataset-view-private-controls.webp);
+            background-image: url(./../r2-ui/v2/webp/dataset-view-private-controls.webp);
         }
 
         &.dataset-view-private-content-scroll {
-            background-image: url(./r2-ui/v2/webp/dataset-view-private-content.webp);
+            background-image: url(./../r2-ui/v2/webp/dataset-view-private-content.webp);
         }
         &.dataset-view-private-infos-scroll {
-            background-image: url(./r2-ui/v2/webp/dataset-view-private-infos.webp);
+            background-image: url(./../r2-ui/v2/webp/dataset-view-private-infos.webp);
         }
         &.dataset-view-private-init-content-scroll {
-            background-image: url(./r2-ui/v2/webp/dataset-view-init-content.webp);
+            background-image: url(./../r2-ui/v2/webp/dataset-view-init-content.webp);
         }
         &.dataset-view-private-init-infos-scroll {
-            background-image: url(./r2-ui/v2/webp/dataset-view-init-infos.webp);
+            background-image: url(./../r2-ui/v2/webp/dataset-view-init-infos.webp);
         }
 
         // actions and messages
 
         &.dataset-actions-publish {
-            background-image: url(./r2-ui/v2/webp/dataset-actions-publish.webp);
+            background-image: url(./../r2-ui/v2/webp/dataset-actions-publish.webp);
         }
         &.msg-large-dataset {
-            background-image: url(./r2-ui/v2/webp/msg-large-dataset.webp);
+            background-image: url(./../r2-ui/v2/webp/msg-large-dataset.webp);
         }
         //
 
         // head-crtl
         &.head-crtl-sharing-bar {
-            background-image: url(./r2-ui/v2/webp/head-crtl-sharing-bar.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-sharing-bar.webp);
         }
         &.head-crtl-sym-upload {
-            background-image: url(./r2-ui/v2/webp/head-crtl-sym-upload.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-sym-upload.webp);
         }
         &.head-crtl-bt-edit {
-            background-image: url(./r2-ui/v2/webp/head-crtl-bt-edit.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-bt-edit.webp);
         }
         &.head-crtl-bt-edit-active {
-            background-image: url(./r2-ui/v2/webp/head-crtl-bt-edit-active.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-bt-edit-active.webp);
         }
         &.head-crtl-bt-new-dataset {
-            background-image: url(./r2-ui/v2/webp/head-crtl-bt-new-dataset.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-bt-new-dataset.webp);
         }
 
         &.head-crtl-bt-actions {
-            background-image: url(./r2-ui/v2/webp/head-crtl-bt-actions.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-bt-actions.webp);
         }
         &.head-crtl-bt-actions-active {
-            background-image: url(./r2-ui/v2/webp/head-crtl-bt-actions-active.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-bt-actions-active.webp);
         }
 
         &.head-crtl-sep {
-            background-image: url(./r2-ui/v2/webp/head-crtl-sep.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-sep.webp);
         }
         &.head-crtl-bt-open-in-tab {
-            background-image: url(./r2-ui/v2/webp/head-crtl-bt-open-in-tab.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-bt-open-in-tab.webp);
         }
         &.head-crtl-bt-close {
-            background-image: url(./r2-ui/v2/webp/head-crtl-bt-close.webp);
+            background-image: url(./../r2-ui/v2/webp/head-crtl-bt-close.webp);
         }
 
     }

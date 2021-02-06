@@ -130,8 +130,8 @@ function DeviceHandler(store = null, SWITCH_WIDTH_MOBILE_PIX = 768) {
         innerWidth: vp.innerWidth
     }
     // use it with vue store or with classic get-setup
-    console.log('DH: device = ', device)
-    console.log('DH: device.states = ', device.states)
+    // console.log('DH: device = ', device)
+    // console.log('DH: device.states = ', device.states)
     this.getDevice = () => device
     this.updateDevice = () => {
         store ? store.dispatch('updateDevice', device.states) : null
