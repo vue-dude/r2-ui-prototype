@@ -93,7 +93,7 @@ function DeviceHandler(store = null, SWITCH_WIDTH_MOBILE_PIX = 768) {
         }
         // console.log('STORE:setDevice 1 vp.width = ', vp.width)
         switch (true) {
-            case vp.innerHeight < 620: // not enough height for bubble nav
+            case vp.innerHeight < 620: // not enough height for animated nav
                 return mobileDefault // enforces mobile version
             case vp.width === 834: // m-pad
             case vp.width === 1024: // i-pad pro 12

@@ -1,5 +1,7 @@
 <template>
-    <router-view />
+    <div class="app" :class="[$store.state.deviceClasses]" @click="onClickApp">
+        <router-view />
+    </div>
 </template>
 
 <script>
@@ -9,19 +11,33 @@ import DeviceHandler from '@/js/DeviceHandler'
 export default {
     data() {
         return {
-            about: {
-                id: 42
-            },
-            home: {
-                id: 51
-            }
+            itvl: null,
+            itvlCnt: 0
+        }
+    },
+    created() {
+        // TODO move this into the device control class
+        globals.eventBus.$on('windowResized', this.onWindowResized)
+        window.onorientationchange = () => {
+            this.updateDevice()
+            this.itvlCnt = 5
+            clearInterval(this.itvl)
+            this.itvl = setInterval(() => {
+                this.updateDevice()
+                if (--itvlCnt < 1) {
+                    clearInterval(this.itvl)
+                }
+            }, 2000)
         }
     },
     mounted() {
-        // globals.eventBus.$emit("testEvent");
+        this.updateDevice()
         setTimeout(() => {
-            window.globals.eventBus.$emit('test-event', 1234)
-        }, 1000)
+            this.updateAppHeight(this.$store.state.innerHeight)
+        }, 100)
+        $(document).on('touchmove', function(e) {
+            globals.eventBus.$emit('app-touched')
+        })
     },
     methods: {
         onClickApp(evt) {
@@ -38,8 +54,8 @@ export default {
             if (height > 1250 && !this.$store.state.isMobile) {
                 height = 1250
             }
-            const yOffset = this.$store.state.isMobile ? 100 : 150
-            const dy = this.$store.state.isMobile ? 50 : 30
+            // const yOffset = this.$store.state.isMobile ? 100 : 150
+            // const dy = this.$store.state.isMobile ? 50 : 30
             // $('.default-view .content-container .content .layers .scroll-area').height(height - yOffset - dy)
             // $('.default-view .content-container .content .layers .bg').height(height - yOffset - dy + 30)
             // $('.default-view .mobile-navigator .scroll-area').height(height - yOffset - dy + 30)

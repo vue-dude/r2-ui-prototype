@@ -1,9 +1,8 @@
 import { createStore } from 'vuex'
-import Globals from './Globals'
 
 const store = createStore({
     state: {
-        USE_NATIVE_SCROLL: true,
+        useNativeScroll: true,
         preloadActive: false,
         loggedIn: false,
         deviceClasses: '',
@@ -17,7 +16,7 @@ const store = createStore({
     },
     actions: {
         setNativeScrollState(context, yes) {
-            this.state.USE_NATIVE_SCROLL = yes
+            this.state.useNativeScroll = yes
         },
         setPreloadActiveState(context, yes) {
             this.state.preloadActive = yes

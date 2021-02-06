@@ -349,7 +349,7 @@ export default {
             let options = { _00: { targets: null } }
 
             if (!this.isModalOverlay && evt.key === 'toggle-scroll-state') {
-                this.$store.dispatch('setNativeScrollState', !this.$store.state.USE_NATIVE_SCROLL)
+                this.$store.dispatch('setNativeScrollState', !this.$store.state.useNativeScroll)
                 return globals.eventBus.$emit('updateActiveView')
             }
 

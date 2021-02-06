@@ -79,7 +79,7 @@
                     ></div>
                 </div>
             </div>
-            <div class="scrollable" :class="{ native: $store.state.USE_NATIVE_SCROLL }">
+            <div class="scrollable" :class="{ native: $store.state.useNativeScroll }">
                 <div class="content">
                     <div class="inner" v-if="!view.setScrollBgImageOverElements">
                         <div class="inner bg-img" :class="[`${view.id}-scroll`]"></div>
@@ -132,7 +132,7 @@
                     <div class="scroll-bg"></div>
                 </div>
             </div>
-            <div class="scrollbar" v-if="showScrollbar && !$store.state.USE_NATIVE_SCROLL">
+            <div class="scrollbar" v-if="showScrollbar && !$store.state.useNativeScroll">
                 <div class="thumb">
                     <div class="edge up bg-img scrollbar-edge-arrow"></div>
                     <div class="center bg-img scrollbar-center-grid "></div>
@@ -254,7 +254,7 @@ export default {
             if (args.targets && !_.includes(args.targets, this.config.id)) {
                 return
             }
-            if (!this.$store.state.USE_NATIVE_SCROLL) {
+            if (!this.$store.state.useNativeScroll) {
                 this.updateCustomScrollbar(args)
             }else{
                 this.destroyBoxScrollHandler(true)
