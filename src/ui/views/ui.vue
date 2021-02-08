@@ -1,14 +1,39 @@
 <template>
-    <div class="app" :class="[$store.state.deviceClasses]" @click="onClickApp">
-        <router-view />
+    <div class="ui" :class="[$store.state.deviceClasses]" @click="onClickApp">
+        <background></background>
+        <div class="centered-view">
+            <div class="centered-bg"></div>
+            <cage></cage>
+            <div class="modal-bg"></div>
+            <cage isModalOverlay="true"></cage>
+        </div>
+        <nav-bar></nav-bar>
+        <sub-bar></sub-bar>
     </div>
 </template>
 
 <script>
 //
-import DeviceHandler from '@/js/DeviceHandler'
+import DeviceHandler from '@/ui/js/DeviceHandler'
+//
+import Background from '@/ui/components/Background.vue'
+import NavBar from '@/ui/components/NavBar.vue'
+import Cage from '@/ui/components/Cage.vue'
+import SubBar from '@/ui/components/SubBar.vue'
 //
 export default {
+    components: {
+        Background,
+        NavBar,
+        Cage,
+        SubBar
+    },
+    props: {
+        user: { type: String },
+        config: {
+            id: { type: String }
+        }
+    }, 
     data() {
         return {
             itvl: null,
@@ -39,11 +64,24 @@ export default {
             globals.eventBus.$emit('app-touched')
         })
     },
+    watch: {
+        '$store.state.innerWidth'() {
+            this.updateAppWidth()
+            this.updateAppHeight()
+        },
+        '$store.state.innerHeight'(height) {
+            this.updateAppHeight()
+        },
+        '$store.state.isMobile'() {
+            this.updateAppWidth()
+            this.updateAppHeight()
+        }
+    },
     methods: {
-        onClickApp(evt) {
+        onClickApp() {
             globals.eventBus.$emit('app-touched')
         },
-        onWindowResized(evt) {
+        onWindowResized() {
             this.updateDevice()
         },
         updateDevice() {
@@ -68,25 +106,9 @@ export default {
                 // $('.default-view .content-container').width('') // none-mobile situation driven by css
             }
         }
-    },
-    watch: {
-        '$store.state.innerWidth'() {
-            this.updateAppWidth()
-            this.updateAppHeight()
-        },
-        '$store.state.innerHeight'(height) {
-            this.updateAppHeight()
-        },
-        '$store.state.isMobile'() {
-            this.updateAppWidth()
-            this.updateAppHeight()
-        }
     }
 }
 </script>
-
 <style lang="scss">
-// @import '@/css/r2.scss';
-// @import './test.scss'; // points to 'views' folder
-@import '@/css/r2.scss';
+@import '@/ui/css/r2.scss';
 </style>

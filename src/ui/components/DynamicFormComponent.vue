@@ -75,8 +75,8 @@
 </template>
 
 <script>
-import DynamicFormHandler from '@/js/DynamicFormHandler'
-import DynamicFormCell from '@/components/DynamicFormCell'
+import DynamicFormHandler from '@/ui/js/DynamicFormHandler'
+import DynamicFormCell from '@/ui/components/DynamicFormCell'
 // import VueDynamicForm from 'vue-dynamic-form-component' // dont works with vue-3
 export default {
     components: {

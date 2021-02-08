@@ -5,9 +5,9 @@ $sub-bar-height: 30px;
 // font error
 // @import 'element-plus/packages/theme-chalk/src/index.scss';
 
-@import '@/css/element-ui-r2-style.scss';
-@import '@/css/r2-assets.scss';
-@import '@/css/r2-boxes.scss';
+@import '@/ui/css/element-ui-r2-style.scss';
+@import '@/ui/css/r2-assets.scss';
+@import '@/ui/css/r2-boxes.scss';
 
 html,
 body {
@@ -38,7 +38,7 @@ body {
     }
 }
 
-.r2 {
+.ui {
     .click-zone {
         // background-color: rgba(255, 0, 0, 0.2); // COLOR TEST ON OFF
     }

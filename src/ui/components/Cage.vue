@@ -22,8 +22,8 @@
 
 <script>
 //
-import Box from '@/components/Box.vue'
-import BoxDefinitions from '@/js/R2UiBoxDefinitions.js'
+import Box from '@/ui/components/Box.vue'
+import BoxDefinitions from '@/ui/js/R2UiBoxDefinitions.js'
 //
 export default {
     components: {

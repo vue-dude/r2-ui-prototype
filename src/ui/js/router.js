@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import DefaultPage from '../views/DefaultPage.vue'
+import ui from '../views/ui.vue'
 
 const routes = [
     {
@@ -10,7 +10,7 @@ const routes = [
         path: '/ui',
         name: 'ui',
         props: true,
-        component: DefaultPage
+        component: ui
     }
 ]
 

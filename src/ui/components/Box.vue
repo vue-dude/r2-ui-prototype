@@ -185,9 +185,9 @@
 
 <script>
 //
-import BoxScrollHandler from '@/js/BoxScrollHandler.js'
-import DynamicForm from '@/components/DynamicFormComponent.vue'
-import ActiveList from '@/components/ActiveListComponent.vue'
+import BoxScrollHandler from '@/ui/js/BoxScrollHandler.js'
+import DynamicForm from '@/ui/components/DynamicFormComponent.vue'
+import ActiveList from '@/ui/components/ActiveListComponent.vue'
 //
 export default {
     components: {

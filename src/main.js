@@ -1,13 +1,13 @@
-import Globals from '@/js/Globals'
-import Datasource from '@/js/Datasource'
+import Globals from '@/ui/js/Globals'
+import Datasource from '@/ui/js/Datasource'
 window.globals = new Globals()
 window.datasource = new Datasource()
 window.globals.init()
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import store from './js/store'
-import getRouter from './js/router'
+import store from './ui/js/store'
+import getRouter from './ui/js/router'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'

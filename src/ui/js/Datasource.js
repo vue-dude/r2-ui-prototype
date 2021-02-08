@@ -1,5 +1,5 @@
 import axios from 'axios'
-import R2DataHandler from '@/js/R2DataHandler'
+import R2DataHandler from '@/ui/js/R2DataHandler'
 
 function Datasource() {
     // ui prptptype

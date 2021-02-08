@@ -1,14 +1,3 @@
 <template>
-    <ui />
+    <router-view />
 </template>
-
-<script>
-//
-import ui from '@/views/ui'
-//
-export default {
-    components: {
-        ui
-    }
-}
-</script>
