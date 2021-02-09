@@ -19,7 +19,8 @@
 export default {
     components: {},
     props: {
-        config: {}
+        config: {},
+        data: null
     },
     data() {
         return {
@@ -45,11 +46,13 @@ export default {
             this.update()
         },
         updateList() {
-            const data = this.r2DataHandler.getData(this.config.schemaKey, this.config.dataKey)
+            const data = this.data ? this.data : this.r2DataHandler.getData(this.config.schemaKey, this.config.dataKey)
             this.list = this.getList(data, this.config.listFilterKey)
             // console.log('ALC:updateList this.config.dataKey = ', this.config.dataKey)
             // console.log('ALC:updateList this.config.schemaKey = ', this.config.schemaKey)
-            // console.log('ALC:updateList data = ', data)
+            console.log('ALC:updateList this.config = ', this.config)
+            console.log('ALC:updateList data = ', data)
+            console.log('ALC:updateList this.list = ', this.list)
         },
         getList(data) {
             const list = []
@@ -76,7 +79,6 @@ export default {
                         }
                         list.push(elm)
                     })
-
                     return list
                 case 'common-list-in-private-dataset-view':
                     console.log('ALC:getList common data = ', data)
@@ -107,7 +109,6 @@ export default {
                     })
                     return list
             }
-
             return list
         }
     }

@@ -60,20 +60,6 @@ function Datasource() {
     }
     this.getPath = getPath
 
-    // const updateMediaPaths = html => {
-    //     if (_.isString(html)) {
-    //         let path = getPath('/media/') // flat file mode
-    //         if (base.cms && base.cms !== '/') {
-    //             path = `${base.cms}media/` // api / cms mode
-    //         }
-    //         html = html.split('src="/media/').join(`src="${path}`)
-    //     }
-    //     if (!globals.WEBP_ENABLED) {
-    //         html = html.split('.webp"').join('.jpg"')
-    //     }
-    //     return html
-    // }
-    // this.updateMediaPaths = updateMediaPaths
 
     const get = async (api, data = {}, options = {}) => {
         return axios.create().get(getPath(api), data, options)
@@ -140,7 +126,6 @@ function Datasource() {
         })
     }
     this.getInitialData = () => getInitialData()
-
 
     const getStructure = () => {
         if (config.structure) {

@@ -117,6 +117,8 @@
                         >
                             <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
                             <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
+                            <content-list v-if="cmp.component === 'content-list'" :config="cmp.config"></content-list>
+                            <content-cell v-if="cmp.component === 'content-cell'" :config="cmp.config"></content-cell>
                         </div>
                     </div>
 
@@ -139,7 +141,6 @@
                     <div class="edge dn bg-img scrollbar-edge-arrow"></div>
                 </div>
             </div>
-
             <div class="overlay">
                 <div class="elements">
                     <div
@@ -164,6 +165,8 @@
                     >
                         <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
                         <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
+                        <content-list v-if="cmp.component === 'content-list'" :config="cmp.config"></content-list>
+                        <content-cell v-if="cmp.component === 'content-cell'" :config="cmp.config"></content-cell>
                     </div>
                 </div>
                 <div class="click-zones">
@@ -188,11 +191,15 @@
 import BoxScrollHandler from '@/ui/js/BoxScrollHandler.js'
 import DynamicForm from '@/ui/components/DynamicFormComponent.vue'
 import ActiveList from '@/ui/components/ActiveListComponent.vue'
+import ContentList from '@/ui/components/ContentList.vue'
+import ContentCell from '@/ui/components/ContentCell.vue'
 //
 export default {
     components: {
         DynamicForm,
-        ActiveList
+        ActiveList,
+        ContentList,
+        ContentCell
     },
     props: {
         config: {},
@@ -257,7 +264,7 @@ export default {
             }
             if (!this.uiStore.state.useNativeScroll) {
                 this.updateCustomScrollbar(args)
-            }else{
+            } else {
                 this.destroyBoxScrollHandler(true)
             }
         },

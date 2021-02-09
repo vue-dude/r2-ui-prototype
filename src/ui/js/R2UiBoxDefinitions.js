@@ -76,31 +76,37 @@ function R2UiBoxDefinitions() {
                 'landing-page': {
                     scroll: {
                         zones: {
-                            'bt-search': {
-                                key: 'show-search-page'
-                            },
-                            'show-ds-1': {
-                                key: 'show-public-dataset'
-                            },
-                            'show-ds-2': {
-                                key: 'show-public-dataset'
-                            },
-                            'show-ds-3': {
-                                key: 'show-public-dataset'
-                            },
-                            'show-ds-4': {
-                                key: 'show-public-dataset'
-                            },
-                            'show-ds-5': {
-                                key: 'show-public-dataset'
-                            },
-                            'show-ds-6': {
-                                key: 'show-public-dataset'
-                            },
-                            'show-ds-7': {
-                                key: 'show-public-dataset'
-                            }
+                            // 'bt-search': {
+                            //     key: 'show-search-page'
+                            // },
+                            // 'show-ds-1': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-2': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-3': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-4': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-5': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-6': {
+                            //     key: 'show-public-dataset'
+                            // },
+                            // 'show-ds-7': {
+                            //     key: 'show-public-dataset'
+                            // }
                         }
+                        // components: {
+                        //     'recent-datasets': {
+                        //         component: 'content-list',
+                        //         config: { schemaKey: 'datasets', dataKey: 'recent', cellConfig: { test: 123 } }
+                        //     }
+                        // }
                     }
                 }
             }
@@ -137,6 +143,29 @@ function R2UiBoxDefinitions() {
                             },
                             'show-ds-7': {
                                 key: 'show-private-dataset'
+                            }
+                        },
+                        components: {
+                            'my-datasets': {
+                                component: 'content-list',
+                                config: {
+                                    schemaKey: 'datasets',
+                                    dataKey: 'my-c819',
+                                    contentCellConfig: {
+                                        components: {
+                                            // 'text-content': {
+                                            //     component: 'active-list',
+                                            //     config: {
+                                            //         listFilterKey: 'my-dataset-list-element'
+                                            //     }
+                                            // }
+                                            'dataset-list-item': {
+                                                component: 'dataset-list-item',
+                                                config: { showAs: 'private-dataset' }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -264,7 +293,6 @@ function R2UiBoxDefinitions() {
                             }
                         }
                     }
-
                 },
                 'dataset-view-private-init-content': {
                     scroll: {
