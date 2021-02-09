@@ -36,6 +36,7 @@ export default {
     },
     data() {
         return {
+            uiStore: globals.uiStore,
             viewMode: 'home',
             viewModePrev: null,
             privateView: false,
@@ -349,7 +350,7 @@ export default {
             let options = { _00: { targets: null } }
 
             if (!this.isModalOverlay && evt.key === 'toggle-scroll-state') {
-                this.$store.dispatch('setNativeScrollState', !this.$store.state.useNativeScroll)
+                this.uiStore.setNativeScrollState(!this.uiStore.state.useNativeScroll)
                 return globals.eventBus.$emit('updateActiveView')
             }
 
@@ -456,7 +457,7 @@ export default {
         },
         setLoggedIn() {
             // $('.nav.quick-actions').removeClass('hidden')
-            // this.$store.dispatch('setLoggedInState', true)
+            // this.uiStore.dispatch('setLoggedInState', true)
             // this.setViewMode('mywork')
             // this.boxes.facets.close = false
         },
@@ -537,7 +538,7 @@ export default {
                     path = 'List & Search Files of my Dataset / Dual Color Imaging from a Single BF2 ...'
                     break
             }
-            this.$store.dispatch('setSubPath', path)
+            this.uiStore.setSubPath(path)
 
             const animateAll = privateView !== this.privateView
             this.privateView = privateView

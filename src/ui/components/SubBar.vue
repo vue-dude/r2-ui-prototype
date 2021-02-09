@@ -4,7 +4,7 @@
             <div class="border left"></div>
             <div class="border right"></div>
         </div>
-        <div class="left-adjusted-text path">{{ $store.state.subPath }}</div>
+        <div class="left-adjusted-text path">{{ uiStore.state.subPath }}</div>
         <div class="legal" v-html="legal"></div>
         <div class="logo">
             <div class="image"></div>
@@ -19,6 +19,7 @@ export default {
     },
     data() {
         return {
+            uiStore: globals.uiStore,
             path: {
                 main: '',
                 sub: '',

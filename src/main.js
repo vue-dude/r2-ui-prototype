@@ -6,7 +6,6 @@ window.globals.init()
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import store from './ui/js/store'
 import getRouter from './ui/js/router'
 
 import axios from 'axios'
@@ -40,14 +39,11 @@ const createVueApp = async () => {
             const app = createApp(App)
                 .use(VueAxios, axios)
                 .use(i18n)
-                .use(store)
                 .use(router)
                 .use(ElementPlus)
-
             // app.config.errorHandler = () => null
             app.config.warnHandler = () => null
             app.mount('#app')
-            globals.registerStore(app.$store)
         }, 500)
         //
     })

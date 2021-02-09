@@ -1,9 +1,9 @@
 <template>
-    <div class="ui" :class="[$store.state.deviceClasses]" @click="onClickApp">
+    <div class="ui" :class="[uiStore.state.deviceClasses]" @click="onClickApp">
         <background></background>
         <div class="centered-view">
             <div class="centered-bg"></div>
-            <cage></cage>
+            <cage />
             <div class="modal-bg"></div>
             <cage isModalOverlay="true"></cage>
         </div>
@@ -20,7 +20,7 @@ import Background from '@/ui/components/Background.vue'
 import NavBar from '@/ui/components/NavBar.vue'
 import Cage from '@/ui/components/Cage.vue'
 import SubBar from '@/ui/components/SubBar.vue'
-//
+
 export default {
     components: {
         Background,
@@ -33,9 +33,10 @@ export default {
         config: {
             id: { type: String }
         }
-    }, 
+    },
     data() {
         return {
+            uiStore: globals.uiStore,
             itvl: null,
             itvlCnt: 0
         }
@@ -58,21 +59,21 @@ export default {
     mounted() {
         this.updateDevice()
         setTimeout(() => {
-            this.updateAppHeight(this.$store.state.innerHeight)
+            this.updateAppHeight(this.uiStore.state.innerHeight)
         }, 100)
         $(document).on('touchmove', function(e) {
             globals.eventBus.$emit('app-touched')
         })
     },
     watch: {
-        '$store.state.innerWidth'() {
+        'uiStore.state.innerWidth'() {
             this.updateAppWidth()
             this.updateAppHeight()
         },
-        '$store.state.innerHeight'(height) {
+        'uiStore.state.innerHeight'() {
             this.updateAppHeight()
         },
-        '$store.state.isMobile'() {
+        'uiStore.state.isMobile'() {
             this.updateAppWidth()
             this.updateAppHeight()
         }
@@ -85,21 +86,21 @@ export default {
             this.updateDevice()
         },
         updateDevice() {
-            new DeviceHandler(this.$store).updateDevice()
+            new DeviceHandler(this.uiStore).updateDevice()
         },
         updateAppHeight() {
-            let height = this.$store.state.innerHeight
-            if (height > 1250 && !this.$store.state.isMobile) {
+            let height = this.uiStore.state.innerHeight
+            if (height > 1250 && !this.uiStore.state.isMobile) {
                 height = 1250
             }
-            // const yOffset = this.$store.state.isMobile ? 100 : 150
-            // const dy = this.$store.state.isMobile ? 50 : 30
+            // const yOffset = this.uiStore.state.isMobile ? 100 : 150
+            // const dy = this.uiStore.state.isMobile ? 50 : 30
             // $('.default-view .content-container .content .layers .scroll-area').height(height - yOffset - dy)
             // $('.default-view .content-container .content .layers .bg').height(height - yOffset - dy + 30)
             // $('.default-view .mobile-navigator .scroll-area').height(height - yOffset - dy + 30)
         },
         updateAppWidth(width) {
-            const state = this.$store.state
+            const state = this.uiStore.state
             if (state.isMobile) {
                 // $('.default-view .content-container').width(state.innerWidth - 32)
             } else {

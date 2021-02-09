@@ -1,3 +1,4 @@
+// obsolete, is replaced by uiStore via globals / reactive
 import { createStore } from 'vuex'
 
 const store = createStore({

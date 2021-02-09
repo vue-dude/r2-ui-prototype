@@ -1,15 +1,68 @@
 import EventBus from 'mitt'
-const gBus = new EventBus()
+import { reactive, readonly } from 'vue'
 
 function Globals() {
     //
     // Global Event Bus, keep vue 2.6 compatibility
     //
+    const gBus = new EventBus()
     this.eventBus = {
         $on: gBus.on,
         $off: gBus.off,
         $emit: gBus.emit
     }
+
+    // uiStore, solution is Vue.js 3 only, uses 'reactive'
+    // for vue 2.6, watch out for a solution based on 'observable'
+    // Use a isolated store to prevent collisions on vuex-store on integration
+
+    const UiStore = function() {
+        const state = reactive({
+            useNativeScroll: true,
+            preloadActive: false,
+            deviceClasses: '',
+            mediaTag: '',
+            os: '',
+            isMobile: false,
+            innerWidth: 0,
+            innerHeight: 0,
+            rKey: 0,
+            subPath: ''
+        })
+        this.state = readonly(state)
+
+        // dispatch: keep compatibility with the access model of vuex store
+        this.dispatch = (target, args) => {
+            this[target](args)
+        }
+        // access the mutations directly is also possible
+        this.setNativeScrollState = yes => {
+            state.useNativeScroll = yes
+        }
+        this.setPreloadActiveState = yes => {
+            state.preloadActive = yes
+        }
+        this.setSubPath = path => {
+            state.subPath = path
+        }
+        this.updateDevice = deviceStates => {
+            state.deviceClasses = deviceStates.classes
+            state.os = deviceStates.os
+            state.mediaTag = deviceStates.mediaTag
+            state.isMobile = deviceStates.isMobile
+            state.innerWidth = deviceStates.innerWidth
+            state.innerHeight = deviceStates.innerHeight
+        }
+        this.orientationChanged = () => {
+            state.rKey++
+            if (state.rKey > 1000) {
+                state.rKey = 0
+            }
+        }
+    }
+
+    this.uiStore = new UiStore()
+
     //
     // Resize Engine, needed for device manager
     //
@@ -33,10 +86,6 @@ function Globals() {
     window.addEventListener('resize', onResize)
 
     this.getDimensions = () => dimensions
-
-    //
-    // 
-    //
 
     //
     this.registerI18n = () => null
