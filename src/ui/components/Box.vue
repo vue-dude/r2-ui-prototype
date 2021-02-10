@@ -117,8 +117,16 @@
                         >
                             <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
                             <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
-                            <content-list v-if="cmp.component === 'content-list'" :config="cmp.config"></content-list>
-                            <content-cell v-if="cmp.component === 'content-cell'" :config="cmp.config"></content-cell>
+                            <content-list
+                                v-if="cmp.component === 'content-list'"
+                                :config="cmp.config"
+                                @subClick="onSubClick"
+                            ></content-list>
+                            <content-cell
+                                v-if="cmp.component === 'content-cell'"
+                                :config="cmp.config"
+                                @subClick="onSubClick"
+                            ></content-cell>
                         </div>
                     </div>
 
@@ -219,6 +227,7 @@ export default {
     created() {
         if (this.boxEnabled) {
             globals.eventBus.$on('updateActiveView', this.onUpdateActiveView)
+            globals.eventBus.$on('subClick', this.onSubClick)
         }
     },
     beforeUnmount() {
@@ -306,6 +315,9 @@ export default {
                 }
             })
             globals.eventBus.$emit('click', { key, box: this.config, args, viewKey })
+        },
+        onSubClick(props) {
+            this.onClickThing(props.key, props.args)
         }
     }
 }

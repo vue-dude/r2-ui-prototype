@@ -49,7 +49,7 @@ const R2D2DataHandler = function() {
 
     this.getData = (schemaKey, dataKey) => {
         if (schemaKey === 'datasets') {
-            return filter(datasets[dataKey], 'zenodo')
+            return filter(datasets[dataKey], 'zenodo-dataset-list')
         }
         // this is special for the form generator
         const key = `${schemaKey}-${dataKey}`
@@ -66,7 +66,7 @@ const R2D2DataHandler = function() {
     //
 
     const filter = (data, key) => {
-        if (key === 'zenodo') {
+        if (key === 'zenodo-dataset-list') {
             const res = []
             _.each(data, elm => {
                 let authors = []
@@ -75,11 +75,14 @@ const R2D2DataHandler = function() {
                 })
                 let teaser = elm.metadata.description
                 teaser = teaser.substr(0, 3) === '<p>' ? teaser.substr(3) : teaser
-                authors = authors.join(' ,')
+                authors = authors.join(', ')
                 res.push({
+                    dataKey: elm.id,
+                    schemaKey: 'dataset',
                     title: elm.metadata.title,
                     authors,
-                    teaser
+                    teaser,
+                    numOfFiles: _.random(8, 4563327)
                 })
             })
             return res

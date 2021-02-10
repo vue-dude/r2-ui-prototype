@@ -1,13 +1,14 @@
 <template>
     <div class="component dataset-list-item">
         <div class="text-cage">
-            <div class="title" v-html="data.title"></div>
-            <div class="authors" v-html="data.authors"></div>
+            <div class="title" v-html="data.title" @click.stop="onClick"></div>
+            <div class="authors">{{ data.authors }}</div>
             <div class="teaser-cage">
                 <div class="teaser" v-html="data.teaser"></div>
             </div>
+            <div class="files-info">{{ $n(data.numOfFiles)  }} Files</div>
         </div>
-        <div class="icon dataset-open-eye"></div>
+        <div class="icon dataset-open-eye" @click.stop="onClick"></div>
     </div>
 </template>
 
@@ -38,6 +39,12 @@ export default {
     methods: {
         update() {
             this.uKey = this.uKey > 1000 ? 1 : ++this.uKey
+        },
+        onClick() {
+            this.$emit('subClick', {
+                key: 'show-dataset',
+                args: { schemaKey: this.data.schemaKey, dataKey: this.data.dataKey }
+            })
         }
     }
 }

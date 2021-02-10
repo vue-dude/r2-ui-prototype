@@ -1183,6 +1183,1203 @@ const datasets = {
                 volume: 3069396.0
             },
             updated: '2020-01-20T17:39:49.994634+00:00'
+        },
+        {
+            conceptrecid: '3537215',
+            created: '2019-11-11T12:04:55.494648+00:00',
+            doi: '10.4122/1.1000000109',
+            files: [
+                {
+                    bucket: '7ff8ea04-5813-45cf-96fd-dee477efbc75',
+                    checksum: 'md5:a65e425834faeff9d633eae2b9b45450',
+                    key: 'Industrial_fermentation_of_hydrogen.pdf',
+                    links: {
+                        self:
+                            'https://zenodo.org/api/files/7ff8ea04-5813-45cf-96fd-dee477efbc75/Industrial_fermentation_of_hydrogen.pdf'
+                    },
+                    size: 188601,
+                    type: 'pdf'
+                }
+            ],
+            id: 3537216,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.4122/1.1000000109.svg',
+                bucket: 'https://zenodo.org/api/files/7ff8ea04-5813-45cf-96fd-dee477efbc75',
+                doi: 'https://doi.org/10.4122/1.1000000109',
+                html: 'https://zenodo.org/record/3537216',
+                latest: 'https://zenodo.org/api/records/3537216',
+                latest_html: 'https://zenodo.org/record/3537216',
+                self: 'https://zenodo.org/api/records/3537216'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                alternate_identifiers: [
+                    {
+                        identifier: '10.4122/1.1000000110',
+                        scheme: 'doi'
+                    }
+                ],
+                communities: [
+                    {
+                        id: 'dtuproceedings'
+                    },
+                    {
+                        id: 'gd2010'
+                    }
+                ],
+                contributors: [
+                    {
+                        affiliation:
+                            'Department of Chemical and Biochemical Engineering Technical University of Denmark Denmark',
+                        name: 'Woodley, John',
+                        type: 'Supervisor'
+                    }
+                ],
+                creators: [
+                    {
+                        affiliation:
+                            'Department of Chemical and Biochemical Engineering Technical University of Denmark Denmark',
+                        name: 'Jensen, Kasper'
+                    }
+                ],
+                description:
+                    'Oil-sands processing, gas-to-liquids and coal gasification projects which are ongoing, require huge amounts of hydrogen and is expected to boost the demand significantly within the next few years. Industrial fermentation of hydrogen recycle organic waste materials into hydrogen at little expense.',
+                doi: '10.4122/1.1000000109',
+                keywords: ['hydrogen', 'fermentation'],
+                license: {
+                    id: 'CC-BY-4.0'
+                },
+                meeting: {
+                    acronym: 'gd2010',
+                    dates: '2010-06-25 - 2010-06-25',
+                    place: 'Technical University of Denmark (Anker Engelundsvej 1, 2800 Kgs Lyngby, Denmark)',
+                    session: '1',
+                    session_part: 'Main',
+                    title: 'GR\u00d8N DYST 2010'
+                },
+                publication_date: '2010-06-25',
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '3537216'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '3537215'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    subtype: 'conferencepaper',
+                    title: 'Conference paper',
+                    type: 'publication'
+                },
+                title: 'Industrial fermentation of hydrogen'
+            },
+            owners: [79769],
+            revision: 2,
+            stats: {
+                downloads: 5.0,
+                unique_downloads: 5.0,
+                unique_views: 2.0,
+                version_downloads: 5.0,
+                version_unique_downloads: 5.0,
+                version_unique_views: 2.0,
+                version_views: 2.0,
+                version_volume: 943005.0,
+                views: 2.0,
+                volume: 943005.0
+            },
+            updated: '2020-01-20T16:56:20.980579+00:00'
+        },
+        {
+            conceptrecid: '3694007',
+            created: '2020-03-02T15:27:30.394815+00:00',
+            doi: '10.15587/1729-4061.2020.194852',
+            files: [
+                {
+                    bucket: 'd7874e68-2ce8-43c4-84d2-9656cd3d8d96',
+                    checksum: 'md5:63cec18dda2cdb2e0ca1c9e9cb26b0b9',
+                    key:
+                        'Experimental set-up design of SOFC single cell performance using simple furnace with maximum temperature of 1000 degrees.pdf',
+                    links: {
+                        self:
+                            'https://zenodo.org/api/files/d7874e68-2ce8-43c4-84d2-9656cd3d8d96/Experimental%20set-up%20design%20of%20SOFC%20single%20cell%20performance%20using%20simple%20furnace%20with%20maximum%20temperature%20of%201000%20degrees.pdf'
+                    },
+                    size: 2882738,
+                    type: 'pdf'
+                }
+            ],
+            id: 3694008,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.15587/1729-4061.2020.194852.svg',
+                bucket: 'https://zenodo.org/api/files/d7874e68-2ce8-43c4-84d2-9656cd3d8d96',
+                doi: 'https://doi.org/10.15587/1729-4061.2020.194852',
+                html: 'https://zenodo.org/record/3694008',
+                latest: 'https://zenodo.org/api/records/3694008',
+                latest_html: 'https://zenodo.org/record/3694008',
+                self: 'https://zenodo.org/api/records/3694008'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                creators: [
+                    {
+                        affiliation: 'Diponegoro University',
+                        name: 'Darjat Darjat',
+                        orcid: '0000-0003-4515-3302'
+                    },
+                    {
+                        affiliation: 'Diponegoro University',
+                        name: 'Sulistyo Sulistyo',
+                        orcid: '0000-0002-3232-7871'
+                    },
+                    {
+                        affiliation: 'Diponegoro University',
+                        name: 'Aris Triwiyatno',
+                        orcid: '0000-0001-8666-2678'
+                    },
+                    {
+                        affiliation: 'Diponegoro University',
+                        name: 'Sumardi Sumardi'
+                    },
+                    {
+                        affiliation: 'Diponegoro University',
+                        name: 'Isroni Widiyantoro',
+                        orcid: '0000-0002-0226-3846'
+                    }
+                ],
+                description:
+                    '<p>Real-time monitoring and control of solid oxide fuel cell (SOFC) systems is are important to identify and understand cell performance. Some parameters that affect the performance of SOFC cells include fuel flow rate, furnace temperature, and the cell material itself. These parameters have a correlation with each other in making SOFC cells to be applied as a substitute for alternative energy. This results in a reliable SOFC cell, optimal output voltage and lower operating temperature. Because so far the material of SOFC cells is ceramics that have a working temperature range between 500&ndash;1000&nbsp;&deg;C. Monitoring is limited by the SOFC operating environment around the furnace. SOFC operations are limited to hydrogen and oxygen fuel flow channels. The maximum furnace operating temperature is 1000 degrees, and the minimum output voltage for one cell. Therefore, it is necessary to place sensor sensing points as needed. This study aims to design a monitoring and regulation system for hydrogen/oxygen flow in the SOFC operating environment based on the Arduino Mega 2560 microcontroller and computer interface. Valve control uses open-loop and on-off control methods. Open-loop control is used to set the valve rotation angle value. While the on-off control to close the valve automatically when there is an excess concentration of hydrogen in a laboratory room. The system is designed for the needs of laboratory-scale experiments on simple furnaces. This device also functions as a simple mini prototype module. So that it can be used as material to learn and understand the SOFC system widely. The prototype test results show that the flow of hydrogen can be adjusted from 0.07&ndash;4.74&nbsp;L/min and oxygen can be adjusted between 0.24&ndash;4.8&nbsp;L/min. Temperature sensors have an average error of 2.6&nbsp;% and voltage sensors have an accuracy of 0.1&nbsp;V</p>',
+                doi: '10.15587/1729-4061.2020.194852',
+                journal: {
+                    issue: '2 (103)',
+                    pages: '68-76',
+                    title: 'Eastern-European Journal of Enterprise Technologies',
+                    volume: '1'
+                },
+                keywords: [
+                    'SOFC',
+                    'hydrogen',
+                    'oxygen',
+                    'performance',
+                    'cell',
+                    'sensor',
+                    'flow',
+                    'arduino',
+                    'voltage',
+                    'furnace'
+                ],
+                language: 'eng',
+                license: {
+                    id: 'CC-BY-4.0'
+                },
+                publication_date: '2020-02-29',
+                references: [
+                    'Vielstich, W., Lamm, A., Gasteiger, H. A., Yokokawa, H. (Eds.) (2010). Handbook of Fuel Cells. Fundamental Technology and Applications. John Wiley & Sons. doi: https://doi.org/10.1002/9780470974001',
+                    'Wang, C. (2006). Modeling and Control of Hybrid. Theses Diss. Mont. State Univ., 13 (5), 399\u2013419.',
+                    'Canavar, M., Kaplan, Y. (2015). Effects of mesh and interconnector design on solid oxide fuel cell performance. International Journal of Hydrogen Energy, 40 (24), 7829\u20137834. doi: https://doi.org/10.1016/j.ijhydene.2014.11.101',
+                    'Guk, E., Kim, J.-S., Ranaweera, M., Venkatesan, V., Jackson, L. (2018). In-situ monitoring of temperature distribution in operating solid oxide fuel cell cathode using proprietary sensory techniques versus commercial thermocouples. Applied Energy, 230, 551\u2013562. doi: https://doi.org/10.1016/j.apenergy.2018.08.120',
+                    'Darjat, Sulistyo, Triwiyatno, Sudjadi, Kurniahadi (2020). Designing Hydrogen and Oxygen Flow Rate Control on a Solid Oxide Fuel Cell Simulator Using the Fuzzy Logic Control Method. Processes, 8 (2), 154. doi: https://doi.org/10.3390/pr8020154',
+                    'Zhu, Y., Tomsovic, K. (2002). Development of models for analyzing the load-following performance of microturbines and fuel cells. Electric Power Systems Research, 62 (1), 1\u201311. doi: https://doi.org/10.1016/s0378-7796(02)00033-0',
+                    'Wincewicz, K., Cooper, J. (2005). Taxonomies of SOFC material and manufacturing alternatives. Journal of Power Sources, 140 (2), 280\u2013296. doi: https://doi.org/10.1016/j.jpowsour.2004.08.032',
+                    'Sun, C., Stimming, U. (2007). Recent anode advances in solid oxide fuel cells. Journal of Power Sources, 171 (2), 247\u2013260. doi: https://doi.org/10.1016/j.jpowsour.2007.06.086',
+                    'Mahato, N., Banerjee, A., Gupta, A., Omar, S., Balani, K. (2015). Progress in material selection for solid oxide fuel cell technology: A review. Progress in Materials Science, 72, 141\u2013337. doi: https://doi.org/10.1016/j.pmatsci.2015.01.001',
+                    'Dey, T., Singdeo, D., Bose, M., Basu, R. N., Ghosh, P. C. (2013). Study of contact resistance at the electrode\u2013interconnect interfaces in planar type Solid Oxide Fuel Cells. Journal of Power Sources, 233, 290\u2013298. doi: https://doi.org/10.1016/j.jpowsour.2013.01.111',
+                    'Taher, S. A., Mansouri, S. (2014). Optimal PI controller design for active power in grid-connected SOFC DG system. International Journal of Electrical Power & Energy Systems, 60, 268\u2013274. doi: https://doi.org/10.1016/j.ijepes.2014.02.010',
+                    'Padull\u00e9s, J., Ault, G. W., McDonald, J. R. (2000). An integrated SOFC plant dynamic model for power systems simulation. Journal of Power Sources, 86 (1-2), 495\u2013500. doi: https://doi.org/10.1016/s0378-7753(99)00430-9',
+                    'Sun, L., Li, D., Wu, G., Lee, K. Y., Xue, Y. (2015). A Practical Compound Controller Design for Solid Oxide Fuel Cells. IFAC-PapersOnLine, 48 (30), 445\u2013449. doi: https://doi.org/10.1016/j.ifacol.2015.12.419'
+                ],
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '3694008'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '3694007'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    subtype: 'article',
+                    title: 'Journal article',
+                    type: 'publication'
+                },
+                title:
+                    'EXPERIMENTAL SET-UP DESIGN OF SOFC SINGLE CELL PERFORMANCE USING SIMPLE FURNACE WITH MAXIMUM TEMPERATURE OF 1000 DEGREES'
+            },
+            owners: [73680],
+            revision: 3,
+            stats: {
+                downloads: 13.0,
+                unique_downloads: 13.0,
+                unique_views: 9.0,
+                version_downloads: 13.0,
+                version_unique_downloads: 13.0,
+                version_unique_views: 9.0,
+                version_views: 9.0,
+                version_volume: 37475594.0,
+                views: 9.0,
+                volume: 37475594.0
+            },
+            updated: '2020-03-03T10:18:13.452650+00:00'
+        },
+        {
+            conceptrecid: '4361881',
+            created: '2020-12-19T05:31:34.564447+00:00',
+            doi: '10.32609/j.ruje.6.55105',
+            files: [
+                {
+                    bucket: 'c326c2c1-2d2c-4a43-a69b-754099371e83',
+                    checksum: 'md5:9e7f16ce0cb5c6d60a09b7dcc63f816f',
+                    key: 'RUJEC_article_55105.pdf',
+                    links: {
+                        self:
+                            'https://zenodo.org/api/files/c326c2c1-2d2c-4a43-a69b-754099371e83/RUJEC_article_55105.pdf'
+                    },
+                    size: 584089,
+                    type: 'pdf'
+                },
+                {
+                    bucket: 'c326c2c1-2d2c-4a43-a69b-754099371e83',
+                    checksum: 'md5:aab3ea828613b67f0cf132b90b616613',
+                    key: 'RUJEC_article_55105.xml',
+                    links: {
+                        self:
+                            'https://zenodo.org/api/files/c326c2c1-2d2c-4a43-a69b-754099371e83/RUJEC_article_55105.xml'
+                    },
+                    size: 77506,
+                    type: 'xml'
+                }
+            ],
+            id: 4361882,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.32609/j.ruje.6.55105.svg',
+                bucket: 'https://zenodo.org/api/files/c326c2c1-2d2c-4a43-a69b-754099371e83',
+                doi: 'https://doi.org/10.32609/j.ruje.6.55105',
+                html: 'https://zenodo.org/record/4361882',
+                latest: 'https://zenodo.org/api/records/4361882',
+                latest_html: 'https://zenodo.org/record/4361882',
+                self: 'https://zenodo.org/api/records/4361882'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                creators: [
+                    {
+                        affiliation: 'Oxford Institute for Energy Studies, Oxford, United Kingdom',
+                        name: 'Stern, Jonathan'
+                    }
+                ],
+                description:
+                    '<p>The\u00a0role of gases in the\u00a0energy transition is a\u00a0different, and much more immediate, issue in the\u00a0EU, compared with other global regions. Net zero targets for 2050 mean that in order to retain the\u00a0gas market and the\u00a0extensive network infrastructure which has been developed, zero carbon gases will need to be developed, and natural gas (methane) will need to be decarbonized. Maximum availability of biomethane and hydrogen from power to gas is estimated at 100\u2013150 billion cubic meters by 2050 (or around 25\u201330% of gas demand in the\u00a0late 2010s. Therefore, large scale hydrogen production from reforming methane with carbon capture and storage (CCS), or pyrolysis, will be needed to maintain anything close to current demand levels. Costs of biomethane and hydrogen options are several times higher than prices of natural gas in 2019\u20132020. Significant financial support for decarbonization technologies \u2014 from governments and regulators \u2014 will therefore be needed in the\u00a02020s, if they are to be available on a\u00a0large scale in the\u00a02030s and 2040s. If the\u00a0EU gas community fails to advance convincing decarbonized narratives backed by investments which allow for commercialization of renewable gas and methane decarbonization technologies; and/or governments fail to create the\u00a0necessary legal/fiscal and regulatory frameworks to support these technologies, then energy markets will progressively move away from gases and towards electrification. </p>',
+                doi: '10.32609/j.ruje.6.55105',
+                imprint: {
+                    publisher: 'Non-profit partnership "Voprosy Ekonomiki"'
+                },
+                journal: {
+                    issue: '(4)',
+                    pages: '390-405',
+                    title: 'Russian Journal of Economics',
+                    volume: '6'
+                },
+                keywords: [
+                    'gas',
+                    'decarbonisation',
+                    'hydrogen',
+                    'biomethane',
+                    'pipeline',
+                    'LNG',
+                    'methane',
+                    'emissions'
+                ],
+                license: {
+                    id: 'CC-BY-4.0'
+                },
+                publication_date: '2020-12-11',
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '4361882'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '4361881'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    subtype: 'article',
+                    title: 'Journal article',
+                    type: 'publication'
+                },
+                title: 'The\u00a0role of gases in the\u00a0European energy transition'
+            },
+            owners: [22270],
+            revision: 2,
+            stats: {
+                downloads: 4.0,
+                unique_downloads: 4.0,
+                unique_views: 3.0,
+                version_downloads: 4.0,
+                version_unique_downloads: 4.0,
+                version_unique_views: 3.0,
+                version_views: 3.0,
+                version_volume: 2336356.0,
+                views: 3.0,
+                volume: 2336356.0
+            },
+            updated: '2020-12-19T12:27:12.268622+00:00'
+        },
+        {
+            conceptrecid: '2239924',
+            created: '2018-12-13T09:00:01.690190+00:00',
+            doi: '10.3390/chemengineering2040061',
+            files: [
+                {
+                    bucket: '2cd7b1e8-1343-497b-84ce-ea651429b3f4',
+                    checksum: 'md5:a91631c307fdde451ccff16fa90cfdee',
+                    key: 'ChemEngineering-02-00061.pdf',
+                    links: {
+                        self:
+                            'https://zenodo.org/api/files/2cd7b1e8-1343-497b-84ce-ea651429b3f4/ChemEngineering-02-00061.pdf'
+                    },
+                    size: 1038303,
+                    type: 'pdf'
+                }
+            ],
+            id: 2239925,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.3390/chemengineering2040061.svg',
+                bucket: 'https://zenodo.org/api/files/2cd7b1e8-1343-497b-84ce-ea651429b3f4',
+                doi: 'https://doi.org/10.3390/chemengineering2040061',
+                html: 'https://zenodo.org/record/2239925',
+                latest: 'https://zenodo.org/api/records/2239925',
+                latest_html: 'https://zenodo.org/record/2239925',
+                self: 'https://zenodo.org/api/records/2239925'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                creators: [
+                    {
+                        affiliation: 'J\u00fcrgen',
+                        name: 'Loipersb\u00f6ck'
+                    },
+                    {
+                        affiliation: 'Markus',
+                        name: 'Luisser'
+                    },
+                    {
+                        affiliation: 'Stefan',
+                        name: 'M\u00fcller'
+                    },
+                    {
+                        affiliation: 'Hermann',
+                        name: 'Hofbauer'
+                    },
+                    {
+                        affiliation: 'Reinhard',
+                        name: 'Rauch'
+                    }
+                ],
+                description:
+                    '<p>The worldwide production of hydrogen in 2010 was estimated to be approximately 50 Mt/a, mostly based on fossil fuels. By using lignocellulosic feedstock, an environmentally friendly hydrogen production route can be established. A flow sheet simulation for a biomass based hydrogen production plant was published in a previous work. The plant layout consisted of a dual fluidized bed gasifier including a gas cooler and a dust filter. Subsequently, a water gas shift plant was installed to enhance the hydrogen yield and a biodiesel scrubber was used to remove tars and water from the syngas. CO2 was removed and the gas was compressed to separate hydrogen in a pressure swing adsorption. A steam reformer was used to reform the hydrocarbon-rich tail gas of the pressure swing adsorption and increase the hydrogen yield. Based on this work, a Research facility was erected and the results were validated. These results were used to upscale the Research plant to a 10 MW fuel feed scale. A validation of the system showed a chemical efficiency of the system of 60% and an overall efficiency of 55%, which indicates the high potential of this Technology.</p>',
+                doi: '10.3390/chemengineering2040061',
+                grants: [
+                    {
+                        acronym: 'ROMEO',
+                        code: '680395',
+                        funder: {
+                            acronyms: [],
+                            doi: '10.13039/501100000780',
+                            links: {
+                                self: 'https://zenodo.org/api/funders/10.13039/501100000780'
+                            },
+                            name: 'European Commission'
+                        },
+                        links: {
+                            self: 'https://zenodo.org/api/grants/10.13039/501100000780::680395'
+                        },
+                        program: 'H2020',
+                        title: 'Reactor optimisation by membrane enhanced operation'
+                    }
+                ],
+                keywords: ['hydrogen', 'energy systems', 'catalysis', 'reforming', 'modeling'],
+                language: 'eng',
+                license: {
+                    id: 'CC-BY-4.0'
+                },
+                publication_date: '2018-12-11',
+                related_identifiers: [
+                    {
+                        identifier: '10.1016/j.fuel.2007.06.002',
+                        relation: 'references',
+                        scheme: 'doi'
+                    },
+                    {
+                        identifier: '10.1515/revce-2016-0022',
+                        relation: 'references',
+                        scheme: 'doi'
+                    },
+                    {
+                        identifier: '10.1007/s11814-017-0130-1',
+                        relation: 'references',
+                        scheme: 'doi'
+                    }
+                ],
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '2239925'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '2239924'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    subtype: 'article',
+                    title: 'Journal article',
+                    type: 'publication'
+                },
+                title:
+                    'Experimental Demonstration and Validation of Hydrogen Production Based on Gasification of Lignocellulosic Feedstock'
+            },
+            owners: [55967],
+            revision: 14,
+            stats: {
+                downloads: 43.0,
+                unique_downloads: 42.0,
+                unique_views: 15.0,
+                version_downloads: 43.0,
+                version_unique_downloads: 42.0,
+                version_unique_views: 15.0,
+                version_views: 16.0,
+                version_volume: 44647029.0,
+                views: 16.0,
+                volume: 44647029.0
+            },
+            updated: '2020-01-20T13:56:58.097187+00:00'
+        },
+        {
+            conceptrecid: '4383644',
+            created: '2020-12-22T05:38:51.841733+00:00',
+            doi: '10.32609/j.ruje.6.55478',
+            files: [
+                {
+                    bucket: '53948ac1-354c-4a8a-afc2-fa6b61b188f7',
+                    checksum: 'md5:24a26faa370ddb8a12f1d0ce8aeda898',
+                    key: 'RUJEC_article_55478.pdf',
+                    links: {
+                        self:
+                            'https://zenodo.org/api/files/53948ac1-354c-4a8a-afc2-fa6b61b188f7/RUJEC_article_55478.pdf'
+                    },
+                    size: 420801,
+                    type: 'pdf'
+                },
+                {
+                    bucket: '53948ac1-354c-4a8a-afc2-fa6b61b188f7',
+                    checksum: 'md5:01d051797ab34903058415bc417952e3',
+                    key: 'RUJEC_article_55478.xml',
+                    links: {
+                        self:
+                            'https://zenodo.org/api/files/53948ac1-354c-4a8a-afc2-fa6b61b188f7/RUJEC_article_55478.xml'
+                    },
+                    size: 90261,
+                    type: 'xml'
+                }
+            ],
+            id: 4383645,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.32609/j.ruje.6.55478.svg',
+                bucket: 'https://zenodo.org/api/files/53948ac1-354c-4a8a-afc2-fa6b61b188f7',
+                doi: 'https://doi.org/10.32609/j.ruje.6.55478',
+                html: 'https://zenodo.org/record/4383645',
+                latest: 'https://zenodo.org/api/records/4383645',
+                latest_html: 'https://zenodo.org/record/4383645',
+                self: 'https://zenodo.org/api/records/4383645'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                creators: [
+                    {
+                        affiliation: 'German Institute for International and Security Affairs, Berlin, Germany',
+                        name: 'Westphal, Kirsten'
+                    }
+                ],
+                description:
+                    "<p>Russia is the\u00a0world's largest gas exporter and Germany is its most important market. Moreover, natural gas is a\u00a0centerpiece of the\u00a0Russian economy and the\u00a0backbone of its energy supply to the\u00a0Russian population. In terms of its external gas relations, Germany has always kept a\u00a0special and strategic position, both in terms of volumes, but also in substance. This contribution explores the\u00a0impact of the\u00a0energy transition on the\u00a0bilateral gas relationship. It argues that the\u00a0bilateral gas relationship has been subjected to various paradigm shifts in the\u00a0past, but, until recently, the\u00a0relationship has been seen as in line with the\u00a0strategic energy triangle of climate change/sustainability, supply security and economic competitiveness. This perception has come into question over two issues: climate change and supply security. Moreover, Germany's authority over the\u00a0conduct and the\u00a0legal framework of bilateral gas relations has been increasingly contested, by Brussels, but also horizontally by other EU member states. At this stage, it is very uncertain whether both sides will manage to maintain and redefine their close energy partnership to address climate change. Decarbonizing the\u00a0gas value chain would be a\u00a0centerpiece. This would require a\u00a0political shift away from securitization to decarbonization, not only in Germany, but even more so in the\u00a0EU, and in particular, in Russia. </p>",
+                doi: '10.32609/j.ruje.6.55478',
+                imprint: {
+                    publisher: 'Non-profit partnership "Voprosy Ekonomiki"'
+                },
+                journal: {
+                    issue: '(4)',
+                    pages: '406-423',
+                    title: 'Russian Journal of Economics',
+                    volume: '6'
+                },
+                keywords: ['energy transition', 'Russia', 'Germany', 'natural gas', 'decarbonization', 'hydrogen'],
+                license: {
+                    id: 'CC-BY-4.0'
+                },
+                publication_date: '2020-12-14',
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '4383645'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '4383644'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    subtype: 'article',
+                    title: 'Journal article',
+                    type: 'publication'
+                },
+                title: 'German\u2013Russian gas relations in face of  the\u00a0energy transition'
+            },
+            owners: [22270],
+            revision: 2,
+            stats: {
+                downloads: 5.0,
+                unique_downloads: 5.0,
+                unique_views: 4.0,
+                version_downloads: 5.0,
+                version_unique_downloads: 5.0,
+                version_unique_views: 4.0,
+                version_views: 4.0,
+                version_volume: 2104005.0,
+                views: 4.0,
+                volume: 2104005.0
+            },
+            updated: '2020-12-23T00:27:13.747688+00:00'
+        },
+        {
+            conceptrecid: '3968189',
+            created: '2020-07-31T06:31:01.384273+00:00',
+            doi: '10.3390/molecules25010163',
+            files: [
+                {
+                    bucket: 'db5295df-54c0-43b3-b81a-11e778487032',
+                    checksum: 'md5:09851ad835ee42c044f9c1e217298bc2',
+                    key: 'molecules-25-00163-v2.pdf',
+                    links: {
+                        self:
+                            'https://zenodo.org/api/files/db5295df-54c0-43b3-b81a-11e778487032/molecules-25-00163-v2.pdf'
+                    },
+                    size: 6348329,
+                    type: 'pdf'
+                }
+            ],
+            id: 3968190,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.3390/molecules25010163.svg',
+                bucket: 'https://zenodo.org/api/files/db5295df-54c0-43b3-b81a-11e778487032',
+                doi: 'https://doi.org/10.3390/molecules25010163',
+                html: 'https://zenodo.org/record/3968190',
+                latest: 'https://zenodo.org/api/records/3968190',
+                latest_html: 'https://zenodo.org/record/3968190',
+                self: 'https://zenodo.org/api/records/3968190'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                creators: [
+                    {
+                        affiliation:
+                            'Consejo Nacional de Investigaciones Cient\u00edficas y T\u00e9cnicas, CONICET\u2014Instituto Balseiro (UNCuyo and CNEA), Departamento Fisicoqu\u00edmica de Materiales, Gerencia de Investigaci\u00f3n Aplicada, Centro At\u00f3mico Bariloche (CNEA)',
+                        name: 'Juli\u00e1n Puszkiel',
+                        orcid: '0000-0002-1547-997X'
+                    },
+                    {
+                        affiliation:
+                            'Consejo Nacional de Investigaciones Cient\u00edficas y T\u00e9cnicas, CONICET\u2014Instituto Balseiro (UNCuyo and CNEA), Departamento Fisicoqu\u00edmica de Materiales, Gerencia de Investigaci\u00f3n Aplicada, Centro At\u00f3mico Bariloche (CNEA)',
+                        name: 'Aurelien Gasnier'
+                    },
+                    {
+                        affiliation:
+                            'Consejo Nacional de Investigaciones Cient\u00edficas y T\u00e9cnicas, CONICET\u2014Instituto Balseiro (UNCuyo and CNEA), Departamento Fisicoqu\u00edmica de Materiales, Gerencia de Investigaci\u00f3n Aplicada, Centro At\u00f3mico Bariloche (CNEA)',
+                        name: 'Guillermina Amica'
+                    },
+                    {
+                        affiliation:
+                            'Consejo Nacional de Investigaciones Cient\u00edficas y T\u00e9cnicas, CONICET\u2014Instituto Balseiro (UNCuyo and CNEA), Departamento Fisicoqu\u00edmica de Materiales, Gerencia de Investigaci\u00f3n Aplicada, Centro At\u00f3mico Bariloche (CNEA)',
+                        name: 'Fabiana Gennari'
+                    }
+                ],
+                description:
+                    '<p>Hydrogen technology has become essential to fulfill our mobile and stationary energy<br>\nneeds in a global low&ndash;carbon energy system. The non-renewability of fossil fuels and the increasing<br>\nenvironmental problems caused by our fossil fuel&ndash;running economy have led to our efforts towards the<br>\napplication of hydrogen as an energy vector. However, the development of volumetric and gravimetric<br>\nefficient hydrogen storage media is still to be addressed. LiBH4 is one of the most interesting media to<br>\nstore hydrogen as a compound due to its large gravimetric (18.5 wt.%) and volumetric (121 kgH2/m3)<br>\nhydrogen densities. In this review, we focus on some of the main explored approaches to tune<br>\nthe thermodynamics and kinetics of LiBH4: (I) LiBH4 + MgH2 destabilized system, (II) metal and<br>\nmetal hydride added LiBH4, (III) destabilization of LiBH4 by rare-earth metal hydrides, and (IV) the<br>\nnanoconfinement of LiBH4 and destabilized LiBH4 hydride systems. Thorough discussions about the<br>\nreaction pathways, destabilizing and catalytic effects of metals and metal hydrides, novel synthesis<br>\nprocesses of rare earth destabilizing agents, and all the essential aspects of nanoconfinement are led.</p>',
+                doi: '10.3390/molecules25010163',
+                journal: {
+                    issue: '1',
+                    pages: '163',
+                    title: 'Molecules',
+                    volume: '25'
+                },
+                keywords: [
+                    'borohydrides;',
+                    'nanoconfinement',
+                    'rare earth',
+                    'additive',
+                    'destabilization',
+                    'hydrogen',
+                    'storage'
+                ],
+                language: 'eng',
+                license: {
+                    id: 'CC-BY-4.0'
+                },
+                notes:
+                    'The authors thank CONICET (Consejo Nacional de Invetigaciones Cient\u00edficas y T\u00e9cnicas),\nANPCyT (Agencia Nacional de Promoci\u00f3n Cient\u00edfica y Tecnol\u00f3gica), CNEA (Comisi\u00f3n Nacional de Energ\u00eda\nAt\u00f3mica) and Instituto Balseiro (UNCuyo).',
+                publication_date: '2019-12-31',
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '3968190'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '3968189'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    subtype: 'article',
+                    title: 'Journal article',
+                    type: 'publication'
+                },
+                title: 'Tuning LiBH4 for Hydrogen Storage: Destabilization, Additive, and Nanoconfinement Approaches',
+                version: 'Final version'
+            },
+            owners: [101872],
+            revision: 3,
+            stats: {
+                downloads: 11.0,
+                unique_downloads: 9.0,
+                unique_views: 8.0,
+                version_downloads: 11.0,
+                version_unique_downloads: 9.0,
+                version_unique_views: 8.0,
+                version_views: 11.0,
+                version_volume: 69831619.0,
+                views: 11.0,
+                volume: 69831619.0
+            },
+            updated: '2020-07-31T12:59:22.139996+00:00'
+        },
+        {
+            conceptdoi: '10.5281/zenodo.1482893',
+            conceptrecid: '1482893',
+            created: '2018-11-11T17:11:11.971765+00:00',
+            doi: '10.5281/zenodo.1482894',
+            files: [
+                {
+                    bucket: 'a68cac41-607c-40e7-a3c8-8dce361f061c',
+                    checksum: 'md5:177c403490775996d824b3d07e05c1b7',
+                    key: 'Haeolus_Svalbard.pdf',
+                    links: {
+                        self: 'https://zenodo.org/api/files/a68cac41-607c-40e7-a3c8-8dce361f061c/Haeolus_Svalbard.pdf'
+                    },
+                    size: 1582118,
+                    type: 'pdf'
+                }
+            ],
+            id: 1482894,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.5281/zenodo.1482894.svg',
+                bucket: 'https://zenodo.org/api/files/a68cac41-607c-40e7-a3c8-8dce361f061c',
+                conceptbadge: 'https://zenodo.org/badge/doi/10.5281/zenodo.1482893.svg',
+                conceptdoi: 'https://doi.org/10.5281/zenodo.1482893',
+                doi: 'https://doi.org/10.5281/zenodo.1482894',
+                html: 'https://zenodo.org/record/1482894',
+                latest: 'https://zenodo.org/api/records/1482894',
+                latest_html: 'https://zenodo.org/record/1482894',
+                self: 'https://zenodo.org/api/records/1482894'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                creators: [
+                    {
+                        affiliation: 'SINTEF Mathematics & Cybenetics',
+                        name: 'Zenith, Federico'
+                    }
+                ],
+                description:
+                    '<p>Evaluation of the option to supply energy to Svalbard by importing hydrogen produced in Finnmark, where large resources are available and difficult to exploit because of a weak grid.</p>',
+                doi: '10.5281/zenodo.1482894',
+                grants: [
+                    {
+                        acronym: 'Haeolus',
+                        code: '779469',
+                        funder: {
+                            acronyms: [],
+                            doi: '10.13039/501100000780',
+                            links: {
+                                self: 'https://zenodo.org/api/funders/10.13039/501100000780'
+                            },
+                            name: 'European Commission'
+                        },
+                        links: {
+                            self: 'https://zenodo.org/api/grants/10.13039/501100000780::779469'
+                        },
+                        program: 'H2020',
+                        title: 'Hydrogen-Aeolic Energy with Optimised eLectrolysers Upstream of Substation'
+                    }
+                ],
+                keywords: ['hydrogen', 'svalbard', 'transport'],
+                language: 'eng',
+                license: {
+                    id: 'CC-BY-SA-4.0'
+                },
+                publication_date: '2018-11-09',
+                references: [],
+                related_identifiers: [
+                    {
+                        identifier: '10.5281/zenodo.1482893',
+                        relation: 'isVersionOf',
+                        scheme: 'doi'
+                    }
+                ],
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '1482894'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '1482893'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    title: 'Presentation',
+                    type: 'presentation'
+                },
+                title: 'Hydrogen Export to Svalbard: Exploiting Stranded Wind in Finnmark'
+            },
+            owners: [36330],
+            revision: 4,
+            stats: {
+                downloads: 110.0,
+                unique_downloads: 99.0,
+                unique_views: 109.0,
+                version_downloads: 110.0,
+                version_unique_downloads: 99.0,
+                version_unique_views: 108.0,
+                version_views: 113.0,
+                version_volume: 174032980.0,
+                views: 114.0,
+                volume: 174032980.0
+            },
+            updated: '2020-01-20T15:02:27.887539+00:00'
+        },
+        {
+            conceptrecid: '3407331',
+            created: '2019-09-13T12:17:52.515877+00:00',
+            doi: '10.3390/catal8110544',
+            files: [
+                {
+                    bucket: 'de85d370-ab27-4a45-a1be-e212d5f85686',
+                    checksum: 'md5:4538881e8fd9df19e7c2cdcb79fdc0a6',
+                    key: '2018_096.pdf',
+                    links: {
+                        self: 'https://zenodo.org/api/files/de85d370-ab27-4a45-a1be-e212d5f85686/2018_096.pdf'
+                    },
+                    size: 1483217,
+                    type: 'pdf'
+                }
+            ],
+            id: 3407332,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.3390/catal8110544.svg',
+                bucket: 'https://zenodo.org/api/files/de85d370-ab27-4a45-a1be-e212d5f85686',
+                doi: 'https://doi.org/10.3390/catal8110544',
+                html: 'https://zenodo.org/record/3407332',
+                latest: 'https://zenodo.org/api/records/3407332',
+                latest_html: 'https://zenodo.org/record/3407332',
+                self: 'https://zenodo.org/api/records/3407332'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                communities: [
+                    {
+                        id: 'forth-iceht2020'
+                    }
+                ],
+                creators: [
+                    {
+                        affiliation: 'FORTH / ICE-HT',
+                        name: 'Papavasiliou J,.'
+                    },
+                    {
+                        affiliation: 'Department of Materials Science, University of Patras',
+                        name: 'Paxinou A.'
+                    },
+                    {
+                        affiliation: 'Faculty of Chemistry, University of Maria Curie-Sk\u0142odowska',
+                        name: 'S\u0142owik G.'
+                    },
+                    {
+                        affiliation: 'FORTH / ICE-HT',
+                        name: 'Neophytides S.'
+                    },
+                    {
+                        affiliation: 'Department of Materials Science, University of Patras',
+                        name: 'Avgouropoulos G.',
+                        orcid: '0000-0001-8352-304X'
+                    }
+                ],
+                description:
+                    '<p>A research and technological challenge for fuel processors integrated with High Temperature Polymer Electrolyte Membrane Fuel Cells (HT-PEMFCs), also known as Internal Reforming Methanol Fuel Cells (IRMFCs), operating at 200&ndash;220 \u25e6C, is the development of highly efficient catalysts, which will be able to selectively (low CO and other by-products formation) produce the required quantity of hydrogen at these temperatures. In this work, various amounts of platinum were dispersed via deposition-precipitation (DP) and impregnation (I) methods onto the surface of hydrothermally prepared ceria nanorods (CNRs) and titania nanotubes (TNTs). These nanostructured catalysts were evaluated in steam reforming of methanol process targeting the operation level of IRMFCs. The (DP) method resulted in highly (atomically) dispersed platinum-based catalysts, as confirmed with Scanning Transmission Electron Microscopy (STEM) analysis, with a mean particle size of less than 1 nm in the case of 0.35 wt.% Pt/CNRs catalyst. Ultra-fine dispersion of platinum species correlated with the presence of oxygen vacancies, together with the enrichment of CNRs surface with active metallic phase resulted in a highly active catalyst achieving at 220 \u25e6C a hydrogen production rate of 5500 cm3 min&minus;1 per g of loaded platinum.</p>',
+                doi: '10.3390/catal8110544',
+                grants: [
+                    {
+                        acronym: 'IRMFC',
+                        code: '325358',
+                        funder: {
+                            acronyms: [],
+                            doi: '10.13039/501100000780',
+                            links: {
+                                self: 'https://zenodo.org/api/funders/10.13039/501100000780'
+                            },
+                            name: 'European Commission'
+                        },
+                        links: {
+                            self: 'https://zenodo.org/api/grants/10.13039/501100000780::325358'
+                        },
+                        program: 'FP7',
+                        title:
+                            'Development of a Portable Internal Reforming Methanol High Temperature PEM Fuel Cell System'
+                    }
+                ],
+                journal: {
+                    issue: '11',
+                    pages: 'art. no. 544',
+                    title: 'Catalysts',
+                    volume: '8'
+                },
+                keywords: [
+                    'steam reforming',
+                    'methanol',
+                    'hydrogen',
+                    'fuel cell',
+                    'platinum catalysts',
+                    'ceria',
+                    'titania'
+                ],
+                license: {
+                    id: 'CC-BY-4.0'
+                },
+                publication_date: '2018-11-15',
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '3407332'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '3407331'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    subtype: 'article',
+                    title: 'Journal article',
+                    type: 'publication'
+                },
+                title:
+                    'Steam Reforming of Methanol over Nanostructured Pt/TiO2 and Pt/CeO2 Catalysts for Fuel Cell Applications'
+            },
+            owners: [50103],
+            revision: 4,
+            stats: {
+                downloads: 26.0,
+                unique_downloads: 25.0,
+                unique_views: 10.0,
+                version_downloads: 26.0,
+                version_unique_downloads: 25.0,
+                version_unique_views: 10.0,
+                version_views: 10.0,
+                version_volume: 38563642.0,
+                views: 10.0,
+                volume: 38563642.0
+            },
+            updated: '2020-01-20T16:38:23.892195+00:00'
+        },
+        {
+            conceptdoi: '10.5281/zenodo.4297129',
+            conceptrecid: '4297129',
+            created: '2020-11-30T04:36:46.796079+00:00',
+            doi: '10.5281/zenodo.4297130',
+            files: [
+                {
+                    bucket: 'bb104888-9c14-454a-a849-5650f1d2a277',
+                    checksum: 'md5:6bad553b649f3276234c3f0018bed860',
+                    key: 'IJOER-NOV-2020-1.pdf',
+                    links: {
+                        self: 'https://zenodo.org/api/files/bb104888-9c14-454a-a849-5650f1d2a277/IJOER-NOV-2020-1.pdf'
+                    },
+                    size: 689595,
+                    type: 'pdf'
+                }
+            ],
+            id: 4297130,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.5281/zenodo.4297130.svg',
+                bucket: 'https://zenodo.org/api/files/bb104888-9c14-454a-a849-5650f1d2a277',
+                conceptbadge: 'https://zenodo.org/badge/doi/10.5281/zenodo.4297129.svg',
+                conceptdoi: 'https://doi.org/10.5281/zenodo.4297129',
+                doi: 'https://doi.org/10.5281/zenodo.4297130',
+                html: 'https://zenodo.org/record/4297130',
+                latest: 'https://zenodo.org/api/records/4297130',
+                latest_html: 'https://zenodo.org/record/4297130',
+                self: 'https://zenodo.org/api/records/4297130'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                creators: [
+                    {
+                        name: 'Luk\u00e1\u0161 T\u00f3th'
+                    },
+                    {
+                        name: 'Tom\u00e1\u0161 Brestovi\u010d'
+                    },
+                    {
+                        name: 'Nat\u00e1lia Jasminsk\u00e1'
+                    },
+                    {
+                        name: 'Mari\u00e1n L\u00e1z\u00e1r'
+                    },
+                    {
+                        name: 'Romana Dob\u00e1kov\u00e1'
+                    }
+                ],
+                description:
+                    '<p><strong>Abstract</strong><strong>&mdash;</strong> The present article deals with a potential to interconnect the plasma technology of waste processing with the technology of hydrogen separation from syngas using metal hydride alloys. It also describes key components of the system used for syngas cleaning and their succession.</p>',
+                doi: '10.5281/zenodo.4297130',
+                journal: {
+                    issue: '11',
+                    pages: '01-05',
+                    title: 'International Journal of Engineering Research & Science',
+                    volume: '6'
+                },
+                keywords: ['hydrogen', 'plasma reaktor', 'waste treatment', 'gasification'],
+                language: 'eng',
+                license: {
+                    id: 'CC-BY-4.0'
+                },
+                publication_date: '2020-11-30',
+                related_identifiers: [
+                    {
+                        identifier: '10.5281/zenodo.4297129',
+                        relation: 'isVersionOf',
+                        scheme: 'doi'
+                    }
+                ],
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '4297130'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '4297129'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    subtype: 'article',
+                    title: 'Journal article',
+                    type: 'publication'
+                },
+                title: 'Hydrogen Production System using a Plasma Reactor'
+            },
+            owners: [33533],
+            revision: 2,
+            stats: {
+                downloads: 6.0,
+                unique_downloads: 6.0,
+                unique_views: 14.0,
+                version_downloads: 6.0,
+                version_unique_downloads: 6.0,
+                version_unique_views: 14.0,
+                version_views: 14.0,
+                version_volume: 4137570.0,
+                views: 14.0,
+                volume: 4137570.0
+            },
+            updated: '2020-11-30T12:27:13.994248+00:00'
+        },
+        {
+            conceptdoi: '10.5281/zenodo.4025438',
+            conceptrecid: '4025438',
+            created: '2020-09-12T00:02:07.205372+00:00',
+            doi: '10.5281/zenodo.4025439',
+            files: [
+                {
+                    bucket: '9096775c-de11-492b-810e-0a1e1153a6ad',
+                    checksum: 'md5:98c749aa1fcff9aa10a2473caee544c4',
+                    key: 'FinalPaper_Lee_Bryan.pdf',
+                    links: {
+                        self:
+                            'https://zenodo.org/api/files/9096775c-de11-492b-810e-0a1e1153a6ad/FinalPaper_Lee_Bryan.pdf'
+                    },
+                    size: 514494,
+                    type: 'pdf'
+                }
+            ],
+            id: 4025439,
+            links: {
+                badge: 'https://zenodo.org/badge/doi/10.5281/zenodo.4025439.svg',
+                bucket: 'https://zenodo.org/api/files/9096775c-de11-492b-810e-0a1e1153a6ad',
+                conceptbadge: 'https://zenodo.org/badge/doi/10.5281/zenodo.4025438.svg',
+                conceptdoi: 'https://doi.org/10.5281/zenodo.4025438',
+                doi: 'https://doi.org/10.5281/zenodo.4025439',
+                html: 'https://zenodo.org/record/4025439',
+                latest: 'https://zenodo.org/api/records/4025439',
+                latest_html: 'https://zenodo.org/record/4025439',
+                self: 'https://zenodo.org/api/records/4025439'
+            },
+            metadata: {
+                access_right: 'open',
+                access_right_category: 'success',
+                communities: [
+                    {
+                        id: 'evs33'
+                    }
+                ],
+                creators: [
+                    {
+                        name: 'Jackson, John'
+                    },
+                    {
+                        name: 'Lee, Bryan'
+                    }
+                ],
+                description:
+                    '<p>The zero emission bus industry has experienced rapid growth. However, there is limited data on the growth and deployment of zero-emission buses across the United States. While transit buses in general have been counted by the Federal Transit Administration and organizations like American Public Transportation Association, the separation of ZEBs in these counts are limited and there have been few systemic counts of zero emission buses in American fleets. Since ZEBs are still considered a new technology this information has been deemed difficult to find. Through extensive research by looking at a variety of funding sources and their allocation, outreach to transit agencies and OEM&rsquo;s, and analysis of media reports, this information can be obtained in order to give a round house projection. These numbers are important to track due to the priority that many states across the country have placed on transitioning to zero emission buses over the course of the next few decades. Tracking these numbers also highlights which regions are making significant advances in deployments and which ones are lagging. This information can be used to address systemic challenges in deploying buses and their infrastructure.</p>\n\n<p>Understanding the technological development needs of these buses is also very important. While the number of ZEBs have grown by 37 percent in the last year, these buses have still encountered some technological challenges while they continue to be deployed. Aspects such as heating, ventilation, and air conditioning affect the efficiency and performance of these vehicles. Buses also need to reduce energy consumption and maximize the amount of onboard energy that can be stored to improve their performance. While these challenges can seem like a roadblock in the success of these vehicles, technological solutions are being developed in order to counteract these problems.</p>',
+                doi: '10.5281/zenodo.4025439',
+                keywords: ['Bus', 'public transport', 'heating', 'energy storage', 'hydrogen'],
+                license: {
+                    id: 'CC-BY-4.0'
+                },
+                meeting: {
+                    acronym: 'EVS33'
+                },
+                publication_date: '2020-09-11',
+                related_identifiers: [
+                    {
+                        identifier: '10.5281/zenodo.4025438',
+                        relation: 'isVersionOf',
+                        scheme: 'doi'
+                    }
+                ],
+                relations: {
+                    version: [
+                        {
+                            count: 1,
+                            index: 0,
+                            is_last: true,
+                            last_child: {
+                                pid_type: 'recid',
+                                pid_value: '4025439'
+                            },
+                            parent: {
+                                pid_type: 'recid',
+                                pid_value: '4025438'
+                            }
+                        }
+                    ]
+                },
+                resource_type: {
+                    subtype: 'conferencepaper',
+                    title: 'Conference paper',
+                    type: 'publication'
+                },
+                title:
+                    'Counting Zero Emission Buses in the United States and the Importance of Their Technological Development Needs'
+            },
+            owners: [101303],
+            revision: 3,
+            stats: {
+                downloads: 6.0,
+                unique_downloads: 5.0,
+                unique_views: 9.0,
+                version_downloads: 6.0,
+                version_unique_downloads: 5.0,
+                version_unique_views: 9.0,
+                version_views: 10.0,
+                version_volume: 3086964.0,
+                views: 10.0,
+                volume: 3086964.0
+            },
+            updated: '2020-10-02T02:48:01.850050+00:00'
         }
     ]
 }

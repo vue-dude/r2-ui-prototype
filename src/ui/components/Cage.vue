@@ -384,11 +384,18 @@ export default {
                 case 'private':
                     this.modifyViewStack({ key: 'mywork', action: 'reset' })
                     return this.setViewMode('mywork', options)
-                // main stack views
-                case 'show-public-dataset':
+                    // main stack views
+
+                    // show - dataset
+
+                case 'show-dataset': // live
                     this.modifyViewStack({ key: 'public-dataset', action: 'add' })
                     return this.setViewMode('public-dataset', options)
-                case 'show-private-dataset':
+
+                case 'show-public-dataset': // mock
+                    this.modifyViewStack({ key: 'public-dataset', action: 'add' })
+                    return this.setViewMode('public-dataset', options)
+                case 'show-private-dataset': // mock
                     this.modifyViewStack({ key: 'private-dataset', action: 'add' })
                     return this.setViewMode('private-dataset', options)
                 case 'create-new-dataset':
