@@ -305,7 +305,7 @@
                                 height: calc(2317px / 2);
                             }
                         }
-                        .click-zones {
+                        .click-zonesXXX {
                             .click-zone {
                                 left: 13px;
                                 width: 754px;
@@ -337,6 +337,19 @@
                                     top: 1015px;
                                     height: 37px;
                                 }
+                            }
+                        }
+                        .components {
+                            .component.my-datasets {
+                                width: calc(1565px / 3);
+                            }
+                            .content-list{
+                                margin-left: 5px;
+                                // margin-top: 300px; // TEST
+                                width: 755px;
+                            }
+                            .dataset-list-item {
+                                // 
                             }
                         }
                     }
@@ -466,7 +479,6 @@
                                 min-height: 100px;
                                 // height: 200px;
                                 color: gray;
-
                             }
                         }
                     }
@@ -566,7 +578,7 @@
                                     margin-right: -19px;
                                     transform-origin: bottom left;
                                     background-repeat: no-repeat;
-                                    background-image: url(./../r2-ui/v2/png/icon-orchid.png);
+                                    background-image: url(./../r2-ui/icons/meta-edit-orchid.png);
                                 }
                             }
                         }

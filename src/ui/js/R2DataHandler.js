@@ -4,7 +4,6 @@ import { metaSchemes, metaData } from '@/ui/js/mockdata/Meta'
 import { datasets } from '@/ui/js/mockdata/ZnDatasets'
 
 const R2D2DataHandler = function() {
-
     this.getDropdownSelection = (key, selection, empty = '-') => {
         // console.log('R2:getDropdownSelection key, selection = ', key, selection)
         if (_.isArray(selection)) {
@@ -50,7 +49,7 @@ const R2D2DataHandler = function() {
 
     this.getData = (schemaKey, dataKey) => {
         if (schemaKey === 'datasets') {
-            return datasets[dataKey]
+            return filter(datasets[dataKey], 'zenodo')
         }
         // this is special for the form generator
         const key = `${schemaKey}-${dataKey}`
@@ -64,6 +63,29 @@ const R2D2DataHandler = function() {
         return { [key]: metaData[key] || [] }
     }
 
+    //
+
+    const filter = (data, key) => {
+        if (key === 'zenodo') {
+            const res = []
+            _.each(data, elm => {
+                let authors = []
+                _.each(elm.metadata.creators, creator => {
+                    authors.push(creator.name)
+                })
+                let teaser = elm.metadata.description
+                teaser = teaser.substr(0, 3) === '<p>' ? teaser.substr(3) : teaser
+                authors = authors.join(' ,')
+                res.push({
+                    title: elm.metadata.title,
+                    authors,
+                    teaser
+                })
+            })
+            return res
+        }
+        return data
+    }
 }
 
 export default R2D2DataHandler

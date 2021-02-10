@@ -35,7 +35,6 @@ $sub-bar-height: 30px;
 @import '~@fontsource/nunito/800-italic.css';
 @import '~@fontsource/nunito/900-italic.css';
 
-
 html,
 body {
     background-color: black;
@@ -159,7 +158,7 @@ body {
                 position: absolute; // its brighter with that ... ??
                 width: calc(374px / 2);
                 height: calc(88px / 2);
-                $url: './../assets/nu-edmond-logo.png';
+                $url: './../r2-ui/assets/nu-edmond-logo.png';
                 background-image: url($url);
                 background-repeat: no-repeat;
                 background-size: contain;
@@ -203,8 +202,7 @@ body {
             z-index: 100000;
             .image {
                 position: absolute;
-                // $url: './assets/mpdl-logo.png';
-                $url: './../assets/mpdl-logo.png';
+                $url: './../r2-ui/assets/mpdl-logo.png';
                 background-image: url($url);
                 background-repeat: no-repeat;
                 background-size: contain;
@@ -237,6 +235,69 @@ body {
             border-bottom: none;
             .border {
                 height: #{$sub-bar-height};
+            }
+        }
+    }
+
+    .component {
+        &.dataset-list-item {
+            position: relative;
+            margin-bottom: 10px;
+            font-family: 'Roboto';
+            background-color: white;
+            border: 1px solid #babbbe;
+            border-radius: 8px;
+            min-height: 100px;
+            color: #0e0e0e;
+            .text-cage {
+                margin: 20px;
+                font-size: 15px;
+                .authors {
+                    font-weight: 400;
+                    color: #202730;
+                    margin-top: 5px;
+                    padding: 5px;
+                    background-color: #fcfeff;
+                    font-style: italic;
+                    border: 1px solid #e0f1ff;
+                    border-radius: 4px;
+                }
+                .title {
+                    color: #243e63;
+                    margin-left: 4px;
+                    font-size: 19px;
+                    font-weight: 500;
+                    max-width: calc( 100% - 25px);
+                }
+                .teaser-cage {
+                    font-weight: 400;
+                    color: #202730;
+                    background-color: #f8feff;
+                    border: 1px solid #deecee;
+                    border-radius: 4px;
+                    margin-top: 5px;
+                    padding: 5px;
+                    .teaser {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: normal;
+                        // only -webkit versions exist for the following:
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        -webkit-box-orient: vertical;
+                    }
+                }
+            }
+            .icon.dataset-open-eye {
+                width: 66px;
+                height: 72px;
+                top: -39px;
+                right: -34px;
+                position: absolute;
+                transform: scale(0.44);
+                transform-origin: bottom left;
+                background-repeat: no-repeat;
+                background-image: url(./../r2-ui/icons/dataset-open-eye.png);
             }
         }
     }

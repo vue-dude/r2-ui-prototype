@@ -15,7 +15,7 @@ import { createI18n } from 'vue-i18n' // is vue-i18n@next
 
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
-// TODO explore scss vars override 
+// TODO explore scss vars override
 // import 'element-plus/packages/theme-chalk/src/index.scss'
 
 const createVueApp = async () => {

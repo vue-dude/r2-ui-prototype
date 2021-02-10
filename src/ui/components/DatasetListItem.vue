@@ -1,7 +1,13 @@
 <template>
-    <div class="dataset-list-item">
-        <div class="title">{{ data.metadata.title }}</div>
-        <div class="teaser">{{ data.metadata.description }}</div>
+    <div class="component dataset-list-item">
+        <div class="text-cage">
+            <div class="title" v-html="data.title"></div>
+            <div class="authors" v-html="data.authors"></div>
+            <div class="teaser-cage">
+                <div class="teaser" v-html="data.teaser"></div>
+            </div>
+        </div>
+        <div class="icon dataset-open-eye"></div>
     </div>
 </template>
 
@@ -21,8 +27,8 @@ export default {
         }
     },
     created() {
-        console.log('DLI:created this.config.showAs = ',this.config.showAs)
-        console.log('DLI:created this.data.familyName = ',this.data.familyName)
+        console.log('DLI:created this.config.showAs = ', this.config.showAs)
+        console.log('DLI:created this.data.familyName = ', this.data.familyName)
         // globals.eventBus.$on('invokeSaveDataAction', this.onSaveDataAction)
         // this.updateList()
     },
