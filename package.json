@@ -8,6 +8,8 @@
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
+        "@fontsource/nunito": "^4.2.0",
+        "@fontsource/roboto": "^4.2.0",
         "core-js": "^3.6.5",
         "device-detector-js": "^2.2.5",
         "element-plus": "^1.0.2-beta.28",
