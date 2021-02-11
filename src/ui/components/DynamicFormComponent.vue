@@ -75,6 +75,7 @@
 </template>
 
 <script>
+// TODO refactor to "MetaFormComponent"
 import DynamicFormHandler from '@/ui/js/DynamicFormHandler'
 import DynamicFormCell from '@/ui/components/DynamicFormCell'
 // import VueDynamicForm from 'vue-dynamic-form-component' // dont works with vue-3
@@ -95,13 +96,19 @@ export default {
             uid: globals.getUid(),
             lastTabIndex: 0,
             dataKey: null,
-            dataKey: null,
             schemaKey: null
         }
     },
     created() {
         globals.eventBus.$on('updateMetaEditor', this.onUpdateMetaEditor)
         globals.eventBus.$on('invokeSaveDataAction', this.onSaveDataAction)
+
+        console.log('DFC:created this.config = ',this.config)
+        if (this.sKey && this.dKey) {
+            this.updateForm(true)
+        }
+
+        
     },
     onBeforeUnmount() {
         globals.eventBus.$off('updateMetaEditor', this.onUpdateMetaEditor)
@@ -294,8 +301,8 @@ export default {
                             const dropdownConfig = this.r2DataHandler.getDropdownConfig(elm.options.key, elm.selected)
                             elm.options = dropdownConfig.options
                             elm.selected = dropdownConfig.selected
-                            // TODO explore the placeholder-not-show bug in multiselect
-                            // elm.selected = null
+                        // TODO explore the placeholder-not-show bug in multiselect
+                        // elm.selected = null
                     }
                     elm.plc = this.$t(`form.item.plc.${elm.label}`)
                     elm.label = this.$t(`form.item.label.${elm.label}`)

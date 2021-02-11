@@ -1,5 +1,34 @@
+import Globals from './Globals'
+
 function R2UiBoxDefinitions() {
     this.boxes = {
+        'mock-config': {
+            visible: true,
+            views: {
+                default: {
+                    zones: {
+                        'toggle-mock-config-menu-state': {}
+                    },
+                    components: {
+                        'config-menu': {
+                            component: 'generic-form',
+                            config: {
+                                dataKey: 'data',
+                                schemaKey: 'mock-config',
+                                onChange: config => {
+                                    if (config.key === 'scroll-type') {
+                                        // console.log('CB:onChange config = ', config)
+                                        globals.uiStore.setNativeScrollState(config.selected === 'native')
+                                        return globals.eventBus.$emit('updateActiveView')
+                                    }
+                                }
+                            },
+                            classes: 'hidden'
+                        }
+                    }
+                }
+            }
+        },
         'main-nav': {
             visible: true,
             views: {
@@ -18,13 +47,11 @@ function R2UiBoxDefinitions() {
                         'head-nav-back': { click: true, classes: 'nav-item' },
                         arrow: {},
                         info: { html: '-' }
-                    },
-                    zones: {
-                        'toggle-scroll-state': {}
                     }
                 }
             }
         },
+
         'file-list': {
             belowModalExclusive: true,
             views: {
@@ -101,12 +128,6 @@ function R2UiBoxDefinitions() {
                                 key: 'show-public-dataset'
                             }
                         }
-                        // components: {
-                        //     'recent-datasets': {
-                        //         component: 'content-list',
-                        //         config: { schemaKey: 'datasets', dataKey: 'recent', cellConfig: { test: 123 } }
-                        //     }
-                        // }
                     }
                 }
             }

@@ -1,6 +1,15 @@
 <template>
     <div class="label" v-html="config.label"></div>
+    <div class="form-element radio-cage" @change="onChange" v-if="config.type === 'radio'">
+        <el-radio-group v-model="config.selected">
+            <el-radio v-for="(option, index) in config.options" :key="index" :label="option.value">
+                {{ option.label }}
+            </el-radio>
+        </el-radio-group>
+    </div>
+
     <el-input
+        class="form-element"
         v-if="config.type === 'input'"
         v-model="config.selected"
         :placeholder="config.plc"
@@ -11,6 +20,7 @@
     />
 
     <el-select
+        class="form-element"
         v-if="config.type === 'select'"
         v-model="config.selected"
         :placeholder="config.plc"
@@ -34,6 +44,14 @@
 export default {
     props: {
         config: {}
+    },
+    created() {
+        console.log('DC: this.config = ', this.config)
+    },
+    methods: {
+        onChange() {
+            this.$emit('changed', this.config)
+        }
     }
 }
 </script>

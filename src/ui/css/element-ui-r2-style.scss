@@ -37,4 +37,13 @@
         line-height: 18px;
         color: #1f2538;
     }
+
+    .el-radio__input.is-checked + .el-radio__label {
+        color: #47557b;
+    }
+
+    .el-radio__input.is-checked .el-radio__inner {
+        border-color: #5063a2;
+        background: #7b90b4;
+    }
 }

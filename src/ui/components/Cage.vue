@@ -1,5 +1,5 @@
 <template>
-    <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]">
+    <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]" @click.stop="onClickCage">
         <box class="animate" :config="boxes['main-nav']" :isModalOverlay="isModalOverlay"></box>
         <box class="animate" :config="boxes['head-controls']" :isModalOverlay="isModalOverlay"></box>
         <!--  -->
@@ -17,6 +17,8 @@
         <box class="animate" :config="boxes['r2-messages']" :isModalOverlay="isModalOverlay"></box>
         <!--  -->
         <box class="animate" :config="boxes['file-list']" :isModalOverlay="isModalOverlay"></box>
+
+        <box class="animate" :config="boxes['mock-config']" :isModalOverlay="isModalOverlay"></box>
     </div>
 </template>
 
@@ -130,6 +132,11 @@ export default {
             }
         },
         updateHeadNav(privateView, animateAll, info = { length: 0, html: '' }) {
+            //
+            const mock = '.mock-config .view.default'
+            $(mock).css('opacity', 1) // fix this issue globally!
+            $(mock).removeClass('no-events')
+            //
             const view = '.main-nav .view.default'
             $(view).css('opacity', 1) // fix this issue globally!
             $(view).removeClass('no-events')
@@ -343,15 +350,24 @@ export default {
             globals.eventBus.$emit('updateMetaEditor')
             globals.eventBus.$emit('updateActiveView', { targets: ['dataset-actions'] })
         },
-
+        onClickCage() {
+            $('.cage.boxes .mock-config .config-menu').addClass('hidden')
+        },
         onClick(evt) {
             evt.box = evt.box || { id: null }
             console.log('CG:onClick evt = ', evt)
             let options = { _00: { targets: null } }
 
-            if (!this.isModalOverlay && evt.key === 'toggle-scroll-state') {
-                this.uiStore.setNativeScrollState(!this.uiStore.state.useNativeScroll)
-                return globals.eventBus.$emit('updateActiveView')
+            // if (!this.isModalOverlay && evt.key === 'toggle-scroll-state') {
+            //     this.uiStore.setNativeScrollState(!this.uiStore.state.useNativeScroll)
+            //     return globals.eventBus.$emit('updateActiveView')
+            // }
+
+            if (!this.isModalOverlay && evt.key === 'toggle-mock-config-menu-state') {
+                const $cfm = $('.cage.boxes .mock-config .config-menu')
+                $cfm.toggleClass('hidden')
+                // this.uiStore.setNativeScrollState(!this.uiStore.state.useNativeScroll)
+                // return globals.eventBus.$emit('updateActiveView')
             }
 
             switch (true) {
@@ -384,9 +400,9 @@ export default {
                 case 'private':
                     this.modifyViewStack({ key: 'mywork', action: 'reset' })
                     return this.setViewMode('mywork', options)
-                    // main stack views
+                // main stack views
 
-                    // show - dataset
+                // show - dataset
 
                 case 'show-dataset': // live
                     this.modifyViewStack({ key: 'public-dataset', action: 'add' })
@@ -553,6 +569,7 @@ export default {
 
             let goOuts = [...Object.keys(this.boxes)]
             goOuts[goOuts.indexOf('main-nav')] = null
+            goOuts[goOuts.indexOf('mock-config')] = null
             if (options._00 && _.isPlainObject(options._00.targets)) {
                 goOuts = [...Object.keys(options._00.targets)]
             }

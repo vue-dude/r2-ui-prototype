@@ -43,7 +43,19 @@
                         :key="key"
                         @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
                     >
+                        <generic-form v-if="cmp.component === 'generic-form'" :config="cmp.config"></generic-form>
                         <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
+                        <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
+                        <content-list
+                            v-if="cmp.component === 'content-list'"
+                            :config="cmp.config"
+                            @subClick="onSubClick"
+                        ></content-list>
+                        <content-cell
+                            v-if="cmp.component === 'content-cell'"
+                            :config="cmp.config"
+                            @subClick="onSubClick"
+                        ></content-cell>
                     </div>
                 </div>
                 <div class="inner" v-if="!view.setBgImageOverElements">
@@ -115,6 +127,7 @@
                             :key="key"
                             @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
                         >
+                            <generic-form v-if="cmp.component === 'generic-form'" :config="cmp.config"></generic-form>
                             <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
                             <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
                             <content-list
@@ -171,6 +184,8 @@
                         :key="key"
                         @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
                     >
+                        <generic-form v-if="cmp.component === 'generic-form'" :config="cmp.config"></generic-form>
+
                         <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
                         <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
                         <content-list v-if="cmp.component === 'content-list'" :config="cmp.config"></content-list>
@@ -198,6 +213,7 @@
 //
 import BoxScrollHandler from '@/ui/js/BoxScrollHandler.js'
 import DynamicForm from '@/ui/components/DynamicFormComponent.vue'
+import GenericForm from '@/ui/components/GenericFormComponent.vue'
 import ActiveList from '@/ui/components/ActiveListComponent.vue'
 import ContentList from '@/ui/components/ContentList.vue'
 import ContentCell from '@/ui/components/ContentCell.vue'
@@ -205,6 +221,7 @@ import ContentCell from '@/ui/components/ContentCell.vue'
 export default {
     components: {
         DynamicForm,
+        GenericForm,
         ActiveList,
         ContentList,
         ContentCell

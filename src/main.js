@@ -22,6 +22,7 @@ const createVueApp = async () => {
     gsap.config({ nullTargetWarn: false })
     await datasource.getInitialData().then(data => {
         //
+        console.log('MAIN:createVueApp data.translations = ',data.translations)
         const i18n = createI18n({
             fallbackLocale: data.setup.fallbackLocale || 'en',
             locale: 'en', // set locale

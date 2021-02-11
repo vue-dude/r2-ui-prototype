@@ -1,7 +1,7 @@
 {
     "en": {
         "head": {
-            "title": "RDM – The Information Platform for Max Planck Researchers",
+            "title": "Edmond II",
             "terms": "Terms of Services",
             "imprint": "Imprint",
             "privacy": "Privacy",
@@ -28,6 +28,14 @@
             "named": "hello, {name}!",
             "linked": "@:message.named How are you?",
             "plural": "no bananas | {n} banana | {n} bananas"
+        },
+        "form": {
+            "item": {
+                "label": {
+                    "scroll-type": "Scroll Type:",
+                    "datasource": "Datasource:"
+                }
+            }
         }
     }
 }

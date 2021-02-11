@@ -9,6 +9,12 @@
                 :data="data"
                 @subClick="onSubClick"
             ></dataset-list-item>
+            <!-- <dynamic-form-cell
+                v-if="cmp.component === 'dynamic-form-cell'"
+                :config="cmp.config"
+                :data="data"
+                @subClick="onSubClick"
+            ></dynamic-form-cell> -->
         </div>
     </div>
 </template>
@@ -17,11 +23,16 @@
 //
 import ActiveListComponent from '@/ui/components/ActiveListComponent.vue'
 import DatasetListItem from '@/ui/components/DatasetListItem.vue'
+//
+// import DynamicFormHandler from '@/ui/js/DynamicFormHandler'
+// import DynamicFormCell from '@/ui/components/DynamicFormCell'
+//
 
 export default {
     components: {
         ActiveListComponent,
         DatasetListItem
+        // DynamicFormCell
     },
     props: {
         config: {},

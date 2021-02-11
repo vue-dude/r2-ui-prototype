@@ -1,6 +1,61 @@
 .r2 {
     .boxes {
         .box {
+            &.mock-config {
+                top: 0px;
+                left: 0px;
+                .click-zones {
+                    .click-zone {
+                        &.toggle-mock-config-menu-state {
+                            left: 0px;
+                            top: 0px;
+                            width: 200px;
+                            height: 40px;
+                        }
+                    }
+                }
+                .components {
+                    .config-menu {
+                        &.hidden {
+                            visibility: hidden;
+                        }
+                        position: absolute;
+                        z-index: 1;
+                        left: 5px;
+                        top: 5px;
+                        width: 220px;
+                        height: 125px;
+                        background-color: #6e8394;
+                        overflow: hidden;
+                        border: 1px solid white;
+                        border-radius: 5px;
+                        .form-container {
+                            left: 5px;
+                            top: 5px;
+                            width: 200px;
+                            height: 40px;
+                            margin: 10px;
+                            color: white;
+                            .index-group {
+                                margin-top: -2px;
+                                .radio-cage {
+                                    background-color: white;
+                                    border: 1px solid #5f6e95;
+                                    border-radius: 5px;
+                                    padding: 5px;
+                                }
+                                .label {
+                                    margin-bottom: 4px;
+                                }
+                                .form-element {
+                                    margin-bottom: 6px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             &.main-nav {
                 top: 8px;
                 left: 228px;
@@ -81,16 +136,16 @@
                     }
                 }
 
-                .click-zones {
-                    .click-zone {
-                        &.toggle-scroll-state {
-                            left: -234px;
-                            width: 207px;
-                            height: 38px;
-                            top: 0px;
-                        }
-                    }
-                }
+                // .click-zones {
+                //     .click-zone {
+                //         &.toggle-scroll-state {
+                //             left: -234px;
+                //             width: 207px;
+                //             height: 38px;
+                //             top: 0px;
+                //         }
+                //     }
+                // }
             }
 
             &.landing-page {
@@ -343,13 +398,13 @@
                             .component.my-datasets {
                                 width: calc(1565px / 3);
                             }
-                            .content-list{
+                            .content-list {
                                 margin-left: 5px;
                                 // margin-top: 300px; // TEST
                                 width: 755px;
                             }
                             .dataset-list-item {
-                                // 
+                                //
                             }
                         }
                     }

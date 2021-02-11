@@ -88,6 +88,7 @@ function Datasource() {
     }
 
     const addTranslations = trns => {
+        console.log('DS:addTranslations trns = ',trns)
         // trns == new loaded
         _.each(trns, (tr, lng) => {
             _.each(config.structure.navigation, (l1, keyL1) => {
