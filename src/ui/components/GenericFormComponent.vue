@@ -2,9 +2,9 @@
     <div class="form-container" :class="uid" v-show="true">
         <div class="index-group-space" :id="index"></div>
         <div v-for="(group, index) in form" :key="index" :id="index" class="index-group">
-            <div v-for="(item, setup, index) in group" :key="index">
+            <div v-for="(item, setup, key) in group" :key="key">
                 <div class="input-container" v-if="item.isInputElement">
-                    <div class="input-cell">
+                    <div class="input-cell" :class="item.key">
                         <dynamic-form-cell :config="item" @changed="onFormItemChanged" />
                     </div>
                 </div>
@@ -47,9 +47,9 @@ export default {
     created() {
         // globals.eventBus.$on('invokeSaveDataAction', this.onSaveDataAction)
         console.log('GFC:created this.config = ', this.config)
-        if (this.sKey && this.dKey) {
-            this.updateForm(true)
-        }
+        // if (this.sKey && this.dKey) {
+        this.updateForm(true)
+        // }
     },
     onBeforeUnmount() {
         // globals.eventBus.$off('updateMetaEditor', this.onUpdateMetaEditor)
@@ -102,16 +102,21 @@ export default {
         //     }
         // },
         updateForm(createNew = false) {
-            const schema = this.dataHandler.getSchema(this.sKey, this.dKey)
+            const schema = this.sKey ? this.dataHandler.getSchema(this.sKey, this.dKey) : this.config.schema
             console.log('GFC:updateForm createNew = ', createNew)
             console.log('GFC:updateForm schema = ', schema)
             if (createNew) {
-                const data = this.dataHandler.getData(this.sKey, this.dKey)
+                const rawData = this.dKey
+                    ? this.dataHandler.getData(this.sKey, this.dKey)
+                    : this.config.data
+                    ? this.config.data
+                    : {}
                 console.log('GFC:updateForm this.sKey, this.dKey = ', this.sKey, this.dKey)
-                console.log('GFC:updateForm data = ', data)
+                console.log('GFC:updateForm rawData = ', rawData)
+                console.log('GFC:updateForm schema = ', schema)
                 if (schema) {
                     this.formHandler = new DynamicFormHandler({ convertSelectedArraysToStrings: false })
-                    this.fhForm = this.formHandler.getForm(data, schema)
+                    this.fhForm = this.formHandler.getForm(rawData, schema)
                 }
             } else {
                 this.fhForm = this.formHandler.getForm()

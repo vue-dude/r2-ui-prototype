@@ -13,7 +13,8 @@
         v-if="config.type === 'input'"
         v-model="config.selected"
         :placeholder="config.plc"
-        suffix-icon="el-icon-date"
+        :suffix-icon="config.suffixIcon"
+        :prefix-icon="config.prefixIcon"
         size="mini"
         :type="config.isTextArea ? 'textarea' : 'input'"
         :autosize="config.autoSize || false"
@@ -24,7 +25,7 @@
         v-if="config.type === 'select'"
         v-model="config.selected"
         :placeholder="config.plc"
-        prefix-icon="el-icon-date"
+        :prefix-icon="config.prefixIcon"
         size="mini"
         :multiple="config.allowMultipleSelections"
         :filterable="config.allowMultipleSelections || config.canFilter"
@@ -41,6 +42,7 @@
 </template>
 
 <script>
+// prefix-icon="el-icon-date"
 export default {
     props: {
         config: {}

@@ -24,7 +24,7 @@ const metaSchemes = {
             __0: {
                 type: 'select',
                 options: [
-                    { value: 'mock', label: 'Int. Mockdata' },
+                    { value: 'mock', label: 'Internal Mockdata' },
                     { value: 'edmond', label: 'Edmond II API' },
                     { value: 'zenodo', label: 'Zenodo API' }
                 ]
@@ -172,7 +172,7 @@ const metaSchemes = {
 const metaData = {
     'mock-config-data': {
         'scroll-type': 'native',
-        datasource: 'edmond'
+        datasource: 'mock'
     },
     'authors-mock55c4': [
         {

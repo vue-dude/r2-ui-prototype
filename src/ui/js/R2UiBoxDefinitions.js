@@ -2,6 +2,7 @@ function R2UiBoxDefinitions() {
     this.boxes = {
         'mock-config': {
             visible: true,
+            belowModalExclusive: true,
             views: {
                 default: {
                     zones: {
@@ -16,7 +17,7 @@ function R2UiBoxDefinitions() {
                                 onClickItem: item => {
                                     console.log('BOX-CFG:onFormItemChanged item = ', item)
                                     if (item.key === 'close-button') {
-                                        // this simulates a click outside the form box, which 
+                                        // this simulates a click outside the form box, which
                                         // closes the box in the cage-logic
                                         $(document).trigger('mouseup')
                                     }
@@ -107,10 +108,66 @@ function R2UiBoxDefinitions() {
             views: {
                 'landing-page': {
                     scroll: {
-                        zones: {
-                            'bt-search': {
-                                key: 'show-search-page'
-                            },
+                        components: {
+                            'search-box': {
+                                component: 'content-cell',
+                                config: {
+                                    components: {
+                                        'recent-uploads-label': {
+                                            type: 'ui',
+                                            text: 'Recent Uploads'
+                                        },
+                                        'search-input': {
+                                            component: 'generic-form',
+                                            config: {
+                                                schema: {
+                                                    'label-search': {
+                                                        __0: {
+                                                            type: 'ui',
+                                                            label: 'Search:'
+                                                        }
+                                                    },
+                                                    'search-term-input': {
+                                                        label: null,
+                                                        __0: {
+                                                            label: null,
+                                                            type: 'input'
+                                                            // suffixIcon: 'el-icon-search'
+                                                        }
+                                                    },
+                                                    'fire-search-button': {
+                                                        __0: {
+                                                            type: 'ui',
+                                                            onClick: true
+                                                        }
+                                                    }
+                                                },
+                                                onClickItem: item => {
+                                                    console.log('BOX-CFG:onFormItemChanged item = ', item)
+                                                    if (item.key === 'fire-search-button') {
+                                                        //
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            // contentCellConfig: {
+                            //     components: {
+                            //         'dataset-list-item': {
+                            //             component: 'dataset-list-item',
+                            //             config: { showAs: 'public-dataset' }
+                            //         }
+                            //     }
+                            // }
+                        },
+
+                        zonesXX: {
+                            // 'bt-search': {
+                            //     key: 'show-search-page'
+                            // },
                             'show-ds-1': {
                                 key: 'show-public-dataset'
                             },

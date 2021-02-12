@@ -201,11 +201,11 @@
                             left: 13px;
                             width: 754px;
                             height: 38px;
-                            &.bt-search {
-                                top: 220px;
-                                left: 549px;
-                                width: 228px;
-                            }
+                            // &.bt-search {
+                            //     top: 220px;
+                            //     left: 549px;
+                            //     width: 228px;
+                            // }
                             &.show-ds-1 {
                                 top: 280px;
                             }
@@ -232,6 +232,43 @@
                             &.show-ds-7 {
                                 top: 1274px;
                                 height: 37px;
+                            }
+                        }
+                    }
+                    .components {
+                        .search-box {
+                            // display: flex;
+                            position: absolute;
+                            top: 275px;
+                            width: 770px;
+                            height: 46px;
+                            background-color: rgb(255, 255, 255);
+                            border: 1px solid black;
+                            border-radius: 5px;
+                            .recent-uploads-label {
+                                // font-family: 'Roboto';
+                                color: #1c253e;
+                                font-size: 22px;
+                                margin-left: 26px;
+                                margin-top: 9px;
+                            }
+                            .form-container.search-input {
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                width: 400px;
+                                height: 35px;
+                                background-color: #eff5ef;
+                                border: 1px solid #c4c4c4;
+                                .index-group {
+                                    display: flex;
+                                    .search-term-input {
+                                        .label {
+                                            visibility: hidden;
+                                            height: 0px;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
