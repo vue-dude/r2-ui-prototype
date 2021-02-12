@@ -5,15 +5,24 @@
             <div v-for="(item, setup, index) in group" :key="index">
                 <div class="input-container" v-if="item.isInputElement">
                     <div class="input-cell">
-                        <dynamic-form-cell :config="item" @changed="onFormCellChanged" />
+                        <dynamic-form-cell :config="item" @changed="onFormItemChanged" />
                     </div>
                 </div>
+                <div
+                    class="ui-element"
+                    :class="item.layout.classes"
+                    v-if="item.isUiElement"
+                    v-html="item.label"
+                    @click.stop="onClickItem(item)"
+                ></div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+// v-on="{ click: item.layout.onClick ? onClick(item.layout.onClick) : null }"
+
 import DynamicFormHandler from '@/ui/js/DynamicFormHandler'
 import DynamicFormCell from '@/ui/components/DynamicFormCell'
 export default {
@@ -56,11 +65,16 @@ export default {
         }
     },
     methods: {
-        onFormCellChanged(cellConfig) {
-            console.log('GFC:onFormCellChanged this.config = ', this.config)
-            console.log('GFC:onFormCellChanged cellConfig = ', cellConfig)
-            if (_.isFunction(this.config.onChange)) {
-                this.config.onChange(cellConfig)
+        onClickItem(itemConfig) {
+            if (_.isFunction(this.config.onClickItem)) {
+                this.config.onClickItem(itemConfig)
+            }
+        },
+        onFormItemChanged(itemConfig) {
+            // TODO find reason why his event also is fired on clicking a ui element,
+            // e.g. the close button!
+            if (_.isFunction(this.config.onFormItemChanged)) {
+                this.config.onFormItemChanged(itemConfig)
             }
         },
         onSaveDataAction() {
@@ -119,27 +133,30 @@ export default {
                             elm.tabIndex = ++tabIndex
                     }
                     elm.isInputElement = false
+                    elm.isUiElement = false
                     switch (elm.type) {
+                        case 'ui':
+                            elm.isUiElement = true
+                            break
                         case 'input':
                         case 'select':
                         case 'radio':
                             elm.isInputElement = true
-                    }
-                    switch (elm.type) {
-                        case 'select':
-                            console.log('GFC:SCAN select elm.options = ', elm.options)
-                            if (elm.options && elm.options.key) {
-                                const dropdownConfig = this.dataHandler.getDropdownConfig(elm.options.key, elm.selected)
-                                elm.options = dropdownConfig.options
-                                elm.selected = dropdownConfig.selected
+                            elm.plc = this.$t(`form.item.label.${elm.key}`)
+                            elm.label = this.$t(`form.item.label.${elm.key}`)
+                            if (elm.type === 'select') {
+                                if (elm.options && elm.options.key) {
+                                    const dropdownConfig = this.dataHandler.getDropdownConfig(
+                                        elm.options.key,
+                                        elm.selected
+                                    )
+                                    elm.options = dropdownConfig.options
+                                    elm.selected = dropdownConfig.selected
+                                    // TODO explore the placeholder-not-show bug in multiselect
+                                    // elm.selected = null
+                                }
                             }
-                        // TODO explore the placeholder-not-show bug in multiselect
-                        // elm.selected = null
                     }
-                    console.log('GFC:SCAN select elm.options = ', elm.options)
-
-                    elm.plc = this.$t(`form.item.label.${elm.key}`)
-                    elm.label = this.$t(`form.item.label.${elm.key}`)
                 }
 
                 if (schema[`${this.sKey}-${this.dKey}`]) {

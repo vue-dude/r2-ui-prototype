@@ -36,6 +36,21 @@
                             height: 40px;
                             margin: 10px;
                             color: white;
+                            .close-button {
+                                position: absolute;
+                                top: 5px;
+                                right: 5px;
+                                width: 15px;
+                                height: 15px;
+                                text-align: center;
+                                font-size: 14px;
+                                line-height: 13px;
+                                background-color: #4c5262;
+                                cursor: pointer;
+                                border: 1px solid #dcdfe6;
+                                border-radius: 100%;
+                                color: #bde6d7;
+                            }
                             .index-group {
                                 margin-top: -2px;
                                 .radio-cage {

@@ -1,5 +1,5 @@
 <template>
-    <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]" @click.stop="onClickCage">
+    <div class="cage boxes" :class="[{ hidden: !showCage }, modalClass]">
         <box class="animate" :config="boxes['main-nav']" :isModalOverlay="isModalOverlay"></box>
         <box class="animate" :config="boxes['head-controls']" :isModalOverlay="isModalOverlay"></box>
         <!--  -->
@@ -350,24 +350,38 @@ export default {
             globals.eventBus.$emit('updateMetaEditor')
             globals.eventBus.$emit('updateActiveView', { targets: ['dataset-actions'] })
         },
-        onClickCage() {
-            $('.cage.boxes .mock-config .config-menu').addClass('hidden')
+        updateMockConfigMenuState() {
+            const $cfm = $('.cage.boxes .mock-config .config-menu')
+            if ($cfm.hasClass('hidden')) {
+                $(document).one('mouseup', () => {
+                    console.log('WIN:CLICK value = ')
+                    $cfm.addClass('hidden')
+                })
+                $cfm.on('mouseup', evt => {
+                    evt.stopPropagation()
+                })
+                $('.el-select__popper').on('mouseup', evt => {
+                    evt.stopPropagation()
+                })
+                $cfm.removeClass('hidden')
+            } else {
+                // $(document).off('mouseup')
+                $cfm.off('mouseup', evt => {
+                    evt.stopPropagation()
+                })
+                $('.el-select__popper').off('mouseup', evt => {
+                    evt.stopPropagation()
+                })
+                $cfm.addClass('hidden')
+            }
         },
         onClick(evt) {
             evt.box = evt.box || { id: null }
             console.log('CG:onClick evt = ', evt)
             let options = { _00: { targets: null } }
 
-            // if (!this.isModalOverlay && evt.key === 'toggle-scroll-state') {
-            //     this.uiStore.setNativeScrollState(!this.uiStore.state.useNativeScroll)
-            //     return globals.eventBus.$emit('updateActiveView')
-            // }
-
             if (!this.isModalOverlay && evt.key === 'toggle-mock-config-menu-state') {
-                const $cfm = $('.cage.boxes .mock-config .config-menu')
-                $cfm.toggleClass('hidden')
-                // this.uiStore.setNativeScrollState(!this.uiStore.state.useNativeScroll)
-                // return globals.eventBus.$emit('updateActiveView')
+                this.updateMockConfigMenuState()
             }
 
             switch (true) {

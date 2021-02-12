@@ -1,3 +1,9 @@
+.el-select__popper {
+    .el-select-dropdown__item.selected {
+        color: #47557b;
+    }
+}
+
 .form-container {
     // .el-select .el-select__tags .el-tag .el-icon-close
     .el-select {
@@ -46,4 +52,9 @@
         border-color: #5063a2;
         background: #7b90b4;
     }
+
+    // .el-select-dropdown__item.selected {
+    //     color: #4c5c83;
+    //     font-weight: 700;
+    // }
 }

@@ -1,5 +1,3 @@
-import Globals from './Globals'
-
 function R2UiBoxDefinitions() {
     this.boxes = {
         'mock-config': {
@@ -15,10 +13,17 @@ function R2UiBoxDefinitions() {
                             config: {
                                 dataKey: 'data',
                                 schemaKey: 'mock-config',
-                                onChange: config => {
-                                    if (config.key === 'scroll-type') {
-                                        // console.log('CB:onChange config = ', config)
-                                        globals.uiStore.setNativeScrollState(config.selected === 'native')
+                                onClickItem: item => {
+                                    console.log('BOX-CFG:onFormItemChanged item = ', item)
+                                    if (item.key === 'close-button') {
+                                        // this simulates a click outside the form box, which 
+                                        // closes the box in the cage-logic
+                                        $(document).trigger('mouseup')
+                                    }
+                                },
+                                onFormItemChanged: item => {
+                                    if (item.key === 'scroll-type') {
+                                        globals.uiStore.setNativeScrollState(item.selected === 'native')
                                         return globals.eventBus.$emit('updateActiveView')
                                     }
                                 }

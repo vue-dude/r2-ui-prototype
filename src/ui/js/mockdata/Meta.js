@@ -1,6 +1,16 @@
 const metaSchemes = {
     // TODO remove mock config stuff from here
     'mock-config': {
+        'close-button': {
+            __0: {
+                label: 'x',
+                type: 'ui',
+                layout: {
+                    classes: 'close-button',
+                    onClick: true
+                }
+            }
+        },
         'scroll-type': {
             __0: {
                 type: 'radio',
