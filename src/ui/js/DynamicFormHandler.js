@@ -422,10 +422,10 @@ const DynamicFormHandler = function(config = {}) {
             selected: value,
             key,
             sendKey: key, // ??
-            label: tree
+            label: _.isString(res.__0.label) ? res.__0.label : tree
                 .join('.')
                 .split('.')
-                .pop() // TEST
+                .pop() 
         }
         item = { ...item, ...add }
 
@@ -436,8 +436,6 @@ const DynamicFormHandler = function(config = {}) {
         if (_.isString(args.label)) {
             item.label = args.label
         }
-        //
-        item.label = `${item.label}:` // mock hardcoded, TODO: generate i18n id here!
         //
         if (config.convertSelectedArraysToStrings) {
             item.selected = _.isArray(item.selected) ? item.selected.join(',') : item.selected
