@@ -1,0 +1,202 @@
+.r2 {
+    .boxes {
+        .box {
+            &.search-page {
+                .inner {
+                    left: 0;
+                    top: 0;
+                    &.bg-img.search-page {
+                        width: calc(2267px / 2);
+                        height: calc(1297px / 2);
+                    }
+                }
+                .view {
+                    .overlay {
+                        pointer-events: all;
+                        .search-page-pager-go-bt {
+                            pointer-events: all;
+                            width: calc(81px / 2);
+                            height: calc(77px / 2);
+                            top: calc(100vh - 90px);
+                            left: 2px;
+                        }
+                        .search-page-pager-left {
+                            width: calc(628px / 2);
+                            height: calc(75px / 2);
+                            top: calc(100vh - 90px);
+                            left: 40px;
+                        }
+                        .components {
+                            .search-box {
+                                position: absolute;
+                                top: 0px;
+                                left: 789px;
+                                width: 343px;
+                                height: 46px;
+                                background-color: white;
+                                border: 1px solid #b5c0d1;
+                                border-radius: 5px;
+                                .form-container.search-input {
+                                    position: absolute;
+                                    left: 5px;
+                                    top: 7px;
+                                    .index-group {
+                                        display: flex;
+                                        .fire-search-button {
+                                            cursor: pointer;
+                                            width: 33px;
+                                            height: 30px;
+                                            border-radius: 0 4px 4px 0;
+                                            border: 1px solid #7e97a9;
+                                            border-left: none;
+                                            background-repeat: no-repeat;
+                                            background-image: url(/img/search.png);
+                                            background-size: 22px;
+                                            background-position: center;
+                                        }
+                                        .input-container {
+                                            width: 295px;
+                                        }
+                                        .search-term-input {
+                                            margin-left: 5px;
+                                            .label {
+                                                visibility: hidden;
+                                                height: 0px;
+                                            }
+                                            .el-input__inner {
+                                                border-radius: 4px 0 0 4px;
+                                                border: 1px solid #798fa0;
+                                                height: 32px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .fixed {
+                        .search-page-search-bar-top {
+                            width: calc(1542px / 2);
+                            height: calc(93px / 2);
+                            left: 1px;
+                            top: 1px;
+                        }
+                        .search-bar-top-with-pager {
+                            width: calc(1542px / 2);
+                            height: calc(93px / 2);
+                            left: 1px;
+                            top: 0px;
+                        }
+                        .sp {
+                            width: 766px;
+                            height: 1px;
+                            left: 4px;
+                            top: 54px;
+                            border-top: 1px solid #ffffff8c;
+                        }
+                        .search-page-facets-term {
+                            // 687 × 93
+                            width: calc(689px / 2);
+                            height: calc(93px / 2);
+                            top: 0px;
+                            left: 789px;
+                        }
+                        .search-page-facets-up {
+                            width: calc(689px / 2);
+                            height: calc(479px / 2);
+                            top: 58px;
+                            left: 789px;
+                        }
+                        .search-page-facets-dn-head {
+                            width: calc(616px / 2);
+                            height: calc(50px / 2);
+                            top: 323px;
+                            left: 809px;
+                        }
+                        .search-page-facets-dn-box {
+                            width: calc(689px / 2);
+                            height: calc(100vh - 405px);
+                            top: 309px;
+                            left: 789px;
+                            border-radius: 8px;
+                            background-color: #e5e8f5;
+                        }
+                    }
+                    .scrollbar {
+                        left: 758px;
+                        top: 61px;
+                        height: calc(100vh - 152px);
+                    }
+                    .scrollable {
+                        top: 62px;
+                        left: 0px;
+                        height: calc(100vh - 88px - 65px);
+                        width: 785px;
+                        &.native {
+                            width: 774px;
+                        }
+                        .content {
+                            // transform: scaleX(0.97);
+                        }
+                        .inner {
+                            left: 0px;
+                            top: 0px;
+                            &.bg-img.search-page-scroll {
+                                //1565 × 2317
+                                width: calc(1565px / 2);
+                                height: calc(2317px / 2);
+                            }
+                        }
+                        .click-zonesXXX {
+                            .click-zone {
+                                left: 13px;
+                                width: 754px;
+                                height: 38px;
+                                &.show-ds-1 {
+                                    top: 15px;
+                                }
+                                &.show-ds-2 {
+                                    top: 185px;
+                                    height: 55px;
+                                }
+                                &.show-ds-3 {
+                                    top: 365px;
+                                    height: 35px;
+                                }
+                                &.show-ds-4 {
+                                    top: 515px;
+                                    height: 50px;
+                                }
+                                &.show-ds-5 {
+                                    top: 685px;
+                                    height: 45px;
+                                }
+                                &.show-ds-6 {
+                                    top: 842px;
+                                    height: 53px;
+                                }
+                                &.show-ds-7 {
+                                    top: 1015px;
+                                    height: 37px;
+                                }
+                            }
+                        }
+                        .components {
+                            .component.my-datasets {
+                                width: calc(1565px / 3);
+                            }
+                            .content-list {
+                                margin-left: 5px;
+                                // margin-top: 300px; // TEST
+                                width: 755px;
+                            }
+                            .dataset-list-item {
+                                //
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

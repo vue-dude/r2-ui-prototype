@@ -1,36 +1,4 @@
 const metaSchemes = {
-    // TODO remove mock config stuff from here
-    'mock-config': {
-        'close-button': {
-            __0: {
-                label: 'x',
-                type: 'ui',
-                layout: {
-                    classes: 'close-button',
-                    onClick: true
-                }
-            }
-        },
-        'scroll-type': {
-            __0: {
-                type: 'radio',
-                options: [
-                    { value: 'native', label: 'Native' },
-                    { value: 'custom', label: 'Custom' }
-                ]
-            }
-        },
-        datasource: {
-            __0: {
-                type: 'select',
-                options: [
-                    { value: 'mock', label: 'Internal Mockdata' },
-                    { value: 'edmond', label: 'Edmond II API' },
-                    { value: 'zenodo', label: 'Zenodo API' }
-                ]
-            }
-        }
-    },
     authors: [
         {
             __0: {
@@ -170,10 +138,6 @@ const metaSchemes = {
 }
 
 const metaData = {
-    'mock-config-data': {
-        'scroll-type': 'native',
-        datasource: 'mock'
-    },
     'authors-mock55c4': [
         {
             familyName: 'Schatz',

@@ -45,15 +45,9 @@ export default {
         }
     },
     created() {
-        // globals.eventBus.$on('invokeSaveDataAction', this.onSaveDataAction)
-        console.log('GFC:created this.config = ', this.config)
-        // if (this.sKey && this.dKey) {
         this.updateForm(true)
-        // }
     },
     onBeforeUnmount() {
-        // globals.eventBus.$off('updateMetaEditor', this.onUpdateMetaEditor)
-        // globals.eventBus.$off('invokeSaveDataAction', this.onSaveDataAction)
         this.formHandler = null
     },
     computed: {
@@ -71,7 +65,6 @@ export default {
             }
         },
         onKeyDown(itemConfig, evt) {
-            // console.log('obj:onKeyDown itemConfig this.uid = ',this.uid, itemConfig)
             if (_.isFunction(this.config.onKeyDown)) {
                 this.config.onKeyDown(itemConfig, evt, this)
             }
