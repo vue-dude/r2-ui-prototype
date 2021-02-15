@@ -1,5 +1,5 @@
 <template>
-    <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config" @subClick="onSubClick"></dynamic-form>
+    <meta-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config" @subClick="onSubClick"></meta-form>
     <active-list v-if="cmp.component === 'active-list'" :config="cmp.config" @subClick="onSubClick"></active-list>
     <content-list v-if="cmp.component === 'content-list'" :config="cmp.config" @subClick="onSubClick"></content-list>
     <content-cell v-if="cmp.component === 'content-cell'" :config="cmp.config" @subClick="onSubClick"></content-cell>
@@ -22,7 +22,7 @@
 
 <script>
 //
-import DynamicForm from '@/ui/components/DynamicFormComponent.vue'
+import MetaForm from '@/ui/components/MetaFormComponent.vue'
 import GenericForm from '@/ui/components/GenericFormComponent.vue'
 import ActiveList from '@/ui/components/ActiveListComponent.vue'
 import ContentList from '@/ui/components/ContentList.vue'
@@ -31,7 +31,7 @@ import DatasetListItem from '@/ui/components/DatasetListItem.vue'
 //
 export default {
     components: {
-        DynamicForm,
+        MetaForm,
         GenericForm,
         ActiveList,
         ContentList,
