@@ -14,7 +14,7 @@ function R2UiBoxDefinitions() {
                             config: {
                                 dataKey: 'data',
                                 schemaKey: 'mock-config',
-                                onClickItem: item => {
+                                onClickItem: (item, evt) => {
                                     console.log('BOX-CFG:onFormItemChanged item = ', item)
                                     if (item.key === 'close-button') {
                                         // this simulates a click outside the form box, which
@@ -115,7 +115,8 @@ function R2UiBoxDefinitions() {
                                     components: {
                                         'recent-uploads-label': {
                                             type: 'ui',
-                                            text: 'Recent Uploads'
+                                            // text: 'Recent Uploads',
+                                            text: 'ui.interface.recent-uploads'
                                         },
                                         'search-input': {
                                             component: 'generic-form',
@@ -128,24 +129,38 @@ function R2UiBoxDefinitions() {
                                                         }
                                                     },
                                                     'search-term-input': {
-                                                        label: null,
+                                                        label: '',
                                                         __0: {
-                                                            label: null,
+                                                            label: '',
                                                             type: 'input'
                                                             // suffixIcon: 'el-icon-search'
                                                         }
                                                     },
                                                     'fire-search-button': {
+                                                        label: '',
                                                         __0: {
                                                             type: 'ui',
-                                                            onClick: true
+                                                            onClick: true,
+                                                            label: ''
                                                         }
                                                     }
                                                 },
-                                                onClickItem: item => {
-                                                    console.log('BOX-CFG:onFormItemChanged item = ', item)
+                                                onClickItem: (item, evt, component) => {
                                                     if (item.key === 'fire-search-button') {
-                                                        //
+                                                        component.$emit('subClick', {
+                                                            key: 'show-search-page',
+                                                            args: {}
+                                                        })
+                                                    }
+                                                },
+                                                onKeyDown: (item, evt, component) => {
+                                                    if (evt.which === 13) {
+                                                        if (item.key === 'search-term-input') {
+                                                            component.$emit('subClick', {
+                                                                key: 'show-search-page',
+                                                                args: {}
+                                                            })
+                                                        }
                                                     }
                                                 }
                                             }
@@ -153,21 +168,9 @@ function R2UiBoxDefinitions() {
                                     }
                                 }
                             }
-
-                            // contentCellConfig: {
-                            //     components: {
-                            //         'dataset-list-item': {
-                            //             component: 'dataset-list-item',
-                            //             config: { showAs: 'public-dataset' }
-                            //         }
-                            //     }
-                            // }
                         },
 
-                        zonesXX: {
-                            // 'bt-search': {
-                            //     key: 'show-search-page'
-                            // },
+                        zones: {
                             'show-ds-1': {
                                 key: 'show-public-dataset'
                             },

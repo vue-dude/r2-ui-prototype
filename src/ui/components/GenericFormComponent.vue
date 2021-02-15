@@ -2,7 +2,7 @@
     <div class="form-container" :class="uid" v-show="true">
         <div class="index-group-space" :id="index"></div>
         <div v-for="(group, index) in form" :key="index" :id="index" class="index-group">
-            <div v-for="(item, setup, key) in group" :key="key">
+            <div v-for="(item, setup, key) in group" :key="key" @keydown="evt => onKeyDown(item, evt)">
                 <div class="input-container" v-if="item.isInputElement">
                     <div class="input-cell" :class="item.key">
                         <dynamic-form-cell :config="item" @changed="onFormItemChanged" />
@@ -10,10 +10,10 @@
                 </div>
                 <div
                     class="ui-element"
-                    :class="item.layout.classes"
+                    :class="[item.key, item.layout.classes]"
                     v-if="item.isUiElement"
                     v-html="item.label"
-                    @click.stop="onClickItem(item)"
+                    @click.stop="evt => onClickItem(item, evt)"
                 ></div>
             </div>
         </div>
@@ -65,16 +65,23 @@ export default {
         }
     },
     methods: {
-        onClickItem(itemConfig) {
+        onClickItem(itemConfig, evt) {
             if (_.isFunction(this.config.onClickItem)) {
-                this.config.onClickItem(itemConfig)
+                this.config.onClickItem(itemConfig, evt, this)
             }
         },
-        onFormItemChanged(itemConfig) {
+        onKeyDown(itemConfig, evt) {
+            // console.log('obj:onKeyDown itemConfig this.uid = ',this.uid, itemConfig)
+            if (_.isFunction(this.config.onKeyDown)) {
+                this.config.onKeyDown(itemConfig, evt, this)
+            }
+        },
+
+        onFormItemChanged(itemConfig, evt) {
             // TODO find reason why his event also is fired on clicking a ui element,
             // e.g. the close button!
             if (_.isFunction(this.config.onFormItemChanged)) {
-                this.config.onFormItemChanged(itemConfig)
+                this.config.onFormItemChanged(itemConfig, evt, this)
             }
         },
         onSaveDataAction() {

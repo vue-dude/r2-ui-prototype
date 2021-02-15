@@ -1,9 +1,9 @@
 <template>
-    <div class="label" v-html="config.label"></div>
+    <div class="label" v-html="$t(config.label)"></div>
     <div class="form-element radio-cage" @change="onChange" v-if="config.type === 'radio'">
         <el-radio-group v-model="config.selected">
             <el-radio v-for="(option, index) in config.options" :key="index" :label="option.value">
-                {{ option.label }}
+                {{ $t(option.label) }}
             </el-radio>
         </el-radio-group>
     </div>
@@ -12,7 +12,7 @@
         class="form-element"
         v-if="config.type === 'input'"
         v-model="config.selected"
-        :placeholder="config.plc"
+        :placeholder="$t(config.plc)"
         :suffix-icon="config.suffixIcon"
         :prefix-icon="config.prefixIcon"
         size="mini"
@@ -24,7 +24,7 @@
         class="form-element"
         v-if="config.type === 'select'"
         v-model="config.selected"
-        :placeholder="config.plc"
+        :placeholder="$t(config.plc)"
         :prefix-icon="config.prefixIcon"
         size="mini"
         :multiple="config.allowMultipleSelections"
@@ -35,7 +35,7 @@
         <el-option
             v-for="(option, index) in config.options"
             :key="index"
-            :label="option.label"
+            :label="$t(option.label)"
             :value="option.value"
         ></el-option>
     </el-select>

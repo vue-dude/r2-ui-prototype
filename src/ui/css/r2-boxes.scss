@@ -237,37 +237,54 @@
                     }
                     .components {
                         .search-box {
-                            // display: flex;
                             position: absolute;
-                            top: 275px;
+                            top: 214px;
                             width: 770px;
                             height: 46px;
                             background-color: rgb(255, 255, 255);
-                            border: 1px solid black;
+                            border: 1px solid #b5c0d1;
                             border-radius: 5px;
                             .recent-uploads-label {
-                                // font-family: 'Roboto';
                                 color: #1c253e;
                                 font-size: 22px;
-                                margin-left: 26px;
+                                margin-left: 13px;
                                 margin-top: 9px;
                             }
                             .form-container.search-input {
                                 position: absolute;
-                                right: 0px;
-                                top: 0px;
-                                width: 400px;
-                                height: 35px;
-                                background-color: #eff5ef;
-                                border: 1px solid #c4c4c4;
+                                right: 7px;
+                                top: 7px;
                                 .index-group {
                                     display: flex;
+                                    .label-search {
+                                        color: #5a5a5a;
+                                        line-height: 35px;
+                                    }
+                                    .fire-search-button {
+                                        cursor: pointer;
+                                        width: 33px;
+                                        height: 30px;
+                                        border-radius: 0 4px 4px 0;
+                                        border: 1px solid #7e97a9;
+                                        border-left: none;
+                                        background-repeat: no-repeat;
+                                        background-image: url(/img/search.png);
+                                        background-size: 22px;
+                                        background-position: center;
+                                    }
                                     .search-term-input {
+                                        margin-left: 5px;
                                         .label {
                                             visibility: hidden;
                                             height: 0px;
                                         }
+                                        .el-input__inner {
+                                            border-radius: 4px 0 0 4px;
+                                            border: 1px solid #798fa0;
+                                            height: 32px;
+                                        }
                                     }
+
                                 }
                             }
                         }

@@ -18,7 +18,10 @@
             "btSend": "Send",
             "btPublish": "Publish",
             "cmsControlTabAuthentication": "Authentication",
-            "cmsControlTabPublish": "Publish"
+            "cmsControlTabPublish": "Publish",
+            "interface": {
+                "recent-uploads": "Recent uploads"
+            }
         },
         "message": {
             "hello": "hello i18 !! :-)",
@@ -33,7 +36,9 @@
             "item": {
                 "label": {
                     "scroll-type": "Scroll Type:",
-                    "datasource": "Datasource:"
+                    "datasource": "Datasource:",
+                    "authors": "Authors:",
+                    "search-term-input": "Type your search here"
                 }
             }
         }

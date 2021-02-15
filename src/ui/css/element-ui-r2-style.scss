@@ -22,7 +22,6 @@
     }
     .el-textarea,
     .el-input {
-        border: 1px solid #5d698f;
         .el-input__suffix {
             color: #a13a95;
         }
@@ -32,7 +31,7 @@
             font-size: 15px;
             line-height: 15px;
             &::placeholder {
-                color: #b4708e;
+                color: #917581;
                 font-style: italic;
             }
         }

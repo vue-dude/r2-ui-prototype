@@ -34,8 +34,6 @@
                 </div>
 
                 <div class="components">
-                    <!-- TODO add  typeof component, like form, upload -->
-                    <!-- TODO unify structure, add 'fixed' ? -->
                     <div
                         v-for="(cmp, key) in view.components"
                         class="component"
@@ -43,19 +41,7 @@
                         :key="key"
                         @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
                     >
-                        <generic-form v-if="cmp.component === 'generic-form'" :config="cmp.config"></generic-form>
-                        <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
-                        <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
-                        <content-list
-                            v-if="cmp.component === 'content-list'"
-                            :config="cmp.config"
-                            @subClick="onSubClick"
-                        ></content-list>
-                        <content-cell
-                            v-if="cmp.component === 'content-cell'"
-                            :config="cmp.config"
-                            @subClick="onSubClick"
-                        ></content-cell>
+                        <r2-components :cmp="cmp" @subClick="onSubClick" />
                     </div>
                 </div>
                 <div class="inner" v-if="!view.setBgImageOverElements">
@@ -118,8 +104,6 @@
                     </div>
 
                     <div class="components">
-                        <!-- TODO add  typeof component, like form, upload -->
-                        <!-- figure out reason components gets overlayed by inner if other position -->
                         <div
                             v-for="(cmp, key) in view.scroll.components"
                             class="component"
@@ -127,19 +111,7 @@
                             :key="key"
                             @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
                         >
-                            <generic-form v-if="cmp.component === 'generic-form'" :config="cmp.config"></generic-form>
-                            <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
-                            <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
-                            <content-list
-                                v-if="cmp.component === 'content-list'"
-                                :config="cmp.config"
-                                @subClick="onSubClick"
-                            ></content-list>
-                            <content-cell
-                                v-if="cmp.component === 'content-cell'"
-                                :config="cmp.config"
-                                @subClick="onSubClick"
-                            ></content-cell>
+                            <r2-components :cmp="cmp" @subClick="onSubClick" />
                         </div>
                     </div>
 
@@ -176,7 +148,6 @@
                     </div>
                 </div>
                 <div class="components">
-                    <!-- TODO add  typeof component, like form, upload -->
                     <div
                         v-for="(cmp, key) in view.overlay.components"
                         class="component"
@@ -184,12 +155,7 @@
                         :key="key"
                         @click.stop="cmp.click ? onClickThing(cmp.key || key, cmp.args) : null"
                     >
-                        <generic-form v-if="cmp.component === 'generic-form'" :config="cmp.config"></generic-form>
-
-                        <dynamic-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config"></dynamic-form>
-                        <active-list v-if="cmp.component === 'active-list'" :config="cmp.config"></active-list>
-                        <content-list v-if="cmp.component === 'content-list'" :config="cmp.config"></content-list>
-                        <content-cell v-if="cmp.component === 'content-cell'" :config="cmp.config"></content-cell>
+                        <r2-components :cmp="cmp" @subClick="onSubClick" />
                     </div>
                 </div>
                 <div class="click-zones">
@@ -212,19 +178,13 @@
 <script>
 //
 import BoxScrollHandler from '@/ui/js/BoxScrollHandler.js'
-import DynamicForm from '@/ui/components/DynamicFormComponent.vue'
-import GenericForm from '@/ui/components/GenericFormComponent.vue'
-import ActiveList from '@/ui/components/ActiveListComponent.vue'
-import ContentList from '@/ui/components/ContentList.vue'
-import ContentCell from '@/ui/components/ContentCell.vue'
+// defined globally in main.js because of 'recrsive use'.
+// no need to import here
+// import R2Components from '@/ui/components/R2Components.vue'
 //
 export default {
     components: {
-        DynamicForm,
-        GenericForm,
-        ActiveList,
-        ContentList,
-        ContentCell
+        // R2Components
     },
     props: {
         config: {},

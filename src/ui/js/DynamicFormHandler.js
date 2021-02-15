@@ -18,7 +18,7 @@ const DynamicFormHandler = function(config = {}) {
     let form = null
     let schema = {}
     //
-    const createNewForm = (rawFormData, $schema) => {
+    const createNewForm = (rawFormData, $schema, options = {}) => {
         if (_.isPlainObject($schema)) {
             schema = $schema
         }
@@ -42,8 +42,10 @@ const DynamicFormHandler = function(config = {}) {
         // 3. create the index-tree for list-length tracking by following recursive functions
         createIndexTree(d)
         // 4. add the basic layout tags (list start/end)
-        addLayoutElements(d, sortedDataWithLayoutElements)
-        // 5. create the final form and add the add/remove tags (uses the index-tree)
+        // if (options.addLayoutElements) {
+            addLayoutElements(d, sortedDataWithLayoutElements)
+            // 5. create the final form and add the add/remove tags (uses the index-tree)
+        // }
         scanAndCreateForm(sortedDataWithLayoutElements, form)
         return form
     }
@@ -422,10 +424,12 @@ const DynamicFormHandler = function(config = {}) {
             selected: value,
             key,
             sendKey: key, // ??
-            label: _.isString(res.__0.label) ? res.__0.label : tree
-                .join('.')
-                .split('.')
-                .pop() 
+            label: _.isString(res.__0 && res.__0.label)
+                ? res.__0.label
+                : tree
+                      .join('.')
+                      .split('.')
+                      .pop()
         }
         item = { ...item, ...add }
 

@@ -18,11 +18,13 @@ import 'element-plus/lib/theme-chalk/index.css'
 // TODO explore scss vars override
 // import 'element-plus/packages/theme-chalk/src/index.scss'
 
+import R2Components from '@/ui/components/R2Components.vue'
+
 const createVueApp = async () => {
     gsap.config({ nullTargetWarn: false })
     await datasource.getInitialData().then(data => {
         //
-        console.log('MAIN:createVueApp data.translations = ',data.translations)
+        console.log('MAIN:createVueApp data.translations = ', data.translations)
         const i18n = createI18n({
             fallbackLocale: data.setup.fallbackLocale || 'en',
             locale: 'en', // set locale
@@ -44,6 +46,7 @@ const createVueApp = async () => {
                 .use(ElementPlus)
             // app.config.errorHandler = () => null
             app.config.warnHandler = () => null
+            app.component('R2Components', R2Components) // global registration - can be used anywhere
             app.mount('#app')
         }, 500)
         //
