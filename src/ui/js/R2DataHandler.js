@@ -57,10 +57,18 @@ const R2D2DataHandler = function() {
         return res
     }
 
-    this.setData = (schemaKey, dataKey, dataset) => {
+    this.setMetaData = (schemaKey, dataKey, dataset) => {
         const key = `${schemaKey}-${dataKey}`
         metaData[key] = dataset
         return { [key]: metaData[key] || [] }
+    }
+
+    this.setData = (schemaKey, dataKey, data) => {
+        if (schemaKey === 'datasets') {
+            datasets[dataKey] = data
+            return datasets[dataKey]
+        }
+        return null
     }
 
     //

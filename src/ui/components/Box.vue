@@ -209,6 +209,8 @@ export default {
     },
     beforeUnmount() {
         this.destroyBoxScrollHandler()
+        globals.eventBus.$off('updateActiveView', this.onUpdateActiveView)
+        globals.eventBus.$off('subClick', this.onSubClick)
     },
     computed: {
         boxEnabled() {

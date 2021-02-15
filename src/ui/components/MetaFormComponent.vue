@@ -237,7 +237,7 @@ export default {
                 let data = this.formHandler.getData() //[this.dataKey]
                 data = data[this.dataKey] ? data[this.dataKey] : data
                 console.log('DFC:onSaveDataAction data = ', data)
-                this.r2DataHandler.setData(this.sKey, this.dKey, data)
+                this.r2DataHandler.setMetaData(this.sKey, this.dKey, data)
                 this.dataKey = null
             }
         },

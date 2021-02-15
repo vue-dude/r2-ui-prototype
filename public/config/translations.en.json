@@ -37,6 +37,7 @@
                 "label": {
                     "scroll-type": "Scroll Type:",
                     "datasource": "Datasource:",
+                    "api-select": "API Select:",
                     "authors": "Authors:",
                     "search-term-input": "Type your search here"
                 }

@@ -27,15 +27,6 @@ export default {
             // r2DataHandler: datasource.getR2DataHandler()
         }
     },
-    created() {
-        console.log('DLI:created this.config.showAs = ', this.config.showAs)
-        console.log('DLI:created this.data.familyName = ', this.data.familyName)
-        // globals.eventBus.$on('invokeSaveDataAction', this.onSaveDataAction)
-        // this.updateList()
-    },
-    onBeforeUnmount() {
-        // globals.eventBus.$off('invokeSaveDataAction', this.onSaveDataAction)
-    },
     methods: {
         update() {
             this.uKey = this.uKey > 1000 ? 1 : ++this.uKey

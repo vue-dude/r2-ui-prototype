@@ -60,9 +60,17 @@ function Datasource() {
     }
     this.getPath = getPath
 
-
     const get = async (api, data = {}, options = {}) => {
         return axios.create().get(getPath(api), data, options)
+    }
+
+    this.getDatasets = async args => {
+        console.log('DS:getDatasets args = ',args)
+        // TEST hardcoded
+        const res = await get(`https://zenodo.org/api/records/?q=${args.searchTerm}&size=${args.size}`)
+        r2DataHandler.setData(args.schemaKey, args.dataKey, res.data)
+        globals.eventBus.$emit('updateDataView', { schemaKey: args.schemaKey, dataKey: args.dataKey })
+        return r2DataHandler.getData('datasets', 'pub-c819')
     }
 
     // const post = async (api, data = {}, options = {}) => {
@@ -88,7 +96,7 @@ function Datasource() {
     }
 
     const addTranslations = trns => {
-        console.log('DS:addTranslations trns = ',trns)
+        console.log('DS:addTranslations trns = ', trns)
         // trns == new loaded
         _.each(trns, (tr, lng) => {
             _.each(config.structure.navigation, (l1, keyL1) => {
@@ -153,7 +161,6 @@ function Datasource() {
             .catch(error => console.warn('DS:getTranslations ERROR error.message = ', error.message))
     }
     this.getTranslations = getTranslations
-
 
     const generateStructure = raw => {
         const navigation = {}
@@ -258,7 +265,6 @@ function Datasource() {
             setup: raw.setup
         }
     }
-
 }
 
 export default Datasource

@@ -32,7 +32,7 @@ const config = {
                                     ]
                                 }
                             },
-                            datasource: {
+                            'api-select': {
                                 __0: {
                                     type: 'select',
                                     options: [
@@ -45,7 +45,7 @@ const config = {
                         },
                         data: {
                             'scroll-type': 'native',
-                            datasource: 'mock'
+                            'api-select': 'mock'
                         },
                         onClickItem: (item, evt) => {
                             if (item.key === 'close-button') {
@@ -55,9 +55,14 @@ const config = {
                             }
                         },
                         onFormItemChanged: item => {
+                            console.log('obj:onFormItemChanged item.key = ', item.key)
                             if (item.key === 'scroll-type') {
                                 globals.uiStore.setNativeScrollState(item.selected === 'native')
                                 return globals.eventBus.$emit('updateActiveView')
+                            }
+                            if (item.key === 'api-select') {
+                                globals.uiStore.setApi(item.selected)
+                                // return globals.eventBus.$emit('updateActiveView')
                             }
                         }
                     },

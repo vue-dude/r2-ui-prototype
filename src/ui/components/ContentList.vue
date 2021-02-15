@@ -1,5 +1,5 @@
 <template>
-    <div class="content-list">
+    <div class="content-list" :key="uKey">
         <content-cell
             v-for="(row, indexRow) in list"
             :key="indexRow"
@@ -21,10 +21,28 @@ export default {
     props: {
         config: {}
     },
+    data() {
+        return {
+            uKey: 0
+        }
+    },
     created() {
+        globals.eventBus.$on('updateDataView', this.onUpdateDataView)
         this.updateList()
     },
+    onBeforeUnmount() {
+        globals.eventBus.$off('updateDataView', this.onUpdateDataView)
+    },
     methods: {
+        update() {
+            this.uKey = this.uKey > 1000 ? 1 : ++this.uKey
+        },
+        onUpdateDataView(args) {
+            if (args.schemaKey === this.config.schemaKey && args.dataKey === this.config.dataKey) {
+                this.updateList()
+                this.update()
+            }
+        },
         onSubClick(props) {
             this.$emit('subClick', props)
         },

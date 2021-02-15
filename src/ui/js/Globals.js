@@ -19,7 +19,9 @@ function Globals() {
     const UiStore = function() {
         const state = reactive({
             uKey: 0,
+            rKey: 0,
             useNativeScroll: true,
+            api: 'mock',
             preloadActive: false,
             deviceClasses: '',
             mediaTag: '',
@@ -27,7 +29,6 @@ function Globals() {
             isMobile: false,
             innerWidth: 0,
             innerHeight: 0,
-            rKey: 0,
             subPath: '',
             searchTerm: ''
         })
@@ -68,6 +69,10 @@ function Globals() {
                 state.uKey = 0
             }
         }
+        this.setApi = (api = 'mock') => {
+            state.api = api
+        }
+
     }
 
     this.uiStore = new UiStore()

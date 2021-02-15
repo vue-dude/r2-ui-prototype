@@ -1,3 +1,20 @@
+// TODO remove handler redundancy here
+const handleSearch = async (searchTerm, component) => {
+    globals.uiStore.updateSearchTerm(searchTerm)
+    if (globals.uiStore.state.api !== 'mock') {
+        const res = await datasource.getDatasets({
+            searchTerm,
+            size: 30,
+            schemaKey: 'datasets',
+            dataKey: 'pub-c819'
+        })
+    }
+    component.$emit('subClick', {
+        key: 'show-search-page',
+        args: {}
+    })
+}
+
 const config = {
     belowModalExclusive: true,
     views: {
@@ -39,24 +56,17 @@ const config = {
                                         data: {
                                             'search-term-input': 'UI_STORE:searchTerm'
                                         },
-                                        onClickItem: (item, evt, component) => {
+                                        onClickItem: async (item, evt, component) => {
                                             if (item.key === 'fire-search-button') {
                                                 const searchTerm = component.formHandler.getData()['search-term-input']
-                                                globals.uiStore.updateSearchTerm(searchTerm)
-                                                component.$emit('subClick', {
-                                                    key: 'show-search-page',
-                                                    args: {}
-                                                })
+                                                handleSearch(searchTerm, component)
                                             }
                                         },
-                                        onKeyDown: (item, evt, component) => {
+                                        onKeyDown: async (item, evt, component) => {
                                             if (evt.which === 13) {
                                                 if (item.key === 'search-term-input') {
-                                                    globals.uiStore.updateSearchTerm(item.selected)
-                                                    component.$emit('subClick', {
-                                                        key: 'show-search-page',
-                                                        args: {}
-                                                    })
+                                                    const searchTerm = item.selected
+                                                    handleSearch(searchTerm, component)
                                                 }
                                             }
                                         }
