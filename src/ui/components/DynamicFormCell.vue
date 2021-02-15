@@ -24,6 +24,7 @@
         class="form-element"
         v-if="config.type === 'select'"
         v-model="config.selected"
+        @change="onChange"
         :placeholder="$t(config.plc)"
         :prefix-icon="config.prefixIcon"
         size="mini"
@@ -42,18 +43,40 @@
 </template>
 
 <script>
-// prefix-icon="el-icon-date"
 export default {
     props: {
         config: {}
     },
+    data() {
+        return {
+            uiStore: globals.uiStore,
+            storeBinding: null
+        }
+    },
     created() {
-        console.log('DC: this.config = ', this.config)
+        if (_.isString(this.config.selected)) {
+            const spl = this.config.selected.split(':')
+            // dynamical set this.$watch dont works, vue 3 problem ??
+            if (spl[0] === 'UI_STORE') {
+                this.config.selected = this.uiStore.state.searchTerm
+                this.storeBinding = spl[1]
+            }
+        }
     },
     methods: {
         onChange() {
+            // this dont works in text input fields!
             this.$emit('changed', this.config)
         }
+    },
+    watch: {
+        'uiStore.state.uKey'() {
+            if (this.storeBinding) {
+                console.log(this.uiStore.state[this.storeBinding])
+                this.config.selected = this.uiStore.state[this.storeBinding]
+            }
+        },
+        deep: true
     }
 }
 </script>

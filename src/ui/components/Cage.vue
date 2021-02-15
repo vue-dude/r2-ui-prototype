@@ -307,7 +307,9 @@ export default {
             if (args.action === 'reset') {
                 this.viewStack = [args.key]
             } else if (args.action === 'add') {
-                this.viewStack.push(args.key)
+                if (_.last(this.viewStack) !== args.key) {
+                    this.viewStack.push(args.key)
+                }
             } else if (args.action === 'remove') {
                 this.viewStack.pop()
                 if (this.viewStack.length === 0) {

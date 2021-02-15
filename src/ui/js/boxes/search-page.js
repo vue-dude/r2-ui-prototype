@@ -36,8 +36,13 @@ const config = {
                                                 }
                                             }
                                         },
+                                        data: {
+                                            'search-term-input': 'UI_STORE:searchTerm'
+                                        },
                                         onClickItem: (item, evt, component) => {
                                             if (item.key === 'fire-search-button') {
+                                                const searchTerm = component.formHandler.getData()['search-term-input']
+                                                globals.uiStore.updateSearchTerm(searchTerm)
                                                 component.$emit('subClick', {
                                                     key: 'show-search-page',
                                                     args: {}
@@ -47,6 +52,7 @@ const config = {
                                         onKeyDown: (item, evt, component) => {
                                             if (evt.which === 13) {
                                                 if (item.key === 'search-term-input') {
+                                                    globals.uiStore.updateSearchTerm(item.selected)
                                                     component.$emit('subClick', {
                                                         key: 'show-search-page',
                                                         args: {}

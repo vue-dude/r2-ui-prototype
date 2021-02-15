@@ -102,13 +102,9 @@ export default {
     created() {
         globals.eventBus.$on('updateMetaEditor', this.onUpdateMetaEditor)
         globals.eventBus.$on('invokeSaveDataAction', this.onSaveDataAction)
-
-        console.log('DFC:created this.config = ',this.config)
         if (this.sKey && this.dKey) {
             this.updateForm(true)
         }
-
-        
     },
     onBeforeUnmount() {
         globals.eventBus.$off('updateMetaEditor', this.onUpdateMetaEditor)

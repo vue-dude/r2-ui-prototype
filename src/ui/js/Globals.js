@@ -18,6 +18,7 @@ function Globals() {
 
     const UiStore = function() {
         const state = reactive({
+            uKey: 0,
             useNativeScroll: true,
             preloadActive: false,
             deviceClasses: '',
@@ -27,7 +28,8 @@ function Globals() {
             innerWidth: 0,
             innerHeight: 0,
             rKey: 0,
-            subPath: ''
+            subPath: '',
+            searchTerm: ''
         })
         this.state = readonly(state)
 
@@ -57,6 +59,13 @@ function Globals() {
             state.rKey++
             if (state.rKey > 1000) {
                 state.rKey = 0
+            }
+        }
+        this.updateSearchTerm = (searchTerm = '') => {
+            state.searchTerm = searchTerm
+            state.uKey++
+            if (state.uKey > 1000) {
+                state.uKey = 0
             }
         }
     }

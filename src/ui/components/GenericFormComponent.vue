@@ -69,7 +69,6 @@ export default {
                 this.config.onKeyDown(itemConfig, evt, this)
             }
         },
-
         onFormItemChanged(itemConfig, evt) {
             // TODO find reason why his event also is fired on clicking a ui element,
             // e.g. the close button!
