@@ -21,8 +21,6 @@
 </template>
 
 <script>
-// v-on="{ click: item.layout.onClick ? onClick(item.layout.onClick) : null }"
-
 import DynamicFormHandler from '@/ui/js/DynamicFormHandler'
 import DynamicFormCell from '@/ui/components/DynamicFormCell'
 export default {
@@ -45,6 +43,9 @@ export default {
         }
     },
     created() {
+        if (_.isFunction(this.config.onCreate)) {
+            this.config.onCreate(this.config, this)
+        }
         this.updateForm(true)
     },
     onBeforeUnmount() {
@@ -76,30 +77,7 @@ export default {
                 this.config.onFormItemChanged(itemConfig, evt, this)
             }
         },
-        onSaveDataAction() {
-            // console.log('GFC:onSaveDataAction ')
-            // if (this.formHandler) {
-            //     let data = this.formHandler.getData() //[this.dataKey]
-            //     data = data[this.dataKey] ? data[this.dataKey] : data
-            //     console.log('GFC:onSaveDataAction data = ', data)
-            //     this.dataHandler.setData(this.sKey, this.dKey, data)
-            //     this.dataKey = null
-            // }
-        },
 
-        // onUpdateMetaEditor() {
-        //     if (this.dataKey !== `${this.sKey}-${this.dKey}`) {
-        //         this.preload = true
-        //         this.dataKey = `${this.sKey}-${this.dKey}`
-        //         this.formHandler = null
-        //         this.form = []
-        //         this.expandableList = false
-        //         this.updateForm(true)
-        //         setTimeout(() => {
-        //             this.preload = false
-        //         }, 1000)
-        //     }
-        // },
         updateForm(createNew = false) {
             const schema = this.sKey ? this.dataHandler.getSchema(this.sKey, this.dKey) : this.config.schema
             console.log('GFC:updateForm createNew = ', createNew)

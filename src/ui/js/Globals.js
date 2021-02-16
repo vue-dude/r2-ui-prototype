@@ -21,7 +21,7 @@ function Globals() {
             uKey: 0,
             rKey: 0,
             useNativeScroll: true,
-            api: 'mock',
+            api: '',
             preloadActive: false,
             deviceClasses: '',
             mediaTag: '',

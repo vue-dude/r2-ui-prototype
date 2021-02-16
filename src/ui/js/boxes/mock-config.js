@@ -45,7 +45,11 @@ const config = {
                         },
                         data: {
                             'scroll-type': 'native',
-                            'api-select': 'mock'
+                            'api-select': 'zenodo'
+                        },
+                        onCreate(config, component){
+                            console.log('MC:onCreate config = ', config)
+                            globals.uiStore.setApi(config.data['api-select'])
                         },
                         onClickItem: (item, evt) => {
                             if (item.key === 'close-button') {
@@ -55,14 +59,13 @@ const config = {
                             }
                         },
                         onFormItemChanged: item => {
-                            console.log('obj:onFormItemChanged item.key = ', item.key)
+                            console.log('MC:onFormItemChanged item.key = ', item.key)
                             if (item.key === 'scroll-type') {
                                 globals.uiStore.setNativeScrollState(item.selected === 'native')
                                 return globals.eventBus.$emit('updateActiveView')
                             }
                             if (item.key === 'api-select') {
                                 globals.uiStore.setApi(item.selected)
-                                // return globals.eventBus.$emit('updateActiveView')
                             }
                         }
                     },
