@@ -45,7 +45,7 @@ const config = {
                         },
                         data: {
                             'scroll-type': 'native',
-                            'api-select': 'zenodo'
+                            'api-select': 'mock'
                         },
                         onCreate(config, component){
                             console.log('MC:onCreate config = ', config)

@@ -46,14 +46,14 @@ const config = {
                                         onClickItem: async (item, evt, component) => {
                                             if (item.key === 'fire-search-button') {
                                                 const searchTerm = component.formHandler.getData()['search-term-input']
-                                                handleSearch(searchTerm, component)
+                                                handleSearch({ searchTerm }, component)
                                             }
                                         },
                                         onKeyDown: async (item, evt, component) => {
                                             if (evt.which === 13) {
                                                 if (item.key === 'search-term-input') {
                                                     const searchTerm = item.selected
-                                                    handleSearch(searchTerm, component)
+                                                    handleSearch({ searchTerm }, component)
                                                 }
                                             }
                                         }

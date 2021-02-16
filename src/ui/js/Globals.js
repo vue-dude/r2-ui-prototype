@@ -30,9 +30,18 @@ function Globals() {
             innerWidth: 0,
             innerHeight: 0,
             subPath: '',
-            searchTerm: ''
+            // search handling
+            searchTerm: '',
+            sortDirection: ''
         })
         this.state = readonly(state)
+
+        const update = () => {
+            state.uKey++
+            if (state.uKey > 1000) {
+                state.uKey = 0
+            }
+        }
 
         // dispatch: keep compatibility with the access model of vuex store
         this.dispatch = (target, args) => {
@@ -62,17 +71,17 @@ function Globals() {
                 state.rKey = 0
             }
         }
-        this.updateSearchTerm = (searchTerm = '') => {
-            state.searchTerm = searchTerm
-            state.uKey++
-            if (state.uKey > 1000) {
-                state.uKey = 0
-            }
-        }
         this.setApi = (api = 'mock') => {
             state.api = api
         }
-
+        this.updateSearchTerm = (searchTerm = '') => {
+            state.searchTerm = searchTerm
+            update()
+        }
+        this.updateSortDirection = (direction = '') => {
+            state.sortDirection = direction
+            update()
+        }
     }
 
     this.uiStore = new UiStore()

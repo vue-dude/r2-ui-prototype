@@ -72,6 +72,41 @@
                                     }
                                 }
                             }
+                            .search-header {
+                                position: absolute;
+                                top: 0px;
+                                left: 680px;
+                                width: 100px;
+                                height: 46px;
+                                // background-color: white;
+                                // border: 1px solid #b5c0d1;
+                                border-radius: 5px;
+                                transform: scaleX(0.9);
+                                .form-container.sort-properties {
+                                    position: absolute;
+                                    left: 5px;
+                                    top: 7px;
+                                    .index-group {
+                                        display: flex;
+                                        .input-container {
+                                            width: 85px;
+                                        }
+                                        .sort-direction {
+                                            margin-left: 5px;
+                                            margin-top: 2px;
+                                            .label {
+                                                visibility: hidden;
+                                                height: 0px;
+                                            }
+                                            .el-input__inner {
+                                                // border-radius: 4px 0 0 4px;
+                                                border: 1px solid #798fa0;
+                                                height: 30px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     .fixed {

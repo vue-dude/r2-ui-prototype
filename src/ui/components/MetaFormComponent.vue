@@ -22,7 +22,7 @@
                 <div v-for="(item, setup, index) in group" :key="index">
                     <div class="input-container" v-if="item.isInputElement">
                         <div class="input-cell" v-if="item.layout.classes === 'left'">
-                            <dynamic-form-cell :config="item" />
+                            <generic-form-cell :config="item" />
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                 <div v-for="(item, index) in group" :key="index">
                     <div class="input-container" v-if="item.isInputElement">
                         <div class="input-cell" v-if="item.layout.classes === 'right'">
-                            <dynamic-form-cell :config="item" />
+                            <generic-form-cell :config="item" />
                         </div>
                     </div>
                 </div>
@@ -77,12 +77,12 @@
 <script>
 // TODO refactor to "MetaFormComponent"
 import DynamicFormHandler from '@/ui/js/DynamicFormHandler'
-import DynamicFormCell from '@/ui/components/DynamicFormCell'
+import GenericFormCell from '@/ui/components/GenericFormCell'
 // import VueDynamicForm from 'vue-dynamic-form-component' // dont works with vue-3
 export default {
     components: {
         // VueDynamicForm
-        DynamicFormCell
+        GenericFormCell
     },
     props: {
         config: {}

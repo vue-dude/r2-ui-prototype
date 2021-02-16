@@ -58,7 +58,7 @@ export default {
             const spl = this.config.selected.split(':')
             // dynamical set this.$watch dont works, vue 3 problem ??
             if (spl[0] === 'UI_STORE') {
-                this.config.selected = this.uiStore.state.searchTerm
+                this.config.selected = this.uiStore.state[spl[1]]
                 this.storeBinding = spl[1]
             }
         }
@@ -71,8 +71,8 @@ export default {
     },
     watch: {
         'uiStore.state.uKey'() {
+            // console.log('GFC:watch this.storeBinding = ',this.storeBinding)
             if (this.storeBinding) {
-                console.log(this.uiStore.state[this.storeBinding])
                 this.config.selected = this.uiStore.state[this.storeBinding]
             }
         },

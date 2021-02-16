@@ -5,7 +5,7 @@
             <div v-for="(item, setup, key) in group" :key="key" @keydown="evt => onKeyDown(item, evt)">
                 <div class="input-container" v-if="item.isInputElement">
                     <div class="input-cell" :class="item.key">
-                        <dynamic-form-cell :config="item" @changed="onFormItemChanged" />
+                        <generic-form-cell :config="item" @changed="onFormItemChanged" />
                     </div>
                 </div>
                 <div
@@ -22,10 +22,10 @@
 
 <script>
 import DynamicFormHandler from '@/ui/js/DynamicFormHandler'
-import DynamicFormCell from '@/ui/components/DynamicFormCell'
+import GenericFormCell from '@/ui/components/GenericFormCell'
 export default {
     components: {
-        DynamicFormCell
+        GenericFormCell
     },
     props: {
         config: {}
@@ -43,10 +43,10 @@ export default {
         }
     },
     created() {
+        this.updateForm(true)
         if (_.isFunction(this.config.onCreate)) {
             this.config.onCreate(this.config, this)
         }
-        this.updateForm(true)
     },
     onBeforeUnmount() {
         this.formHandler = null

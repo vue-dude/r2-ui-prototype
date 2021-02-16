@@ -44,15 +44,54 @@ const config = {
                                         onClickItem: async (item, evt, component) => {
                                             if (item.key === 'fire-search-button') {
                                                 const searchTerm = component.formHandler.getData()['search-term-input']
-                                                handleSearch(searchTerm, component)
+                                                handleSearch({ searchTerm }, component)
                                             }
                                         },
                                         onKeyDown: async (item, evt, component) => {
                                             if (evt.which === 13) {
                                                 if (item.key === 'search-term-input') {
                                                     const searchTerm = item.selected
-                                                    handleSearch(searchTerm, component)
+                                                    handleSearch({ searchTerm }, component)
                                                 }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    'search-header': {
+                        component: 'content-cell',
+                        config: {
+                            components: {
+                                'sort-properties': {
+                                    component: 'generic-form',
+                                    config: {
+                                        schema: {
+                                            'sort-direction': {
+                                                label: '',
+                                                __0: {
+                                                    label: '',
+                                                    type: 'select',
+                                                    options: [
+                                                        { value: 'ascending', label: 'asc' },
+                                                        { value: 'descending', label: 'desc' }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        data: {
+                                            'sort-direction': 'UI_STORE:sortDirection'
+                                        },
+                                        onCreate() {
+                                            globals.uiStore.updateSortDirection('ascending')
+                                        },
+
+                                        onFormItemChanged: (item, evt, component) => {
+                                            console.log('obj:onFormItemChanged item.selected = ', item.selected)
+
+                                            if (item.key === 'sort-direction') {
+                                                handleSearch({ direction: item.selected }, component)
                                             }
                                         }
                                     }
