@@ -68,6 +68,17 @@ const config = {
                                     component: 'generic-form',
                                     config: {
                                         schema: {
+                                            // 'sort-by': {
+                                            //     label: '',
+                                            //     __0: {
+                                            //         label: '',
+                                            //         type: 'select',
+                                            //         options: [
+                                            //             { value: 'date', label: 'date' },
+                                            //             { value: 'size', label: 'size' }
+                                            //         ]
+                                            //     }
+                                            // },
                                             'sort-direction': {
                                                 label: '',
                                                 __0: {
@@ -81,17 +92,15 @@ const config = {
                                             }
                                         },
                                         data: {
-                                            'sort-direction': 'UI_STORE:sortDirection'
+                                            'sort-direction': 'UI_STORE:sortDirection',
+                                            'sort-by': 'UI_STORE:sortBy'
                                         },
                                         onCreate() {
-                                            globals.uiStore.updateSortDirection('ascending')
+                                            globals.uiStore.updateSearch({ sortDirection: 'ascending' })
                                         },
-
                                         onFormItemChanged: (item, evt, component) => {
-                                            console.log('obj:onFormItemChanged item.selected = ', item.selected)
-
                                             if (item.key === 'sort-direction') {
-                                                handleSearch({ direction: item.selected }, component)
+                                                handleSearch({ sortDirection: item.selected }, component)
                                             }
                                         }
                                     }

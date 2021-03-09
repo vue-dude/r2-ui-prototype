@@ -1,10 +1,5 @@
 const handleSearch = async (options, component) => {
-    if (options.searchTerm) {
-        globals.uiStore.updateSearchTerm(options.searchTerm)
-    }
-    if (options.direction) {
-        globals.uiStore.updateSortDirection(options.direction)
-    }
+    globals.uiStore.updateSearch(options)
     if (globals.uiStore.state.api !== 'mock') {
         const res = await datasource.getDatasets({
             searchTerm: globals.uiStore.state.searchTerm,
