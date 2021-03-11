@@ -1,4 +1,4 @@
-import { handleSearch } from '@/ui/js/BoxLogicHandler'
+import { handleSearch } from '@/ui/js/R2BoxLogicHandler'
 
 const config = {
     belowModalExclusive: true,

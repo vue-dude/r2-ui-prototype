@@ -5,6 +5,7 @@
             <div class="centered-bg"></div>
             <cage />
             <div class="modal-bg"></div>
+            <!-- Note: vue-3 teleport is not working within the vue controlled dom, so a over-modal cage is used here -->
             <cage isModalOverlay="true"></cage>
         </div>
         <nav-bar></nav-bar>
