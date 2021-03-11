@@ -32,8 +32,8 @@ function Globals() {
             subPath: '',
             // search handling
             searchTerm: '',
-            sortDirection: '',
-            sortBy: ''
+            orderBy: '', // asc, desc
+            sortBy: '' // Date, Size, ...
         })
         this.state = readonly(state)
 
@@ -76,17 +76,10 @@ function Globals() {
             state.api = api
         }
         this.updateSearch = (options = {}) => {
-            switch (true) {
-                case _.isString(options.searchTerm):
-                    state.searchTerm = options.searchTerm
-                    // return update()
-                case _.isString(options.sortDirection):
-                    state.sortDirection = options.sortDirection
-                    // return update()
-                case _.isString(options.sortBy):
-                    state.sortBy = options.sortBy
-                    // return update()
-            }
+            const keys = Object.keys(options)
+            _.each(keys, key => {
+                state[key] = options[key]
+            })
             update()
         }
     }

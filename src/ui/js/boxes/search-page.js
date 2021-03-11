@@ -79,7 +79,7 @@ const config = {
                                             //         ]
                                             //     }
                                             // },
-                                            'sort-direction': {
+                                            'order-by': {
                                                 label: '',
                                                 __0: {
                                                     label: '',
@@ -92,15 +92,15 @@ const config = {
                                             }
                                         },
                                         data: {
-                                            'sort-direction': 'UI_STORE:sortDirection',
-                                            'sort-by': 'UI_STORE:sortBy'
+                                            'order-by': 'UI_STORE:orderBy'
+                                            // 'sort-by': 'UI_STORE:sortBy'
                                         },
                                         onCreate() {
-                                            globals.uiStore.updateSearch({ sortDirection: 'ascending' })
+                                            globals.uiStore.updateSearch({ orderBy: 'ascending' })
                                         },
                                         onFormItemChanged: (item, evt, component) => {
-                                            if (item.key === 'sort-direction') {
-                                                handleSearch({ sortDirection: item.selected }, component)
+                                            if (item.key === 'order-by') {
+                                                handleSearch({ orderBy: item.selected }, component)
                                             }
                                         }
                                     }
