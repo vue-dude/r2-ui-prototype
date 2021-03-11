@@ -10,14 +10,15 @@
     "dependencies": {
         "@fontsource/nunito": "^4.2.0",
         "@fontsource/roboto": "^4.2.0",
+        "axios": "^0.21.1",
         "core-js": "^3.6.5",
-        "device-detector-js": "^2.2.5",
-        "element-plus": "^1.0.2-beta.28",
+        "device-detector-js": "^2.2.7",
+        "element-plus": "^1.0.2-beta.33",
         "mitt": "^2.1.0",
-        "vue": "^3.0.0",
-        "vue-axios": "^3.0.1",
-        "vue-i18n": "^9.0.0-beta.4",
-        "vue-router": "^4.0.0-0"
+        "vue": "^3.0.7",
+        "vue-axios": "^3.2.4",
+        "vue-i18n": "^9.0.0-beta.18",
+        "vue-router": "^4.0.4"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "~4.5.0",
