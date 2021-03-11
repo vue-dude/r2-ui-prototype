@@ -6,7 +6,7 @@ const config = {
         'search-page': {
             elements: {
                 'search-bar-top-with-pager': {},
-                sp: {},
+                'sp': {},
                 'search-page-facets-term': {},
                 'search-page-facets-up': {},
                 'search-page-facets-dn-box': {},
@@ -60,6 +60,7 @@ const config = {
                             }
                         }
                     },
+                    'search-header-cover': {},
                     'search-header': {
                         component: 'content-cell',
                         config: {
@@ -68,17 +69,30 @@ const config = {
                                     component: 'generic-form',
                                     config: {
                                         schema: {
-                                            // 'sort-by': {
-                                            //     label: '',
-                                            //     __0: {
-                                            //         label: '',
-                                            //         type: 'select',
-                                            //         options: [
-                                            //             { value: 'date', label: 'date' },
-                                            //             { value: 'size', label: 'size' }
-                                            //         ]
-                                            //     }
-                                            // },
+                                            'label': {
+                                                __0: {
+                                                    type: 'ui',
+                                                    label: 'sort By:'
+                                                }
+                                            },
+                                            'sort-by': {
+                                                label: '',
+                                                __0: {
+                                                    label: '',
+                                                    type: 'select',
+                                                    options: [
+                                                        { value: 'recent', label: 'recent' },
+                                                        { value: 'date', label: 'date' },
+                                                        { value: 'size', label: 'size' }
+                                                    ]
+                                                }
+                                            },
+                                            'spc-1': {
+                                                __0: {
+                                                    type: 'ui',
+                                                    label: ''
+                                                }
+                                            },
                                             'order-by': {
                                                 label: '',
                                                 __0: {
@@ -92,15 +106,18 @@ const config = {
                                             }
                                         },
                                         data: {
-                                            'order-by': 'UI_STORE:orderBy'
-                                            // 'sort-by': 'UI_STORE:sortBy'
+                                            'order-by': 'UI_STORE:orderBy',
+                                            'sort-by': 'UI_STORE:sortBy'
                                         },
                                         onCreate() {
-                                            globals.uiStore.updateSearch({ orderBy: 'ascending' })
+                                            globals.uiStore.updateSearch({ orderBy: 'ascending', sortBy: 'recent' })
                                         },
                                         onFormItemChanged: (item, evt, component) => {
                                             if (item.key === 'order-by') {
                                                 handleSearch({ orderBy: item.selected }, component)
+                                            }
+                                            if (item.key === 'sort-by') {
+                                                handleSearch({ sortBy: item.selected }, component)
                                             }
                                         }
                                     }

@@ -4,6 +4,7 @@ const handleSearch = async (options, component) => {
         const res = await datasource.getDatasets({
             searchTerm: globals.uiStore.state.searchTerm,
             orderBy: globals.uiStore.state.orderBy,
+            sortBy: globals.uiStore.state.sortBy,
             size: 30,
             schemaKey: 'datasets',
             dataKey: 'pub-c819'

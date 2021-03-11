@@ -72,27 +72,34 @@
                                     }
                                 }
                             }
+                            .search-header-cover {
+                                position: absolute;
+                                top: 0px;
+                                left: 420px;
+                                width: 350px;
+                                height: 46px;
+                                background-color: #f9f9f9;
+                                // border: 1px solid #6c757e;
+                                border-radius: 5px;
+                            }
                             .search-header {
                                 position: absolute;
                                 top: 0px;
-                                left: 680px;
+                                left: 470px;
                                 width: 100px;
                                 height: 46px;
-                                // background-color: white;
-                                // border: 1px solid #b5c0d1;
                                 border-radius: 5px;
                                 transform: scaleX(0.9);
                                 .form-container.sort-properties {
                                     position: absolute;
-                                    left: 5px;
                                     top: 7px;
                                     .index-group {
                                         display: flex;
                                         .input-container {
-                                            width: 85px;
+                                            // width: 180px;
                                         }
-                                        .order-by {
-                                            margin-left: 5px;
+                                        .input-cell {
+                                            // margin-left: 5px;
                                             margin-top: 2px;
                                             .label {
                                                 visibility: hidden;
@@ -103,6 +110,25 @@
                                                 border: 1px solid #798fa0;
                                                 height: 30px;
                                             }
+                                            &.sort-by {
+                                                width: 153px;
+                                            }
+                                            &.order-by {
+                                                width: 85px;
+                                            }
+                                        }
+                                        .spc-1 {
+                                            width: 1px;
+                                            height: 25px;
+                                            border-left: 1px solid #728490;
+                                            margin-left: 10px;
+                                            margin-right: 8px;
+                                            margin-top: 4px;
+                                        }
+                                        .label {
+                                            width: 63px;
+                                            line-height: 35px;
+                                            font-size: 16px;
                                         }
                                     }
                                 }
