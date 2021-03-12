@@ -12,7 +12,7 @@
                     class="ui-element"
                     :class="[item.key, item.layout.classes]"
                     v-if="item.isUiElement"
-                    v-html="item.label"
+                    v-html="$t(item.label)"
                     @click.stop="evt => onClickItem(item, evt)"
                 ></div>
             </div>

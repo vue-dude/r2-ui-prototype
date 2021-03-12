@@ -65,6 +65,7 @@ const config = {
                         component: 'content-cell',
                         config: {
                             components: {
+                                'pager':{},
                                 'sort-properties': {
                                     component: 'generic-form',
                                     config: {
@@ -72,7 +73,7 @@ const config = {
                                             'label': {
                                                 __0: {
                                                     type: 'ui',
-                                                    label: 'sort By:'
+                                                    label: 'form.item.label.sort-by'
                                                 }
                                             },
                                             'sort-by': {
@@ -81,9 +82,9 @@ const config = {
                                                     label: '',
                                                     type: 'select',
                                                     options: [
-                                                        { value: 'recent', label: 'recent' },
-                                                        { value: 'date', label: 'date' },
-                                                        { value: 'size', label: 'size' }
+                                                        { value: 'recent', label: 'form.item.value.recent' },
+                                                        { value: 'date', label: 'form.item.value.date' },
+                                                        { value: 'size', label: 'form.item.value.size' }
                                                     ]
                                                 }
                                             },
@@ -99,8 +100,8 @@ const config = {
                                                     label: '',
                                                     type: 'select',
                                                     options: [
-                                                        { value: 'ascending', label: 'asc' },
-                                                        { value: 'descending', label: 'desc' }
+                                                        { value: 'ascending', label: 'form.item.value.asc' },
+                                                        { value: 'descending', label: 'form.item.value.desc' }
                                                     ]
                                                 }
                                             }

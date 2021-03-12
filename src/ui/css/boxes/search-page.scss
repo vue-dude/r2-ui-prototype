@@ -84,29 +84,30 @@
                             }
                             .search-header {
                                 position: absolute;
-                                top: 0px;
-                                left: 470px;
-                                width: 100px;
-                                height: 46px;
-                                border-radius: 5px;
-                                transform: scaleX(0.9);
+                                top: 6px;
+                                .content-cell {
+                                    display: flex;
+                                    width: 765px;
+                                    justify-content: space-between;
+                                    .cell-element.pager {
+                                        width: 300px;
+                                        height: 30px;
+                                        // align-self: flex-start;
+                                        background-color: rgb(189, 162, 162);
+                                        opacity: 0.3;
+                                    }
+                                }
+
                                 .form-container.sort-properties {
-                                    position: absolute;
-                                    top: 7px;
                                     .index-group {
                                         display: flex;
-                                        .input-container {
-                                            // width: 180px;
-                                        }
                                         .input-cell {
-                                            // margin-left: 5px;
                                             margin-top: 2px;
                                             .label {
                                                 visibility: hidden;
                                                 height: 0px;
                                             }
                                             .el-input__inner {
-                                                // border-radius: 4px 0 0 4px;
                                                 border: 1px solid #798fa0;
                                                 height: 30px;
                                             }
@@ -126,7 +127,8 @@
                                             margin-top: 4px;
                                         }
                                         .label {
-                                            width: 63px;
+                                            width: max-content;
+                                            margin-right: 7px;
                                             line-height: 35px;
                                             font-size: 16px;
                                         }

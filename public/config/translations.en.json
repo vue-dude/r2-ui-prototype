@@ -24,9 +24,6 @@
             }
         },
         "message": {
-            "hello": "hello i18 !! :-)",
-            "language": "English",
-            "quantity": "Quantity",
             "list": "hello, {0}!",
             "named": "hello, {name}!",
             "linked": "@:message.named How are you?",
@@ -35,11 +32,19 @@
         "form": {
             "item": {
                 "label": {
+                    "sort-by": "Sort By:",
                     "scroll-type": "Scroll Type:",
                     "datasource": "Datasource:",
                     "api-select": "API Select:",
                     "authors": "Authors:",
                     "search-term-input": "Type your search here"
+                },
+                "value": {
+                    "recent": "Recent",
+                    "date": "Date",
+                    "size": "Size",
+                    "asc": "Asc",
+                    "desc": "Desc"
                 }
             }
         }

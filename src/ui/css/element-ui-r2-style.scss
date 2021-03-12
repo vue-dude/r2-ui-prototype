@@ -22,6 +22,10 @@
     }
     .el-textarea,
     .el-input {
+        &.el-select__caret {
+            color: #6a6c6e;
+            font-weight: bold;
+        }
         .el-input__suffix {
             color: #a13a95;
         }
