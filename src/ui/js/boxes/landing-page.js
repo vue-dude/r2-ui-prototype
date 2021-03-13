@@ -25,9 +25,9 @@ const config = {
                                                 }
                                             },
                                             'search-term-input': {
-                                                label: '',
                                                 __0: {
-                                                    label: '',
+                                                    label: null,
+                                                    plc: '',
                                                     type: 'input'
                                                 }
                                             },

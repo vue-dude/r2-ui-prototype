@@ -43,8 +43,8 @@ const DynamicFormHandler = function(config = {}) {
         createIndexTree(d)
         // 4. add the basic layout tags (list start/end)
         // if (options.addLayoutElements) {
-            addLayoutElements(d, sortedDataWithLayoutElements)
-            // 5. create the final form and add the add/remove tags (uses the index-tree)
+        addLayoutElements(d, sortedDataWithLayoutElements)
+        // 5. create the final form and add the add/remove tags (uses the index-tree)
         // }
         scanAndCreateForm(sortedDataWithLayoutElements, form)
         return form
@@ -404,32 +404,37 @@ const DynamicFormHandler = function(config = {}) {
     }
 
     const getFormItem = (tree, value, args) => {
-        const tryee = getTree(tree)
-        const res = _.get(schema, tryee.schemaTree)
+        const treeInfo = getTree(tree)
+        const res = _.get(schema, treeInfo.schemaTree)
         const key = tree.join('--')
         const defaultItem = {
             type: 'input',
-            label: tree.join('.')
+            label: tree.join('.'),
+            plc: treeInfo.lastKey
         }
-        let item = res && _.isPlainObject(res.__0) && _.isString(res.__0.type) ? res.__0 : defaultItem
+        let item = _.isString(_.get(res, '__0.type')) ? res.__0 : defaultItem
         item = _.cloneDeep(item)
+        const getLabel = () => {
+            const label = _.get(res, '__0.label')
+            return label === null ? null : _.isString(label) ? label : treeInfo.lastKey
+        }
+        const getPlaceholder = () => {
+            const plc = _.get(res, '__0.plc')
+            return plc === null ? null : _.isString(plc) ? plc : treeInfo.lastKey
+        }
         const add = {
             __strc: {
                 level: args.level,
                 class: `level-${args.level}`,
                 tree,
-                lastIndex: tryee.lastIndex
+                lastIndex: treeInfo.lastIndex
             },
-            layout: res.__0 && res.__0.layout ? res.__0.layout : {},
+            layout: _.get(res, '__0.layout') || {},
             selected: value,
             key,
             sendKey: key, // ??
-            label: _.isString(res.__0 && res.__0.label)
-                ? res.__0.label
-                : tree
-                      .join('.')
-                      .split('.')
-                      .pop()
+            label: getLabel(),
+            plc: getPlaceholder()
         }
         item = { ...item, ...add }
 
@@ -439,6 +444,9 @@ const DynamicFormHandler = function(config = {}) {
         }
         if (_.isString(args.label)) {
             item.label = args.label
+        }
+        if (_.isString(args.plc)) {
+            item.plc = args.plc
         }
         //
         if (config.convertSelectedArraysToStrings) {

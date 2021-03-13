@@ -12,7 +12,7 @@
                     class="ui-element"
                     :class="[item.key, item.layout.classes]"
                     v-if="item.isUiElement"
-                    v-html="$t(item.label)"
+                    v-html="item.label !== null ? $t(item.label) : null"
                     @click.stop="evt => onClickItem(item, evt)"
                 ></div>
             </div>
@@ -109,6 +109,7 @@ export default {
                 this.expandableList = true
 
                 const updateListElement = elm => {
+                    console.log('GFC:updateListElement elm.plc = ', { ...elm }.plc)
                     switch (elm.type) {
                         case 'input':
                         case 'select':
@@ -124,8 +125,17 @@ export default {
                         case 'select':
                         case 'radio':
                             elm.isInputElement = true
-                            elm.plc = this.$t(`form.item.label.${elm.key}`)
-                            elm.label = this.$t(`form.item.label.${elm.key}`)
+                            // elm.plc = this.$t(`form.item.label.${elm.key}`)
+                            if (elm.label !== null) {
+                                if (elm.label === '') {
+                                    elm.label = `form.item.label.${elm.key}`
+                                }
+                            }
+                            if (elm.plc !== null) {
+                                if (elm.plc === '') {
+                                    elm.plc = `form.item.label.${elm.key}`
+                                }
+                            }
                             if (elm.type === 'select') {
                                 if (elm.options && elm.options.key) {
                                     const dropdownConfig = this.dataHandler.getDropdownConfig(
@@ -158,6 +168,7 @@ export default {
                     this.expandableList = false
                     target = [
                         {
+                            // TODO check this with the new label === null -> noLabel feature
                             label: this.$t(`form.group.label.${this.sKey}`)
                         }
                     ]

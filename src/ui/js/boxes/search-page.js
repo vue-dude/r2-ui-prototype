@@ -23,18 +23,17 @@ const config = {
                                     config: {
                                         schema: {
                                             'search-term-input': {
-                                                label: '',
                                                 __0: {
-                                                    label: '',
+                                                    label: null,
+                                                    plc: '',
                                                     type: 'input'
                                                 }
                                             },
                                             'fire-search-button': {
-                                                label: '',
                                                 __0: {
                                                     type: 'ui',
                                                     onClick: true,
-                                                    label: ''
+                                                    label: null
                                                 }
                                             }
                                         },
@@ -65,7 +64,36 @@ const config = {
                         component: 'content-cell',
                         config: {
                             components: {
-                                'pager':{},
+                                'pager':{
+                                    component: 'generic-form',
+                                    config: {
+                                        schema: {
+                                            // 'go-to-page': {
+                                            //     __0: {
+                                            //         type: 'input',
+                                            //         plc: null,
+                                            //         label: null
+                                            //     }
+                                            // }
+                                        },
+                                        data: {
+                                            // 'order-by': 'UI_STORE:orderBy',
+                                            // 'sort-by': 'UI_STORE:sortBy'
+                                        },
+                                        onCreate() {
+                                            // globals.uiStore.updateSearch({ orderBy: 'ascending', sortBy: 'recent' })
+                                        },
+                                        onFormItemChanged: (item, evt, component) => {
+                                            // if (item.key === 'order-by') {
+                                            //     handleSearch({ orderBy: item.selected }, component)
+                                            // }
+                                            // if (item.key === 'sort-by') {
+                                            //     handleSearch({ sortBy: item.selected }, component)
+                                            // }
+                                        }
+                                    }                                   
+
+                                },
                                 'sort-properties': {
                                     component: 'generic-form',
                                     config: {
@@ -77,9 +105,8 @@ const config = {
                                                 }
                                             },
                                             'sort-by': {
-                                                label: '',
                                                 __0: {
-                                                    label: '',
+                                                    label: null,
                                                     type: 'select',
                                                     options: [
                                                         { value: 'recent', label: 'form.item.value.recent' },
@@ -91,13 +118,13 @@ const config = {
                                             'spc-1': {
                                                 __0: {
                                                     type: 'ui',
-                                                    label: ''
+                                                    label: null
                                                 }
                                             },
                                             'order-by': {
                                                 label: '',
                                                 __0: {
-                                                    label: '',
+                                                    label: null,
                                                     type: 'select',
                                                     options: [
                                                         { value: 'ascending', label: 'form.item.value.asc' },

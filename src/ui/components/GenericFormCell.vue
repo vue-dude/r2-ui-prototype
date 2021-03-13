@@ -1,5 +1,5 @@
 <template>
-    <div class="label" v-html="$t(config.label)"></div>
+    <div v-if="config.label" class="label" v-html="$t(config.label)"></div>
     <div class="form-element radio-cage" @change="onChange" v-if="config.type === 'radio'">
         <el-radio-group v-model="config.selected">
             <el-radio v-for="(option, index) in config.options" :key="index" :label="option.value">
@@ -12,7 +12,7 @@
         class="form-element"
         v-if="config.type === 'input'"
         v-model="config.selected"
-        :placeholder="$t(config.plc)"
+        :placeholder="config.plc ? $t(config.plc) : null"
         :suffix-icon="config.suffixIcon"
         :prefix-icon="config.prefixIcon"
         size="mini"
@@ -25,7 +25,7 @@
         v-if="config.type === 'select'"
         v-model="config.selected"
         @change="onChange"
-        :placeholder="$t(config.plc)"
+        :placeholder="config.plc ? $t(config.plc) : null"
         :prefix-icon="config.prefixIcon"
         size="mini"
         :multiple="config.allowMultipleSelections"
@@ -36,7 +36,7 @@
         <el-option
             v-for="(option, index) in config.options"
             :key="index"
-            :label="$t(option.label)"
+            :label="option.label ? $t(option.label) : null"
             :value="option.value"
         ></el-option>
     </el-select>
@@ -76,7 +76,7 @@ export default {
                 this.config.selected = this.uiStore.state[this.storeBinding]
             }
         },
-        deep: true
+        'deep': true
     }
 }
 </script>
