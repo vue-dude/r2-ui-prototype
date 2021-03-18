@@ -9,7 +9,7 @@
             v-for="(view, vKey) in config.views"
             :key="vKey"
             class="view"
-            :class="[view.id, { 'no-events': !view.visible, active: view.visible }]"
+            :class="[view.id, { 'no-events': !view.visible, 'active': view.visible }]"
         >
             <div class="fixed">
                 <div class="tabs">
@@ -190,6 +190,7 @@ export default {
         config: {},
         isModalOverlay: false
     },
+    emits: ['onClick'],
     data() {
         return {
             uiStore: globals.uiStore,
