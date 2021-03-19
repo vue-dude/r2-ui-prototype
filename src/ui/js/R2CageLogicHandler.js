@@ -1,6 +1,6 @@
 function R2CageLogicHandler(vm) {
     //
-    // Handles the logical states and click matrix 
+    // Handles the logical states and click matrix
     //
     //
     let viewMode = 'home'
@@ -128,6 +128,32 @@ function R2CageLogicHandler(vm) {
     const getViewStack = () => {
         return [...viewStack].reverse()
     }
+
+    let activePreloaders = []
+
+    const deactivatePreloaders = () => {
+        _.each(activePreloaders, pl => {
+            pl.deactivate()
+            pl = null
+        })
+        activePreloaders = []
+    }
+
+    const activatePreloaders = evt => {
+        // console.log('CG:activatePreloaders evt = ', evt)
+        if (_.isArray(evt.args.preloaders)) {
+            _.each(evt.args.preloaders, pl => {
+                // console.log('CG:activatePreloaders pl = ', pl)
+                const cfg = _.get(vm.boxes, `${pl.target}.config`)
+                if (cfg) {
+                    pl.deactivate = () => (cfg.active = false)
+                    cfg.active = true
+                    activePreloaders.push(pl)
+                }
+            })
+        }
+    }
+
     //
     const onClick = evt => {
         evt.box = evt.box || { id: null }
@@ -145,6 +171,11 @@ function R2CageLogicHandler(vm) {
             case evt.viewKey === 'meta-actions-edit-generic' && evt.key === 'save':
                 globals.eventBus.$emit('invokeSaveDataAction', { targets: ['meta-actions-edit-generic'] })
         }
+
+        setTimeout(() => {
+            activatePreloaders(evt)
+        }, 100)
+
         // central click matrix for the whole app
         switch (evt.key) {
             // cancel and close
@@ -252,6 +283,7 @@ function R2CageLogicHandler(vm) {
         // console.log('CG:setViewMode viewMode viewModePrev = ', viewModePrev)
         // console.log('CG:setViewMode viewMode viewMode = ', viewMode)
         // console.log('CG:setViewMode viewMode mode = ', mode)
+
         switch (mode) {
             case 'home':
             case 'mywork':
@@ -262,6 +294,10 @@ function R2CageLogicHandler(vm) {
 
         viewModePrev = viewMode
         viewMode = mode || 'home'
+
+        if (viewModePrev != viewMode) {
+            deactivatePreloaders()
+        }
 
         console.log('CG:setViewMode options = ', options)
         let path = 'Home'

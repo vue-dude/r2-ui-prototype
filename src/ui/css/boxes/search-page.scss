@@ -126,6 +126,22 @@
                                     }
                                 }
                             }
+                            .preloader-content-list {
+                                // take from scrollable
+                                position: absolute;
+                                top: 62px;
+                                left: 0px;
+                                width: 0px;
+                                height: 0px;
+                                .preloader {
+                                    height: calc(100vh - 88px - 65px);
+                                    width: 785px;
+                                    &.native {
+                                        width: 774px;
+                                    }
+                                }
+                           
+                            }
                         }
                     }
                     .fixed {
@@ -189,63 +205,13 @@
                         &.native {
                             width: 774px;
                         }
-                        .content {
-                            // transform: scaleX(0.97);
-                        }
-                        .inner {
-                            left: 0px;
-                            top: 0px;
-                            &.bg-img.search-page-scroll {
-                                //1565 × 2317
-                                width: calc(1565px / 2);
-                                height: calc(2317px / 2);
-                            }
-                        }
-                        .click-zonesXXX {
-                            .click-zone {
-                                left: 13px;
-                                width: 754px;
-                                height: 38px;
-                                &.show-ds-1 {
-                                    top: 15px;
-                                }
-                                &.show-ds-2 {
-                                    top: 185px;
-                                    height: 55px;
-                                }
-                                &.show-ds-3 {
-                                    top: 365px;
-                                    height: 35px;
-                                }
-                                &.show-ds-4 {
-                                    top: 515px;
-                                    height: 50px;
-                                }
-                                &.show-ds-5 {
-                                    top: 685px;
-                                    height: 45px;
-                                }
-                                &.show-ds-6 {
-                                    top: 842px;
-                                    height: 53px;
-                                }
-                                &.show-ds-7 {
-                                    top: 1015px;
-                                    height: 37px;
-                                }
-                            }
-                        }
                         .components {
                             .component.my-datasets {
                                 width: calc(1565px / 3);
                             }
                             .content-list {
                                 margin-left: 5px;
-                                // margin-top: 300px; // TEST
                                 width: 755px;
-                            }
-                            .dataset-list-item {
-                                //
                             }
                         }
                     }

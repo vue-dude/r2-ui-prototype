@@ -1,5 +1,14 @@
 import { handleSearch } from '@/ui/js/R2BoxLogicHandler'
 
+const source = 'search-page'
+
+const preloaders = [
+    {
+        target: 'search-page.views.search-page.overlay.components.preloader-content-list',
+        deactivate: () => null // set in cage logic dynamically
+    }
+]
+
 const config = {
     belowModalExclusive: true,
     views: {
@@ -43,14 +52,14 @@ const config = {
                                         onClickItem: async (item, evt, component) => {
                                             if (item.key === 'fire-search-button') {
                                                 const searchTerm = component.formHandler.getData()['search-term-input']
-                                                handleSearch({ searchTerm }, component)
+                                                handleSearch({ searchTerm, source, preloaders }, component)
                                             }
                                         },
                                         onKeyDown: async (item, evt, component) => {
                                             if (evt.which === 13) {
                                                 if (item.key === 'search-term-input') {
                                                     const searchTerm = item.selected
-                                                    handleSearch({ searchTerm }, component)
+                                                    handleSearch({ searchTerm, source, preloaders }, component)
                                                 }
                                             }
                                         }
@@ -64,7 +73,7 @@ const config = {
                         component: 'content-cell',
                         config: {
                             components: {
-                                'pager':{
+                                'pager': {
                                     component: 'generic-form',
                                     config: {
                                         schema: {
@@ -91,8 +100,7 @@ const config = {
                                             //     handleSearch({ sortBy: item.selected }, component)
                                             // }
                                         }
-                                    }                                   
-
+                                    }
                                 },
                                 'sort-properties': {
                                     component: 'generic-form',
@@ -142,43 +150,24 @@ const config = {
                                         },
                                         onFormItemChanged: (item, evt, component) => {
                                             if (item.key === 'order-by') {
-                                                handleSearch({ orderBy: item.selected }, component)
+                                                handleSearch({ orderBy: item.selected, source, preloaders }, component)
                                             }
                                             if (item.key === 'sort-by') {
-                                                handleSearch({ sortBy: item.selected }, component)
+                                                handleSearch({ orderBy: item.selected, source, preloaders }, component)
                                             }
                                         }
                                     }
                                 }
                             }
                         }
+                    },
+                    'preloader-content-list': {
+                        component: 'preloader',
+                        config: {}
                     }
                 }
             },
             scroll: {
-                zones: {
-                    'show-ds-1': {
-                        key: 'show-public-dataset'
-                    },
-                    'show-ds-2': {
-                        key: 'show-public-dataset'
-                    },
-                    'show-ds-3': {
-                        key: 'show-public-dataset'
-                    },
-                    'show-ds-4': {
-                        key: 'show-public-dataset'
-                    },
-                    'show-ds-5': {
-                        key: 'show-public-dataset'
-                    },
-                    'show-ds-6': {
-                        key: 'show-public-dataset'
-                    },
-                    'show-ds-7': {
-                        key: 'show-public-dataset'
-                    }
-                },
                 components: {
                     'my-datasets': {
                         component: 'content-list',

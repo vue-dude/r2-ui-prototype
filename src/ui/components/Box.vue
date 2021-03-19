@@ -183,9 +183,6 @@ import BoxScrollHandler from '@/ui/js/BoxScrollHandler.js'
 // import R2Components from '@/ui/components/R2Components.vue'
 //
 export default {
-    components: {
-        // R2Components
-    },
     props: {
         config: {},
         isModalOverlay: false

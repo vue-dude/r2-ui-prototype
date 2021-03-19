@@ -1,4 +1,5 @@
 <template>
+    <preloader v-if="cmp.component === 'preloader'" :config="cmp.config" @subClick="onSubClick"></preloader>
     <meta-form v-if="cmp.component === 'dynamic-form'" :config="cmp.config" @subClick="onSubClick"></meta-form>
     <active-list v-if="cmp.component === 'active-list'" :config="cmp.config" @subClick="onSubClick"></active-list>
     <content-list v-if="cmp.component === 'content-list'" :config="cmp.config" @subClick="onSubClick"></content-list>
@@ -28,6 +29,7 @@ import ActiveList from '@/ui/components/ActiveListComponent.vue'
 import ContentList from '@/ui/components/ContentList.vue'
 import ContentCell from '@/ui/components/ContentCell.vue'
 import DatasetListItem from '@/ui/components/DatasetListItem.vue'
+import Preloader from '@/ui/components/Preloader.vue'
 //
 export default {
     components: {
@@ -36,7 +38,8 @@ export default {
         ActiveList,
         ContentList,
         ContentCell,
-        DatasetListItem
+        DatasetListItem,
+        Preloader
     },
     props: {
         cmp: {},
