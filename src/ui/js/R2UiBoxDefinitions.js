@@ -1,6 +1,7 @@
 import mockConfig from '@/ui/js/boxes/mock-config'
 import landingPage from '@/ui/js/boxes/landing-page'
 import searchPage from '@/ui/js/boxes/search-page'
+import searchPageFacetsDn from '@/ui/js/boxes/search-page-facets-dn-inner'
 
 function R2UiBoxDefinitions() {
     this.boxes = {
@@ -111,23 +112,8 @@ function R2UiBoxDefinitions() {
                 }
             }
         },
-        'search-page-facets-dn-inner': {
-            belowModalExclusive: true,
-            views: {
-                'search-page-facets-dn-inner': {
-                    elements: {
-                        'search-page-facets-dn-inner-box': {}
-                    },
-                    scroll: {
-                        elements: {
-                            'search-page-facets-dn-inner-list-1': {},
-                            'search-page-facets-dn-inner-list-2': {}
-                        }
-                    }
-                }
-            }
-        },
         'search-page': searchPage,
+        'search-page-facets-dn-inner': searchPageFacetsDn,
         'dataset-view-public': {
             belowModalExclusive: true,
             views: {

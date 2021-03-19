@@ -1,20 +1,27 @@
 const stopPreloaders = preloaders => {
-    if (_.isArray(preloaders)) {
-        _.each(preloaders, pl => {
-            pl.deactivate()
+    if (preloaders) {
+        globals.eventBus.$emit('preloaders', {
+            key: 'deactivate',
+            preloaders
         })
     }
 }
 
 const handleSearch = async (options, component) => {
     globals.uiStore.updateSearch(options)
-    let args = {
-        preloaders: options.preloaders || null
-    }
     component.$emit('subClick', {
         key: 'show-search-page',
-        args
+        args: {}
     })
+
+    const preloaders = options.preloaders || null
+    if (preloaders) {
+        globals.eventBus.$emit('preloaders', {
+            key: 'activate',
+            preloaders
+        })
+    }
+
     const fetchData = async () => {
         if (globals.uiStore.state.api !== 'mock') {
             const res = await datasource.getDatasets({
@@ -25,9 +32,9 @@ const handleSearch = async (options, component) => {
                 schemaKey: 'datasets',
                 dataKey: 'pub-c819'
             })
-            stopPreloaders(args.preloaders)
+            stopPreloaders(preloaders)
         } else {
-            setTimeout(() => stopPreloaders(args.preloaders), 1000)
+            setTimeout(() => stopPreloaders(preloaders), 1000)
         }
     }
     setTimeout(fetchData, 200)

@@ -2,13 +2,6 @@ import { handleSearch } from '@/ui/js/R2BoxLogicHandler'
 
 const source = 'landing-page'
 
-const preloaders = [
-    {
-        target: 'search-page.views.search-page.overlay.components.preloader-content-list',
-        deactivate: () => null // set in cage logic dynamically
-    }
-]
-
 const config = {
     belowModalExclusive: true,
     views: {
@@ -55,14 +48,34 @@ const config = {
                                         onClickItem: async (item, evt, component) => {
                                             if (item.key === 'fire-search-button') {
                                                 const searchTerm = component.formHandler.getData()['search-term-input']
-                                                handleSearch({ searchTerm, source, preloaders }, component)
+                                                handleSearch(
+                                                    {
+                                                        searchTerm,
+                                                        source,
+                                                        preloaders: [
+                                                            'preloader-content-list',
+                                                            'preloader-facets-dn-list'
+                                                        ]
+                                                    },
+                                                    component
+                                                )
                                             }
                                         },
                                         onKeyDown: async (item, evt, component) => {
                                             if (evt.which === 13) {
                                                 if (item.key === 'search-term-input') {
                                                     const searchTerm = item.selected
-                                                    handleSearch({ searchTerm, source, preloaders }, component)
+                                                    handleSearch(
+                                                        {
+                                                            searchTerm,
+                                                            source,
+                                                            preloaders: [
+                                                                'preloader-content-list',
+                                                                'preloader-facets-dn-list'
+                                                            ]
+                                                        },
+                                                        component
+                                                    )
                                                 }
                                             }
                                         }

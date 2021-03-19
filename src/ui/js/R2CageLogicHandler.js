@@ -8,6 +8,7 @@ function R2CageLogicHandler(vm) {
     let isPrivateView = false
     this.getIsPrivateView = () => isPrivateView
     let viewStack = []
+    const preloaders = {}
 
     this.initData = () => {
         initBoxes()
@@ -17,6 +18,7 @@ function R2CageLogicHandler(vm) {
         modifyViewStack({ action: 'reset' })
         setViewMode('home')
         globals.eventBus.$on('click', onClick)
+        globals.eventBus.$on('preloaders', onUpdatePreloaders)
     }
 
     const updateMockConfigMenuState = () => {
@@ -129,32 +131,24 @@ function R2CageLogicHandler(vm) {
         return [...viewStack].reverse()
     }
 
-    let activePreloaders = []
+    const onUpdatePreloaders = evt => {
+        console.log('CAGE:onUpdatePreloaders +++++++++++ evt = ', evt)
 
-    const deactivatePreloaders = () => {
-        _.each(activePreloaders, pl => {
-            pl.deactivate()
-            pl = null
+        _.each(evt.preloaders, plKey => {
+            console.log('CAGE:onUpdatePreloaders plKey = ', plKey)
+
+            const pl = preloaders[plKey] || {}
+            console.log('CAGE:onUpdatePreloaders pl = ', pl)
+
+            const cfg = _.get(vm.boxes, `${pl.target}.config`)
+            console.log('CAGE:onUpdatePreloaders cfg = ', cfg)
+
+            if (cfg) {
+                cfg.active = evt.key === 'activate'
+            }
         })
-        activePreloaders = []
     }
 
-    const activatePreloaders = evt => {
-        // console.log('CG:activatePreloaders evt = ', evt)
-        if (_.isArray(evt.args.preloaders)) {
-            _.each(evt.args.preloaders, pl => {
-                // console.log('CG:activatePreloaders pl = ', pl)
-                const cfg = _.get(vm.boxes, `${pl.target}.config`)
-                if (cfg) {
-                    pl.deactivate = () => (cfg.active = false)
-                    cfg.active = true
-                    activePreloaders.push(pl)
-                }
-            })
-        }
-    }
-
-    //
     const onClick = evt => {
         evt.box = evt.box || { id: null }
         console.log('CG:onClick evt = ', evt)
@@ -172,9 +166,9 @@ function R2CageLogicHandler(vm) {
                 globals.eventBus.$emit('invokeSaveDataAction', { targets: ['meta-actions-edit-generic'] })
         }
 
-        setTimeout(() => {
-            activatePreloaders(evt)
-        }, 100)
+        // setTimeout(() => {
+        //     activatePreloaders(evt)
+        // }, 100)
 
         // central click matrix for the whole app
         switch (evt.key) {
@@ -295,9 +289,9 @@ function R2CageLogicHandler(vm) {
         viewModePrev = viewMode
         viewMode = mode || 'home'
 
-        if (viewModePrev != viewMode) {
-            deactivatePreloaders()
-        }
+        // if (viewModePrev != viewMode) {
+        //     deactivatePreloaders()
+        // }
 
         console.log('CG:setViewMode options = ', options)
         let path = 'Home'
@@ -469,6 +463,18 @@ function R2CageLogicHandler(vm) {
                 view.overlay.elements = view.overlay.elements || {}
                 view.overlay.components = view.overlay.components || {}
                 view.overlay.zones = view.overlay.zones || {}
+                _.each(view.overlay.components, (cmp, key) => {
+                    if (cmp.component === 'preloader') {
+                        console.log('CLH:initBoxes preloader key = ', key)
+                        if (preloaders[key]) {
+                            console.error('Preloader key  is not unique! box, view, pl-key : ', box.id, view.id, key)
+                        } else {
+                            preloaders[key] = {
+                                target: `${box.id}.views.${view.id}.overlay.components.${key}`
+                            }
+                        }
+                    }
+                })
             })
         })
     }

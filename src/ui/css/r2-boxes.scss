@@ -1,6 +1,7 @@
 @import '@/ui/css/boxes/mock-config.scss';
 @import '@/ui/css/boxes/landing-page.scss';
 @import '@/ui/css/boxes/search-page.scss';
+@import '@/ui/css/boxes/search-page-facets-dn-inner.scss';
 
 .r2 {
     .boxes {
@@ -95,44 +96,6 @@
                 //         }
                 //     }
                 // }
-            }
-            &.search-page-facets-dn-inner {
-                .search-page-facets-dn-inner-box {
-                    width: 322px;
-                    height: calc(100vh - 464px);
-                    top: 361px;
-                    left: 800px;
-                    border-radius: 8px;
-                    background-color: #7b8594;
-                }
-                .view {
-                    .scrollbar {
-                        top: 372px;
-                        left: calc(1150px - 46px);
-                        height: calc(100vh - 483px);
-                    }
-                    .scrollable {
-                        top: 370px;
-                        left: 810px;
-                        height: calc(100vh - 483px);
-                        width: 310px;
-                        &.native {
-                            width: 308px;
-                        }
-                        .elements {
-                            .search-page-facets-dn-inner-list-1,
-                            .search-page-facets-dn-inner-list-2 {
-                                left: 8px;
-                                top: 4px;
-                                width: calc(560px / 2);
-                                height: calc(640px / 2);
-                            }
-                            .search-page-facets-dn-inner-list-2 {
-                                top: 324px;
-                            }
-                        }
-                    }
-                }
             }
             &.mywork-page {
                 .view {

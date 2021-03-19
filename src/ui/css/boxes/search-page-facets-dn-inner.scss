@@ -1,0 +1,76 @@
+.r2 {
+    .boxes {
+        .box {
+            &.search-page-facets-dn-inner {
+                .search-page-facets-dn-inner-box {
+                    width: 322px;
+                    height: calc(100vh - 464px);
+                    top: 361px;
+                    left: 800px;
+                    border-radius: 8px;
+                    background-color: #7b8594;
+                }
+                .view {
+                    .scrollbar {
+                        top: 372px;
+                        left: calc(1150px - 46px);
+                        height: calc(100vh - 483px);
+                    }
+                    .scrollable {
+                        top: 370px;
+                        left: 810px;
+                        height: calc(100vh - 483px);
+                        width: 310px;
+                        &.native {
+                            width: 308px;
+                        }
+                        .elements {
+                            .search-page-facets-dn-inner-list-1,
+                            .search-page-facets-dn-inner-list-2 {
+                                left: 8px;
+                                top: 4px;
+                                width: calc(560px / 2);
+                                height: calc(640px / 2);
+                            }
+                            .search-page-facets-dn-inner-list-2 {
+                                top: 324px;
+                            }
+                        }
+                    }
+
+                    .overlay {
+                        pointer-events: all;
+                        .search-page-pager-go-bt {
+                            pointer-events: all;
+                            width: calc(81px / 2);
+                            height: calc(77px / 2);
+                            top: calc(100vh - 90px);
+                            left: 2px;
+                        }
+                        .search-page-pager-left {
+                            width: calc(628px / 2);
+                            height: calc(75px / 2);
+                            top: calc(100vh - 90px);
+                            left: 40px;
+                        }
+                        .components {
+                            .preloader-facets-dn-list {
+                                position: absolute;
+                                top: 361px;
+                                left: 801px;
+                                width: 0px;
+                                height: 0px;
+                                .preloader {
+                                    width: 320px;
+                                    height: 373px;
+                                    border-radius: 8px;
+                                    background: rgba(0, 0, 0, 0.2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
