@@ -8,6 +8,7 @@ const stopPreloaders = preloaders => {
 }
 
 const handleSearch = async (options, component) => {
+    console.log('BLH:handleSearch options = ',options)
     globals.uiStore.updateSearch(options)
     component.$emit('subClick', {
         key: 'show-search-page',
@@ -24,14 +25,24 @@ const handleSearch = async (options, component) => {
 
     const fetchData = async () => {
         if (globals.uiStore.state.api !== 'mock') {
-            const res = await datasource.getDatasets({
-                searchTerm: globals.uiStore.state.searchTerm,
-                orderBy: globals.uiStore.state.orderBy,
-                sortBy: globals.uiStore.state.sortBy,
+            const states = globals.uiStore.getStates('searchTerm,orderBy,sortBy,pageNum')
+            const prms = {
                 size: 30,
                 schemaKey: 'datasets',
-                dataKey: 'pub-c819'
-            })
+                dataKey: 'pub-c819',
+                ...states
+            }
+            const res = await datasource.getDatasets(prms)
+
+            // const res = await datasource.getDatasets({
+            //     searchTerm: globals.uiStore.state.searchTerm,
+            //     orderBy: globals.uiStore.state.orderBy,
+            //     sortBy: globals.uiStore.state.sortBy,
+            //     pageNum: globals.uiStore.state.pageNum,
+            //     size: 30,
+            //     schemaKey: 'datasets',
+            //     dataKey: 'pub-c819'
+            // })
             stopPreloaders(preloaders)
         } else {
             setTimeout(() => stopPreloaders(preloaders), 1000)

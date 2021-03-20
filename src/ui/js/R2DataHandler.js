@@ -63,9 +63,14 @@ const R2D2DataHandler = function() {
         return { [key]: metaData[key] || [] }
     }
 
-    this.setData = (schemaKey, dataKey, data) => {
+    this.setData = (schemaKey, dataKey, data, options = {}) => {
         if (schemaKey === 'datasets') {
-            datasets[dataKey] = data
+            if (options.pageNum > 1) {
+                // TEST simple chaining for first, TODO add proper offset 
+                datasets[dataKey] = [...datasets[dataKey], ...data]
+            } else {
+                datasets[dataKey] = data
+            }
             return datasets[dataKey]
         }
         return null

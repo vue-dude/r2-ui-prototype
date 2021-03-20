@@ -33,7 +33,8 @@ function Globals() {
             // search handling
             searchTerm: '',
             orderBy: '', // asc, desc
-            sortBy: '' // Date, Size, ...
+            sortBy: '', // Date, Size, ...
+            pageNum: 0 // Date, Size, ...
         })
         this.state = readonly(state)
 
@@ -81,6 +82,14 @@ function Globals() {
                 state[key] = options[key]
             })
             update()
+        }
+        this.getStates = states => {
+            const s = states.split(',')
+            const res = {}
+            _.each(s, key => {
+                res[key] = state[key]
+            })
+            return res
         }
     }
 

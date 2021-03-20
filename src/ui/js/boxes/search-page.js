@@ -90,28 +90,34 @@ const config = {
                                     component: 'generic-form',
                                     config: {
                                         schema: {
-                                            // 'go-to-page': {
-                                            //     __0: {
-                                            //         type: 'input',
-                                            //         plc: null,
-                                            //         label: null
-                                            //     }
-                                            // }
+                                            'go-to-page': {
+                                                __0: {
+                                                    type: 'input',
+                                                    plc: null,
+                                                    label: null,
+                                                    restrict: 'numbers-int'
+                                                }
+                                            }
                                         },
                                         data: {
-                                            // 'order-by': 'UI_STORE:orderBy',
-                                            // 'sort-by': 'UI_STORE:sortBy'
+                                            'go-to-page': 'UI_STORE:pageNum'
                                         },
                                         onCreate() {
-                                            // globals.uiStore.updateSearch({ orderBy: 'ascending', sortBy: 'recent' })
+                                            globals.uiStore.updateSearch({ pageNum: 1 })
                                         },
-                                        onFormItemChanged: (item, evt, component) => {
-                                            // if (item.key === 'order-by') {
-                                            //     handleSearch({ orderBy: item.selected }, component)
-                                            // }
-                                            // if (item.key === 'sort-by') {
-                                            //     handleSearch({ sortBy: item.selected }, component)
-                                            // }
+                                        onKeyDown: async (item, evt, component) => {
+                                            if (evt.which === 13) {
+                                                if (item.key === 'go-to-page') {
+                                                    handleSearch(
+                                                        {
+                                                            pageNum: item.selected,
+                                                            source,
+                                                            preloaders: ['preloader-content-list']
+                                                        },
+                                                        component
+                                                    )
+                                                }
+                                            }
                                         }
                                     }
                                 },
@@ -167,9 +173,7 @@ const config = {
                                                     {
                                                         orderBy: item.selected,
                                                         source,
-                                                        preloaders: [
-                                                            'preloader-content-list'
-                                                        ]
+                                                        preloaders: ['preloader-content-list']
                                                     },
                                                     component
                                                 )
@@ -179,9 +183,7 @@ const config = {
                                                     {
                                                         sortBy: item.selected,
                                                         source,
-                                                        preloaders: [
-                                                            'preloader-content-list'
-                                                        ]
+                                                        preloaders: ['preloader-content-list']
                                                     },
                                                     component
                                                 )

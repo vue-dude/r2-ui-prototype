@@ -12,6 +12,7 @@
         class="form-element"
         v-if="config.type === 'input'"
         v-model="config.selected"
+        @input="config.restrict ? onChangeTextInput() : null"
         :placeholder="config.plc ? $t(config.plc) : null"
         :suffix-icon="config.suffixIcon"
         :prefix-icon="config.prefixIcon"
@@ -65,8 +66,19 @@ export default {
     },
     methods: {
         onChange() {
-            // this dont works in text input fields!
+            // this dont works in text input fields, use @input there!
             this.$emit('changed', this.config)
+        },
+        onChangeTextInput() {
+            // options use text input as number only field without the step controls
+            // element-plus controls=false dont works.
+            if (this.config.restrict === 'numbers-int') {
+                let num = parseInt(this.config.selected.replace(/[^0-9]/g, ''))
+                if (isNaN(num)) {
+                    num = null
+                }
+                this.config.selected = num
+            }
         }
     },
     watch: {

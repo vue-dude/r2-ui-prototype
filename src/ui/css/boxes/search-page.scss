@@ -88,8 +88,18 @@
                                     .cell-element.pager {
                                         width: 300px;
                                         height: 30px;
-                                        // background-color: rgb(189, 162, 162);
-                                        // opacity: 0.3;
+                                        .input-cell.go-to-page {
+                                            position: absolute;
+                                            top: 5px;
+                                            left: 11px;
+                                            width: 55px;
+                                            .el-input__inner {
+                                                height: 27px;
+                                                font-size: 14px;
+                                                line-height: 14px;
+                                                border: 1px solid #97a8c3;
+                                            }
+                                        }
                                     }
                                 }
 

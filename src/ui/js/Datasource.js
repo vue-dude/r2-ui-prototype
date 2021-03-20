@@ -65,12 +65,27 @@ function Datasource() {
     }
 
     this.getDatasets = async args => {
-        console.log('DS:getDatasets args = ',args)
+        console.log('DS:getDatasets args = ', args)
         // string	optional	Sort order (bestmatch or mostrecent). Prefix with minus to change form ascending to descending (e.g. -mostrecent).
         const dir = args.orderBy === 'ascending' ? 'bestmatch' : '-bestmatch'
         // TEST hardcoded
-        const res = await get(`https://zenodo.org/api/records/?q=${args.searchTerm}&sort=${dir}&size=${args.size}`)
-        r2DataHandler.setData(args.schemaKey, args.dataKey, res.data)
+        // const res = await get(
+        //     `https://zenodo.org/api/records/?q=${args.searchTerm}&sort=${dir}&page=${args.pageNum}&size=${args.size}`
+        // )
+        const res = await get('https://zenodo.org/api/records', {
+            params: {
+                q: args.searchTerm,
+                sort: dir,
+                page: args.pageNum,
+                size: args.size
+            }
+        })
+        const opts = {
+            pageNum: args.pageNum,
+            pageSize: args.size
+        }
+
+        r2DataHandler.setData(args.schemaKey, args.dataKey, res.data, opts)
         globals.eventBus.$emit('updateDataView', { schemaKey: args.schemaKey, dataKey: args.dataKey })
         return r2DataHandler.getData('datasets', 'pub-c819')
     }
