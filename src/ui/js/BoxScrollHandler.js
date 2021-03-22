@@ -1,5 +1,7 @@
 function BoxScrollHandler(config) {
     //
+    // gsap/js based scroller dropped, needs better solution for momentum scroll and design.
+    //
     const $scrollContainer = $(`${config.view} .scrollable`)
     const $scrollContent = $(`${config.view} .scrollable .content`)
     const $scrollThumb = $(`${config.view} .scrollbar .thumb`)

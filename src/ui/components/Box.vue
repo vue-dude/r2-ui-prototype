@@ -252,12 +252,24 @@ export default {
                 this.updateCustomScrollbar(args)
             } else {
                 this.destroyBoxScrollHandler(true)
+                // reset native scroller
+                if (args.keepScrollPosition === false) {
+                    const view = `.box.${this.config.id}.${this.uid} .view.active`
+                    const $scrollable = $(`${view} .scrollable`)
+                    if ($scrollable.length > 0) {
+                        $scrollable.scrollTop(0)
+                    }
+                }
             }
         },
 
         updateCustomScrollbar(args = {}) {
-            const props = this.boxScrollHandler ? this.boxScrollHandler.getScrollProperties() : {}
-            if (!args.keepScrollPosition) {
+            // TODO fix problem here:
+            // on sometimes double trigger 'onUpdateActiveView'-event from cage, the restoring of the 
+            // position fails (timeouts killed, properties / yPos lost )
+            const p = this.boxScrollHandler ? this.boxScrollHandler.getScrollProperties() : {}
+            const props = { ...p }
+            if (args.keepScrollPosition === false) {
                 props.yScrollPosition = 0
             }
             const keepPosition = _.isNumber(props.yScrollPosition) && Math.abs(props.yScrollPosition) > 0
@@ -278,11 +290,12 @@ export default {
                             view,
                             animateIn,
                             uid: this.uid,
-                            props
+                            props: props
                         })
                     }, 10)
                 }
             }, 200)
+            // })
         },
         onClickThing(key, args = {}) {
             let viewKey = null

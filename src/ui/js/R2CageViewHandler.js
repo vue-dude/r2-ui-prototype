@@ -2,7 +2,7 @@ function R2CageViewHandler(vm) {
     //
     // Handles the animation and visible states of all cage boxes and views
     //
-    const showModalOverlay = (yes) => {
+    const showModalOverlay = yes => {
         yes = yes === true
         if (vm.isModalOverlay) {
             const tg = `.centered-view .modal-bg`
@@ -101,6 +101,8 @@ function R2CageViewHandler(vm) {
         // TODO refacor this not to be set in animations handler
         showModalOverlay(hasModal)
         setTimeout(() => {
+            // TODO the above and below cage instances make double event triggers here.
+            // Find better solution / design for that!
             globals.eventBus.$emit('updateActiveView')
         }, 10)
     }
