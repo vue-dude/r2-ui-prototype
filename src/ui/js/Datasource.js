@@ -82,10 +82,11 @@ function Datasource() {
         })
         const opts = {
             pageNum: args.pageNum,
-            pageSize: args.size
+            pageSize: args.size,
+            resetData: args.resetData
         }
 
-        r2DataHandler.setData(args.schemaKey, args.dataKey, res.data, opts)
+        r2DataHandler.addData(args.schemaKey, args.dataKey, res.data, opts)
         globals.eventBus.$emit('updateDataView', { schemaKey: args.schemaKey, dataKey: args.dataKey })
         return r2DataHandler.getData('datasets', 'pub-c819')
     }

@@ -63,14 +63,14 @@ const R2D2DataHandler = function() {
         return { [key]: metaData[key] || [] }
     }
 
-    this.setData = (schemaKey, dataKey, data, options = {}) => {
+    this.addData = (schemaKey, dataKey, data, options = {}) => {
         if (schemaKey === 'datasets') {
-            if (options.pageNum > 1) {
-                // TEST simple chaining for first, TODO add proper offset 
-                datasets[dataKey] = [...datasets[dataKey], ...data]
-            } else {
-                datasets[dataKey] = data
+            if (options.resetData) {
+                datasets[dataKey] = []
             }
+            options.pageNum = _.isNumber(options.pageNum) ? options.pageNum : 1
+            datasets[dataKey][options.pageNum - 1] = data
+            console.log('R2DH:addData datasets[dataKey] = ',datasets[dataKey])
             return datasets[dataKey]
         }
         return null
@@ -81,23 +81,26 @@ const R2D2DataHandler = function() {
     const filter = (data, key) => {
         if (key === 'zenodo-dataset-list') {
             const res = []
-            _.each(data, elm => {
-                let authors = []
-                _.each(elm.metadata.creators, creator => {
-                    authors.push(creator.name)
-                })
-                let teaser = elm.metadata.description
-                teaser = teaser.substr(0, 3) === '<p>' ? teaser.substr(3) : teaser
-                authors = authors.join(', ')
-                res.push({
-                    dataKey: elm.id,
-                    schemaKey: 'dataset',
-                    title: elm.metadata.title,
-                    authors,
-                    teaser,
-                    numOfFiles: _.random(8, 4563327)
+            _.each(data, page => {
+                _.each(page, elm => {
+                    let authors = []
+                    _.each(elm.metadata.creators, creator => {
+                        authors.push(creator.name)
+                    })
+                    let teaser = elm.metadata.description
+                    teaser = teaser.substr(0, 3) === '<p>' ? teaser.substr(3) : teaser
+                    authors = authors.join(', ')
+                    res.push({
+                        dataKey: elm.id,
+                        schemaKey: 'dataset',
+                        title: elm.metadata.title,
+                        authors,
+                        teaser,
+                        numOfFiles: _.random(8, 4563327)
+                    })
                 })
             })
+
             return res
         }
         return data

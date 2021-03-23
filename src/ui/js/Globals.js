@@ -6,10 +6,37 @@ function Globals() {
     // Global Event Bus, keep vue 2.6 compatibility
     //
     const gBus = new EventBus()
+    let pastEvents = {}
+    const emit = (id, props = {}) => {
+        const ts = new Date().getTime()
+        const deltaMsec = 100
+        let send = true
+        _.each(pastEvents, (pEvt, pKey) => {
+            pKey *= 1
+            const diff = ts - pKey
+            if (diff > deltaMsec) {
+                delete pastEvents[pKey]
+            } else {
+                if (pEvt.id === id) {
+                    if (_.isEqual(pEvt.props, props)) {
+                        send = false
+                    }
+                }
+            }
+        })
+
+        if (send) {
+            pastEvents[ts] = { id, props: _.cloneDeep(props) }
+            gBus.emit(id, props)
+            console.log('BUS:SEND id, props = ',id, props)
+        } else {
+            console.warn('EVENTBUS: Double Event Detected, not sended:  id, props = ', id, props)
+        }
+    }
     this.eventBus = {
         $on: gBus.on,
         $off: gBus.off,
-        $emit: gBus.emit
+        $emit: emit
     }
 
     // uiStore, solution is Vue.js 3 only, uses 'reactive'
@@ -84,7 +111,7 @@ function Globals() {
             update()
         }
         this.getStates = states => {
-            const s = states.split(',')
+            const s = _.isArray(states) ? states : states.split(',')
             const res = {}
             _.each(s, key => {
                 res[key] = state[key]

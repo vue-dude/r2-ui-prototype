@@ -202,6 +202,7 @@ export default {
     created() {
         if (this.boxEnabled) {
             globals.eventBus.$on('updateActiveView', this.onUpdateActiveView)
+            globals.eventBus.$on('updateDataView', this.onUpdateDataView)
             globals.eventBus.$on('subClick', this.onSubClick)
         }
     },
@@ -244,7 +245,14 @@ export default {
             this.boxScrollHandler = null
         },
 
+        onUpdateDataView(args = {}) {
+            this.updateActiveView(args)
+        },
         onUpdateActiveView(args = {}) {
+            this.updateActiveView(args)
+        },
+
+        updateActiveView(args = {}) {
             if (args.targets && !_.includes(args.targets, this.config.id)) {
                 return
             }
@@ -265,8 +273,9 @@ export default {
 
         updateCustomScrollbar(args = {}) {
             // TODO fix problem here:
-            // on sometimes double trigger 'onUpdateActiveView'-event from cage, the restoring of the 
+            // on sometimes double trigger 'onUpdateActiveView'-event from cage, the restoring of the
             // position fails (timeouts killed, properties / yPos lost )
+            // Currently solved by an double event filter in global bus.
             const p = this.boxScrollHandler ? this.boxScrollHandler.getScrollProperties() : {}
             const props = { ...p }
             if (args.keepScrollPosition === false) {
