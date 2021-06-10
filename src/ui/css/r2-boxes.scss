@@ -1263,6 +1263,28 @@
             &.r2-messages {
                 left: 0px;
                 .view {
+                    .elements {
+                        .element.msg-webp-not-available {
+                            top: 88px;
+                            left: 317px;
+                            width: calc(1035px / 2);
+                            height: calc(428px / 2);
+                            border: 1px solid #000000;
+                            border-radius: 5px;
+                            background-color: #ced5df;
+                            .text {
+                                color: #363d4e;
+                                text-align: center;
+                                margin: 20px;
+                                a {
+                                    color: #465c96;
+                                    text-decoration: underline;
+                                    font-size: 16px;
+                                    font-weight: 500;
+                                }
+                            }
+                        }
+                    }
                     .msg-large-dataset {
                         top: 88px;
                         left: 317px;

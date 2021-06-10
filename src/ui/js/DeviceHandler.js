@@ -1,6 +1,37 @@
+// webp check runs initially only once, as a device won't ever change this feature on runtime.
+
+let WEBP_ENABLED = false
+const checkWebpEnabled = (feature, callback) => {
+    const kTestImages = {
+        lossy: 'UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA',
+        lossless: 'UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==',
+        alpha:
+            'UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==',
+        animation:
+            'UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA'
+    }
+    const img = new Image()
+    img.onload = () => {
+        const result = img.width > 0 && img.height > 0
+        callback(feature, result)
+    }
+    img.onerror = () => callback(feature, false)
+    img.src = `data:image/webp;base64,${kTestImages[feature]}`
+}
+
+checkWebpEnabled('lossy', (feature, isSupported) => {
+    WEBP_ENABLED = isSupported
+})
+
+// +++++++++++++++++
+// +++++++++++++++++
+// +++++++++++++++++
+
 import BaseDetector from 'device-detector-js'
 
-// TODO move the 768 to a singkle source of truth, before globals!!!
+
+
+// TODO move the 768 to a single source of truth, before globals!!!
 function DeviceHandler(store = null, SWITCH_WIDTH_MOBILE_PIX = 768) {
     const bd = new BaseDetector()
     let ua = navigator.userAgent
@@ -20,7 +51,6 @@ function DeviceHandler(store = null, SWITCH_WIDTH_MOBILE_PIX = 768) {
     device.raw = ua
 
     // TODO add text-size-adjust: 1XX% for high res small devices like iPad mini
-
     const getOS = () => {
         let res = ''
         let os = _.get(device, 'os.name') || ''
@@ -91,7 +121,7 @@ function DeviceHandler(store = null, SWITCH_WIDTH_MOBILE_PIX = 768) {
                 return mobileDefault
             }
         }
-        // console.log('STORE:setDevice 1 vp.width = ', vp.width)
+        // TODO: move all special values to a config
         switch (true) {
             case vp.innerHeight < 620: // not enough height for animated nav
                 return mobileDefault // enforces mobile version
@@ -127,11 +157,10 @@ function DeviceHandler(store = null, SWITCH_WIDTH_MOBILE_PIX = 768) {
         mediaTag: mProps.mediaWidth ? `media-width-${mProps.mediaWidth}` : '',
         isMobile: mProps.isMobile,
         innerHeight: vp.innerHeight,
-        innerWidth: vp.innerWidth
+        innerWidth: vp.innerWidth,
+        webpEnabled : WEBP_ENABLED
     }
     // use it with vue store or with classic get-setup
-    // console.log('DH: device = ', device)
-    // console.log('DH: device.states = ', device.states)
     this.getDevice = () => device
     this.updateDevice = () => {
         store ? store.dispatch('updateDevice', device.states) : null

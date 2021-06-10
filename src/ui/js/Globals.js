@@ -28,7 +28,7 @@ function Globals() {
         if (send) {
             pastEvents[ts] = { id, props: _.cloneDeep(props) }
             gBus.emit(id, props)
-            console.log('BUS:SEND id, props = ',id, props)
+            console.log('BUS:SEND id, props = ', id, props)
         } else {
             console.warn('EVENTBUS: Double Event Detected, not sended:  id, props = ', id, props)
         }
@@ -48,6 +48,7 @@ function Globals() {
             uKey: 0,
             rKey: 0,
             useNativeScroll: true,
+            webpEnabled: true,
             api: '',
             preloadActive: false,
             deviceClasses: '',
@@ -93,6 +94,9 @@ function Globals() {
             state.isMobile = deviceStates.isMobile
             state.innerWidth = deviceStates.innerWidth
             state.innerHeight = deviceStates.innerHeight
+            state.webpEnabled = deviceStates.webpEnabled
+            // state.webpEnabled = false
+            console.log('UIS:updateDevice state = ', { ...state })
         }
         this.orientationChanged = () => {
             state.rKey++

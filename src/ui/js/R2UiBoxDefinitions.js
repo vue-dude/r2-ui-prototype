@@ -19,11 +19,11 @@ function R2UiBoxDefinitions() {
                         'sp-3-b': { classes: 'sp-h' },
                         'sp-4-a': { classes: 'sp-h' },
                         'sp-4-b': { classes: 'sp-h' },
-                        public: { click: true, html: 'HOME', classes: 'nav-item left selected' },
-                        private: { click: true, html: 'MY DATASETS', classes: 'nav-item right' },
+                        'public': { click: true, html: 'HOME', classes: 'nav-item left selected' },
+                        'private': { click: true, html: 'MY DATASETS', classes: 'nav-item right' },
                         'head-nav-back': { click: true, classes: 'nav-item' },
-                        arrow: {},
-                        info: { html: '-' }
+                        'arrow': {},
+                        'info': { html: '-' }
                     }
                 }
             }
@@ -35,7 +35,7 @@ function R2UiBoxDefinitions() {
                     elements: {
                         'file-view-headline': {},
                         'file-view-pager': {},
-                        sp: {},
+                        'sp': {},
                         'file-view-download': {},
                         'file-view-facets-top': {}
                     },
@@ -55,7 +55,7 @@ function R2UiBoxDefinitions() {
                     elements: {
                         'file-view-headline': {},
                         'file-view-pager': {},
-                        sp: {},
+                        'sp': {},
                         'file-view-download': {},
                         'file-view-facets-top': {}
                     },
@@ -80,7 +80,7 @@ function R2UiBoxDefinitions() {
                 'mywork-page': {
                     elements: {
                         'search-bar-top-with-pager': {},
-                        sp: {},
+                        'sp': {},
                         'mywork-page-facets-term': {},
                         'mywork-page-facets-up': {}
                     },
@@ -377,6 +377,20 @@ function R2UiBoxDefinitions() {
                 'msg-large-dataset': {
                     elements: {
                         'msg-large-dataset': {}
+                    },
+                    zones: {
+                        confirm: {},
+                        cancel: {}
+                    }
+                },
+                'webp-not-available': {
+                    elements: {
+                        'msg-webp-not-available': {
+                            html:
+                                "<b>This page shows a UI-Prototype based on webp-images.</b><br><br>webp is a super-compressing, high-quality image codec that greatly improves the loading speed of image-based content.<br><br>Unfortunately, your browser does not support this format, so please try another one.<br><br><a href='https://caniuse.com/webp'>https://caniuse.com/webp</a>",
+                            click: false,
+                            classes: 'text'
+                        }
                     },
                     zones: {
                         confirm: {},

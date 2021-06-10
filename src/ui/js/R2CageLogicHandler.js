@@ -16,9 +16,17 @@ function R2CageLogicHandler(vm) {
 
     this.init = () => {
         modifyViewStack({ action: 'reset' })
-        setViewMode('home')
-        globals.eventBus.$on('click', onClick)
-        globals.eventBus.$on('preloaders', onUpdatePreloaders)
+        if (globals.uiStore.state.webpEnabled) {
+            setViewMode('home')
+            globals.eventBus.$on('click', onClick)
+            globals.eventBus.$on('preloaders', onUpdatePreloaders)
+        } else {
+            const options = {}
+            options['r2-messages'] = {
+                view: 'webp-not-available'
+            }
+            setViewMode('no-webp', options)
+        }
     }
 
     const updateMockConfigMenuState = () => {
@@ -301,6 +309,9 @@ function R2CageLogicHandler(vm) {
         }
         let privateView = false
         switch (viewMode) {
+            case 'no-webp':
+                path = ''
+                break
             case 'home':
                 path = 'Welcome!'
                 break
@@ -371,6 +382,15 @@ function R2CageLogicHandler(vm) {
         let goIns = {}
         switch (viewMode) {
             // v2
+            case 'no-webp':
+                goOuts.push('mock-config')
+                goOuts.push('main-nav')
+                goIns = {
+                    // 'landing-page': { delay: 0.1, speed: 0.8 }
+                    'r2-messages': { delay: 0.1, speed: 0.4 }
+                }
+                break
+
             case 'home':
                 goIns = {
                     'landing-page': { delay: 0.1, speed: 0.8 }
