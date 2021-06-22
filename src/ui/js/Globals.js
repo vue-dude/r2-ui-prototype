@@ -24,6 +24,10 @@ function Globals() {
                 }
             }
         })
+        // TODO better solution for filter doubles.
+        // this sometimes drops needed updates!
+        // quickfix send forced to true now
+        send = true
 
         if (send) {
             pastEvents[ts] = { id, props: _.cloneDeep(props) }
