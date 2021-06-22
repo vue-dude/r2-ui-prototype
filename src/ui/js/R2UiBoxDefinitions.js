@@ -27,21 +27,21 @@ The data is provided by an internal mock system. By clicking on the 'Edmond' log
 <br/><br/>
 <b>Dev-Stack:</b>
 <br/><br/>
-<b>vue.js 3 & core libraries:  </b><a href='https://vuejs.org' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<b>vue.js 3 & core libraries:  </b><a href='https://vuejs.org' target='_blank'><img class='link-sym' src="./img/link.png" /></a>
 <br/>
-<b>vue-i18n for internationalization:  </b><a href='https://kazupon.github.io/vue-i18n/' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<b>vue-i18n for internationalization:  </b><a href='https://kazupon.github.io/vue-i18n/' target='_blank'><img class='link-sym' src="./img/link.png" /></a>
 <br/>
-<b>element-plus as base for ui elements:  </b><a href='https://element-plus.org' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<b>element-plus as base for ui elements:  </b><a href='https://element-plus.org' target='_blank'><img class='link-sym' src="./img/link.png" /></a>
 <br/>
-<b>lodash for data handling:  </b><a href='https://lodash.com' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<b>lodash for data handling:  </b><a href='https://lodash.com' target='_blank'><img class='link-sym' src="./img/link.png" /></a>
 <br/>
-<b>axios as promise based http client:  </b><a href='https://axios-http.com' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<b>axios as promise based http client:  </b><a href='https://axios-http.com' target='_blank'><img class='link-sym' src="./img/link.png" /></a>
 <br/>
 <b>custom dynamic, multilevel form-generation</b>
 <br/>
 <b>custom device detection</b>
 <br/><br/>
-<b>gsap-3 animation library:  </b><a href='https://greensock.com/gsap/' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<b>gsap-3 animation library:  </b><a href='https://greensock.com/gsap/' target='_blank'><img class='link-sym' src="./img/link.png" /></a>
 
 `
 

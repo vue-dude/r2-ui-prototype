@@ -1,0 +1,9 @@
+{
+    "setup": {
+        "fallbackLocale": "en",
+        "locale": "en",
+        "translations": {
+            "en": {}
+        }
+    }
+}
