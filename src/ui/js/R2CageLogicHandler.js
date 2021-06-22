@@ -160,7 +160,7 @@ function R2CageLogicHandler(vm) {
     const onClick = evt => {
         evt.box = evt.box || { id: null }
         console.log('CG:onClick evt = ', evt)
-        let options = { _00: { targets: null } }
+        let options = { _00: { targets: null }, modalClosed: false }
 
         if (!vm.isModalOverlay && evt.key === 'toggle-mock-config-menu-state') {
             updateMockConfigMenuState()
@@ -187,6 +187,7 @@ function R2CageLogicHandler(vm) {
             case 'close':
             case 'save':
                 // case 'head-nav-back':
+                options.modalClosed = true
                 updateDatasetControls({ reset: true })
                 return setViewMode(getViewStack()[0], options)
             case 'head-crtl-bt-close':
@@ -241,6 +242,15 @@ function R2CageLogicHandler(vm) {
                 return setViewMode(getViewStack()[0], options)
 
             // actions and messages
+
+            case 'head-crtl-bt-prototype-info':
+                options['r2-messages'] = {
+                    view: 'msg-prototype-info'
+                }
+                console.log('CLG:head-crtl-bt-prototype-info options = ', options)
+
+                return setViewMode(`${getViewStack()[0]}`, options)
+
             case 'download-all':
                 options['r2-messages'] = {
                     view: 'msg-large-dataset'
@@ -285,12 +295,19 @@ function R2CageLogicHandler(vm) {
         // console.log('CG:setViewMode viewMode viewModePrev = ', viewModePrev)
         // console.log('CG:setViewMode viewMode viewMode = ', viewMode)
         // console.log('CG:setViewMode viewMode mode = ', mode)
+        // console.log('CG:setViewMode viewMode options = ', options)
 
         switch (mode) {
             case 'home':
             case 'mywork':
                 if (viewModePrev && viewMode === mode) {
-                    return
+                    switch (true) {
+                        case _.isObject(options['r2-messages']):
+                        case options.modalClosed:
+                            break
+                        default:
+                            return
+                    }
                 }
         }
 
@@ -336,7 +353,7 @@ function R2CageLogicHandler(vm) {
                     html: 'WORK ON MY DATASET',
                     length: 250
                 }
-                path = 'View my Dataset / Dual Color Imaging from a Single BF2 ...'
+                path = 'Work on my Dataset / Dual Color Imaging from a Single BF2 ...'
                 break
             case 'initial-dataset':
                 privateView = true
@@ -380,6 +397,7 @@ function R2CageLogicHandler(vm) {
         }
 
         let goIns = {}
+
         switch (viewMode) {
             // v2
             case 'no-webp':
@@ -393,7 +411,9 @@ function R2CageLogicHandler(vm) {
 
             case 'home':
                 goIns = {
-                    'landing-page': { delay: 0.1, speed: 0.8 }
+                    'landing-page': { delay: 0.1, speed: 0.8 },
+                    'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-prototype-info' },
+                    'r2-messages': { delay: 0.1, speed: 0.4 }
                 }
                 break
             case 'mywork':
@@ -405,7 +425,9 @@ function R2CageLogicHandler(vm) {
             case 'search':
                 goIns = {
                     'search-page': { delay: 0.1, speed: 0.8 },
-                    'search-page-facets-dn-inner': { delay: 0.1, speed: 0.8 }
+                    'search-page-facets-dn-inner': { delay: 0.1, speed: 0.8 },
+                    'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-prototype-info' },
+                    'r2-messages': { delay: 0.1, speed: 0.4 }
                 }
                 break
             case 'public-dataset':
@@ -445,7 +467,8 @@ function R2CageLogicHandler(vm) {
             case 'file-list-private':
                 goIns = {
                     'file-list': { delay: 0.1, speed: 0.4, view: 'file-list-collection-closed' },
-                    'r2-messages': { delay: 0.1, speed: 0.4 }
+                    'r2-messages': { delay: 0.1, speed: 0.4 },
+                    'head-controls': { delay: 0.1, speed: 0.4, view: 'head-controls-prototype-info' }
                 }
                 break
         }

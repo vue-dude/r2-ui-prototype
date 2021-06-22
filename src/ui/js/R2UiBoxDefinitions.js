@@ -3,6 +3,48 @@ import landingPage from '@/ui/js/boxes/landing-page'
 import searchPage from '@/ui/js/boxes/search-page'
 import searchPageFacetsDn from '@/ui/js/boxes/search-page-facets-dn-inner'
 
+const MSG_NO_WEBP = `
+<b>This page shows a UI-Prototype based on webp-images.</b>
+<br/><br/>
+webp is a super-compressing, high-quality image codec that greatly improves the loading speed of image-based content.
+<br/><br/>
+Unfortunately, your browser does not support this format, so please try another one.
+<br/><br/>
+<a href='https://caniuse.com/webp'>https://caniuse.com/webp</a>"
+`
+const PROTOTYPE_INFO = `
+<b>This page shows a UI-Prototype for a scientific data repository.</b>
+<br/><br/>
+In order to present the decision-makers with a realistic, interactive prototype as early as possible, the page was initially built based on images and graphics, but already provides real interactions and ui-animations.
+<br/><br/>
+The resulting framework offered itself to create the final page directly from the prototype, with the advantage of being able to continue to react quickly to ideas and extensions, to test & optimize usability 'live' and to always have a visually complete application available.
+<br/><br/>
+The amazing freedom and flexibility of Vue.js supports this progressive approach in an optimal way.
+<br/><br/>
+The layout is currently still static, but individual parts of the page already contain the first real functionality and data flow.
+<br/><br/>
+The data is provided by an internal mock system. By clicking on the 'Edmond' logo, a real data source (Zenodo) can optionally be selected.
+<br/><br/>
+<b>Dev-Stack:</b>
+<br/><br/>
+<b>vue.js 3 & core libraries:  </b><a href='https://vuejs.org' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<br/>
+<b>vue-i18n for internationalization:  </b><a href='https://kazupon.github.io/vue-i18n/' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<br/>
+<b>element-plus as base for ui elements:  </b><a href='https://element-plus.org' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<br/>
+<b>lodash for data handling:  </b><a href='https://lodash.com' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<br/>
+<b>axios as promise based http client:  </b><a href='https://axios-http.com' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+<br/>
+<b>custom dynamic, multilevel form-generation</b>
+<br/>
+<b>custom device detection</b>
+<br/><br/>
+<b>gsap-3 animation library:  </b><a href='https://greensock.com/gsap/' target='_blank'><img class='link-sym' src="/img/link.png" /></a>
+
+`
+
 function R2UiBoxDefinitions() {
     this.boxes = {
         'mock-config': mockConfig,
@@ -247,6 +289,11 @@ function R2UiBoxDefinitions() {
         },
         'head-controls': {
             views: {
+                'head-controls-prototype-info': {
+                    elements: {
+                        'head-crtl-bt-prototype-info': { click: true }
+                    }
+                },
                 'head-controls': {
                     elements: {
                         'head-crtl-bt-close': { click: true },
@@ -386,8 +433,7 @@ function R2UiBoxDefinitions() {
                 'webp-not-available': {
                     elements: {
                         'msg-webp-not-available': {
-                            html:
-                                "<b>This page shows a UI-Prototype based on webp-images.</b><br><br>webp is a super-compressing, high-quality image codec that greatly improves the loading speed of image-based content.<br><br>Unfortunately, your browser does not support this format, so please try another one.<br><br><a href='https://caniuse.com/webp'>https://caniuse.com/webp</a>",
+                            html: MSG_NO_WEBP,
                             click: false,
                             classes: 'text'
                         }
@@ -395,6 +441,14 @@ function R2UiBoxDefinitions() {
                     zones: {
                         confirm: {},
                         cancel: {}
+                    }
+                },
+                'msg-prototype-info': {
+                    elements: {
+                        text: {
+                            html: PROTOTYPE_INFO
+                        },
+                        close: { classes: 'button', click: true, html: 'close' }
                     }
                 }
             }

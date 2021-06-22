@@ -65,6 +65,18 @@ body {
 }
 
 .ui {
+    .link-sym {
+        width: 16px;
+        position: relative;
+        top: 2px;
+        left: 5px;
+        filter: invert(0.9);
+        // firefox image load problem here, src moved also into tag!
+        content: url(./../r2-ui/icons/link.png);
+        // background: url(./../r2-ui/icons/link.png);
+        // content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjMDAwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGRhdGEtbmFtZT0iTGF5ZXIgMSIgdmlld0JveD0iMCAwIDk2IDk2IiB4PSIwcHgiIHk9IjBweCI+PHRpdGxlPkFydGJvYXJkIDE3MDwvdGl0bGU+PHBvbHlnb24gcG9pbnRzPSI3NCAzOSA3MCAzOSA3MCA3MCAyNiA3MCAyNiAyNiA1OCAyNiA1OCAyMiAyMiAyMiAyMiA3NCA3NCA3NCA3NCAzOSI+PC9wb2x5Z29uPjxwYXRoIGQ9Ik02OC44MSwyNC4zN2wtMjAuNSwyMC41LDIuODIsMi44Mkw3MS42NCwyNy4ybDUsNC45NGEyLDIsMCwwLDAsMS40MS41OSwyLjA3LDIuMDcsMCwwLDAsLjc3LS4xNUEyLDIsMCwwLDAsODAsMzAuNzNWMThhMiwyLDAsMCwwLTItMkg2NS4yN2EyLDIsMCwwLDAtMS40MSwzLjQxWiI+PC9wYXRoPjwvc3ZnPg==');
+    }
+
     .click-zone {
         // background-color: rgba(255, 0, 0, 0.2); // COLOR TEST ON OFF
     }

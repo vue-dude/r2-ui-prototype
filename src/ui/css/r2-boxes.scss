@@ -631,9 +631,14 @@
                         left: -200px;
                         left: -165px;
                     }
+                    .head-crtl-bt-prototype-info {
+                        width: 32px;
+                        height: 32px;
+                    }
                 }
 
                 .view {
+                    &.head-controls-prototype-info,
                     &.head-controls-edit,
                     &.head-controls-new-dataset-only,
                     &.head-controls-edit-actions-active {
@@ -1263,6 +1268,46 @@
             &.r2-messages {
                 left: 0px;
                 .view {
+                    &.msg-prototype-info {
+                        .overlay {
+                            display: none;
+                            visibility: hidden;
+                        }
+                        .elements {
+                            top: 25px;
+                            left: 317px;
+                            width: calc(1035px / 2);
+                            border: 1px solid #eeeff3;
+                            border-radius: 5px;
+                            background-color: #53586a;
+                            .element {
+                                position: relative;
+                                .text {
+                                    color: #f6f4c3;
+                                    text-align: center;
+                                    margin: 20px;
+                                    a {
+                                        color: #f0f4fe;
+                                        font-size: 16px;
+                                        font-weight: bold;  
+                                    }
+                                }
+                                .button {
+                                    all: unset;
+                                }
+                                &.button {
+                                    margin-left: auto;
+                                    margin-right: 15px;
+                                    margin-bottom: 15px;
+                                    height: 20px;
+                                    background-color: #f4ecce;
+                                    border: 1px solid #6572a1;
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                    }
+
                     .elements {
                         .element.msg-webp-not-available {
                             top: 88px;
