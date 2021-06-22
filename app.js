@@ -5070,7 +5070,7 @@ exports.nextTick = function nextTick(fn) {
     }, 0);
 };
 
-exports.platform = exports.arch = 
+exports.platform = exports.arch =
 exports.execPath = exports.title = 'browser';
 exports.pid = 1;
 exports.browser = true;
@@ -5091,9 +5091,9 @@ exports.binding = function (name) {
     };
 })();
 
-exports.exit = exports.kill = 
-exports.umask = exports.dlopen = 
-exports.uptime = exports.memoryUsage = 
+exports.exit = exports.kill =
+exports.umask = exports.dlopen =
+exports.uptime = exports.memoryUsage =
 exports.uvCounters = function() {};
 exports.features = {};
 
@@ -9435,7 +9435,7 @@ function NavBarvue_type_template_id_3644d955_render(_ctx, _cache, $props, $setup
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/NavBar.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/NavBar.vue
 
 
@@ -10261,7 +10261,7 @@ function BoxScrollHandler(config) {
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/Box.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/Box.vue
 
 
@@ -10325,7 +10325,7 @@ var mock_config_config = {
             },
             data: {
               'scroll-type': 'native',
-              'api-select': 'zenodo'
+              'api-select': 'mock'
             },
             onCreate: function onCreate(config, component) {
               console.log('MC:onCreate config = ', config);
@@ -12627,7 +12627,7 @@ function R2CageLogicHandler(vm) {
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/Cage.vue?vue&type=script&lang=js
- 
+
 // EXTERNAL MODULE: ./src/ui/components/Cage.vue?vue&type=style&index=0&id=c2703692&lang=scss&scoped=true
 var Cagevue_type_style_index_0_id_c2703692_lang_scss_scoped_true = __webpack_require__("679b");
 
@@ -12727,7 +12727,7 @@ function SubBarvue_type_template_id_68478f74_render(_ctx, _cache, $props, $setup
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/SubBar.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/SubBar.vue
 
 
@@ -12843,7 +12843,7 @@ SubBarvue_type_script_lang_js.render = SubBarvue_type_template_id_68478f74_rende
   }
 });
 // CONCATENATED MODULE: ./src/ui/views/ui.vue?vue&type=script&lang=js
- 
+
 // EXTERNAL MODULE: ./src/ui/views/ui.vue?vue&type=style&index=0&id=4b00f872&lang=scss
 var uivue_type_style_index_0_id_4b00f872_lang_scss = __webpack_require__("2576");
 
@@ -15704,19 +15704,19 @@ function createComposer(options = {}) {
                 _context.processor = null;
             }
             return ret;
-        }, () => parseTranslateArgs(...args)[0], 'translate', 
+        }, () => parseTranslateArgs(...args)[0], 'translate',
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         root => root[TransrateVNodeSymbol](...args), key => [Object(vue_esm_bundler["o" /* createVNode */])(vue_esm_bundler["d" /* Text */], null, key, 0)], val => Object(shared_esm_bundler["e" /* isArray */])(val));
     }
     // __numberParts, using for `i18n-n` component
     function __numberParts(...args) {
-        return wrapWithDeps(context => number(context, ...args), () => parseNumberArgs(...args)[0], 'number format', 
+        return wrapWithDeps(context => number(context, ...args), () => parseNumberArgs(...args)[0], 'number format',
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         root => root[NumberPartsSymbol](...args), () => [], val => Object(shared_esm_bundler["n" /* isString */])(val) || Object(shared_esm_bundler["e" /* isArray */])(val));
     }
     // __datetimeParts, using for `i18n-d` component
     function __datetimeParts(...args) {
-        return wrapWithDeps(context => datetime(context, ...args), () => parseDateTimeArgs(...args)[0], 'datetime format', 
+        return wrapWithDeps(context => datetime(context, ...args), () => parseDateTimeArgs(...args)[0], 'datetime format',
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         root => root[DatetimePartsSymbol](...args), () => [], val => Object(shared_esm_bundler["n" /* isString */])(val) || Object(shared_esm_bundler["e" /* isArray */])(val));
     }
@@ -16468,7 +16468,7 @@ const NumberFormat = {
     /* eslint-enable */
     setup(props, context) {
         const i18n = useI18n({ useScope: 'parent' });
-        return renderFormatter(props, context, NUMBER_FORMAT_KEYS, (...args) => 
+        return renderFormatter(props, context, NUMBER_FORMAT_KEYS, (...args) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         i18n[NumberPartsSymbol](...args));
     }
@@ -16529,7 +16529,7 @@ const DatetimeFormat = {
     /* eslint-enable */
     setup(props, context) {
         const i18n = useI18n({ useScope: 'parent' });
-        return renderFormatter(props, context, DATETIME_FORMAT_KEYS, (...args) => 
+        return renderFormatter(props, context, DATETIME_FORMAT_KEYS, (...args) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         i18n[DatetimePartsSymbol](...args));
     }
@@ -20761,7 +20761,7 @@ function GenericFormCellvue_type_template_id_6b55950d_render(_ctx, _cache, $prop
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/GenericFormCell.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/GenericFormCell.vue
 
 
@@ -21107,7 +21107,7 @@ GenericFormCellvue_type_script_lang_js.render = GenericFormCellvue_type_template
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/MetaFormComponent.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/MetaFormComponent.vue
 
 
@@ -21336,7 +21336,7 @@ function GenericFormComponentvue_type_template_id_d03a62ee_render(_ctx, _cache, 
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/GenericFormComponent.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/GenericFormComponent.vue
 
 
@@ -21483,7 +21483,7 @@ function ActiveListComponentvue_type_template_id_ecbb99e2_render(_ctx, _cache, $
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/ActiveListComponent.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/ActiveListComponent.vue
 
 
@@ -21550,7 +21550,7 @@ function ContentCellvue_type_template_id_29771f7a_render(_ctx, _cache, $props, $
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/ContentCell.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/ContentCell.vue
 
 
@@ -21599,7 +21599,7 @@ ContentCellvue_type_script_lang_js.render = ContentCellvue_type_template_id_2977
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/ContentList.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/ContentList.vue
 
 
@@ -21673,7 +21673,7 @@ function DatasetListItemvue_type_template_id_4df4d202_render(_ctx, _cache, $prop
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/DatasetListItem.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/DatasetListItem.vue
 
 
@@ -21707,7 +21707,7 @@ function Preloadervue_type_template_id_791d82c7_render(_ctx, _cache, $props, $se
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/Preloader.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/Preloader.vue
 
 
@@ -21747,7 +21747,7 @@ Preloadervue_type_script_lang_js.render = Preloadervue_type_template_id_791d82c7
   }
 });
 // CONCATENATED MODULE: ./src/ui/components/R2Components.vue?vue&type=script&lang=js
- 
+
 // CONCATENATED MODULE: ./src/ui/components/R2Components.vue
 
 
@@ -22556,7 +22556,7 @@ module.exports = {
 
 
 const hasSymbol = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
-const PolySymbol = (name) => 
+const PolySymbol = (name) =>
 // vr = vue router
 hasSymbol
     ? Symbol(( false) ? undefined : name)
@@ -23078,7 +23078,7 @@ function useHistoryStateNavigation(base) {
         }
     }
     function replace(to, data) {
-        const state = assign({}, history.state, buildState(historyState.value.back, 
+        const state = assign({}, history.state, buildState(historyState.value.back,
         // keep back and forward entries but override current position
         to, historyState.value.forward, true), data, { position: historyState.value.position });
         changeLocation(to, state, true);
@@ -23087,7 +23087,7 @@ function useHistoryStateNavigation(base) {
     function push(to, data) {
         // Add to current entry the information of where we are going
         // as well as saving the current position
-        const currentState = assign({}, 
+        const currentState = assign({},
         // use current history state to gracefully handle a wrong call to
         // history.replaceState
         // https://github.com/vuejs/vue-router-next/issues/366
@@ -23198,7 +23198,7 @@ function createMemoryHistory(base = '') {
         },
         go(delta, shouldTrigger = true) {
             const from = this.location;
-            const direction = 
+            const direction =
             // we are considering delta === 0 going forward, but in abstract mode
             // using 0 for the delta doesn't make sense like it does in html5 where
             // it reloads the page
@@ -23906,7 +23906,7 @@ function createRouterMatcher(routes, globalOptions) {
             name = matcher.record.name;
             params = assign(
             // paramsFromLocation is a new object
-            paramsFromLocation(currentLocation.params, 
+            paramsFromLocation(currentLocation.params,
             // only keep params that exist in the resolved location
             // TODO: only keep optional params coming from a parent record
             matcher.keys.filter(k => !k.optional).map(k => k.name)), location.params);
@@ -24914,7 +24914,7 @@ function addDevtools(app, router, matcher) {
             routes.forEach(resetMatchStateOnRouteRecord);
             // apply a match state if there is a payload
             if (payload.filter) {
-                routes = routes.filter(route => 
+                routes = routes.filter(route =>
                 // save matches state based on the payload
                 isRouteMatching(route, payload.filter.toLowerCase()));
             }
@@ -25240,7 +25240,7 @@ function createRouter(options) {
             // keep the hash encoded so fullPath is effectively path + encodedQuery +
             // hash
             hash,
-            query: 
+            query:
             // if the user is using a custom query lib like qs, we might have
             // nested objects, so we keep the query as is, meaning it can contain
             // numbers at `$route.query`, but at the point, the user will have to
@@ -25306,7 +25306,7 @@ function createRouter(options) {
                 state: data,
                 force,
                 replace,
-            }), 
+            }),
             // keep original redirectedFrom if it exists
             redirectedFrom || targetLocation);
         // if it was a redirect we already called `pushWithRedirect` above
@@ -25316,10 +25316,10 @@ function createRouter(options) {
         if (!force && isSameRouteLocation(stringifyQuery$1, from, targetLocation)) {
             failure = createRouterError(16 /* NAVIGATION_DUPLICATED */, { to: toLocation, from });
             // trigger scroll to allow scrolling to the same anchor
-            handleScroll(from, from, 
+            handleScroll(from, from,
             // this is a push, the only way for it to be triggered from a
             // history.listen is with a redirect, which makes it become a push
-            true, 
+            true,
             // This cannot be the first navigation because the initial location
             // cannot be manually navigated to
             false);
@@ -25339,7 +25339,7 @@ function createRouter(options) {
                         state: data,
                         force,
                         replace,
-                    }), 
+                    }),
                     // preserve the original redirectedFrom if any
                     redirectedFrom || toLocation);
                 }
@@ -37659,7 +37659,7 @@ const SuspenseImpl = {
     // on a vnode's type and calls the `process` method, passing in renderer
     // internals.
     __isSuspense: true,
-    process(n1, n2, container, anchor, parentComponent, parentSuspense, isSVG, optimized, 
+    process(n1, n2, container, anchor, parentComponent, parentSuspense, isSVG, optimized,
     // platform-specific impl passed from renderer
     rendererInternals) {
         if (n1 == null) {
@@ -37951,11 +37951,11 @@ function createSuspenseBoundary(vnode, parent, parentComponent, container, hidde
                     vnode.el = hydratedEl;
                 }
                 const placeholder = !hydratedEl && instance.subTree.el;
-                setupRenderEffect(instance, vnode, 
+                setupRenderEffect(instance, vnode,
                 // component may have been moved before resolve.
                 // if this is not a hydration, instance.subTree will be the comment
                 // placeholder.
-                parentNode(hydratedEl || instance.subTree.el), 
+                parentNode(hydratedEl || instance.subTree.el),
                 // anchor will not be used if this is hydration, so only need to
                 // consider the comment placeholder case.
                 hydratedEl ? null : next(instance.subTree), suspense, isSVG, optimized);
@@ -38057,7 +38057,7 @@ const setCompiledSlotRendering = (n) => (isRenderingCompiledSlot += n);
  * Compiler runtime helper for rendering `<slot/>`
  * @private
  */
-function renderSlot(slots, name, props = {}, 
+function renderSlot(slots, name, props = {},
 // this is not a user-facing function, so the fallback is always generated by
 // the compiler and guaranteed to be a function returning an array
 fallback) {
@@ -38560,7 +38560,7 @@ function injectHook(type, hook, target = currentInstance, prepend = false) {
     }
     else if ((false)) {}
 }
-const createHook = (lifecycle) => (hook, target = currentInstance) => 
+const createHook = (lifecycle) => (hook, target = currentInstance) =>
 // post-create lifecycle registrations are noops during SSR
 !isInSSRComponentSetup && injectHook(lifecycle, hook, target);
 const onBeforeMount = createHook("bm" /* BEFORE_MOUNT */);
@@ -39160,7 +39160,7 @@ const KeepAliveImpl = {
         watch(() => [props.include, props.exclude], ([include, exclude]) => {
             include && pruneCache(name => runtime_core_esm_bundler_matches(include, name));
             exclude && pruneCache(name => !runtime_core_esm_bundler_matches(exclude, name));
-        }, 
+        },
         // prune post-render after `current` has been updated
         { flush: 'post', deep: true });
         // cache sub tree after render
@@ -40490,7 +40490,7 @@ function baseCreateRenderer(options, createHydrationFns) {
             const oldVNode = oldChildren[i];
             const newVNode = newChildren[i];
             // Determine the container (parent element) for the patch.
-            const container = 
+            const container =
             // - In the case of a Fragment, we need to provide the actual parent
             // of the Fragment itself so it can move its children.
             oldVNode.type === Fragment ||
@@ -40729,9 +40729,9 @@ function baseCreateRenderer(options, createHydrationFns) {
                 const prevTree = instance.subTree;
                 instance.subTree = nextTree;
                 if ((false)) {}
-                patch(prevTree, nextTree, 
+                patch(prevTree, nextTree,
                 // parent may have changed if it's in a teleport
-                hostParentNode(prevTree.el), 
+                hostParentNode(prevTree.el),
                 // anchor may have changed if it's in a fragment
                 getNextHostNode(prevTree), instance, parentSuspense, isSVG);
                 if ((false)) {}
@@ -41561,7 +41561,7 @@ function resolveAsset(type, name, warnMissing = true) {
                 return Component;
             }
         }
-        const res = 
+        const res =
         // local registration
         // check instance[type] first for components with mixin or extends.
         resolve(instance[type] || Component[type], name) ||
@@ -41879,7 +41879,7 @@ function createStaticVNode(content, numberOfNodes) {
 /**
  * @private
  */
-function createCommentVNode(text = '', 
+function createCommentVNode(text = '',
 // when used as the v-else branch, the comment node must be created as a
 // block to ensure correct updates.
 asBlock = false) {
@@ -42055,15 +42055,15 @@ function createDuplicateChecker() {
 }
 let isInBeforeCreate = false;
 function applyOptions(instance, options, deferredData = [], deferredWatch = [], deferredProvide = [], asMixin = false) {
-    const { 
+    const {
     // composition
-    mixins, extends: extendsOptions, 
+    mixins, extends: extendsOptions,
     // state
-    data: dataOptions, computed: computedOptions, methods, watch: watchOptions, provide: provideOptions, inject: injectOptions, 
+    data: dataOptions, computed: computedOptions, methods, watch: watchOptions, provide: provideOptions, inject: injectOptions,
     // assets
-    components, directives, 
+    components, directives,
     // lifecycle
-    beforeMount, mounted, beforeUpdate, updated, activated, deactivated, beforeDestroy, beforeUnmount, destroyed, unmounted, render, renderTracked, renderTriggered, errorCaptured, 
+    beforeMount, mounted, beforeUpdate, updated, activated, deactivated, beforeDestroy, beforeUnmount, destroyed, unmounted, render, renderTracked, renderTriggered, errorCaptured,
     // public API
     expose } = options;
     const publicThis = instance.proxy;
@@ -43404,7 +43404,7 @@ function patchAttr(el, key, value, isSVG) {
 
 // __UNSAFE__
 // functions. The user is responsible for using them with only trusted content.
-function patchDOMProp(el, key, value, 
+function patchDOMProp(el, key, value,
 // the following args are passed only due to potential innerHTML/textContent
 // overriding existing VNodes, in which case the old tree must be properly
 // unmounted.
@@ -45742,7 +45742,7 @@ function startsWithEndTagOpen(source, tag) {
 }
 
 function compiler_core_esm_bundler_hoistStatic(root, context) {
-    walk(root, context, 
+    walk(root, context,
     // Root node is unfortunately non-hoistable due to potential parent
     // fallthrough attributes.
     isSingleElementRoot(root, root.children[0]));
@@ -46811,7 +46811,7 @@ const transformExpression = (node, context) => {
                 if (exp &&
                     exp.type === 4 /* SIMPLE_EXPRESSION */ &&
                     !(dir.name === 'on' && arg)) {
-                    dir.exp = processExpression(exp, context, 
+                    dir.exp = processExpression(exp, context,
                     // slot args must be processed as function params
                     dir.name === 'slot');
                 }
@@ -46825,10 +46825,10 @@ const transformExpression = (node, context) => {
 // Important: since this function uses Node.js only dependencies, it should
 // always be used with a leading !true check so that it can be
 // tree-shaken from the browser build.
-function processExpression(node, context, 
+function processExpression(node, context,
 // some expressions like v-slot props & v-for aliases should be parsed as
 // function params
-asParams = false, 
+asParams = false,
 // v-on handler values may contain multiple statements
 asRawStatements = false) {
     {
@@ -46939,7 +46939,7 @@ function createIfBranch(node, dir) {
 }
 function createCodegenNodeForBranch(branch, keyIndex, context) {
     if (branch.condition) {
-        return createConditionalExpression(branch.condition, createChildrenCodegenNode(branch, keyIndex, context), 
+        return createConditionalExpression(branch.condition, createChildrenCodegenNode(branch, keyIndex, context),
         // make sure to pass in asBlock: true so that the comment node call
         // closes the current block.
         createCallExpression(context.helper(CREATE_COMMENT), [
@@ -47401,7 +47401,7 @@ function buildSlots(node, context, buildSlotFn = buildClientSlotFn) {
         : hasForwardedSlots(node.children)
             ? 3 /* FORWARDED */
             : 1 /* STABLE */;
-    let slots = createObjectExpression(slotsProperties.concat(createObjectProperty(`_`, 
+    let slots = createObjectExpression(slotsProperties.concat(createObjectProperty(`_`,
     // 2 = compiled but dynamic = can skip normalization, but must run diff
     // 1 = compiled and static = can skip normalization AND diff as optimized
     createSimpleExpression(slotFlag + (( false) ? undefined : ``), false))), loc);
@@ -47464,7 +47464,7 @@ const transformElement = (node, context) => {
         let vnodeDynamicProps;
         let dynamicPropNames;
         let vnodeDirectives;
-        let shouldUseBlock = 
+        let shouldUseBlock =
         // dynamic component may resolve to plain elements
         isDynamicComponent ||
             vnodeTag === TELEPORT ||
@@ -48700,7 +48700,7 @@ function compiler_dom_esm_bundler_compile(template, options = {}) {
             ...(options.nodeTransforms || [])
         ],
         directiveTransforms: Object(shared_esm_bundler["i" /* extend */])({}, DOMDirectiveTransforms, options.directiveTransforms || {}),
-        transformHoist: null 
+        transformHoist: null
     }));
 }
 function parse(template, options = {}) {
