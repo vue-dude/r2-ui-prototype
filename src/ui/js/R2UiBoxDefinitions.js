@@ -409,7 +409,7 @@ function R2UiBoxDefinitions() {
                     },
                     scroll: {
                         components: {
-                            'meta-generic': { component: 'dynamic-form', config: { key: null, test: 100 } }
+                            'meta-generic': { component: 'meta-form', config: { key: null, test: 100 } }
                         }
                     }
                 }

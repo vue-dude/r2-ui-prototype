@@ -126,7 +126,7 @@ export default {
                 const $target = $(sel)
                 gsap.set($target, { opacity: 0 })
                 gsap.to($target, 0.4, { opacity: 1, ease: Expo.easeOut })
-                gsap.from($target, 0.7, { 'margin-left': -40, ease: Expo.easeOut })
+                gsap.from($target, 0.7, { 'margin-left': -40, 'ease': Expo.easeOut })
             } else {
                 const all = `.form-container.${this.uid} .index-group.expandable`
                 const $all = $(all)
@@ -158,17 +158,17 @@ export default {
                     gsap.delayedCall(0.2, onComplete)
                     return gsap.to($target, 0.6, {
                         'margin-top': 230, // ui-preview hardcoded
-                        ease: Expo.easeOut
+                        'ease': Expo.easeOut
                     })
 
                 case 'removeNode':
                     gsap.set($target, { overflow: 'hidden' })
-                    gsap.to($target, 0.4, { opacity: 0, 'margin-left': 600 })
+                    gsap.to($target, 0.4, { 'opacity': 0, 'margin-left': 600 })
                     return gsap.to($target, 0.3, {
-                        delay: 0.2,
-                        height: 0,
+                        'delay': 0.2,
+                        'height': 0,
                         'margin-bottom': 0,
-                        ease: Expo.easeOut,
+                        'ease': Expo.easeOut,
                         onComplete
                     })
 
