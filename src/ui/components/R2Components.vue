@@ -1,5 +1,14 @@
 <script>
 //
+// This component shows different ways for rendering and templating in Vue.js:
+// The deactivated 'templateDEACT' contains the classic vue template, which shows lots of code overhead
+// for the given functionality - simply to select a component via id from the config.
+// The 'renderJS' method does the same, but with much less code overhead and written in pure Javascript.
+// The 'renderJSX' is exactly the 'renderJS' method, but written in JSX templating language which is used on react
+//
+// And that's so cool about vue - you can use all those different coding styles, 
+// and the 2-way databinding works with every version! :-)
+//
 import MetaForm from '@/ui/components/MetaFormComponent.vue'
 import GenericForm from '@/ui/components/GenericFormComponent.vue'
 import ActiveList from '@/ui/components/ActiveListComponent.vue'
@@ -36,30 +45,53 @@ export default {
         classes: '',
         data: null
     },
+    render() {
+        return this.renderJSX()
+        // return this.renderJS()
+    },
     methods: {
         onSubClick(props) {
             this.$emit('subClick', props)
+        },
+        renderJSX() {
+            // This is the JSX / React syntax version
+            const component = cp[this.cmp.component]
+            if (component) {
+                const props = {
+                    config: this.cmp.config,
+                    data: this.data,
+                    class: this.classes || '',
+                    onSubClick: this.onSubClick
+                }
+                return <component {...props}></component>
+            } else if (this.cmp.type === 'ui') {
+                return <div>{this.$t(this.cmp.text)}</div>
+            }
+            return null
+        },
+        renderJS() {
+            // This is the classic vue/javascript syntax for the render function.
+            // Vue 3: The render function 'h' now is not longer function argument, 
+            // but accessed via import { h } from 'vue'
+            const component = cp[this.cmp.component]
+            if (component) {
+                return h(component, {
+                    config: this.cmp.config,
+                    data: this.data,
+                    class: this.classes || '',
+                    onSubClick: this.onSubClick
+                })
+            } else if (this.cmp.type === 'ui') {
+                return h('div', this.$t(this.cmp.text))
+            }
+            return null
         }
-    },
-    render() {
-        const component = cp[this.cmp.component]
-        if (component) {
-            return h(component, {
-                config: this.cmp.config,
-                data: this.data,
-                class: this.classes || '',
-                onSubClick: this.onSubClick
-            })
-        } else if (this.cmp.type === 'ui') {
-            return h('div', this.$t(this.cmp.text))
-        }
-        return null
     }
 }
 </script>
 
 <templateDEACT>
-    <!-- This now is replaced by the render function above -->
+    <!-- This template now is replaced by the JS and JSX render functions above -->
     <preloader v-if="cmp.component === 'preloader'" :config="cmp.config" @subClick="onSubClick"></preloader>
     <meta-form v-if="cmp.component === 'meta-form'" :config="cmp.config" @subClick="onSubClick"></meta-form>
     <active-list v-if="cmp.component === 'active-list'" :config="cmp.config" @subClick="onSubClick"></active-list>
